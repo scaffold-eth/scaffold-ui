@@ -1,30 +1,21 @@
 # Scaffold UI
 
-A monorepo for React UI components and hooks.
+## Testing Local Package
 
-## Packages
-
-- [@scaffold-ui/hooks](./packages/hooks) - React hooks for managing UI state
-
-## Development
+1. Start the dev mode
 
 ```bash
-# Install dependencies
-yarn
-
-# Build all packages
-yarn workspaces run build
-
-# Run development mode
-yarn workspaces run dev
+cd packages/hooks && yarn dev
 ```
 
-## Publishing
+2. Add the package to your project with portal:
 
 ```bash
-# Build packages
-yarn workspaces run build
+"@scaffold-ui/hooks": "portal:../scaffold-ui/packages/hooks",
+```
 
-# Publish packages
-yarn workspaces run publish
+3. Do the yarn install in the project
+
+```bash
+yarn install
 ```

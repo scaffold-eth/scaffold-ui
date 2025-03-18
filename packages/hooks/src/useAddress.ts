@@ -20,9 +20,9 @@ type UseAddressReturn = {
 const defaultAddress: AddressInfo = {
   street: "",
   city: "",
-  state: "",
+  state: "zaragoza",
   zip: "",
-  country: "",
+  country: "Spain",
 };
 
 export function useAddress(
