@@ -1,0 +1,15 @@
+{
+  "name": "scaffold-ui",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn workspaces run build",
+    "clean": "yarn workspaces run clean",
+    "dev": "yarn workspaces run dev",
+    "lint": "yarn workspaces run lint",
+    "typecheck": "yarn workspaces run typecheck"
+  },
+  "packageManager": "yarn@3.2.3"
+}
