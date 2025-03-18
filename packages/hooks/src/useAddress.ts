@@ -1,52 +1,74 @@
-import { useState, useCallback } from "react";
+import {
+  type Address as AddressType,
+  type Chain,
+  getAddress,
+  isAddress,
+} from "viem";
+import { normalize } from "viem/ens";
+import { useEnsAvatar, useEnsName } from "wagmi";
+import { blo } from "blo";
 
-/**
- * A hook that manages address information.
- */
-export type AddressInfo = {
-  street: string;
-  city: string;
-  state: string;
-  zip: string;
-  country: string;
+type UseAddressOptions = {
+  address?: AddressType;
+  chain?: Chain;
 };
 
-type UseAddressReturn = {
-  address: AddressInfo;
-  setAddress: (address: Partial<AddressInfo>) => void;
-  resetAddress: () => void;
-};
+export function getBlockExplorerAddressLink(network: Chain, address: string) {
+  const blockExplorerBaseURL = network.blockExplorers?.default?.url;
 
-const defaultAddress: AddressInfo = {
-  street: "",
-  city: "",
-  state: "zaragoza",
-  zip: "",
-  country: "Spain",
-};
+  if (!blockExplorerBaseURL) {
+    return `https://etherscan.io/address/${address}`;
+  }
 
-export function useAddress(
-  initialAddress?: Partial<AddressInfo>
-): UseAddressReturn {
-  const [address, setAddressState] = useState<AddressInfo>({
-    ...defaultAddress,
-    ...initialAddress,
+  return `${blockExplorerBaseURL}/address/${address}`;
+}
+
+// make the chain optional, if not provided, it will use from wagmi conig
+export const useAddress = (UseAddressOptions: UseAddressOptions) => {
+  const checkSumAddress = UseAddressOptions?.address
+    ? getAddress(UseAddressOptions.address)
+    : undefined;
+  console.log("checkSumAddress", checkSumAddress);
+
+  const { data: ens, isLoading: isEnsNameLoading } = useEnsName({
+    address: checkSumAddress,
+    chainId: 1,
+    query: {
+      enabled: isAddress(checkSumAddress ?? ""),
+    },
   });
 
-  const setAddress = useCallback((newAddress: Partial<AddressInfo>) => {
-    setAddressState((prev: AddressInfo) => ({
-      ...prev,
-      ...newAddress,
-    }));
-  }, []);
+  const { data: ensAvatar } = useEnsAvatar({
+    name: ens ? normalize(ens) : undefined,
+    chainId: 1,
+    query: {
+      enabled: Boolean(ens),
+      gcTime: 30_000,
+    },
+  });
 
-  const resetAddress = useCallback(() => {
-    setAddressState(defaultAddress);
-  }, []);
+  const shortAddress = checkSumAddress
+    ? `${checkSumAddress.slice(0, 6)}...${checkSumAddress.slice(-4)}`
+    : undefined;
+
+  const isValidAddress = checkSumAddress ? isAddress(checkSumAddress) : false;
+  const blockExplorerAddressLink = UseAddressOptions?.chain
+    ? getBlockExplorerAddressLink(
+        UseAddressOptions.chain,
+        checkSumAddress ?? ""
+      )
+    : "";
 
   return {
-    address,
-    setAddress,
-    resetAddress,
+    checkSumAddress,
+    ens,
+    ensAvatar,
+    isEnsNameLoading,
+    blockExplorerAddressLink,
+    isValidAddress,
+    shortAddress,
+    blockieUrl: UseAddressOptions.address
+      ? blo(UseAddressOptions.address as `0x${string}`)
+      : undefined,
   };
-}
+};

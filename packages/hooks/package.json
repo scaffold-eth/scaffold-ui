@@ -3,25 +3,35 @@
   "version": "0.1.0",
   "description": "React hooks for scaffold-ui",
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "build": "yarn run clean && yarn build:esm+types",
+    "build:esm+types": "tsc --project tsconfig.json --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types",
+    "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
-    "react": "^19.0.0"
+    "@tanstack/react-query": "^5.69.0",
+    "react": "^19.0.0",
+    "viem": "^2.23.12",
+    "wagmi": "^2.14.15"
   },
   "devDependencies": {
+    "@tanstack/react-query": "^5.69.0",
     "@types/react": "^19.0.7",
     "react": "^19.0.0",
     "rollup": "3.21.0",
     "rollup-plugin-typescript2": "^0.34.1",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "viem": "^2.23.12",
+    "wagmi": "^2.14.15"
+  },
+  "dependencies": {
+    "blo": "^1.2.0"
   }
 }
