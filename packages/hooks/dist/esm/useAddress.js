@@ -2,7 +2,6 @@ import { getAddress, isAddress, } from "viem";
 import { normalize } from "viem/ens";
 import { useEnsAvatar, useEnsName } from "wagmi";
 import { blo } from "blo";
-import { useEffect } from "react";
 export function getBlockExplorerAddressLink(network, address) {
     const blockExplorerBaseURL = network.blockExplorers?.default?.url;
     if (!blockExplorerBaseURL) {
@@ -15,10 +14,6 @@ export const useAddress = (UseAddressOptions) => {
     const checkSumAddress = UseAddressOptions?.address
         ? getAddress(UseAddressOptions.address)
         : undefined;
-    console.log("checkSumAddress", checkSumAddress);
-    useEffect(() => {
-        console.log("inside useEffect");
-    }, []);
     const { data: ens, isLoading: isEnsNameLoading } = useEnsName({
         address: checkSumAddress,
     });
