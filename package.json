@@ -1,16 +1,16 @@
 {
-  "name": "scaffold-ui",
-  "private": true,
+  "name": "@scaffold-ui",
+  "private": false,
   "workspaces": [
     "packages/*",
     "apps/*"
   ],
   "scripts": {
-    "build": "yarn workspaces run build",
-    "clean": "yarn workspaces run clean",
-    "dev": "yarn workspaces run dev",
-    "lint": "yarn workspaces run lint",
-    "typecheck": "yarn workspaces run typecheck"
+    "build": "pnpm -r run build",
+    "clean": "pnpm -r run clean",
+    "dev": "pnpm -r run dev",
+    "lint": "pnpm -r run lint",
+    "typecheck": "pnpm -r run typecheck"
   },
-  "packageManager": "yarn@3.2.3"
+  "packageManager": "pnpm@8.15.4"
 }

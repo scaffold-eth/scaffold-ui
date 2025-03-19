@@ -7,6 +7,7 @@ import {
 import { normalize } from "viem/ens";
 import { useEnsAvatar, useEnsName } from "wagmi";
 import { blo } from "blo";
+import { useEffect } from "react";
 
 type UseAddressOptions = {
   address?: AddressType;
@@ -30,21 +31,16 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
     : undefined;
   console.log("checkSumAddress", checkSumAddress);
 
+  useEffect(() => {
+    console.log("inside useEffect");
+  }, []);
+
   const { data: ens, isLoading: isEnsNameLoading } = useEnsName({
     address: checkSumAddress,
-    chainId: 1,
-    query: {
-      enabled: isAddress(checkSumAddress ?? ""),
-    },
   });
 
   const { data: ensAvatar } = useEnsAvatar({
     name: ens ? normalize(ens) : undefined,
-    chainId: 1,
-    query: {
-      enabled: Boolean(ens),
-      gcTime: 30_000,
-    },
   });
 
   const shortAddress = checkSumAddress
@@ -55,7 +51,7 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
   const blockExplorerAddressLink = UseAddressOptions?.chain
     ? getBlockExplorerAddressLink(
         UseAddressOptions.chain,
-        checkSumAddress ?? ""
+        checkSumAddress ?? "",
       )
     : "";
 
