@@ -2,6 +2,7 @@ import { getAddress, isAddress, } from "viem";
 import { normalize } from "viem/ens";
 import { useEnsAvatar, useEnsName } from "wagmi";
 import { blo } from "blo";
+import { mainnet } from "viem/chains";
 export function getBlockExplorerAddressLink(network, address) {
     const blockExplorerBaseURL = network.blockExplorers?.default?.url;
     if (!blockExplorerBaseURL) {
@@ -24,9 +25,7 @@ export const useAddress = (UseAddressOptions) => {
         ? `${checkSumAddress.slice(0, 6)}...${checkSumAddress.slice(-4)}`
         : undefined;
     const isValidAddress = checkSumAddress ? isAddress(checkSumAddress) : false;
-    const blockExplorerAddressLink = UseAddressOptions?.chain
-        ? getBlockExplorerAddressLink(UseAddressOptions.chain, checkSumAddress ?? "")
-        : "";
+    const blockExplorerAddressLink = getBlockExplorerAddressLink(UseAddressOptions?.chain ?? mainnet, checkSumAddress ?? "");
     return {
         checkSumAddress,
         ens,

@@ -1,19 +1,28 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { UseAddressExample } from "./components/UseAddressExample";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-start space-y-4 p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <ConnectButton />
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://buidlguidl.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By Buidlguidl
-          </a>
+    <main className="min-h-screen bg-gradient-to-b from-transparent to-gray-900">
+      <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div className="flex justify-end mb-8">
+          <ConnectButton />
+        </div>
+
+        <div className="flex flex-col items-center">
+          <h1 className="text-4xl font-bold mb-12">Scaffold UI Example</h1>
+          <UseAddressExample />
+
+          <footer className="mt-16 text-center text-sm text-gray-400">
+            <a
+              href="https://buidlguidl.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-300 transition-colors"
+            >
+              Built with ❤️ by Buidlguidl
+            </a>
+          </footer>
         </div>
       </div>
     </main>

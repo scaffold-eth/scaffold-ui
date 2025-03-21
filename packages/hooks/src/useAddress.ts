@@ -7,6 +7,7 @@ import {
 import { normalize } from "viem/ens";
 import { useEnsAvatar, useEnsName } from "wagmi";
 import { blo } from "blo";
+import { mainnet } from "viem/chains";
 
 type UseAddressOptions = {
   address?: AddressType;
@@ -42,12 +43,10 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
     : undefined;
 
   const isValidAddress = checkSumAddress ? isAddress(checkSumAddress) : false;
-  const blockExplorerAddressLink = UseAddressOptions?.chain
-    ? getBlockExplorerAddressLink(
-        UseAddressOptions.chain,
-        checkSumAddress ?? ""
-      )
-    : "";
+  const blockExplorerAddressLink = getBlockExplorerAddressLink(
+    UseAddressOptions?.chain ?? mainnet,
+    checkSumAddress ?? ""
+  );
 
   return {
     checkSumAddress,
