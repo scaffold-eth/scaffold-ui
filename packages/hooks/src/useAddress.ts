@@ -1,9 +1,4 @@
-import {
-  type Address as AddressType,
-  type Chain,
-  getAddress,
-  isAddress,
-} from "viem";
+import { type Address as AddressType, type Chain, getAddress, isAddress } from "viem";
 import { normalize } from "viem/ens";
 import { useEnsAvatar, useEnsName } from "wagmi";
 import { blo } from "blo";
@@ -26,9 +21,7 @@ export function getBlockExplorerAddressLink(network: Chain, address: string) {
 
 // make the chain optional, if not provided, it will use from wagmi conig
 export const useAddress = (UseAddressOptions: UseAddressOptions) => {
-  const checkSumAddress = UseAddressOptions?.address
-    ? getAddress(UseAddressOptions.address)
-    : undefined;
+  const checkSumAddress = UseAddressOptions?.address ? getAddress(UseAddressOptions.address) : undefined;
 
   const { data: ens, isLoading: isEnsNameLoading } = useEnsName({
     address: checkSumAddress,
@@ -38,14 +31,12 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
     name: ens ? normalize(ens) : undefined,
   });
 
-  const shortAddress = checkSumAddress
-    ? `${checkSumAddress.slice(0, 6)}...${checkSumAddress.slice(-4)}`
-    : undefined;
+  const shortAddress = checkSumAddress ? `${checkSumAddress.slice(0, 6)}...${checkSumAddress.slice(-4)}` : undefined;
 
   const isValidAddress = checkSumAddress ? isAddress(checkSumAddress) : false;
   const blockExplorerAddressLink = getBlockExplorerAddressLink(
     UseAddressOptions?.chain ?? mainnet,
-    checkSumAddress ?? ""
+    checkSumAddress ?? "",
   );
 
   return {
@@ -56,8 +47,6 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
     blockExplorerAddressLink,
     isValidAddress,
     shortAddress,
-    blockieUrl: UseAddressOptions.address
-      ? blo(UseAddressOptions.address as `0x${string}`)
-      : undefined,
+    blockieUrl: UseAddressOptions.address ? blo(UseAddressOptions.address as `0x${string}`) : undefined,
   };
 };

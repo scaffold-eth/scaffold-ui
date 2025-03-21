@@ -30,11 +30,7 @@ function AddressForm() {
 
   return (
     <form>
-      <input
-        value={address.street}
-        onChange={handleStreetChange}
-        placeholder="Street"
-      />
+      <input value={address.street} onChange={handleStreetChange} placeholder="Street" />
       {/* More form fields */}
       <button type="button" onClick={resetAddress}>
         Reset
