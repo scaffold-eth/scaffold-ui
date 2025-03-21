@@ -18,7 +18,7 @@ const wagmiConnectors = connectorsForWallets(
   {
     appName: "scaffold-eth-2",
     projectId: walletConnectProjectID,
-  }
+  },
 );
 
 export const chains = [mainnet] as const;

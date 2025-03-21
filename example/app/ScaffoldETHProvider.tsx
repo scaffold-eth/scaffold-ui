@@ -14,11 +14,7 @@ const queryClient = new QueryClient({
   },
 });
 
-export const ScaffoldEthAppWithProviders = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const ScaffoldEthAppWithProviders = ({ children }: { children: React.ReactNode }) => {
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
