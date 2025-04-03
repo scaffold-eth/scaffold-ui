@@ -14,28 +14,46 @@ yarn add @scaffold-ui/hooks
 
 ### useAddress
 
-A hook for managing address information.
+A hook for managing Ethereum addresses with ENS support.
 
 ```tsx
 import { useAddress } from "@scaffold-ui/hooks";
+import { useAccount } from "wagmi";
 
-function AddressForm() {
-  const { address, setAddress, resetAddress } = useAddress({
-    country: "United States", // Optional initial value
+function AddressInfo() {
+  const { address } = useAccount();
+
+  const {
+    checkSumAddress,
+    ens,
+    ensAvatar,
+    isEnsNameLoading,
+    blockExplorerAddressLink,
+    isValidAddress,
+    shortAddress,
+    blockieUrl,
+  } = useAddress({
+    address,
+    chain: mainnet, // Optional chain parameter
   });
 
-  const handleStreetChange = (e) => {
-    setAddress({ street: e.target.value });
-  };
-
   return (
-    <form>
-      <input value={address.street} onChange={handleStreetChange} placeholder="Street" />
-      {/* More form fields */}
-      <button type="button" onClick={resetAddress}>
-        Reset
-      </button>
-    </form>
+    <div>
+      {isEnsNameLoading ? (
+        <div>Loading ENS name...</div>
+      ) : (
+        <div>
+          <img src={ensAvatar ?? blockieUrl} alt="Avatar" />
+          <div>ENS Name: {ens ?? "No ENS name"}</div>
+          <div>Address: {checkSumAddress}</div>
+          <div>Short Address: {shortAddress}</div>
+          <a href={blockExplorerAddressLink} target="_blank" rel="noopener noreferrer">
+            View on Block Explorer
+          </a>
+          {isValidAddress && <div>✓ Valid Address</div>}
+        </div>
+      )}
+    </div>
   );
 }
 ```
