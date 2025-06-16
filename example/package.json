@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^2.2.4",
+    "@scaffold-ui/components": "workspace:*",
     "@scaffold-ui/hooks": "workspace:*",
     "blo": "^1.2.0",
     "burner-connector": "^0.0.11",
