@@ -23,6 +23,72 @@ export const AddressLinkWrapper = ({
   );
 };
 
+const CheckCircleIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="currentColor"
+    className={className}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+    />
+  </svg>
+);
+
+const DocumentDuplicateIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="currentColor"
+    className={className}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"
+    />
+  </svg>
+);
+
+export const AddressCopyIcon = ({ className, address }: { className?: string; address: string }) => {
+  const [isCopiedToClipboard, setIsCopiedToClipboard] = React.useState(false);
+
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setIsCopiedToClipboard(true);
+      setTimeout(() => {
+        setIsCopiedToClipboard(false);
+      }, 800);
+    } catch (err) {
+      console.error("Failed to copy text:", err);
+    }
+  };
+
+  return (
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+        copyToClipboard(address);
+      }}
+      type="button"
+    >
+      {isCopiedToClipboard ? (
+        <CheckCircleIcon className={className} />
+      ) : (
+        <DocumentDuplicateIcon className={className} />
+      )}
+    </button>
+  );
+};
+
 const textSizeMap = {
   "3xs": "text-[10px]",
   "2xs": "text-[11px]",
@@ -52,18 +118,18 @@ const blockieSizeMap = {
   "7xl": 23,
 } as const;
 
-// const copyIconSizeMap = {
-//   "3xs": "h-2.5 w-2.5",
-//   "2xs": "h-3 w-3",
-//   xs: "h-3.5 w-3.5",
-//   sm: "h-4 w-4",
-//   base: "h-[18px] w-[18px]",
-//   lg: "h-5 w-5",
-//   xl: "h-[22px] w-[22px]",
-//   "2xl": "h-6 w-6",
-//   "3xl": "h-[26px] w-[26px]",
-//   "4xl": "h-7 w-7",
-// } as const;
+const copyIconSizeMap = {
+  "3xs": "h-2.5 w-2.5",
+  "2xs": "h-3 w-3",
+  xs: "h-3.5 w-3.5",
+  sm: "h-4 w-4",
+  base: "h-[18px] w-[18px]",
+  lg: "h-5 w-5",
+  xl: "h-[22px] w-[22px]",
+  "2xl": "h-6 w-6",
+  "3xl": "h-[26px] w-[26px]",
+  "4xl": "h-7 w-7",
+} as const;
 
 type SizeMap = typeof textSizeMap | typeof blockieSizeMap;
 
@@ -168,11 +234,10 @@ export const Address: React.FC<AddressProps> = ({
               {onlyEnsOrAddress ? displayEnsOrAddress : displayAddress}
             </AddressLinkWrapper>
           </span>
-          Copy
-          {/* <AddressCopyIcon
+          <AddressCopyIcon
             className={`ml-1 ${copyIconSizeMap[addressSize]} cursor-pointer`}
             address={checkSumAddress}
-          /> */}
+          />
         </div>
       </div>
     </div>
