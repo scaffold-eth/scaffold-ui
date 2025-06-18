@@ -1,11 +1,10 @@
 "use client";
-import { useAccount } from "wagmi";
 import { useAddress } from "@scaffold-ui/hooks";
 import { Address } from "@scaffold-ui/components";
 import { blo } from "blo";
 
 export const UseAddressExample = () => {
-  const { address } = useAccount();
+  const address = "0x34aa3f359a9d614239015126635ce7732c18fdf3" as const;
 
   const { checkSumAddress, ens, ensAvatar, isEnsNameLoading, blockExplorerAddressLink, isValidAddress, shortAddress } =
     useAddress({
@@ -30,25 +29,55 @@ export const UseAddressExample = () => {
         <div className="space-y-4">
           <h2 className="text-xl font-semibold text-gray-200">Address Component Examples</h2>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             <div className="flex flex-col">
-              <span className="text-sm text-gray-500 mb-1">Default (with ENS & link)</span>
-              <Address address={address} />
+              <span className="text-sm text-gray-500 mb-1">Default (base size, short format)</span>
+              <Address address={address} size="base" />
             </div>
 
             <div className="flex flex-col">
-              <span className="text-sm text-gray-500 mb-1">With Avatar</span>
-              <Address address={address} showAvatar={true} />
+              <span className="text-sm text-gray-500 mb-1">Large size with long format</span>
+              <Address address={address} size="lg" format="long" />
             </div>
 
             <div className="flex flex-col">
-              <span className="text-sm text-gray-500 mb-1">Full Address (no shortening)</span>
-              <Address address={address} showShortAddress={false} showAvatar={true} />
+              <span className="text-sm text-gray-500 mb-1">Extra large size</span>
+              <Address address={address} size="xl" />
             </div>
 
             <div className="flex flex-col">
-              <span className="text-sm text-gray-500 mb-1">No Link</span>
-              <Address address={address} showLink={false} showAvatar={true} />
+              <span className="text-sm text-gray-500 mb-1">Small size</span>
+              <Address address={address} size="sm" />
+            </div>
+
+            <div className="flex flex-col">
+              <span className="text-sm text-gray-500 mb-1">Extra small size</span>
+              <Address address={address} size="xs" />
+            </div>
+
+            <div className="flex flex-col">
+              <span className="text-sm text-gray-500 mb-1">2XL size with long format</span>
+              <Address address={address} size="2xl" format="long" />
+            </div>
+
+            <div className="flex flex-col">
+              <span className="text-sm text-gray-500 mb-1">3XL size</span>
+              <Address address={address} size="3xl" />
+            </div>
+
+            <div className="flex flex-col">
+              <span className="text-sm text-gray-500 mb-1">Disabled address link</span>
+              <Address address={address} size="base" disableAddressLink={true} />
+            </div>
+
+            <div className="flex flex-col">
+              <span className="text-sm text-gray-500 mb-1">Only ENS or Address (no additional info)</span>
+              <Address address={address} size="base" onlyEnsOrAddress={true} />
+            </div>
+
+            <div className="flex flex-col">
+              <span className="text-sm text-gray-500 mb-1">Large, only ENS/Address, no link</span>
+              <Address address={address} size="lg" onlyEnsOrAddress={true} disableAddressLink={true} />
             </div>
           </div>
         </div>
