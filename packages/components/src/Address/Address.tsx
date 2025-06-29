@@ -1,6 +1,6 @@
 import React from "react";
 import { useAddress } from "@scaffold-ui/hooks";
-import { type Address as AddressType } from "viem";
+import { Chain, type Address as AddressType } from "viem";
 import { mainnet } from "viem/chains";
 import { AddressLinkWrapper } from "./AddressLinkWrapper";
 import { AddressCopyIcon } from "./AddressCopyIcon";
@@ -12,6 +12,7 @@ export type AddressProps = {
   format?: "short" | "long";
   size: "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl";
   onlyEnsOrAddress?: boolean;
+  chain?: Chain;
 };
 
 export const Address: React.FC<AddressProps> = ({
@@ -20,9 +21,10 @@ export const Address: React.FC<AddressProps> = ({
   format,
   size = "base",
   onlyEnsOrAddress,
+  chain,
 }) => {
   const { checkSumAddress, ens, ensAvatar, isEnsNameLoading, blockExplorerAddressLink, shortAddress, blockieUrl } =
-    useAddress({ address, chain: mainnet });
+    useAddress({ address, chain: chain || mainnet });
 
   const displayAddress = format === "long" ? checkSumAddress : shortAddress;
   const displayEnsOrAddress = ens || displayAddress;

@@ -20,14 +20,11 @@ A React component for displaying Ethereum addresses with ENS support, avatars, a
 
 #### Props
 
-- `address` - The Ethereum address to display
-- `chain` - The chain to use for block explorer links (optional)
-- `showEns` - Whether to show ENS name if available (default: true)
-- `showAvatar` - Whether to show blockie/ENS avatar (default: false)
-- `showLink` - Whether to show link to block explorer (default: true)
-- `showShortAddress` - Whether to display short format of address (default: true)
-- `className` - Custom CSS classes
-- `style` - Custom inline styles
+- `address?` - The Ethereum address to display (optional)
+- `disableAddressLink?` - Whether to disable the link to block explorer (optional)
+- `format?` - Display format for the address - "short" | "long" (optional)
+- `size` - Size of the component - "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" (required)
+- `onlyEnsOrAddress?` - Whether to show only ENS name or address without additional info (optional)
 
 #### Example
 
@@ -38,8 +35,10 @@ function MyComponent() {
   return (
     <Address
       address="0x1234567890123456789012345678901234567890"
-      showAvatar={true}
-      showEns={true}
+      size="base"
+      format="short"
+      disableAddressLink={false}
+      onlyEnsOrAddress={false}
     />
   );
 }
