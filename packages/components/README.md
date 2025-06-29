@@ -25,11 +25,13 @@ A React component for displaying Ethereum addresses with ENS support, avatars, a
 - `format?` - Display format for the address - "short" | "long" (optional)
 - `size` - Size of the component - "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" (required)
 - `onlyEnsOrAddress?` - Whether to show only ENS name or address without additional info (optional)
+- `chain?` - The blockchain chain to use for block explorer links and ENS resolution (optional, defaults to mainnet)
 
 #### Example
 
 ```tsx
 import { Address } from "@scaffold-ui/components";
+import { optimism } from "viem/chains";
 
 function MyComponent() {
   return (
@@ -39,6 +41,7 @@ function MyComponent() {
       format="short"
       disableAddressLink={false}
       onlyEnsOrAddress={false}
+      chain={optimism} // Optional: specify chain for block explorer links
     />
   );
 }
