@@ -35,6 +35,8 @@
     "typescript-eslint": "^8.27.0"
   },
   "dependencies": {
+    "@uniswap/sdk-core": "^7.7.2",
+    "@uniswap/v2-sdk": "^4.15.2",
     "blo": "^1.2.0"
   }
 }
