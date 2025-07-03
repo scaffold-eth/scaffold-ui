@@ -1,6 +1,6 @@
 "use client";
 import { useAddress } from "@scaffold-ui/hooks";
-import { Address, Balance } from "@scaffold-ui/components";
+import { Address } from "@scaffold-ui/components";
 import { blo } from "blo";
 
 export const UseAddressExample = () => {
@@ -116,7 +116,6 @@ export const UseAddressExample = () => {
               <span className="text-sm text-gray-500">Short Address</span>
               <span>{shortAddress}</span>
             </div>
-            <Balance address={address} />
           </div>
         </div>
       </div>
