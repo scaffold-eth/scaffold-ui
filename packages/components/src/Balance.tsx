@@ -29,7 +29,7 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain = mainnet, clas
   if (isError) {
     return (
       <div className="border border-gray-300 rounded px-2 flex flex-col items-center max-w-fit">
-        <div className="text-red-500 text-sm">Error</div>
+        <div className="text-yellow-400 text-sm">Error</div>
       </div>
     );
   }
