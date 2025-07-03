@@ -40,13 +40,13 @@ export const useBalance = ({ address, chain, defaultUsdMode = false }: UseBalanc
   }, [displayUsdMode, isPriceFetched]);
 
   const formattedBalance = balance ? Number(formatEther(balance.value)) : 0;
-  const formattedBalanceInUsd = (formattedBalance * nativeCurrencyPrice).toFixed(2);
+  const balanceInUsd = formattedBalance * nativeCurrencyPrice;
 
   return {
     displayUsdMode,
     toggleDisplayUsdMode,
     formattedBalance,
-    formattedBalanceInUsd,
+    balanceInUsd,
     balance,
     isBalanceError,
     isBalanceLoading,

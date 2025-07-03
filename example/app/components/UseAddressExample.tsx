@@ -87,6 +87,7 @@ export const UseAddressExample = () => {
           <h2 className="text-xl font-semibold text-gray-200">Manual Implementation (useAddress Hook)</h2>
 
           <div className="flex items-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={ensAvatar ?? blo(address)} alt="ENS Avatar" className="w-8 h-8 rounded-full" />
             {isEnsNameLoading ? (
               <div className="h-6 w-32 bg-gray-700 animate-pulse rounded" />

@@ -15,13 +15,12 @@ export type BalanceProps = {
  * Display (ETH & USD) balance of an address, with click-to-toggle.
  */
 export const Balance: React.FC<BalanceProps> = ({ address, chain = mainnet, className = "", usdMode }) => {
-  const { displayUsdMode, toggleDisplayUsdMode, formattedBalance, formattedBalanceInUsd, isLoading, isError, balance } =
+  const { displayUsdMode, toggleDisplayUsdMode, formattedBalance, balanceInUsd, isLoading, isError, balance } =
     useBalance({ address, chain, defaultUsdMode: usdMode });
 
   if (isLoading || !balance) {
     return (
-      <div className="flex items-center space-x-2 animate-pulse">
-        <div className="rounded-md bg-gray-200 h-6 w-6" />
+      <div className="flex items-center animate-pulse">
         <div className="h-4 w-20 bg-gray-200 rounded" />
       </div>
     );
@@ -37,7 +36,7 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain = mainnet, clas
 
   return (
     <button
-      className={`flex flex-col items-center font-normal bg-transparent focus:outline-none ${className}`}
+      className={`flex flex-col items-center font-normal bg-transparent focus:outline-none cursor-pointer ${className}`}
       onClick={toggleDisplayUsdMode}
       type="button"
       title="Toggle balance display mode"
@@ -46,13 +45,13 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain = mainnet, clas
         {displayUsdMode ? (
           <>
             <span className="text-xs font-bold mr-1">$</span>
-            <span>{formattedBalanceInUsd}</span>
+            <span>{balanceInUsd.toFixed(2)}</span>
           </>
         ) : (
-          <>
-            <span>{formattedBalance}</span>
+          <div className="flex items-center">
+            <span>{formattedBalance.toFixed(4)}</span>
             <span className="text-xs font-bold ml-1">{chain.nativeCurrency.symbol}</span>
-          </>
+          </div>
         )}
       </div>
     </button>
