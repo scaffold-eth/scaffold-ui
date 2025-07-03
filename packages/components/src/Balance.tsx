@@ -3,7 +3,6 @@ import { Address, Chain } from "viem";
 import { useBalance } from "@scaffold-ui/hooks";
 import { mainnet } from "viem/chains";
 
-// Accept className as optional for flexibility, but keep styles minimal
 export type BalanceProps = {
   address: Address;
   chain?: Chain;
