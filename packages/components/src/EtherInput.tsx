@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import { useEtherInput } from "@scaffold-ui/hooks";
 
 export type EtherInputProps = {
@@ -64,7 +63,7 @@ export const EtherInput = ({ name, placeholder, defaultUsdMode, onValueChange }:
               : "Toggle USD/ETH"
         }
       >
-        ↔
+        🔀
       </button>
     </div>
   );
