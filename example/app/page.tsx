@@ -1,6 +1,7 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { UseAddressExample } from "./components/UseAddressExample";
 import { UseBalanceExample } from "./components/UseBalanceExample";
+import { UseAddressInputExample } from "./components/UseAddressInputExample";
 
 export default function Home() {
   return (
@@ -15,6 +16,9 @@ export default function Home() {
           <UseAddressExample />
           <div className="my-12 border-t border-gray-700 w-full max-w-2xl" />
           <UseBalanceExample />
+
+          <div className="my-12 border-t border-gray-700 w-full max-w-2xl" />
+          <UseAddressInputExample />
 
           <footer className="mt-16 text-center text-sm text-gray-400">
             <a
