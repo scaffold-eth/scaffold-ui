@@ -10,12 +10,10 @@ export type EtherInputProps = {
 };
 
 export const EtherInput = ({ name, placeholder, defaultUsdMode, onValueChange }: EtherInputProps) => {
-  // Internal state for value and mode
   const [value, setValue] = useState("");
   const [usdMode, setUsdMode] = useState(defaultUsdMode ?? false);
 
-  // Get display value and conversions from the hook
-  const { displayValue, valueInEth, valueInUsd, isNativeCurrencyPriceLoading, isNativeCurrencyPriceError } =
+  const { activeValue, valueInEth, valueInUsd, isNativeCurrencyPriceLoading, isNativeCurrencyPriceError } =
     useEtherInput({ value, usdMode });
 
   useEffect(() => {
@@ -42,7 +40,7 @@ export const EtherInput = ({ name, placeholder, defaultUsdMode, onValueChange }:
       <span className="pl-4 -mr-2 text-accent self-center">{usdMode ? "$" : "Ξ"}</span>
       <input
         name={name}
-        value={displayValue}
+        value={activeValue}
         placeholder={placeholder}
         onChange={(e) => setValue(e.target.value)}
         disabled={isNativeCurrencyPriceLoading}
