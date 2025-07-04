@@ -6,7 +6,7 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "pnpm --filter @scaffold-ui/hooks run build",
+    "build": "pnpm -r run build",
     "dev": "pnpm -r --parallel run dev",
     "lint": "pnpm -r run lint",
     "format": "pnpm -r run format"
