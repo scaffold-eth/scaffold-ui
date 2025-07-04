@@ -11,7 +11,7 @@ import { NETWORKS_EXTRA_DATA } from "../utils/networks.js";
  *
  * Fetches the current USD price of the native currency for a given chain using Uniswap V2 on mainnet.
  *
- * @param {Chain} [chain=mainnet] - (Optional) The blockchain network to fetch the native currency price for. Defaults to Ethereum mainnet.
+ * @param {Chain} [chain=mainnet] - (Optional) The blockchain network to fetch the native currency price for. Defaults to Ethereum mainnet. Since most of the chains has ETH as native currency, it works out of the box but for other chains, we need to set the `nativeCurrencyTokenAddress` in `NETWORKS_EXTRA_DATA[chain.id]`.
  *
  * @returns {Object} An object containing:
  *   - price {number}: The current price of the native currency in USD.
