@@ -1,7 +1,7 @@
 "use client";
 import { useBalance } from "@scaffold-ui/hooks";
 import { Balance } from "@scaffold-ui/components";
-import { mainnet } from "viem/chains";
+import { mainnet, polygon } from "viem/chains";
 
 export const UseBalanceExample = () => {
   // atg.eth
@@ -44,7 +44,13 @@ export const UseBalanceExample = () => {
             </div>
           </div>
         </div>
-
+        <div className="space-y-4 border-t border-gray-700 pt-6">
+          <h2 className="text-xl font-semibold text-purple-400">Fetch Polygon Balance</h2>
+          <div className="flex flex-col items-center">
+            <span className="text-sm text-gray-500 mb-1 self-start">Polygon (POL) Balance</span>
+            <Balance address={address} chain={polygon} />
+          </div>
+        </div>
         {/* Manual Implementation using useBalance hook */}
         <div className="space-y-4 border-t border-gray-700 pt-6">
           <h2 className="text-xl font-semibold text-gray-200">Manual Implementation (useBalance Hook)</h2>
