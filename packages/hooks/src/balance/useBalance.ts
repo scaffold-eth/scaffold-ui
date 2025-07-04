@@ -12,10 +12,9 @@ type UseBalanceOptions = {
 /**
  * useBalance Hook
  *
- * Fetches and manages the balance of a given address on a specified chain, with optional USD conversion.
+ * Fetches and watches the balance of a given address on a specified chain, with USD conversion.
  * - Retrieves the native token balance for the provided address and chain.
- * - Optionally fetches the USD price and allows toggling between native and USD display.
- * - Provides loading and error states for both balance and price fetching.
+ * - Fetches the USD price and allows toggling between native and USD display.
  *
  * @param {UseBalanceOptions} options - Options for fetching the balance.
  * @param {Address} [options.address] - The address to fetch the balance for.
