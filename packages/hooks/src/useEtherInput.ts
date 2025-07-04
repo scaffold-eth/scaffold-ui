@@ -1,6 +1,7 @@
 import { useFetchNativeCurrencyPrice } from "./useFetchNativeCurrencyPrice.js";
 import { mainnet } from "viem/chains";
 
+// Do we need this?
 const MAX_DECIMALS_USD = 2;
 
 function etherValueToUsd(etherValue: string, nativeCurrencyPrice: number) {
@@ -34,16 +35,8 @@ export const useEtherInput = ({ value, usdMode }: { value: string; usdMode: bool
     isError: isNativeCurrencyPriceError,
   } = useFetchNativeCurrencyPrice(mainnet);
 
-  let valueInEth = "";
-  let valueInUsd = "";
-
-  if (usdMode) {
-    valueInUsd = value;
-    valueInEth = usdValueToEth(value, nativeCurrencyPrice || 0);
-  } else {
-    valueInEth = value;
-    valueInUsd = etherValueToUsd(value, nativeCurrencyPrice || 0);
-  }
+  const valueInEth = usdMode ? usdValueToEth(value, nativeCurrencyPrice || 0) : value;
+  const valueInUsd = usdMode ? value : etherValueToUsd(value, nativeCurrencyPrice || 0);
 
   return {
     valueInEth,
