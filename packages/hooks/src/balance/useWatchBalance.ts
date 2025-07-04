@@ -14,7 +14,10 @@ type UseWatchBalanceOptions = {
 export const useWatchBalance = (useBalanceParameters: UseWatchBalanceOptions) => {
   const queryClient = useQueryClient();
   const { data: blockNumber } = useBlockNumber({ watch: true, chainId: useBalanceParameters.chain?.id ?? mainnet.id });
-  const { queryKey, ...restUseBalanceReturn } = useBalance(useBalanceParameters);
+  const { queryKey, ...restUseBalanceReturn } = useBalance({
+    ...useBalanceParameters,
+    chainId: useBalanceParameters.chain?.id ?? mainnet.id,
+  });
 
   useEffect(() => {
     void queryClient.invalidateQueries({ queryKey });

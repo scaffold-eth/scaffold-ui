@@ -1,9 +1,19 @@
 import { CurrencyAmount, Token } from "@uniswap/sdk-core";
 import { Pair, Route } from "@uniswap/v2-sdk";
 import { parseAbi, type Address, type Chain } from "viem";
-import { mainnet } from "viem/chains";
+import { mainnet, polygon } from "viem/chains";
 import { usePublicClient } from "wagmi";
 import { useQuery } from "@tanstack/react-query";
+
+type ChainAttributes = {
+  nativeCurrencyTokenAddress: string;
+};
+
+export const NETWORKS_EXTRA_DATA: Record<string, ChainAttributes> = {
+  [polygon.id]: {
+    nativeCurrencyTokenAddress: "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
+  },
+};
 
 export const useFetchNativeCurrencyPrice = (chain: Chain = mainnet) => {
   const mainnetPublicClient = usePublicClient({ chainId: mainnet.id });
@@ -31,7 +41,6 @@ const ABI = parseAbi([
   "function token1() external view returns (address)",
 ]);
 
-// TODO: Check for nativeCurrency address
 const fetchPriceFromUniswap = async ({
   chain,
   mainnetPublicClient,
@@ -40,8 +49,9 @@ const fetchPriceFromUniswap = async ({
   mainnetPublicClient: NonNullable<ReturnType<typeof usePublicClient>>;
 }) => {
   try {
+    const nativeCurrencyTokenAddress = NETWORKS_EXTRA_DATA[chain.id]?.nativeCurrencyTokenAddress;
     const DAI = new Token(1, "0x6B175474E89094C44Da98b954EedeAC495271d0F", 18);
-    const TOKEN = new Token(1, "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", 18);
+    const TOKEN = new Token(1, nativeCurrencyTokenAddress ?? "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", 18);
     const pairAddress = Pair.getAddress(TOKEN, DAI) as Address;
 
     const wagmiConfig = {
