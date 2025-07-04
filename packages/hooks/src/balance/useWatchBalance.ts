@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { type UseBalanceParameters, useBalance, useBlockNumber } from "wagmi";
 import type { Chain } from "viem";
-import { mainnet } from "viem/chains";
 
 type UseWatchBalanceOptions = {
   chain?: Chain;
@@ -13,10 +12,10 @@ type UseWatchBalanceOptions = {
  */
 export const useWatchBalance = (useBalanceParameters: UseWatchBalanceOptions) => {
   const queryClient = useQueryClient();
-  const { data: blockNumber } = useBlockNumber({ watch: true, chainId: useBalanceParameters.chain?.id ?? mainnet.id });
+  const { data: blockNumber } = useBlockNumber({ watch: true, chainId: useBalanceParameters.chain?.id });
   const { queryKey, ...restUseBalanceReturn } = useBalance({
     ...useBalanceParameters,
-    chainId: useBalanceParameters.chain?.id ?? mainnet.id,
+    chainId: useBalanceParameters.chain?.id,
   });
 
   useEffect(() => {

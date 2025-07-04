@@ -1,6 +1,7 @@
 import React from "react";
 import { Address, Chain } from "viem";
 import { useBalance } from "@scaffold-ui/hooks";
+import { useAccount } from "wagmi";
 import { mainnet } from "viem/chains";
 
 export type BalanceProps = {
@@ -13,9 +14,11 @@ export type BalanceProps = {
 /**
  * Display (ETH & USD) balance of an address, with click-to-toggle.
  */
-export const Balance: React.FC<BalanceProps> = ({ address, chain = mainnet, className = "", usdMode }) => {
+export const Balance: React.FC<BalanceProps> = ({ address, chain, className = "", usdMode }) => {
+  const { chain: connectedChain } = useAccount();
+  const chainToUse = chain ? chain : (connectedChain ?? mainnet);
   const { displayUsdMode, toggleDisplayUsdMode, formattedBalance, balanceInUsd, isLoading, isError, balance } =
-    useBalance({ address, chain, defaultUsdMode: usdMode });
+    useBalance({ address, chain: chainToUse, defaultUsdMode: usdMode });
 
   if (isLoading || !balance) {
     return (
@@ -49,7 +52,7 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain = mainnet, clas
         ) : (
           <div className="flex items-center">
             <span>{formattedBalance.toFixed(4)}</span>
-            <span className="text-xs font-bold ml-1">{chain.nativeCurrency.symbol}</span>
+            <span className="text-xs font-bold ml-1">{chainToUse?.nativeCurrency.symbol}</span>
           </div>
         )}
       </div>
