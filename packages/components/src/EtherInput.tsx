@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useEtherInput } from "@scaffold-ui/hooks";
 
 export type EtherInputProps = {
@@ -8,6 +8,25 @@ export type EtherInputProps = {
   onValueChange: (value: { valueInEth: string; valueInUsd: string; usdMode: boolean }) => void;
 };
 
+/**
+ * EtherInput Component
+ *
+ * An input component for entering ETH/USD values, with support for toggling between the two.
+ * - Allows users to input a value in either ETH or USD.
+ * - Provides a toggle button to switch between ETH and USD input modes.
+ * - Automatically converts the value between ETH and USD based on the current price.
+ * - Notifies parent components of value changes in both ETH and USD.
+ *
+ * @param {EtherInputProps} props - The props for the EtherInput component.
+ * @param {string} [props.name] - (Optional) The name attribute for the input element.
+ * @param {string} [props.placeholder] - (Optional) Placeholder text for the input.
+ * @param {boolean} [props.defaultUsdMode] - (Optional) If true, input starts in USD mode; otherwise, ETH mode.
+ * @param {(value: { valueInEth: string; valueInUsd: string; usdMode: boolean }) => void} props.onValueChange - Callback fired when the value or mode changes.
+ *
+ * @example
+ * <EtherInput onValueChange={({ valueInEth, valueInUsd, usdMode }) => { ... }} />
+ * <EtherInput defaultUsdMode placeholder="Amount" onValueChange={...} />
+ */
 export const EtherInput = ({ name, placeholder, defaultUsdMode, onValueChange }: EtherInputProps) => {
   const [value, setValue] = useState("");
   const [usdMode, setUsdMode] = useState(defaultUsdMode ?? false);
