@@ -8,7 +8,7 @@ export type BalanceProps = {
   address: Address;
   chain?: Chain;
   className?: string;
-  usdMode?: boolean;
+  defaultUsdMode?: boolean;
 };
 
 /**
@@ -23,18 +23,18 @@ export type BalanceProps = {
  * @param {Address} [props.address] - The address to display the balance for.
  * @param {Chain} [props.chain] - (Optional) The blockchain network to use. Defaults to the connected chain or mainnet.
  * @param {string} [props.className] - (Optional) Additional CSS classes for styling.
- * @param {boolean} [props.usdMode] - (Optional) If true, displays the balance in USD by default.
+ * @param {boolean} [props.defaultUsdMode] - (Optional) If true, displays the balance in USD by default.
  *
  * @example
  * <Balance address="0x123..." />
- * <Balance address="0x123..." usdMode />
+ * <Balance address="0x123..." defaultUsdMode />
  * <Balance address="0x123..." chain={mainnet} className="text-green-400" />
  */
-export const Balance: React.FC<BalanceProps> = ({ address, chain, className = "", usdMode }) => {
+export const Balance: React.FC<BalanceProps> = ({ address, chain, className = "", defaultUsdMode }) => {
   const { chain: connectedChain } = useAccount();
   const chainToUse = chain ? chain : (connectedChain ?? mainnet);
   const { displayUsdMode, toggleDisplayUsdMode, formattedBalance, balanceInUsd, isLoading, isError, balance } =
-    useBalance({ address, chain: chainToUse, defaultUsdMode: usdMode });
+    useBalance({ address, chain: chainToUse, defaultUsdMode });
 
   if (isLoading || !balance) {
     return (

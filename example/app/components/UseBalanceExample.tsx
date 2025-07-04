@@ -36,7 +36,7 @@ export const UseBalanceExample = () => {
             </div>
             <div className="flex flex-col items-center">
               <span className="text-sm text-gray-500 mb-1 self-start">USD mode by default</span>
-              <Balance address={address} usdMode={true} />
+              <Balance address={address} defaultUsdMode={true} />
             </div>
             <div className="flex flex-col items-center">
               <span className="text-sm text-gray-500 mb-1 self-start">Custom className</span>
