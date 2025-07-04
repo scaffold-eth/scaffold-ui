@@ -6,6 +6,22 @@ import { usePublicClient } from "wagmi";
 import { useQuery } from "@tanstack/react-query";
 import { NETWORKS_EXTRA_DATA } from "../utils/networks.js";
 
+/**
+ * useFetchNativeCurrencyPrice Hook
+ *
+ * Fetches the current USD price of the native currency for a given chain using Uniswap V2 on mainnet.
+ *
+ * @param {Chain} [chain=mainnet] - (Optional) The blockchain network to fetch the native currency price for. Defaults to Ethereum mainnet.
+ *
+ * @returns {Object} An object containing:
+ *   - price {number}: The current price of the native currency in USD.
+ *   - isLoading {boolean}: Loading state for the price fetching process.
+ *   - error {unknown}: Error object if fetching fails.
+ *   - isError {boolean}: Error state for the price fetching process.
+ *
+ * @example
+ * const { price, isLoading, isError } = useFetchNativeCurrencyPrice(mainnet);
+ */
 export const useFetchNativeCurrencyPrice = (chain: Chain = mainnet) => {
   const mainnetPublicClient = usePublicClient({ chainId: mainnet.id });
 

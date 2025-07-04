@@ -12,7 +12,23 @@ export type BalanceProps = {
 };
 
 /**
- * Display (ETH & USD) balance of an address, with click-to-toggle.
+ * Balance Component
+ *
+ * Displays the balance of a given Ethereum address, with support for toggling between native token (e.g., ETH) and USD value.
+ * - Fetches and displays the balance for the provided address and chain.
+ * - Allows toggling between native token and USD display by clicking the component.
+ * - Shows a loading skeleton while fetching, and an error message if fetching fails.
+ *
+ * @param {BalanceProps} props - The props for the Balance component.
+ * @param {Address} [props.address] - The address to display the balance for.
+ * @param {Chain} [props.chain] - (Optional) The blockchain network to use. Defaults to the connected chain or mainnet.
+ * @param {string} [props.className] - (Optional) Additional CSS classes for styling.
+ * @param {boolean} [props.usdMode] - (Optional) If true, displays the balance in USD by default.
+ *
+ * @example
+ * <Balance address="0x123..." />
+ * <Balance address="0x123..." usdMode />
+ * <Balance address="0x123..." chain={mainnet} className="text-green-400" />
  */
 export const Balance: React.FC<BalanceProps> = ({ address, chain, className = "", usdMode }) => {
   const { chain: connectedChain } = useAccount();
