@@ -65,6 +65,7 @@ export const UseEtherInputExample = () => {
           </span>
           {isNativeCurrencyPriceLoading && <span>Loading price...</span>}
           {isNativeCurrencyPriceError && <span>Error loading price</span>}
+          {nativeCurrencyPrice && <span>ETH Price: {nativeCurrencyPrice}</span>}
         </div>
       </div>
     </div>
