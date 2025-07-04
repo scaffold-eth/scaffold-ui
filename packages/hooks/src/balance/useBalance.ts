@@ -9,7 +9,6 @@ type UseBalanceOptions = {
   defaultUsdMode?: boolean;
 };
 
-// TODO: pooling
 export const useBalance = ({ address, chain, defaultUsdMode = false }: UseBalanceOptions) => {
   const {
     price: nativeCurrencyPrice,
