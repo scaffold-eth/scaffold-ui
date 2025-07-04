@@ -4,7 +4,7 @@ import { parseAbi, type Address, type Chain } from "viem";
 import { mainnet } from "viem/chains";
 import { usePublicClient } from "wagmi";
 import { useQuery } from "@tanstack/react-query";
-import { NETWORKS_EXTRA_DATA } from "../utils/networks.js";
+import { NETWORKS_EXTRA_DATA } from "./utils/networks.js";
 
 /**
  * useFetchNativeCurrencyPrice Hook
