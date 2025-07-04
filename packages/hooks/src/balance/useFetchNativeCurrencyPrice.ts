@@ -1,19 +1,10 @@
 import { CurrencyAmount, Token } from "@uniswap/sdk-core";
 import { Pair, Route } from "@uniswap/v2-sdk";
 import { parseAbi, type Address, type Chain } from "viem";
-import { mainnet, polygon } from "viem/chains";
+import { mainnet } from "viem/chains";
 import { usePublicClient } from "wagmi";
 import { useQuery } from "@tanstack/react-query";
-
-type ChainAttributes = {
-  nativeCurrencyTokenAddress: string;
-};
-
-export const NETWORKS_EXTRA_DATA: Record<string, ChainAttributes> = {
-  [polygon.id]: {
-    nativeCurrencyTokenAddress: "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
-  },
-};
+import { NETWORKS_EXTRA_DATA } from "../utils/networks.js";
 
 export const useFetchNativeCurrencyPrice = (chain: Chain = mainnet) => {
   const mainnetPublicClient = usePublicClient({ chainId: mainnet.id });
