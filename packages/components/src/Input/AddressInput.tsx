@@ -6,8 +6,37 @@ import { CommonInputProps } from "./utils";
 import { useEffect, useState } from "react";
 
 export type AddressInputProps = CommonInputProps<Address | string>;
+
 /**
- * Address input with ENS name resolution
+ * AddressInput Component
+ *
+ * An enhanced input component for Ethereum addresses with ENS name resolution and avatar display.
+ * - Accepts both Ethereum addresses and ENS names as input.
+ * - Automatically resolves ENS names to addresses and vice versa.
+ * - Displays ENS avatars when available.
+ * - Shows loading states during resolution.
+ * - Displays a blo avatar for resolved addresses.
+ * - Handles error states gracefully.
+ *
+ * @param {AddressInputProps} props - The props for the AddressInput component.
+ * @param {Address | string} [props.value] - The input value (can be an address or ENS name).
+ * @param {string} [props.name] - The name attribute for the input field.
+ * @param {string} [props.placeholder] - (Optional) Placeholder text for the input field.
+ * @param {(value: Address) => void} [props.onChange] - Callback function called when the input value changes.
+ * @param {boolean} [props.disabled] - (Optional) Whether the input is disabled.
+ *
+ * @example
+ * <AddressInput
+ *   value="vitalik.eth"
+ *   onChange={(address) => console.log(address)}
+ *   placeholder="Enter address or ENS name"
+ * />
+ *
+ * <AddressInput
+ *   value="0x123..."
+ *   name="recipient"
+ *   disabled={false}
+ * />
  */
 export const AddressInput = ({ value, name, placeholder, onChange, disabled }: AddressInputProps) => {
   const {
