@@ -41,7 +41,6 @@ export const useEtherInput = ({ value, usdMode }: { value: string; usdMode: bool
   return {
     valueInEth,
     valueInUsd,
-    activeValue: usdMode ? valueInUsd : valueInEth,
     nativeCurrencyPrice,
     isNativeCurrencyPriceLoading,
     isNativeCurrencyPriceError,

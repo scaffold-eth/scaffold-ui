@@ -5,7 +5,7 @@ export type EtherInputProps = {
   name?: string;
   placeholder?: string;
   defaultUsdMode?: boolean;
-  onValueChange: (value: { valueInEth: string; valueInUsd: string; usdMode: boolean }) => void;
+  onValueChange: (value: { valueInEth: string; valueInUsd: string; displayUsdMode: boolean }) => void;
 };
 
 /**
@@ -28,39 +28,42 @@ export type EtherInputProps = {
  * <EtherInput defaultUsdMode placeholder="Amount" onValueChange={...} />
  */
 export const EtherInput = ({ name, placeholder, defaultUsdMode, onValueChange }: EtherInputProps) => {
-  const [value, setValue] = useState("");
-  const [usdMode, setUsdMode] = useState(defaultUsdMode ?? false);
+  const [sourceValue, setSourceValue] = useState("");
+  const [sourceUsdMode, setSourceUsdMode] = useState(defaultUsdMode ?? false);
+  const [displayUsdMode, setDisplayUsdMode] = useState(defaultUsdMode ?? false);
 
-  const { activeValue, valueInEth, valueInUsd, isNativeCurrencyPriceLoading, isNativeCurrencyPriceError } =
-    useEtherInput({ value, usdMode });
+  const { valueInEth, valueInUsd, isNativeCurrencyPriceLoading, isNativeCurrencyPriceError } = useEtherInput({
+    value: sourceValue,
+    usdMode: sourceUsdMode,
+  });
+
+  const activeValue = displayUsdMode ? valueInUsd : valueInEth;
 
   useEffect(() => {
     if (onValueChange) {
-      onValueChange({ valueInEth, valueInUsd, usdMode });
+      onValueChange({ valueInEth, valueInUsd, displayUsdMode });
     }
-  }, [valueInEth, valueInUsd, usdMode, onValueChange]);
+  }, [valueInEth, valueInUsd, displayUsdMode, onValueChange]);
 
   // Handle mode toggle and convert value to the new mode
   const handleToggleMode = () => {
-    if (usdMode) {
-      // Switching from USD to ETH: set value to valueInEth
-      setValue(valueInEth);
-      setUsdMode(false);
-    } else {
-      // Switching from ETH to USD: set value to valueInUsd
-      setValue(valueInUsd);
-      setUsdMode(true);
-    }
+    // Flip only the display mode; leave the typed value untouched.
+    setDisplayUsdMode((prev) => !prev);
   };
 
   return (
     <div className="flex items-center gap-2">
-      <span className="pl-4 -mr-2 text-accent self-center">{usdMode ? "$" : "Ξ"}</span>
+      <span className="pl-4 -mr-2 text-accent self-center">{displayUsdMode ? "$" : "Ξ"}</span>
       <input
         name={name}
         value={activeValue}
         placeholder={placeholder}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => {
+          setSourceValue(e.target.value);
+          if (sourceUsdMode !== displayUsdMode) {
+            setSourceUsdMode(displayUsdMode);
+          }
+        }}
         disabled={isNativeCurrencyPriceLoading}
         className="input input-bordered w-40"
         autoComplete="off"

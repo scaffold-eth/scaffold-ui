@@ -19,17 +19,19 @@ export const UseEtherInputExample = () => {
           <div className="flex flex-col">
             <span className="text-sm text-gray-500 mb-1 self-start">Default (ETH, click to toggle USD)</span>
             <EtherInput
-              onValueChange={({ valueInEth, valueInUsd, usdMode }) =>
-                console.log("value changed", valueInEth, valueInUsd, usdMode)
+              name="ether-input-default"
+              onValueChange={({ valueInEth, valueInUsd, displayUsdMode }) =>
+                console.log("value changed", valueInEth, valueInUsd, displayUsdMode)
               }
             />
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-gray-500 mb-1 self-start">USD mode by default</span>
             <EtherInput
+              name="ether-input-usd-mode"
               defaultUsdMode
-              onValueChange={({ valueInEth, valueInUsd, usdMode }) =>
-                console.log("value changed", valueInEth, valueInUsd, usdMode)
+              onValueChange={({ valueInEth, valueInUsd, displayUsdMode }) =>
+                console.log("value changed", valueInEth, valueInUsd, displayUsdMode)
               }
             />
           </div>
