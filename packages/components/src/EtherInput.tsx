@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useEtherInput } from "@scaffold-ui/hooks";
+import { SwitchIcon } from "./icons/SwitchIcon";
 
 export type EtherInputProps = {
   name?: string;
@@ -83,7 +84,7 @@ export const EtherInput = ({
         autoComplete="off"
       />
       <button
-        className="btn btn-primary h-[2.2rem] min-h-[2.2rem]"
+        className="btn btn-primary h-[2.2rem] min-h-[2.2rem] cursor-pointer"
         onClick={(e) => {
           e.preventDefault();
           handleToggleMode();
@@ -99,7 +100,7 @@ export const EtherInput = ({
               : "Toggle USD/ETH"
         }
       >
-        🔀
+        <SwitchIcon width={16} height={16} />
       </button>
     </div>
   );
