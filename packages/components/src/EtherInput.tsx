@@ -4,8 +4,10 @@ import { useEtherInput } from "@scaffold-ui/hooks";
 export type EtherInputProps = {
   name?: string;
   placeholder?: string;
+  defaultValue?: string;
   defaultUsdMode?: boolean;
-  onValueChange: (value: { valueInEth: string; valueInUsd: string; displayUsdMode: boolean }) => void;
+  disabled?: boolean;
+  onValueChange?: (value: { valueInEth: string; valueInUsd: string; displayUsdMode: boolean }) => void;
 };
 
 /**
@@ -20,15 +22,24 @@ export type EtherInputProps = {
  * @param {EtherInputProps} props - The props for the EtherInput component.
  * @param {string} [props.name] - (Optional) The name attribute for the input element.
  * @param {string} [props.placeholder] - (Optional) Placeholder text for the input.
+ * @param {string} [props.defaultValue] - (Optional) Default value for the input.
  * @param {boolean} [props.defaultUsdMode] - (Optional) If true, input starts in USD mode; otherwise, ETH mode.
- * @param {(value: { valueInEth: string; valueInUsd: string; usdMode: boolean }) => void} props.onValueChange - Callback fired when the value or mode changes.
+ * @param {boolean} [props.disabled] - (Optional) If true, the input and toggle button are disabled.
+ * @param {(value: { valueInEth: string; valueInUsd: string; usdMode: boolean }) => void} props.onValueChange - (Optional) Callback fired when the value or mode changes.
  *
  * @example
  * <EtherInput onValueChange={({ valueInEth, valueInUsd, usdMode }) => { ... }} />
  * <EtherInput defaultUsdMode placeholder="Amount" onValueChange={...} />
  */
-export const EtherInput = ({ name, placeholder, defaultUsdMode, onValueChange }: EtherInputProps) => {
-  const [sourceValue, setSourceValue] = useState("");
+export const EtherInput = ({
+  name,
+  placeholder,
+  defaultValue,
+  defaultUsdMode,
+  disabled,
+  onValueChange,
+}: EtherInputProps) => {
+  const [sourceValue, setSourceValue] = useState(defaultValue ?? "");
   const [sourceUsdMode, setSourceUsdMode] = useState(defaultUsdMode ?? false);
   const [displayUsdMode, setDisplayUsdMode] = useState(defaultUsdMode ?? false);
 
@@ -44,7 +55,6 @@ export const EtherInput = ({ name, placeholder, defaultUsdMode, onValueChange }:
 
   useEffect(() => {
     if (onValueChangeRef.current) {
-      console.log("onValueChange", valueInEth, valueInUsd, displayUsdMode);
       onValueChangeRef.current({ valueInEth, valueInUsd, displayUsdMode });
     }
   }, [valueInEth, valueInUsd, displayUsdMode]);
@@ -68,7 +78,7 @@ export const EtherInput = ({ name, placeholder, defaultUsdMode, onValueChange }:
             setSourceUsdMode(displayUsdMode);
           }
         }}
-        disabled={isNativeCurrencyPriceLoading}
+        disabled={isNativeCurrencyPriceLoading || disabled}
         className="input input-bordered w-40"
         autoComplete="off"
       />
@@ -78,7 +88,7 @@ export const EtherInput = ({ name, placeholder, defaultUsdMode, onValueChange }:
           e.preventDefault();
           handleToggleMode();
         }}
-        disabled={isNativeCurrencyPriceLoading || isNativeCurrencyPriceError}
+        disabled={isNativeCurrencyPriceLoading || isNativeCurrencyPriceError || disabled}
         type="button"
         tabIndex={-1}
         title={
