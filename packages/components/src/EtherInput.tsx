@@ -60,9 +60,7 @@ export const EtherInput = ({
     }
   }, [valueInEth, valueInUsd, displayUsdMode]);
 
-  // Handle mode toggle and convert value to the new mode
   const handleToggleMode = () => {
-    // Flip only the display mode; leave the typed value untouched.
     setDisplayUsdMode((prev) => !prev);
   };
 
