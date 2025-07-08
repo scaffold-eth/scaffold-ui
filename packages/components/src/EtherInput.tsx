@@ -11,6 +11,8 @@ export type EtherInputProps = {
   onValueChange?: (value: { valueInEth: string; valueInUsd: string; displayUsdMode: boolean }) => void;
 };
 
+const SIGNED_NUMBER_REGEX = /^-?\d+\.?\d*$/;
+
 /**
  * EtherInput Component
  *
@@ -60,6 +62,16 @@ export const EtherInput = ({
     }
   }, [valueInEth, valueInUsd, displayUsdMode]);
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value && !SIGNED_NUMBER_REGEX.test(e.target.value)) {
+      return;
+    }
+    setSourceValue(e.target.value);
+    if (sourceUsdMode !== displayUsdMode) {
+      setSourceUsdMode(displayUsdMode);
+    }
+  };
+
   const handleToggleMode = () => {
     setDisplayUsdMode((prev) => !prev);
   };
@@ -71,12 +83,7 @@ export const EtherInput = ({
         name={name}
         value={activeValue}
         placeholder={placeholder}
-        onChange={(e) => {
-          setSourceValue(e.target.value);
-          if (sourceUsdMode !== displayUsdMode) {
-            setSourceUsdMode(displayUsdMode);
-          }
-        }}
+        onChange={handleInputChange}
         disabled={isNativeCurrencyPriceLoading || disabled}
         className="input input-bordered w-40"
         autoComplete="off"
