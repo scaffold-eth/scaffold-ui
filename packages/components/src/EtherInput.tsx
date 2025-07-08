@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useEtherInput } from "@scaffold-ui/hooks";
 
 export type EtherInputProps = {
@@ -32,6 +32,9 @@ export const EtherInput = ({ name, placeholder, defaultUsdMode, onValueChange }:
   const [sourceUsdMode, setSourceUsdMode] = useState(defaultUsdMode ?? false);
   const [displayUsdMode, setDisplayUsdMode] = useState(defaultUsdMode ?? false);
 
+  const onValueChangeRef = useRef(onValueChange);
+  onValueChangeRef.current = onValueChange;
+
   const { valueInEth, valueInUsd, isNativeCurrencyPriceLoading, isNativeCurrencyPriceError } = useEtherInput({
     value: sourceValue,
     usdMode: sourceUsdMode,
@@ -40,10 +43,11 @@ export const EtherInput = ({ name, placeholder, defaultUsdMode, onValueChange }:
   const activeValue = displayUsdMode ? valueInUsd : valueInEth;
 
   useEffect(() => {
-    if (onValueChange) {
-      onValueChange({ valueInEth, valueInUsd, displayUsdMode });
+    if (onValueChangeRef.current) {
+      console.log("onValueChange", valueInEth, valueInUsd, displayUsdMode);
+      onValueChangeRef.current({ valueInEth, valueInUsd, displayUsdMode });
     }
-  }, [valueInEth, valueInUsd, displayUsdMode, onValueChange]);
+  }, [valueInEth, valueInUsd, displayUsdMode]);
 
   // Handle mode toggle and convert value to the new mode
   const handleToggleMode = () => {
