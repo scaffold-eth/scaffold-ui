@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useEtherInput } from "@scaffold-ui/hooks";
+import { MAX_DECIMALS_USD, useEtherInput } from "@scaffold-ui/hooks";
 import { SwitchIcon } from "./icons/SwitchIcon";
 
 export type EtherInputProps = {
@@ -63,10 +63,19 @@ export const EtherInput = ({
   }, [valueInEth, valueInUsd, displayUsdMode]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value && !SIGNED_NUMBER_REGEX.test(e.target.value)) {
+    const value = e.target.value;
+    if (value && !SIGNED_NUMBER_REGEX.test(value)) {
       return;
     }
-    setSourceValue(e.target.value);
+
+    if (displayUsdMode) {
+      const decimals = value.split(".")[1];
+      if (decimals && decimals.length > MAX_DECIMALS_USD) {
+        return;
+      }
+    }
+
+    setSourceValue(value);
     if (sourceUsdMode !== displayUsdMode) {
       setSourceUsdMode(displayUsdMode);
     }

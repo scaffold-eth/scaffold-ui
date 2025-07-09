@@ -1,7 +1,7 @@
 import { useFetchNativeCurrencyPrice } from "./useFetchNativeCurrencyPrice.js";
 import { mainnet } from "viem/chains";
 
-const MAX_DECIMALS_USD = 2;
+export const MAX_DECIMALS_USD = 2;
 
 function etherValueToUsd(etherValue: string, nativeCurrencyPrice: number) {
   const parsedEthValue = parseFloat(etherValue);
