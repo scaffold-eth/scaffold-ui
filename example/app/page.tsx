@@ -2,6 +2,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { UseAddressExample } from "./components/UseAddressExample";
 import { UseBalanceExample } from "./components/UseBalanceExample";
 import { UseAddressInputExample } from "./components/UseAddressInputExample";
+import { UseEtherInputExample } from "./components/UseEtherInputExample";
 
 export default function Home() {
   return (
@@ -16,6 +17,8 @@ export default function Home() {
           <UseAddressExample />
           <div className="my-12 border-t border-gray-700 w-full max-w-2xl" />
           <UseBalanceExample />
+          <div className="my-12 border-t border-gray-700 w-full max-w-2xl" />
+          <UseEtherInputExample />
 
           <div className="my-12 border-t border-gray-700 w-full max-w-2xl" />
           <UseAddressInputExample />
