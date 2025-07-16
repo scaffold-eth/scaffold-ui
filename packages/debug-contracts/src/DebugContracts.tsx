@@ -47,7 +47,7 @@ export const DebugContracts: React.FC<DebugContractsProps> = ({ contracts, chain
               ))}
             </div>
           )}
-          <ContractUI contractName={selectedContract} contract={contractsData[selectedContract]} />
+          <ContractUI contractName={selectedContract} contract={contractsData[selectedContract]} chainId={chainId} />
         </>
       )}
     </div>

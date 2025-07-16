@@ -1,6 +1,7 @@
 import { Address, Balance } from "@scaffold-ui/components";
 import { useReducer } from "react";
 import { Abi, type Address as AddressType } from "viem";
+import { ContractVariables } from "./components/ContractVariables";
 
 type ContractUIProps = {
   contractName: string;
@@ -8,9 +9,10 @@ type ContractUIProps = {
     address: AddressType;
     abi: Abi;
   };
+  chainId: number;
 };
 
-export const ContractUI: React.FC<ContractUIProps> = ({ contractName, contract }) => {
+export const ContractUI: React.FC<ContractUIProps> = ({ contractName, contract, chainId }) => {
   const [refreshDisplayVariables, triggerRefreshDisplayVariables] = useReducer((value) => !value, false);
 
   return (
@@ -30,11 +32,11 @@ export const ContractUI: React.FC<ContractUIProps> = ({ contractName, contract }
             </div>
           </div>
           <div className="bg-base-300 rounded-3xl px-6 lg:px-8 py-4 shadow-lg shadow-base-300">
-            {/* <ContractVariables
+            <ContractVariables
               refreshDisplayVariables={refreshDisplayVariables}
-              deployedContractData={deployedContractData}
-            /> */}
-            Variables
+              contract={contract}
+              chainId={chainId}
+            />
           </div>
         </div>
         <div className="col-span-1 lg:col-span-2 flex flex-col gap-6">
@@ -46,8 +48,7 @@ export const ContractUI: React.FC<ContractUIProps> = ({ contractName, contract }
                 </div>
               </div>
               <div className="p-5 divide-y divide-base-300">
-                {/* <ContractReadMethods deployedContractData={deployedContractData} /> */}
-                Read Methods
+                <ContractReadMethods deployedContractData={deployedContractData} />
               </div>
             </div>
           </div>
@@ -59,11 +60,10 @@ export const ContractUI: React.FC<ContractUIProps> = ({ contractName, contract }
                 </div>
               </div>
               <div className="p-5 divide-y divide-base-300">
-                {/* <ContractWriteMethods
+                <ContractWriteMethods
                   deployedContractData={deployedContractData}
                   onChange={triggerRefreshDisplayVariables}
-                /> */}
-                Write Methods
+                />
               </div>
             </div>
           </div>

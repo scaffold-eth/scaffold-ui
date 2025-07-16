@@ -1,29 +1,24 @@
-import { Abi, AbiFunction } from "abitype";
-import { Address } from "viem";
+import { Abi, AbiFunction, Address } from "abitype";
+import { ReadOnlyFunctionForm } from "~~/app/debug/_components/contract";
 import { GenericContract, InheritedFunctions } from "../types";
-import { DisplayVariable } from "./DisplayVariable";
 
-export const ContractVariables = ({
-  refreshDisplayVariables,
+export const ContractReadMethods = ({
   contract,
-  chainId,
 }: {
-  refreshDisplayVariables: boolean;
   contract: {
     address: Address;
     abi: Abi;
   };
-  chainId: number;
 }) => {
   if (!contract) {
     return null;
   }
 
-  const functionsToDisplay = ((contract.abi as Abi).filter((part) => part.type === "function") as AbiFunction[])
+  const functionsToDisplay = (((contract.abi || []) as Abi).filter((part) => part.type === "function") as AbiFunction[])
     .filter((fn) => {
-      const isQueryableWithNoParams =
-        (fn.stateMutability === "view" || fn.stateMutability === "pure") && fn.inputs.length === 0;
-      return isQueryableWithNoParams;
+      const isQueryableWithParams =
+        (fn.stateMutability === "view" || fn.stateMutability === "pure") && fn.inputs.length > 0;
+      return isQueryableWithParams;
     })
     .map((fn) => {
       return {
@@ -34,19 +29,17 @@ export const ContractVariables = ({
     .sort((a, b) => (b.inheritedFrom ? b.inheritedFrom.localeCompare(a.inheritedFrom) : 1));
 
   if (!functionsToDisplay.length) {
-    return <>No contract variables</>;
+    return <>No read methods</>;
   }
 
   return (
     <>
       {functionsToDisplay.map(({ fn, inheritedFrom }) => (
-        <DisplayVariable
+        <ReadOnlyFunctionForm
           abi={contract.abi}
-          chainId={chainId}
-          abiFunction={fn}
           contractAddress={contract.address}
+          abiFunction={fn}
           key={fn.name}
-          refreshDisplayVariables={refreshDisplayVariables}
           inheritedFrom={inheritedFrom}
         />
       ))}
