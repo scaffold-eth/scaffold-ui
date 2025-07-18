@@ -96,7 +96,7 @@ importers:
         specifier: ^19.0.0
         version: 19.0.0
       usehooks-ts:
-        specifier: ^3.1.0
+        specifier: ^3.1.1
         version: 3.1.1(react@19.0.0)
       viem:
         specifier: ^2.23.0
