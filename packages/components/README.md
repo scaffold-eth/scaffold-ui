@@ -4,12 +4,25 @@ React components for scaffold-ui applications.
 
 ## Installation
 
+**Note**: This package requires `@scaffold-ui/hooks` as a peer dependency.
+
 ```bash
-npm install @scaffold-ui/components
-# or
-yarn add @scaffold-ui/components
-# or
-pnpm add @scaffold-ui/components
+# Install both packages
+npm install @scaffold-ui/components @scaffold-ui/hooks
+
+# Or with yarn
+yarn add @scaffold-ui/components @scaffold-ui/hooks
+
+# Or with pnpm
+pnpm add @scaffold-ui/components @scaffold-ui/hooks
+```
+
+### Peer Dependencies
+
+You'll also need these peer dependencies if you don't already have them:
+
+```bash
+npm install react @types/react viem wagmi @tanstack/react-query
 ```
 
 ## Components
