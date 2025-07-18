@@ -1,11 +1,14 @@
 "use client";
 
 import { Dispatch, SetStateAction } from "react";
-import { Tuple } from "./Tuple";
-import { TupleArray } from "./TupleArray";
 import { AbiParameter } from "abitype";
-import { Bytes32Input, BytesInput, InputBase, IntegerInput, IntegerVariant } from "~~/components/scaffold-eth";
-import { AbiParameterTuple } from "~~/utils/scaffold-eth/contract";
+import { Bytes32Input } from "./inputs/Bytes32Input";
+import { BytesInput } from "./inputs/BytesInput";
+import { InputBase } from "./inputs/InputBase";
+import { IntegerInput } from "./inputs/IntegerInput";
+import { IntegerVariant } from "../utils/inputs";
+import { AbiParameterTuple } from "../utils/contracts";
+import { Tuple } from "./Tuple";
 
 type ContractInputProps = {
   setForm: Dispatch<SetStateAction<Record<string, any>>>;
@@ -30,7 +33,8 @@ export const ContractInput = ({ setForm, form, stateObjectKey, paramType }: Cont
   const renderInput = () => {
     switch (paramType.type) {
       case "address":
-        return <AddressInput {...inputProps} />;
+        // todo: Use AddressInput
+        return <InputBase {...inputProps} />;
       case "bytes32":
         return <Bytes32Input {...inputProps} />;
       case "bytes":
