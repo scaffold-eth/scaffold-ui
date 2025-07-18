@@ -21,7 +21,7 @@ export const UseAddressExample = () => {
   }
 
   return (
-    <div className="mt-8 p-6 max-w-2xl rounded-lg bg-white/5 shadow-xl">
+    <div className="mt-8 p-6 max-w-2xl rounded-lg bg-white/5 shadow-xl w-full">
       <h1 className="text-2xl font-bold mb-6">useAddress Hook & Address Component Examples</h1>
 
       <div className="space-y-8">
