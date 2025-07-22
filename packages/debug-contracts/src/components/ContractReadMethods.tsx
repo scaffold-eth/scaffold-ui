@@ -1,14 +1,16 @@
 import { Abi, AbiFunction, Address } from "abitype";
-import { ReadOnlyFunctionForm } from "~~/app/debug/_components/contract";
 import { GenericContract, InheritedFunctions } from "../types";
+import { ReadOnlyFunctionForm } from "./ReadOnlyFunctionForm";
 
 export const ContractReadMethods = ({
   contract,
+  chainId,
 }: {
   contract: {
     address: Address;
     abi: Abi;
   };
+  chainId: number;
 }) => {
   if (!contract) {
     return null;
@@ -36,6 +38,7 @@ export const ContractReadMethods = ({
     <>
       {functionsToDisplay.map(({ fn, inheritedFrom }) => (
         <ReadOnlyFunctionForm
+          chainId={chainId}
           abi={contract.abi}
           contractAddress={contract.address}
           abiFunction={fn}

@@ -2,6 +2,7 @@ import { Address, Balance } from "@scaffold-ui/components";
 import { useReducer } from "react";
 import { Abi, type Address as AddressType } from "viem";
 import { ContractVariables } from "./components/ContractVariables";
+import { ContractReadMethods } from "./components/ContractReadMethods";
 
 type ContractUIProps = {
   contractName: string;
@@ -48,7 +49,7 @@ export const ContractUI: React.FC<ContractUIProps> = ({ contractName, contract, 
                 </div>
               </div>
               <div className="p-5 divide-y divide-base-300">
-                <ContractReadMethods deployedContractData={deployedContractData} />
+                <ContractReadMethods contract={contract} chainId={chainId} />
               </div>
             </div>
           </div>
@@ -59,12 +60,12 @@ export const ContractUI: React.FC<ContractUIProps> = ({ contractName, contract, 
                   <p className="my-0 text-sm">Write</p>
                 </div>
               </div>
-              <div className="p-5 divide-y divide-base-300">
+              {/* <div className="p-5 divide-y divide-base-300">
                 <ContractWriteMethods
                   deployedContractData={deployedContractData}
                   onChange={triggerRefreshDisplayVariables}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

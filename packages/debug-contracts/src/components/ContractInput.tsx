@@ -9,6 +9,7 @@ import { IntegerInput } from "./inputs/IntegerInput";
 import { IntegerVariant } from "../utils/inputs";
 import { AbiParameterTuple } from "../utils/contracts";
 import { Tuple } from "./Tuple";
+import { TupleArray } from "./TupleArray";
 
 type ContractInputProps = {
   setForm: Dispatch<SetStateAction<Record<string, any>>>;

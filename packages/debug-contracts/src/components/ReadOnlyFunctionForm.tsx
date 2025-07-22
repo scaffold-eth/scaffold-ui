@@ -13,6 +13,7 @@ import {
 } from "../utils/contracts";
 import { displayTxResult } from "../utils/utilsDisplay";
 import { getParsedError } from "../utils/getParsedError";
+import { ContractInput } from "./ContractInput";
 
 type ReadOnlyFunctionFormProps = {
   contractAddress: Address;
