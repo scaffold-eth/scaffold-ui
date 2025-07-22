@@ -50,6 +50,7 @@
     "typescript-eslint": "^8.27.0"
   },
   "dependencies": {
-    "@heroicons/react": "^2.2.0"
+    "@heroicons/react": "^2.2.0",
+    "react-hot-toast": "^2.5.2"
   }
 }

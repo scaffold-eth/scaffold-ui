@@ -153,6 +153,9 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.0.0
+      react-hot-toast:
+        specifier: ^2.5.2
+        version: 2.5.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       viem:
         specifier: ^2.23.0
         version: 2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)

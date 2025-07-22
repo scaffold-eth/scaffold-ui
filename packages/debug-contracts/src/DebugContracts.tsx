@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import type { Address as AddressType } from "viem";
 import { GenericContractsDeclaration } from "./types";
 import { ContractUI } from "./ContractUI";
+import { Toaster } from "react-hot-toast";
 
 export type DebugContractsProps = {
   contractAddress?: AddressType;
@@ -50,6 +51,7 @@ export const DebugContracts: React.FC<DebugContractsProps> = ({ contracts, chain
           <ContractUI contractName={selectedContract} contract={contractsData[selectedContract]} chainId={chainId} />
         </>
       )}
+      <Toaster />
     </div>
   );
 };

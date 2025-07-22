@@ -1,4 +1,9 @@
-import { AbiFunction, AbiParameter } from "abitype";
+import { Abi, AbiFunction, AbiParameter } from "abitype";
+import { Config } from "wagmi";
+import { simulateContract } from "wagmi/actions";
+import { WriteContractVariables } from "wagmi/query";
+import { getParsedError } from "./getParsedError";
+import { notification } from "./notification";
 
 export type AbiParameterTuple = Extract<AbiParameter, { type: "tuple" | `tuple[${string}]` }>;
 
@@ -164,4 +169,20 @@ export {
   getInitialTupleFormState,
   getInitialTupleArrayFormState,
   transformAbiFunction,
+};
+
+export const simulateContractWriteAndNotifyError = async ({
+  wagmiConfig,
+  writeContractParams: params,
+}: {
+  wagmiConfig: Config;
+  writeContractParams: WriteContractVariables<Abi, string, any[], Config, number>;
+}) => {
+  try {
+    await simulateContract(wagmiConfig, params);
+  } catch (error) {
+    const parsedError = getParsedError(error);
+    notification.error(parsedError);
+    throw error;
+  }
 };

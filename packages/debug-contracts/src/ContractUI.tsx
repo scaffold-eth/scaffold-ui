@@ -3,6 +3,7 @@ import { useReducer } from "react";
 import { Abi, type Address as AddressType } from "viem";
 import { ContractVariables } from "./components/ContractVariables";
 import { ContractReadMethods } from "./components/ContractReadMethods";
+import { ContractWriteMethods } from "./components/ContractWriteMethods";
 
 type ContractUIProps = {
   contractName: string;
@@ -60,12 +61,9 @@ export const ContractUI: React.FC<ContractUIProps> = ({ contractName, contract, 
                   <p className="my-0 text-sm">Write</p>
                 </div>
               </div>
-              {/* <div className="p-5 divide-y divide-base-300">
-                <ContractWriteMethods
-                  deployedContractData={deployedContractData}
-                  onChange={triggerRefreshDisplayVariables}
-                />
-              </div> */}
+              <div className="p-5 divide-y divide-base-300">
+                <ContractWriteMethods contract={contract} onChange={triggerRefreshDisplayVariables} chainId={chainId} />
+              </div>
             </div>
           </div>
         </div>
