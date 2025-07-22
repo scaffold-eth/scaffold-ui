@@ -43,6 +43,21 @@ export const UseEtherInputExample = () => {
             <span className="text-sm text-gray-500 mb-1 self-start">Default value</span>
             <EtherInput name="ether-input-default-value" defaultValue="10" />
           </div>
+          <div className="flex flex-col">
+            <span className="text-sm text-gray-500 mb-1 self-start">Custom</span>
+            <EtherInput
+              name="ether-input-usd-mode"
+              defaultUsdMode
+              onValueChange={({ valueInEth, valueInUsd, displayUsdMode }) =>
+                console.log("value changed", valueInEth, valueInUsd, displayUsdMode)
+              }
+              colors={{
+                border: "#eab308",
+                background: "#fef9c3",
+                text: "#713f12",
+              }}
+            />
+          </div>
         </div>
       </div>
 

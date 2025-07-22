@@ -39,6 +39,19 @@ export const UseAddressInputExample = () => {
               <span className="text-sm text-gray-500 mb-1">With placeholder</span>
               <AddressInput value={value} onChange={setValue} placeholder="Enter an address" />
             </div>
+
+            <div className="flex flex-col">
+              <span className="text-sm text-gray-500 mb-1">Custom colors</span>
+              <AddressInput
+                value={value}
+                onChange={setValue}
+                colors={{
+                  border: "#22c55e",
+                  background: "#dcfce7",
+                  text: "#166534",
+                }}
+              />
+            </div>
           </div>
         </div>
 
