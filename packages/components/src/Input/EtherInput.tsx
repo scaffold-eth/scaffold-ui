@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MAX_DECIMALS_USD, useEtherInput } from "@scaffold-ui/hooks";
-import { SwitchIcon } from "./icons/SwitchIcon";
+import { SwitchIcon } from "../icons/SwitchIcon";
+import { InputBase } from "./InputBase";
 
 export type EtherInputProps = {
   name?: string;
@@ -62,8 +63,7 @@ export const EtherInput = ({
     }
   }, [valueInEth, valueInUsd, displayUsdMode]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+  const handleInputChange = (value: string) => {
     if (value && !SIGNED_NUMBER_REGEX.test(value)) {
       return;
     }
@@ -87,35 +87,35 @@ export const EtherInput = ({
 
   return (
     <div className="flex items-center gap-2">
-      <span className="pl-4 -mr-2 text-accent self-center">{displayUsdMode ? "$" : "Ξ"}</span>
-      <input
+      <InputBase<string>
         name={name}
         value={activeValue}
         placeholder={placeholder}
         onChange={handleInputChange}
         disabled={isNativeCurrencyPriceLoading || disabled}
-        className="input input-bordered w-40"
-        autoComplete="off"
-      />
-      <button
-        className="btn btn-primary h-[2.2rem] min-h-[2.2rem] cursor-pointer"
-        onClick={(e) => {
-          e.preventDefault();
-          handleToggleMode();
-        }}
-        disabled={isNativeCurrencyPriceLoading || isNativeCurrencyPriceError || disabled}
-        type="button"
-        tabIndex={-1}
-        title={
-          isNativeCurrencyPriceLoading
-            ? "Fetching price"
-            : isNativeCurrencyPriceError
-              ? "Unable to fetch price"
-              : "Toggle USD/ETH"
+        prefix={<span className="pl-4 -mr-2 text-accent self-center">{displayUsdMode ? "$" : "Ξ"}</span>}
+        suffix={
+          <button
+            className="h-[2.2rem] min-h-[2.2rem] cursor-pointer mr-3"
+            onClick={(e) => {
+              e.preventDefault();
+              handleToggleMode();
+            }}
+            disabled={isNativeCurrencyPriceLoading || isNativeCurrencyPriceError || disabled}
+            type="button"
+            tabIndex={-1}
+            title={
+              isNativeCurrencyPriceLoading
+                ? "Fetching price"
+                : isNativeCurrencyPriceError
+                  ? "Unable to fetch price"
+                  : "Toggle USD/ETH"
+            }
+          >
+            <SwitchIcon width={16} height={16} />
+          </button>
         }
-      >
-        <SwitchIcon width={16} height={16} />
-      </button>
+      />
     </div>
   );
 };
