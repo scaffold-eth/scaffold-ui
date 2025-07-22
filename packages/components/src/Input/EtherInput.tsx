@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { MAX_DECIMALS_USD, useEtherInput } from "@scaffold-ui/hooks";
 import { SwitchIcon } from "../icons/SwitchIcon";
-import { InputBase } from "./InputBase";
+import { DEFAULT_COLORS, InputBase } from "./InputBase";
+import { CommonInputProps } from "./utils";
 
-export type EtherInputProps = {
-  name?: string;
-  placeholder?: string;
+export type EtherInputProps = Omit<CommonInputProps<string>, "onChange" | "value"> & {
   defaultValue?: string;
   defaultUsdMode?: boolean;
-  disabled?: boolean;
   onValueChange?: (value: { valueInEth: string; valueInUsd: string; displayUsdMode: boolean }) => void;
 };
 
@@ -30,6 +28,10 @@ const SIGNED_NUMBER_REGEX = /^-?\d+\.?\d*$/;
  * @param {boolean} [props.defaultUsdMode] - (Optional) If true, input starts in USD mode; otherwise, ETH mode.
  * @param {boolean} [props.disabled] - (Optional) If true, the input and toggle button are disabled.
  * @param {(value: { valueInEth: string; valueInUsd: string; usdMode: boolean }) => void} props.onValueChange - (Optional) Callback fired when the value or mode changes.
+ * @param {string} [props.colors] - (Optional) Colors for the input.
+ * @param {string} [props.colors.border] - Border color.
+ * @param {string} [props.colors.background] - Background color.
+ * @param {string} [props.colors.text] - Text color.
  *
  * @example
  * <EtherInput onValueChange={({ valueInEth, valueInUsd, usdMode }) => { ... }} />
@@ -42,6 +44,7 @@ export const EtherInput = ({
   defaultUsdMode,
   disabled,
   onValueChange,
+  colors = DEFAULT_COLORS,
 }: EtherInputProps) => {
   const [sourceValue, setSourceValue] = useState(defaultValue ?? "");
   const [sourceUsdMode, setSourceUsdMode] = useState(defaultUsdMode ?? false);
@@ -94,6 +97,7 @@ export const EtherInput = ({
         onChange={handleInputChange}
         disabled={isNativeCurrencyPriceLoading || disabled}
         prefix={<span className="pl-4 -mr-2 text-accent self-center">{displayUsdMode ? "$" : "Ξ"}</span>}
+        colors={colors}
         suffix={
           <button
             className="h-[2.2rem] min-h-[2.2rem] cursor-pointer mr-3"

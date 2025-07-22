@@ -6,7 +6,12 @@ export type InputBaseProps<T> = CommonInputProps<T> & {
   prefix?: ReactNode;
   suffix?: ReactNode;
   reFocus?: boolean;
-  colorClassName?: string;
+};
+
+export const DEFAULT_COLORS = {
+  border: "#dae8ff",
+  background: "#f4f8ff",
+  text: "#93bbfb",
 };
 
 /**
@@ -29,7 +34,10 @@ export type InputBaseProps<T> = CommonInputProps<T> & {
  * @param {ReactNode} [props.prefix] - (Optional) Element to render before the input (e.g., icon).
  * @param {ReactNode} [props.suffix] - (Optional) Element to render after the input (e.g., button).
  * @param {boolean} [props.reFocus] - (Optional) If true, input auto-focuses and cursor moves to end.
- * @param {string} [props.colorClassName] - (Optional) Tailwind classes for border, background, and text.
+ * @param {string} [props.colors] - (Optional) Colors for the input.
+ * @param {string} [props.colors.border] - Border color.
+ * @param {string} [props.colors.background] - Background color.
+ * @param {string} [props.colors.text] - Text color.
  *
  * @example
  * <InputBase
@@ -51,15 +59,15 @@ export const InputBase = <T extends { toString: () => string } | undefined = str
   prefix,
   suffix,
   reFocus,
-  colorClassName = "border-[#dae8ff] bg-[#f4f8ff] text-[#93bbfb]",
+  colors = DEFAULT_COLORS,
 }: InputBaseProps<T>) => {
   const inputReft = useRef<HTMLInputElement>(null);
 
   let modifier = "";
   if (error) {
-    modifier = "border-red-400";
+    modifier = "border-red-400!";
   } else if (disabled) {
-    modifier = "border-gray-300 bg-base-300";
+    modifier = "border-gray-300! bg-base-300!";
   }
 
   const handleChange = useCallback(
@@ -81,10 +89,17 @@ export const InputBase = <T extends { toString: () => string } | undefined = str
   }, [reFocus]);
 
   return (
-    <div className={`flex border-2 rounded-full ${colorClassName} ${modifier}`}>
+    <div
+      className={`flex border-2 rounded-full ${modifier}`}
+      style={{
+        borderColor: colors.border,
+        backgroundColor: colors.background,
+        color: colors.text,
+      }}
+    >
       {prefix}
       <input
-        className={`w-full h-[2.2rem] min-h-[2.2rem] px-4 border-0 bg-transparent font-medium focus:outline-none focus:ring-0 opacity-80 ${
+        className={`w-full h-[2.2rem] min-h-[2.2rem] px-4 border-0 bg-transparent font-medium focus:outline-none focus:ring-0 ${
           disabled ? "cursor-not-allowed" : ""
         }`}
         placeholder={placeholder}
