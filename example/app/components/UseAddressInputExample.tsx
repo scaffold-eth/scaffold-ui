@@ -64,9 +64,7 @@ export const UseAddressInputExample = () => {
           {ensAddress ? <div className="bg-[#dae8ff] items-center">Address: {ensAddress}</div> : null}
           {ensName ? (
             <div className="flex bg-[#dae8ff] rounded-l-full items-center">
-              {isEnsAvatarLoading && (
-                <div className="skeleton bg-base-200 w-[35px] h-[35px] rounded-full shrink-0"></div>
-              )}
+              {isEnsAvatarLoading && <div className="skeleton w-[35px] h-[35px] rounded-full shrink-0"></div>}
               {ensAvatar ? (
                 <span className="w-[35px]">
                   {

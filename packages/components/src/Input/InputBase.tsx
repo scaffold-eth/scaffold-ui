@@ -67,7 +67,7 @@ export const InputBase = <T extends { toString: () => string } | undefined = str
   if (error) {
     modifier = "border-red-400!";
   } else if (disabled) {
-    modifier = "border-gray-300! bg-base-300!";
+    modifier = "border-gray-300!";
   }
 
   const handleChange = useCallback(
