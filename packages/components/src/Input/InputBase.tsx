@@ -6,8 +6,41 @@ export type InputBaseProps<T> = CommonInputProps<T> & {
   prefix?: ReactNode;
   suffix?: ReactNode;
   reFocus?: boolean;
+  colorClassName?: string;
 };
 
+/**
+ * InputBase Component
+ *
+ * A flexible, styled input component used as the foundation for custom inputs (e.g., EtherInput, AddressInput).
+ * - Supports prefix and suffix elements for icons or adornments.
+ * - Handles error and disabled states with visual feedback.
+ * - Can auto-focus and set cursor position at the end when `reFocus` is true (useful for programmatic focus).
+ * - Accepts custom color classes for border, background, and text.
+ *
+ * @template T - The value type, must have a toString method (e.g., string, Address).
+ * @param {InputBaseProps<T>} props - The props for the InputBase component.
+ * @param {string} [props.name] - (Optional) The name attribute for the input element.
+ * @param {T} [props.value] - The value of the input.
+ * @param {(value: T) => void} props.onChange - Callback fired when the input value changes.
+ * @param {string} [props.placeholder] - (Optional) Placeholder text for the input.
+ * @param {boolean} [props.error] - (Optional) If true, input is styled as error.
+ * @param {boolean} [props.disabled] - (Optional) If true, the input is disabled.
+ * @param {ReactNode} [props.prefix] - (Optional) Element to render before the input (e.g., icon).
+ * @param {ReactNode} [props.suffix] - (Optional) Element to render after the input (e.g., button).
+ * @param {boolean} [props.reFocus] - (Optional) If true, input auto-focuses and cursor moves to end.
+ * @param {string} [props.colorClassName] - (Optional) Tailwind classes for border, background, and text.
+ *
+ * @example
+ * <InputBase
+ *   name="username"
+ *   value={value}
+ *   onChange={setValue}
+ *   placeholder="Enter your name"
+ *   prefix={<UserIcon />}
+ *   error={hasError}
+ * />
+ */
 export const InputBase = <T extends { toString: () => string } | undefined = string>({
   name,
   value,
@@ -18,6 +51,7 @@ export const InputBase = <T extends { toString: () => string } | undefined = str
   prefix,
   suffix,
   reFocus,
+  colorClassName = "border-[#dae8ff] bg-[#f4f8ff] text-[#93bbfb]",
 }: InputBaseProps<T>) => {
   const inputReft = useRef<HTMLInputElement>(null);
 
@@ -47,10 +81,10 @@ export const InputBase = <T extends { toString: () => string } | undefined = str
   }, [reFocus]);
 
   return (
-    <div className={`flex border-2 border-[#dae8ff] bg-[#f4f8ff] rounded-full text-[#93bbfb] ${modifier}`}>
+    <div className={`flex border-2 rounded-full ${colorClassName} ${modifier}`}>
       {prefix}
       <input
-        className={`w-full h-[2.2rem] min-h-[2.2rem] px-4 border-0 bg-transparent font-medium placeholder:text-[#93bbfb]/70 text-[#93bbfb]/70 focus:text-[#93bbfb]/70 focus:outline-none focus:ring-0 ${
+        className={`w-full h-[2.2rem] min-h-[2.2rem] px-4 border-0 bg-transparent font-medium focus:outline-none focus:ring-0 opacity-80 ${
           disabled ? "cursor-not-allowed" : ""
         }`}
         placeholder={placeholder}
