@@ -25,10 +25,19 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
 
   const { data: ens, isLoading: isEnsNameLoading } = useEnsName({
     address: checkSumAddress,
+    chainId: 1,
+    query: {
+      enabled: isAddress(checkSumAddress ?? ""),
+    },
   });
 
   const { data: ensAvatar } = useEnsAvatar({
     name: ens ? normalize(ens) : undefined,
+    chainId: 1,
+    query: {
+      enabled: Boolean(ens),
+      gcTime: 30_000,
+    },
   });
 
   const shortAddress = checkSumAddress ? `${checkSumAddress.slice(0, 6)}...${checkSumAddress.slice(-4)}` : undefined;
