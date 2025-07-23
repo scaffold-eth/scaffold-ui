@@ -1,6 +1,6 @@
 {
   "name": "@scaffold-ui/components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React components for scaffold-ui",
   "type": "module",
   "main": "dist/esm/index.js",
@@ -47,5 +47,8 @@
     "tailwindcss": "^4",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.27.0"
+  },
+  "dependencies": {
+    "usehooks-ts": "^3.1.1"
   }
 }
