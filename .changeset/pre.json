@@ -1,0 +1,9 @@
+{
+  "mode": "pre",
+  "tag": "rc",
+  "initialVersions": {
+    "@scaffold-ui/components": "0.1.1",
+    "@scaffold-ui/hooks": "0.1.1"
+  },
+  "changesets": []
+}
