@@ -1,6 +1,6 @@
 "use client";
 
-import { AddressInput, InputBase } from "@scaffold-ui/components";
+import { AddressInput, BaseInput } from "@scaffold-ui/components";
 import { useAddressInput } from "@scaffold-ui/hooks";
 import { useState } from "react";
 import { Address } from "viem";
@@ -39,6 +39,19 @@ export const UseAddressInputExample = () => {
               <span className="text-sm text-gray-500 mb-1">With placeholder</span>
               <AddressInput value={value} onChange={setValue} placeholder="Enter an address" />
             </div>
+
+            <div className="flex flex-col">
+              <span className="text-sm text-gray-500 mb-1">Custom colors</span>
+              <AddressInput
+                value={value}
+                onChange={setValue}
+                colors={{
+                  border: "#22c55e",
+                  background: "#dcfce7",
+                  text: "#166534",
+                }}
+              />
+            </div>
           </div>
         </div>
 
@@ -51,9 +64,7 @@ export const UseAddressInputExample = () => {
           {ensAddress ? <div className="bg-[#dae8ff] items-center">Address: {ensAddress}</div> : null}
           {ensName ? (
             <div className="flex bg-[#dae8ff] rounded-l-full items-center">
-              {isEnsAvatarLoading && (
-                <div className="skeleton bg-base-200 w-[35px] h-[35px] rounded-full shrink-0"></div>
-              )}
+              {isEnsAvatarLoading && <div className="skeleton w-[35px] h-[35px] rounded-full shrink-0"></div>}
               {ensAvatar ? (
                 <span className="w-[35px]">
                   {
@@ -72,7 +83,7 @@ export const UseAddressInputExample = () => {
               </div>
             )
           )}
-          <InputBase<Address>
+          <BaseInput<Address>
             name="address"
             placeholder="Address Input"
             error={ensAddress === null}
