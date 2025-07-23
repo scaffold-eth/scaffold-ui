@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MAX_DECIMALS_USD, useEtherInput } from "@scaffold-ui/hooks";
 import { SwitchIcon } from "../icons/SwitchIcon";
-import { DEFAULT_COLORS, InputBase } from "./InputBase";
+import { DEFAULT_COLORS, BaseInput } from "./BaseInput";
 import { CommonInputProps } from "./utils";
 
 export type EtherInputProps = Omit<CommonInputProps<string>, "onChange" | "value"> & {
@@ -90,7 +90,7 @@ export const EtherInput = ({
 
   return (
     <div className="flex items-center gap-2">
-      <InputBase<string>
+      <BaseInput<string>
         name={name}
         value={activeValue}
         placeholder={placeholder}

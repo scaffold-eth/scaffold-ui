@@ -1,6 +1,6 @@
 "use client";
 
-import { AddressInput, InputBase } from "@scaffold-ui/components";
+import { AddressInput, BaseInput } from "@scaffold-ui/components";
 import { useAddressInput } from "@scaffold-ui/hooks";
 import { useState } from "react";
 import { Address } from "viem";
@@ -83,7 +83,7 @@ export const UseAddressInputExample = () => {
               </div>
             )
           )}
-          <InputBase<Address>
+          <BaseInput<Address>
             name="address"
             placeholder="Address Input"
             error={ensAddress === null}

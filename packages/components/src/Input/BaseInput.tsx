@@ -1,7 +1,7 @@
 import { ChangeEvent, FocusEvent, ReactNode, useCallback, useEffect, useRef } from "react";
 import { CommonInputProps } from "./utils";
 
-export type InputBaseProps<T> = CommonInputProps<T> & {
+export type BaseInputProps<T> = CommonInputProps<T> & {
   error?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
@@ -15,7 +15,7 @@ export const DEFAULT_COLORS = {
 };
 
 /**
- * InputBase Component
+ * BaseInput Component
  *
  * A flexible, styled input component used as the foundation for custom inputs (e.g., EtherInput, AddressInput).
  * - Supports prefix and suffix elements for icons or adornments.
@@ -24,7 +24,7 @@ export const DEFAULT_COLORS = {
  * - Accepts custom color classes for border, background, and text.
  *
  * @template T - The value type, must have a toString method (e.g., string, Address).
- * @param {InputBaseProps<T>} props - The props for the InputBase component.
+ * @param {BaseInputProps<T>} props - The props for the BaseInput component.
  * @param {string} [props.name] - (Optional) The name attribute for the input element.
  * @param {T} [props.value] - The value of the input.
  * @param {(value: T) => void} props.onChange - Callback fired when the input value changes.
@@ -40,7 +40,7 @@ export const DEFAULT_COLORS = {
  * @param {string} [props.colors.text] - Text color.
  *
  * @example
- * <InputBase
+ * <BaseInput
  *   name="username"
  *   value={value}
  *   onChange={setValue}
@@ -49,7 +49,7 @@ export const DEFAULT_COLORS = {
  *   error={hasError}
  * />
  */
-export const InputBase = <T extends { toString: () => string } | undefined = string>({
+export const BaseInput = <T extends { toString: () => string } | undefined = string>({
   name,
   value,
   onChange,
@@ -60,7 +60,7 @@ export const InputBase = <T extends { toString: () => string } | undefined = str
   suffix,
   reFocus,
   colors = DEFAULT_COLORS,
-}: InputBaseProps<T>) => {
+}: BaseInputProps<T>) => {
   const inputReft = useRef<HTMLInputElement>(null);
 
   let modifier = "";

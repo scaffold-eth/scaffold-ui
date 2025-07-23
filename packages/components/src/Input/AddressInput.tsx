@@ -1,7 +1,7 @@
 import { blo } from "blo";
 import { Address } from "viem";
 import { useAddressInput } from "@scaffold-ui/hooks";
-import { InputBase, DEFAULT_COLORS } from "./InputBase";
+import { BaseInput, DEFAULT_COLORS } from "./BaseInput";
 import { CommonInputProps } from "./utils";
 import { useEffect, useState } from "react";
 
@@ -90,7 +90,7 @@ export const AddressInput = ({
   }, [value]);
 
   return (
-    <InputBase<Address>
+    <BaseInput<Address>
       name={name}
       placeholder={placeholder}
       error={ensAddress === null}
