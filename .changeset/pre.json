@@ -5,5 +5,8 @@
     "@scaffold-ui/components": "0.1.1",
     "@scaffold-ui/hooks": "0.1.1"
   },
-  "changesets": []
+  "changesets": [
+    "happy-rings-greet",
+    "slick-news-cheat"
+  ]
 }

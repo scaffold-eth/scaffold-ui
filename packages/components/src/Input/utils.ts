@@ -4,4 +4,9 @@ export type CommonInputProps<T = string> = {
   name?: string;
   placeholder?: string;
   disabled?: boolean;
+  colors?: {
+    border: string;
+    background: string;
+    text: string;
+  };
 };
