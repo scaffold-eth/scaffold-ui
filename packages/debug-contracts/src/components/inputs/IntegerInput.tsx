@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { parseEther } from "viem";
 import { CommonInputProps, IntegerVariant, isValidInteger } from "../../utils/inputs";
-import { InputBase } from "./InputBase";
+import { BaseInput } from "@scaffold-ui/components";
 
 type IntegerInputProps = CommonInputProps<string> & {
   variant?: IntegerVariant;
@@ -34,7 +34,7 @@ export const IntegerInput = ({
   }, [value, variant]);
 
   return (
-    <InputBase
+    <BaseInput
       name={name}
       value={value}
       placeholder={placeholder}

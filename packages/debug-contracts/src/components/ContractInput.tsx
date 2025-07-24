@@ -4,12 +4,12 @@ import { Dispatch, SetStateAction } from "react";
 import { AbiParameter } from "abitype";
 import { Bytes32Input } from "./inputs/Bytes32Input";
 import { BytesInput } from "./inputs/BytesInput";
-import { InputBase } from "./inputs/InputBase";
 import { IntegerInput } from "./inputs/IntegerInput";
 import { IntegerVariant } from "../utils/inputs";
 import { AbiParameterTuple } from "../utils/contracts";
 import { Tuple } from "./Tuple";
 import { TupleArray } from "./TupleArray";
+import { AddressInput, BaseInput } from "@scaffold-ui/components";
 
 type ContractInputProps = {
   setForm: Dispatch<SetStateAction<Record<string, any>>>;
@@ -34,14 +34,13 @@ export const ContractInput = ({ setForm, form, stateObjectKey, paramType }: Cont
   const renderInput = () => {
     switch (paramType.type) {
       case "address":
-        // todo: Use AddressInput
-        return <InputBase {...inputProps} />;
+        return <AddressInput {...inputProps} />;
       case "bytes32":
         return <Bytes32Input {...inputProps} />;
       case "bytes":
         return <BytesInput {...inputProps} />;
       case "string":
-        return <InputBase {...inputProps} />;
+        return <BaseInput {...inputProps} />;
       case "tuple":
         return (
           <Tuple
@@ -65,7 +64,7 @@ export const ContractInput = ({ setForm, form, stateObjectKey, paramType }: Cont
             />
           );
         } else {
-          return <InputBase {...inputProps} />;
+          return <BaseInput {...inputProps} />;
         }
     }
   };
