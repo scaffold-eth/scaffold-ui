@@ -1,4 +1,5 @@
 import { UseDebugContractsExample } from "../components/UseDebugContractsExample";
+import "@scaffold-ui/debug-contracts/styles.css";
 
 export default function DebugContracts() {
   return (

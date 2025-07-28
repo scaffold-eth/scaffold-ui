@@ -1,6 +1,6 @@
 import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import { createConfig } from "wagmi";
-import { hardhat, mainnet, polygon } from "viem/chains";
+import { mainnet, polygon, sepolia } from "viem/chains";
 import { metaMaskWallet } from "@rainbow-me/rainbowkit/wallets";
 import { createClient, http } from "viem";
 import { rainbowkitBurnerWallet } from "burner-connector";
@@ -21,7 +21,7 @@ const wagmiConnectors = connectorsForWallets(
   },
 );
 
-export const chains = [hardhat, mainnet, polygon] as const;
+export const chains = [mainnet, sepolia, polygon] as const;
 
 export const wagmiConfig = createConfig({
   chains: chains,

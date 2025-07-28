@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { ContractInput } from "./ContractInput";
-import { AbiParameterTuple } from "../utils/contracts";
+import { AbiParameterTuple, getInitialTupleArrayFormState } from "../utils/contracts";
 import { replacer } from "../utils/utilsDisplay";
 
 type TupleArrayProps = {

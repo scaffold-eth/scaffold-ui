@@ -1,6 +1,6 @@
 "use client";
 
-import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { ConnectButton, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
 import { Toaster } from "react-hot-toast";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
@@ -18,7 +18,13 @@ export const ScaffoldEthAppWithProviders = ({ children }: { children: React.Reac
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>{children}</RainbowKitProvider>
+        <RainbowKitProvider>
+          <div className="flex justify-end m-8">
+            <ConnectButton />
+          </div>
+
+          {children}
+        </RainbowKitProvider>
       </QueryClientProvider>
       <Toaster />
     </WagmiProvider>
