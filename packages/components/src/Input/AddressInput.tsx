@@ -48,8 +48,6 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled }: A
     isEnsAvatarLoading,
     isEnsAddressError,
     isEnsNameError,
-    isEnsNameSuccess,
-    isEnsAddressSuccess,
     settledValue,
   } = useAddressInput({
     value,
@@ -60,8 +58,6 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled }: A
   const reFocus =
     isEnsAddressError ||
     isEnsNameError ||
-    isEnsNameSuccess ||
-    isEnsAddressSuccess ||
     ensName === null ||
     ensAddress === null;
 
