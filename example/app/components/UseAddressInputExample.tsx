@@ -52,6 +52,20 @@ export const UseAddressInputExample = () => {
                 }}
               />
             </div>
+
+            <div
+              className="flex flex-col"
+              style={
+                {
+                  "--color-sui-input-border": "#ff6b6b",
+                  "--color-sui-input-background": "#fff5f5",
+                  "--color-sui-input-text": "#d63031",
+                } as React.CSSProperties
+              }
+            >
+              <span className="text-sm text-gray-500 mb-1">Custom colors using CSS variables</span>
+              <AddressInput value={value} onChange={setValue} placeholder="Enter an address" />
+            </div>
           </div>
         </div>
 
@@ -73,7 +87,7 @@ export const UseAddressInputExample = () => {
                   }
                 </span>
               ) : null}
-              <span className="text-accent px-2">{ensName}</span>
+              <span className="text-sui-primary px-2">{ensName}</span>
             </div>
           ) : (
             (isEnsNameLoading || isEnsAddressLoading) && (

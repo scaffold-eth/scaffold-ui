@@ -96,7 +96,7 @@ export const EtherInput = ({
         placeholder={placeholder}
         onChange={handleInputChange}
         disabled={isNativeCurrencyPriceLoading || disabled}
-        prefix={<span className="pl-4 -mr-2 text-accent self-center">{displayUsdMode ? "$" : "Ξ"}</span>}
+        prefix={<span className="pl-4 -mr-2 self-center">{displayUsdMode ? "$" : "Ξ"}</span>}
         colors={colors}
         suffix={
           <button

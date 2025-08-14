@@ -9,9 +9,9 @@ export type BaseInputProps<T> = CommonInputProps<T> & {
 };
 
 export const DEFAULT_COLORS = {
-  border: "#dae8ff",
-  background: "#f4f8ff",
-  text: "#93bbfb",
+  border: "var(--color-sui-input-border)",
+  background: "var(--color-sui-input-background)",
+  text: "var(--color-sui-input-text)",
 };
 
 /**
@@ -65,9 +65,9 @@ export const BaseInput = <T extends { toString: () => string } | undefined = str
 
   let modifier = "";
   if (error) {
-    modifier = "border-red-400!";
+    modifier = "border-sui-input-border-error!";
   } else if (disabled) {
-    modifier = "border-gray-300!";
+    modifier = "border-sui-input-border-disabled!";
   }
 
   const handleChange = useCallback(

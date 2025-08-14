@@ -3,6 +3,7 @@ import { UseAddressExample } from "./components/UseAddressExample";
 import { UseBalanceExample } from "./components/UseBalanceExample";
 import { UseAddressInputExample } from "./components/UseAddressInputExample";
 import { UseEtherInputExample } from "./components/UseEtherInputExample";
+import { ThemeToggle } from "./components/ThemeToggle";
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col items-center">
-          <h1 className="text-4xl font-bold mb-12">Scaffold UI Example</h1>
+          <h1 className="text-4xl font-bold mb-8">Scaffold UI Example</h1>
+          <ThemeToggle />
           <UseAddressExample />
           <div className="my-12 border-t border-gray-700 w-full max-w-2xl" />
           <UseBalanceExample />

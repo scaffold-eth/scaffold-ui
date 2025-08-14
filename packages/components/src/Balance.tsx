@@ -28,7 +28,7 @@ export type BalanceProps = {
  * @example
  * <Balance address="0x123..." />
  * <Balance address="0x123..." defaultUsdMode />
- * <Balance address="0x123..." chain={mainnet} className="text-green-400" />
+ * <Balance address="0x123..." chain={mainnet} className="text-sui-success" />
  */
 export const Balance: React.FC<BalanceProps> = ({ address, chain, className = "", defaultUsdMode }) => {
   const { chain: connectedChain } = useAccount();
@@ -39,7 +39,7 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, className = ""
   if (isLoading || !balance) {
     return (
       <div className="flex items-center animate-pulse">
-        <div className="h-4 w-20 bg-gray-200 rounded" />
+        <div className="h-4 w-20 bg-sui-skeleton-base rounded" />
       </div>
     );
   }
@@ -47,7 +47,7 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, className = ""
   if (isError) {
     return (
       <div className="border border-gray-300 rounded px-2 flex flex-col items-center max-w-fit">
-        <div className="text-yellow-400 text-sm">Error</div>
+        <div className="text-sui-warning text-sm">Error</div>
       </div>
     );
   }

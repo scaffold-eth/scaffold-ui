@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import "@rainbow-me/rainbowkit/styles.css";
 import "@scaffold-ui/components/styles.css";
+import "@rainbow-me/rainbowkit/styles.css";
+// should be last or use !important in styles
+import "./globals.css";
 import { ScaffoldEthAppWithProviders } from "./ScaffoldETHProvider";
 
 const inter = Inter({ subsets: ["latin"] });
