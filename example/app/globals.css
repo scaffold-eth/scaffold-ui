@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(:root.dark, :root.dark *, :root[data-theme=dark], :root[data-theme=dark] *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -14,6 +16,15 @@
   --color-sui-success: #00cc66;
   --color-sui-warning: #ffaa00;
   --color-sui-error: #ff3333;
+} */
+
+/* @variant dark {
+  --color-sui-primary: #654321;
+  --color-sui-primary-subtle: #987654;
+  --color-sui-primary-neutral: #ccaa88;
+  --color-sui-primary-content: #f9fbff;
+
+  --color-sui-input-text: var(--color-sui-primary-content);
 } */
 
 @theme inline {

@@ -18,7 +18,7 @@ export default function Home() {
           <h1 className="text-4xl font-bold mb-8">Scaffold UI Example</h1>
           <ThemeToggle />
           <SwitchTheme />
-          <div className="h-6 w-6 bg-sui-primary" />
+
           <UseAddressExample />
           <div className="my-12 border-t border-gray-700 w-full max-w-2xl" />
           <UseBalanceExample />
