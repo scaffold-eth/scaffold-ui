@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@source inline("bg-sui-primary bg-sui-primary-subtle bg-sui-primary-neutral bg-sui-primary-content bg-sui-success bg-sui-warning bg-sui-error text-sui-primary text-sui-primary-subtle text-sui-primary-neutral text-sui-primary-content text-sui-success text-sui-warning text-sui-error border-sui-primary border-sui-primary-subtle border-sui-primary-neutral border-sui-primary-content border-sui-success border-sui-warning border-sui-error");
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme=dark], [data-theme=dark] *));
+
 @theme {
   /* Core semantic colors */
   --color-sui-primary: #93bbfb;
@@ -24,6 +28,15 @@
   --color-sui-skeleton-highlight: var(--color-sui-primary-neutral);
 }
 
+@variant dark {
+  --color-sui-primary: #212638;
+  --color-sui-primary-subtle: #323f61;
+  --color-sui-primary-neutral: #2a3655;
+  --color-sui-primary-content: #f9fbff;
+
+  --color-sui-input-text: var(--color-sui-primary-content);
+}
+
 .skeleton {
   border-radius: 0.2rem;
   background-color: var(--color-sui-skeleton-base);
@@ -46,3 +59,46 @@
     background-position-x: 150%;
   }
 }
+
+/* @plugin "daisyui/theme" {
+  name: "light";
+
+  --color-primary: #93bbfb;
+  --color-primary-content: #212638;
+  --color-secondary: #dae8ff;
+  --color-secondary-content: #212638;
+  --color-accent: #93bbfb;
+  --color-accent-content: #212638;
+  --color-neutral: #212638;
+  --color-neutral-content: #ffffff;
+  --color-base-100: #ffffff;
+  --color-base-200: #f4f8ff;
+  --color-base-300: #dae8ff;
+  --color-base-content: #212638;
+  --color-info: #93bbfb;
+  --color-success: #34eeb6;
+  --color-warning: #ffcf72;
+  --color-error: #ff8863;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+
+  --color-primary: #212638;
+  --color-primary-content: #f9fbff;
+  --color-secondary: #323f61;
+  --color-secondary-content: #f9fbff;
+  --color-accent: #4969a6;
+  --color-accent-content: #f9fbff;
+  --color-neutral: #f9fbff;
+  --color-neutral-content: #385183;
+  --color-base-100: #385183;
+  --color-base-200: #2a3655;
+  --color-base-300: #212638;
+  --color-base-content: #f9fbff;
+  --color-info: #385183;
+  --color-success: #34eeb6;
+  --color-warning: #ffcf72;
+  --color-error: #ff8863;
+
+} */

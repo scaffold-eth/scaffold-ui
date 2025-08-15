@@ -5,6 +5,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 // should be last or use !important in styles
 import "./globals.css";
 import { ScaffoldEthAppWithProviders } from "./ScaffoldETHProvider";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
+        <ThemeProvider enableSystem>
+          <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
+        </ThemeProvider>
       </body>
     </html>
   );
