@@ -2,11 +2,14 @@
 
 import { AddressInput, BaseInput } from "@scaffold-ui/components";
 import { useAddressInput } from "@scaffold-ui/hooks";
+import { useTheme } from "next-themes";
 import { useState } from "react";
 import { Address } from "viem";
 
 export const UseAddressInputExample = () => {
   const [value, setValue] = useState<string>("");
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   const [manualImplementationValue, setManualImplementationValue] = useState<string>("");
   const { ensAddress, ensName, ensAvatar, isEnsAddressLoading, isEnsNameLoading, isEnsAvatarLoading } = useAddressInput(
@@ -46,9 +49,9 @@ export const UseAddressInputExample = () => {
                 value={value}
                 onChange={setValue}
                 colors={{
-                  border: "#22c55e",
-                  background: "#dcfce7",
-                  text: "#166534",
+                  border: isDark ? "#4ade80" : "#22c55e",
+                  background: isDark ? "#14532d" : "#dcfce7",
+                  text: isDark ? "#dcfce7" : "#166534",
                 }}
               />
             </div>
@@ -57,9 +60,9 @@ export const UseAddressInputExample = () => {
               className="flex flex-col"
               style={
                 {
-                  "--color-sui-input-border": "#ff6b6b",
-                  "--color-sui-input-background": "#fff5f5",
-                  "--color-sui-input-text": "#d63031",
+                  "--color-sui-input-border": isDark ? "#f87171" : "#ff6b6b",
+                  "--color-sui-input-background": isDark ? "#7f1d1d" : "#fff5f5",
+                  "--color-sui-input-text": isDark ? "#fecaca" : "#d63031",
                 } as React.CSSProperties
               }
             >
