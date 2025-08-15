@@ -8,6 +8,3 @@ export {
   EtherInput,
   type EtherInputProps,
 } from "./Input";
-
-// Theme utilities
-export { applyTheme, getCurrentTheme, resetTheme, type SUITheme } from "./theme";
