@@ -39,7 +39,7 @@ export const Address: React.FC<AddressProps> = ({
 
   if (!checkSumAddress) {
     return (
-      <div className="flex items-center" style={style}>
+      <div className="flex items-center text-sui-primary-content" style={style}>
         <div
           className="shrink-0 skeleton rounded-full"
           style={{
@@ -62,7 +62,7 @@ export const Address: React.FC<AddressProps> = ({
   }
 
   return (
-    <div className="flex items-center shrink-0" style={style}>
+    <div className="flex items-center shrink-0 text-sui-primary-content" style={style}>
       <div className="shrink-0">
         <img
           className="rounded-full"

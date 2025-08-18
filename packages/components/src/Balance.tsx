@@ -7,7 +7,6 @@ import { mainnet } from "viem/chains";
 export type BalanceProps = {
   address: Address;
   chain?: Chain;
-  className?: string;
   defaultUsdMode?: boolean;
   style?: CSSProperties;
 };
@@ -23,7 +22,6 @@ export type BalanceProps = {
  * @param {BalanceProps} props - The props for the Balance component.
  * @param {Address} [props.address] - The address to display the balance for.
  * @param {Chain} [props.chain] - (Optional) The blockchain network to use. Defaults to the connected chain or mainnet.
- * @param {string} [props.className] - (Optional) Additional CSS classes for styling.
  * @param {boolean} [props.defaultUsdMode] - (Optional) If true, displays the balance in USD by default.
  *
  * @example
@@ -31,7 +29,7 @@ export type BalanceProps = {
  * <Balance address="0x123..." defaultUsdMode />
  * <Balance address="0x123..." chain={mainnet} className="text-sui-success" />
  */
-export const Balance: React.FC<BalanceProps> = ({ address, chain, className = "", defaultUsdMode, style }) => {
+export const Balance: React.FC<BalanceProps> = ({ address, chain, defaultUsdMode, style }) => {
   const { chain: connectedChain } = useAccount();
   const chainToUse = chain ? chain : (connectedChain ?? mainnet);
   const { displayUsdMode, toggleDisplayUsdMode, formattedBalance, balanceInUsd, isLoading, isError, balance } =
@@ -47,7 +45,10 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, className = ""
 
   if (isError) {
     return (
-      <div className="border border-gray-300 rounded px-2 flex flex-col items-center max-w-fit" style={style}>
+      <div
+        className="border border-gray-300 rounded px-2 flex flex-col items-center max-w-fit text-sui-primary-content"
+        style={style}
+      >
         <div className="text-sui-warning text-sm">Error</div>
       </div>
     );
@@ -55,7 +56,7 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, className = ""
 
   return (
     <button
-      className={`flex flex-col items-center font-normal bg-transparent focus:outline-none cursor-pointer ${className}`}
+      className={`flex flex-col items-center font-normal bg-transparent focus:outline-none cursor-pointer text-sui-primary-content`}
       onClick={toggleDisplayUsdMode}
       type="button"
       title="Toggle balance display mode"
