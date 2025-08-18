@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { Address, Chain } from "viem";
 import { useBalance } from "@scaffold-ui/hooks";
 import { useAccount } from "wagmi";
@@ -9,6 +9,7 @@ export type BalanceProps = {
   chain?: Chain;
   className?: string;
   defaultUsdMode?: boolean;
+  style?: CSSProperties;
 };
 
 /**
@@ -30,7 +31,7 @@ export type BalanceProps = {
  * <Balance address="0x123..." defaultUsdMode />
  * <Balance address="0x123..." chain={mainnet} className="text-sui-success" />
  */
-export const Balance: React.FC<BalanceProps> = ({ address, chain, className = "", defaultUsdMode }) => {
+export const Balance: React.FC<BalanceProps> = ({ address, chain, className = "", defaultUsdMode, style }) => {
   const { chain: connectedChain } = useAccount();
   const chainToUse = chain ? chain : (connectedChain ?? mainnet);
   const { displayUsdMode, toggleDisplayUsdMode, formattedBalance, balanceInUsd, isLoading, isError, balance } =
@@ -38,7 +39,7 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, className = ""
 
   if (isLoading || !balance) {
     return (
-      <div className="flex items-center animate-pulse">
+      <div className="flex items-center animate-pulse" style={style}>
         <div className="h-4 w-20 bg-sui-skeleton-base rounded" />
       </div>
     );
@@ -46,7 +47,7 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, className = ""
 
   if (isError) {
     return (
-      <div className="border border-gray-300 rounded px-2 flex flex-col items-center max-w-fit">
+      <div className="border border-gray-300 rounded px-2 flex flex-col items-center max-w-fit" style={style}>
         <div className="text-sui-warning text-sm">Error</div>
       </div>
     );
@@ -58,6 +59,7 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, className = ""
       onClick={toggleDisplayUsdMode}
       type="button"
       title="Toggle balance display mode"
+      style={style}
     >
       <div className="flex items-center justify-center">
         {displayUsdMode ? (

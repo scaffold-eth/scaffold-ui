@@ -3,7 +3,7 @@
 import { AddressInput, BaseInput } from "@scaffold-ui/components";
 import { useAddressInput } from "@scaffold-ui/hooks";
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 import { Address } from "viem";
 
 export const UseAddressInputExample = () => {
@@ -48,11 +48,13 @@ export const UseAddressInputExample = () => {
               <AddressInput
                 value={value}
                 onChange={setValue}
-                colors={{
-                  border: isDark ? "#4ade80" : "#22c55e",
-                  background: isDark ? "#14532d" : "#dcfce7",
-                  text: isDark ? "#dcfce7" : "#166534",
-                }}
+                style={
+                  {
+                    "--color-sui-input-border": isDark ? "#4ade80" : "#22c55e",
+                    "--color-sui-input-background": isDark ? "#14532d" : "#dcfce7",
+                    "--color-sui-input-text": isDark ? "#dcfce7" : "#166534",
+                  } as CSSProperties
+                }
               />
             </div>
 
