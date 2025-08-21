@@ -1,7 +1,7 @@
 import { blo } from "blo";
 import { Address } from "viem";
 import { useAddressInput } from "@scaffold-ui/hooks";
-import { InputBase } from "./InputBase";
+import { BaseInput, DEFAULT_COLORS } from "./BaseInput";
 import { CommonInputProps } from "./utils";
 import { useEffect, useState } from "react";
 
@@ -24,6 +24,10 @@ export type AddressInputProps = CommonInputProps<Address | string>;
  * @param {string} [props.placeholder] - (Optional) Placeholder text for the input field.
  * @param {(value: Address) => void} [props.onChange] - Callback function called when the input value changes.
  * @param {boolean} [props.disabled] - (Optional) Whether the input is disabled.
+ * @param {string} [props.colors] - (Optional) Colors for the input.
+ * @param {string} [props.colors.border] - Border color.
+ * @param {string} [props.colors.background] - Background color.
+ * @param {string} [props.colors.text] - Text color.
  *
  * @example
  * <AddressInput
@@ -38,7 +42,14 @@ export type AddressInputProps = CommonInputProps<Address | string>;
  *   disabled={false}
  * />
  */
-export const AddressInput = ({ value, name, placeholder, onChange, disabled }: AddressInputProps) => {
+export const AddressInput = ({
+  value,
+  name,
+  placeholder,
+  onChange,
+  disabled,
+  colors = DEFAULT_COLORS,
+}: AddressInputProps) => {
   const {
     ensAddress,
     ensName,
@@ -75,7 +86,7 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled }: A
   }, [value]);
 
   return (
-    <InputBase<Address>
+    <BaseInput<Address>
       name={name}
       placeholder={placeholder}
       error={ensAddress === null}
@@ -83,24 +94,47 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled }: A
       onChange={onChange}
       disabled={isEnsAddressLoading || isEnsNameLoading || disabled}
       reFocus={reFocus}
+      colors={colors}
       prefix={
         ensName ? (
-          <div className="flex bg-[#dae8ff] rounded-l-full items-center">
+          <div
+            className="flex rounded-l-full items-center"
+            style={{
+              backgroundColor: colors.border,
+            }}
+          >
             {isEnsAvatarLoading && (
-              <div className="animate-pulse bg-[#f4f8ff] w-[35px] h-[35px] rounded-full shrink-0"></div>
+              <div
+                className="animate-pulse w-[35px] h-[35px] rounded-full shrink-0"
+                style={{
+                  backgroundColor: colors.background,
+                }}
+              />
             )}
             {ensAvatar ? (
               <span className="w-[35px]">
                 <img className="w-full rounded-full" src={ensAvatar} alt={`${ensAddress} avatar`} />
               </span>
             ) : null}
-            <span className="text-[#93bbfb] px-2">{enteredEnsName ?? ensName}</span>
+            <span className="px-2" style={{ color: colors.text }}>
+              {enteredEnsName ?? ensName}
+            </span>
           </div>
         ) : (
           (isEnsNameLoading || isEnsAddressLoading) && (
-            <div className="flex bg-[#dae8ff] rounded-l-full items-center gap-2 pr-2">
-              <div className="animate-pulse bg-[#f4f8ff] w-[35px] h-[35px] rounded-full shrink-0"></div>
-              <div className="animate-pulse bg-[#f4f8ff] h-3 w-20"></div>
+            <div
+              className="flex rounded-l-full items-center gap-2 pr-2"
+              style={{
+                backgroundColor: colors.border,
+              }}
+            >
+              <div
+                className="animate-pulse w-[35px] h-[35px] rounded-full shrink-0"
+                style={{
+                  backgroundColor: colors.background,
+                }}
+              />
+              <div className="animate-pulse h-3 w-20" style={{ backgroundColor: colors.background }} />
             </div>
           )
         )
