@@ -29,7 +29,7 @@ export const UseBalanceExample = () => {
       <div className="space-y-8">
         {/* Balance Component Examples */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-200">Balance Component Examples</h2>
+          <h2 className="text-xl font-semibold text-[var(--color-sui-primary-content)]">Balance Component Examples</h2>
           <div className="space-y-4">
             <div className="flex flex-col items-center">
               <span className="text-sm text-gray-500 mb-1 self-start">Default (ETH, click to toggle USD)</span>
@@ -62,7 +62,9 @@ export const UseBalanceExample = () => {
         </div>
         {/* Manual Implementation using useBalance hook */}
         <div className="space-y-4 border-t border-gray-700 pt-6">
-          <h2 className="text-xl font-semibold text-gray-200">Manual Implementation (useBalance Hook)</h2>
+          <h2 className="text-xl font-semibold text-[var(--color-sui-primary-content)]">
+            Manual Implementation (useBalance Hook)
+          </h2>
           <div className="flex flex-col gap-2">
             <span className="text-sm text-gray-500">Balance</span>
             <button

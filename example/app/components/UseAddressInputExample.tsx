@@ -25,7 +25,9 @@ export const UseAddressInputExample = () => {
       <div className="space-y-8">
         {/* AddressInput Component Examples */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-200">AddressInput Component Examples</h2>
+          <h2 className="text-xl font-semibold text-[var(--color-sui-primary-content)]">
+            AddressInput Component Examples
+          </h2>
 
           <div className="space-y-4">
             <div className="flex flex-col">
@@ -76,9 +78,13 @@ export const UseAddressInputExample = () => {
 
         {/* Manual Implementation using useAddress hook */}
         <div className="space-y-4 border-t border-gray-700 pt-6">
-          <h2 className="text-xl font-semibold text-gray-200">Manual Implementation (useAddressInput Hook)</h2>
+          <h2 className="text-xl font-semibold text-[var(--color-sui-primary-content)]">
+            Manual Implementation (useAddressInput Hook)
+          </h2>
 
-          <h3 className="text-lg font-semibold text-gray-200">Shows address when ENS is entered and vice versa</h3>
+          <h3 className="text-lg font-semibold text-[var(--color-sui-primary-content)]">
+            Shows address when ENS is entered and vice versa
+          </h3>
 
           {ensAddress ? <div className="bg-[#dae8ff] items-center">Address: {ensAddress}</div> : null}
           {ensName ? (
