@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@source inline("bg-sui-primary bg-sui-primary-subtle bg-sui-primary-neutral bg-sui-primary-content bg-sui-success bg-sui-warning bg-sui-error text-sui-primary text-sui-primary-subtle text-sui-primary-neutral text-sui-primary-content text-sui-success text-sui-warning text-sui-error border-sui-primary border-sui-primary-subtle border-sui-primary-neutral border-sui-primary-content border-sui-success border-sui-warning border-sui-error");
-
 @custom-variant dark (&:where(.dark, .dark *, [data-theme=dark], [data-theme=dark] *));
 
 @theme {

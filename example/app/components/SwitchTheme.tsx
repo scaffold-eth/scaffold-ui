@@ -29,12 +29,12 @@ export const SwitchTheme = ({ className }: { className?: string }) => {
       {/* Custom Toggle Switch */}
       <button
         onClick={handleToggle}
-        className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-opacity-50 bg-sui-primary-subtle dark:bg-sui-primary focus:ring-sui-primary"
+        className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-opacity-50 bg-[var(--color-sui-primary-subtle)] dark:bg-[var(--color-sui-primary)] focus:ring-[var(--color-sui-primary)]"
         aria-label={`Switch to ${isDarkMode ? "light" : "dark"} theme`}
       >
         {/* Toggle Circle */}
         <span
-          className={`inline-block h-4 w-4 transform rounded-full transition-transform duration-200 ease-in-out bg-sui-primary dark:bg-sui-primary-content ${
+          className={`inline-block h-4 w-4 transform rounded-full transition-transform duration-200 ease-in-out bg-[var(--color-sui-primary)] dark:bg-[var(--color-sui-primary-content)]  ${
             isDarkMode ? "translate-x-6" : "translate-x-1"
           }`}
         />
@@ -43,9 +43,9 @@ export const SwitchTheme = ({ className }: { className?: string }) => {
       {/* Icon Display */}
       <div className="flex items-center justify-center w-6 h-6">
         {isDarkMode ? (
-          <MoonIcon className="h-5 w-5 transition-all duration-200 ease-in-out text-sui-primary-content" />
+          <MoonIcon className="h-5 w-5 transition-all duration-200 ease-in-out text-[var(--color-sui-primary-content)]" />
         ) : (
-          <SunIcon className="h-5 w-5 transition-all duration-200 ease-in-out text-sui-primary" />
+          <SunIcon className="h-5 w-5 transition-all duration-200 ease-in-out text-[var(--color-sui-primary)]" />
         )}
       </div>
     </div>
