@@ -2,11 +2,14 @@
 
 import { AddressInput, BaseInput } from "@scaffold-ui/components";
 import { useAddressInput } from "@scaffold-ui/hooks";
-import { useState } from "react";
+import { useTheme } from "next-themes";
+import { CSSProperties, useState } from "react";
 import { Address } from "viem";
 
 export const UseAddressInputExample = () => {
   const [value, setValue] = useState<string>("");
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   const [manualImplementationValue, setManualImplementationValue] = useState<string>("");
   const { ensAddress, ensName, ensAvatar, isEnsAddressLoading, isEnsNameLoading, isEnsAvatarLoading } = useAddressInput(
@@ -22,7 +25,9 @@ export const UseAddressInputExample = () => {
       <div className="space-y-8">
         {/* AddressInput Component Examples */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-200">AddressInput Component Examples</h2>
+          <h2 className="text-xl font-semibold text-[var(--color-sui-primary-content)]">
+            AddressInput Component Examples
+          </h2>
 
           <div className="space-y-4">
             <div className="flex flex-col">
@@ -45,21 +50,41 @@ export const UseAddressInputExample = () => {
               <AddressInput
                 value={value}
                 onChange={setValue}
-                colors={{
-                  border: "#22c55e",
-                  background: "#dcfce7",
-                  text: "#166534",
-                }}
+                style={
+                  {
+                    "--color-sui-input-border": isDark ? "#4ade80" : "#22c55e",
+                    "--color-sui-input-background": isDark ? "#14532d" : "#dcfce7",
+                    "--color-sui-input-text": isDark ? "#dcfce7" : "#166534",
+                  } as CSSProperties
+                }
               />
+            </div>
+
+            <div
+              className="flex flex-col"
+              style={
+                {
+                  "--color-sui-input-border": isDark ? "#f87171" : "#ff6b6b",
+                  "--color-sui-input-background": isDark ? "#7f1d1d" : "#fff5f5",
+                  "--color-sui-input-text": isDark ? "#fecaca" : "#d63031",
+                } as React.CSSProperties
+              }
+            >
+              <span className="text-sm text-gray-500 mb-1">Custom colors using CSS variables</span>
+              <AddressInput value={value} onChange={setValue} placeholder="Enter an address" />
             </div>
           </div>
         </div>
 
         {/* Manual Implementation using useAddress hook */}
         <div className="space-y-4 border-t border-gray-700 pt-6">
-          <h2 className="text-xl font-semibold text-gray-200">Manual Implementation (useAddressInput Hook)</h2>
+          <h2 className="text-xl font-semibold text-[var(--color-sui-primary-content)]">
+            Manual Implementation (useAddressInput Hook)
+          </h2>
 
-          <h3 className="text-lg font-semibold text-gray-200">Shows address when ENS is entered and vice versa</h3>
+          <h3 className="text-lg font-semibold text-[var(--color-sui-primary-content)]">
+            Shows address when ENS is entered and vice versa
+          </h3>
 
           {ensAddress ? <div className="bg-[#dae8ff] items-center">Address: {ensAddress}</div> : null}
           {ensName ? (
@@ -73,7 +98,7 @@ export const UseAddressInputExample = () => {
                   }
                 </span>
               ) : null}
-              <span className="text-accent px-2">{ensName}</span>
+              <span className="text-sui-primary px-2">{ensName}</span>
             </div>
           ) : (
             (isEnsNameLoading || isEnsAddressLoading) && (

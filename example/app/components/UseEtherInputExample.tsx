@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { CSSProperties, useState } from "react";
 import { EtherInput } from "@scaffold-ui/components";
 import { useEtherInput } from "@scaffold-ui/hooks";
 
@@ -14,7 +14,7 @@ export const UseEtherInputExample = () => {
       <h1 className="text-2xl font-bold mb-6">useEtherInput Hook & EtherInput Component Examples</h1>
       <div className="space-y-4">
         {/* EtherInput Component Examples */}
-        <h2 className="text-xl font-semibold text-gray-200">EtherInput Component Examples</h2>
+        <h2 className="text-xl font-semibold text-[var(--color-sui-primary-content)]">EtherInput Component Examples</h2>
         <div className="space-y-4">
           <div className="flex flex-col">
             <span className="text-sm text-gray-500 mb-1 self-start">Default (ETH, click to toggle USD)</span>
@@ -51,11 +51,13 @@ export const UseEtherInputExample = () => {
               onValueChange={({ valueInEth, valueInUsd, displayUsdMode }) =>
                 console.log("value changed", valueInEth, valueInUsd, displayUsdMode)
               }
-              colors={{
-                border: "#eab308",
-                background: "#fef9c3",
-                text: "#713f12",
-              }}
+              style={
+                {
+                  "--color-sui-input-border": "#eab308",
+                  "--color-sui-input-background": "#fef9c3",
+                  "--color-sui-input-text": "#713f12",
+                } as CSSProperties
+              }
             />
           </div>
         </div>
@@ -63,7 +65,9 @@ export const UseEtherInputExample = () => {
 
       {/* Manual Implementation using useEtherInput Hook */}
       <div className="space-y-4 border-t border-gray-700 pt-6 mt-8">
-        <h2 className="text-xl font-semibold text-gray-200">Manual Implementation (useEtherInput Hook)</h2>
+        <h2 className="text-xl font-semibold text-[var(--color-sui-primary-content)]">
+          Manual Implementation (useEtherInput Hook)
+        </h2>
         <div className="flex items-center gap-2 mb-2">
           <input
             className="input input-bordered w-40"

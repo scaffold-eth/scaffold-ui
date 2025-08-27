@@ -8,12 +8,6 @@ export type BaseInputProps<T> = CommonInputProps<T> & {
   reFocus?: boolean;
 };
 
-export const DEFAULT_COLORS = {
-  border: "#dae8ff",
-  background: "#f4f8ff",
-  text: "#93bbfb",
-};
-
 /**
  * BaseInput Component
  *
@@ -34,10 +28,7 @@ export const DEFAULT_COLORS = {
  * @param {ReactNode} [props.prefix] - (Optional) Element to render before the input (e.g., icon).
  * @param {ReactNode} [props.suffix] - (Optional) Element to render after the input (e.g., button).
  * @param {boolean} [props.reFocus] - (Optional) If true, input auto-focuses and cursor moves to end.
- * @param {string} [props.colors] - (Optional) Colors for the input.
- * @param {string} [props.colors.border] - Border color.
- * @param {string} [props.colors.background] - Background color.
- * @param {string} [props.colors.text] - Text color.
+ * @param {CSSProperties} [props.style] - (Optional) Styles for the input.
  *
  * @example
  * <BaseInput
@@ -59,15 +50,15 @@ export const BaseInput = <T extends { toString: () => string } | undefined = str
   prefix,
   suffix,
   reFocus,
-  colors = DEFAULT_COLORS,
+  style,
 }: BaseInputProps<T>) => {
   const inputReft = useRef<HTMLInputElement>(null);
 
   let modifier = "";
   if (error) {
-    modifier = "border-red-400!";
+    modifier = "border-sui-input-border-error!";
   } else if (disabled) {
-    modifier = "border-gray-300!";
+    modifier = "border-sui-input-border-disabled!";
   }
 
   const handleChange = useCallback(
@@ -90,12 +81,8 @@ export const BaseInput = <T extends { toString: () => string } | undefined = str
 
   return (
     <div
-      className={`flex border-2 rounded-full ${modifier}`}
-      style={{
-        borderColor: colors.border,
-        backgroundColor: colors.background,
-        color: colors.text,
-      }}
+      className={`flex border-2 rounded-full border-sui-input-border bg-sui-input-background text-sui-input-text ${modifier}`}
+      style={style}
     >
       {prefix}
       <input
