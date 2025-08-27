@@ -27,7 +27,7 @@ export type BalanceProps = {
  * @example
  * <Balance address="0x123..." />
  * <Balance address="0x123..." defaultUsdMode />
- * <Balance address="0x123..." chain={mainnet} className="text-sui-success" />
+ * <Balance address="0x123..." chain={mainnet} />
  */
 export const Balance: React.FC<BalanceProps> = ({ address, chain, defaultUsdMode, style }) => {
   const { chain: connectedChain } = useAccount();
