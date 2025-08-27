@@ -49,8 +49,6 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled, sty
     isEnsAvatarLoading,
     isEnsAddressError,
     isEnsNameError,
-    isEnsNameSuccess,
-    isEnsAddressSuccess,
     settledValue,
   } = useAddressInput({
     value,
@@ -61,8 +59,6 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled, sty
   const reFocus =
     isEnsAddressError ||
     isEnsNameError ||
-    isEnsNameSuccess ||
-    isEnsAddressSuccess ||
     ensName === null ||
     ensAddress === null;
 
