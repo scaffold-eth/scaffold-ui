@@ -28,7 +28,12 @@ export const ContractUI: React.FC<ContractUIProps> = ({ contractName, contract, 
                 <Address address={contract.address} onlyEnsOrAddress size="base" />
                 <div className="flex gap-1 items-center">
                   <span className="font-bold text-sm">Balance:</span>
-                  {contract.address && <Balance address={contract.address} className="px-0 h-1.5 min-h-[0.375rem]" />}
+                  {contract.address && (
+                    <Balance
+                      address={contract.address}
+                      style={{ padding: "0", height: "0.375rem", minHeight: "0.375rem" }}
+                    />
+                  )}
                 </div>
               </div>
             </div>

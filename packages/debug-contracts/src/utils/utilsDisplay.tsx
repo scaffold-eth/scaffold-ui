@@ -65,14 +65,14 @@ const NumberDisplay = ({ value }: { value: bigint }) => {
       {isEther ? "Ξ" + formatEther(value) : String(value)}
       <div className="relative group inline-block font-sans ml-2">
         <button
-          className="p-1 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-full transition-colors duration-200 w-6 h-6 flex items-center justify-center"
+          className="p-1 text-base-content/60 hover:text-base-content hover:bg-base-200 rounded-full transition-colors duration-200 w-6 h-6 flex items-center justify-center"
           onClick={() => setIsEther(!isEther)}
         >
           <ArrowsRightLeftIcon className="h-3 w-3 opacity-65" />
         </button>
-        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-700 text-white text-xs rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-neutral text-neutral-content text-xs rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
           {isEther ? "Multiply by 1e18" : "Divide by 1e18"}
-          <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-700"></div>
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-neutral"></div>
         </div>
       </div>
     </div>

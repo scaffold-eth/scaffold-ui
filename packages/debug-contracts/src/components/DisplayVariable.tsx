@@ -58,11 +58,11 @@ export const DisplayVariable = ({
       <div className="flex items-center">
         <h3 className="font-medium text-lg mb-0 break-all">{abiFunction.name}</h3>
         <button
-          className="p-1 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded transition-colors duration-200"
+          className="p-1 text-base-content/60 hover:text-base-content hover:bg-base-200 rounded transition-colors duration-200"
           onClick={async () => await refetch()}
         >
           {isFetching ? (
-            <div className="w-3 h-3 border border-gray-300 border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-3 h-3 border border-base-300 border-t-transparent rounded-full animate-spin"></div>
           ) : (
             <ArrowPathIcon className="h-3 w-3 cursor-pointer" aria-hidden="true" />
           )}

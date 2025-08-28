@@ -3,7 +3,7 @@ import "@scaffold-ui/debug-contracts/styles.css";
 
 export default function DebugContracts() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-transparent to-gray-900">
+    <div className="min-h-screen bg-[var(--color-sui-primary-neutral)]">
       <UseDebugContractsExample />
     </div>
   );

@@ -1,19 +1,103 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *, [data-theme=dark], [data-theme=dark] *));
+
 @theme {
+  /* Debug Contracts Light Theme */
+  /* Core semantic colors */
+  --color-dc-primary: #93bbfb;
+  --color-dc-primary-content: #212638;
+  --color-dc-secondary: #dae8ff;
+  --color-dc-secondary-content: #212638;
+  --color-dc-accent: #93bbfb;
+  --color-dc-accent-content: #212638;
+  --color-dc-neutral: #212638;
+  --color-dc-neutral-content: #ffffff;
+
+  /* Base background colors */
+  --color-dc-base-100: #ffffff;
+  --color-dc-base-200: #f4f8ff;
+  --color-dc-base-300: #dae8ff;
+  --color-dc-base-content: #212638;
+
+  /* Status colors */
+  --color-dc-info: #93bbfb;
+  --color-dc-success: #34eeb6;
+  --color-dc-warning: #ffcf72;
+  --color-dc-error: #ff8863;
+
+  /* Utility colors */
   --shadow-center: 0 0 12px -2px rgb(0 0 0 / 0.05);
   --animate-pulse-fast: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  /* Semantic class mappings */
+  --color-primary: var(--color-dc-primary);
+  --color-primary-content: var(--color-dc-primary-content);
+  --color-secondary: var(--color-dc-secondary);
+  --color-secondary-content: var(--color-dc-secondary-content);
+  --color-accent: var(--color-dc-accent);
+  --color-accent-content: var(--color-dc-accent-content);
+  --color-neutral: var(--color-dc-neutral);
+  --color-neutral-content: var(--color-dc-neutral-content);
+  --color-base-100: var(--color-dc-base-100);
+  --color-base-200: var(--color-dc-base-200);
+  --color-base-300: var(--color-dc-base-300);
+  --color-base-content: var(--color-dc-base-content);
+  --color-info: var(--color-dc-info);
+  --color-success: var(--color-dc-success);
+  --color-warning: var(--color-dc-warning);
+  --color-error: var(--color-dc-error);
+}
+
+@variant dark {
+  /* Debug Contracts Dark Theme */
+  --color-dc-primary: #212638;
+  --color-dc-primary-content: #f9fbff;
+  --color-dc-secondary: #323f61;
+  --color-dc-secondary-content: #f9fbff;
+  --color-dc-accent: #4969a6;
+  --color-dc-accent-content: #f9fbff;
+  --color-dc-neutral: #f9fbff;
+  --color-dc-neutral-content: #385183;
+
+  --color-dc-base-100: #385183;
+  --color-dc-base-200: #2a3655;
+  --color-dc-base-300: #212638;
+  --color-dc-base-content: #f9fbff;
+
+  --color-dc-info: #385183;
+  --color-dc-success: #34eeb6;
+  --color-dc-warning: #ffcf72;
+  --color-dc-error: #ff8863;
+
+  /* Update semantic mappings for dark mode */
+  --color-primary: var(--color-dc-primary);
+  --color-primary-content: var(--color-dc-primary-content);
+  --color-secondary: var(--color-dc-secondary);
+  --color-secondary-content: var(--color-dc-secondary-content);
+  --color-accent: var(--color-dc-accent);
+  --color-accent-content: var(--color-dc-accent-content);
+  --color-neutral: var(--color-dc-neutral);
+  --color-neutral-content: var(--color-dc-neutral-content);
+  --color-base-100: var(--color-dc-base-100);
+  --color-base-200: var(--color-dc-base-200);
+  --color-base-300: var(--color-dc-base-300);
+  --color-base-content: var(--color-dc-base-content);
+  --color-info: var(--color-dc-info);
+  --color-success: var(--color-dc-success);
+  --color-warning: var(--color-dc-warning);
+  --color-error: var(--color-dc-error);
 }
 
 .skeleton {
   border-radius: 0.2rem;
-  background-color: #e5e7eb;
+  background-color: var(--color-dc-base-300);
   @media (prefers-reduced-motion: reduce) {
     transition-duration: 15s;
   }
   will-change: background-position;
   animation: skeleton 1.8s ease-in-out infinite;
-  background-image: linear-gradient(105deg, #0000 0% 40%, #f9fafb 50%, #0000 60% 100%);
+  background-image: linear-gradient(105deg, #0000 0% 40%, var(--color-dc-base-200) 50%, #0000 60% 100%);
   background-size: 200% auto;
   background-repeat: no-repeat;
   background-position-x: -50%;
