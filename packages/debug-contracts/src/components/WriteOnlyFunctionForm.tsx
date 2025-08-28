@@ -117,11 +117,13 @@ export const WriteOnlyFunctionForm = ({
             />
           </div>
         ) : null}
-        <div className="flex justify-between gap-2">
+        <div className="flex justify-between gap-2 min-w-0 overflow-auto">
           {!zeroInputs && (
-            <div className="grow basis-0">{displayedTxResult ? <TxReceipt txResult={displayedTxResult} /> : null}</div>
+            <div className="flex-1 min-w-0 max-w-11/12">
+              {displayedTxResult ? <TxReceipt txResult={displayedTxResult} /> : null}
+            </div>
           )}
-          <div className="flex">
+          <div className="flex flex-shrink-0 self-start">
             <Tooltip content="Wallet not connected or in the wrong network" position="bottom" show={writeDisabled}>
               <button className="btn btn-secondary btn-sm" disabled={writeDisabled || isPending} onClick={handleWrite}>
                 {isPending && <span className="loading loading-spinner loading-xs"></span>}
@@ -132,7 +134,7 @@ export const WriteOnlyFunctionForm = ({
         </div>
       </div>
       {zeroInputs && txResult ? (
-        <div className="grow basis-0">
+        <div className="w-full min-w-0 overflow-auto">
           <TxReceipt txResult={txResult} />
         </div>
       ) : null}

@@ -1,36 +1,53 @@
+import { useState } from "react";
 import { TransactionReceipt } from "viem";
-import { CheckCircleIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
+import { CheckCircleIcon, DocumentDuplicateIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useCopyToClipboard } from "../hooks/useCopyToClipboard";
 import { replacer } from "../utils/utilsDisplay";
 import { ObjectFieldDisplay } from "./ObjectFieldDisplay";
 
 export const TxReceipt = ({ txResult }: { txResult: TransactionReceipt }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const { copyToClipboard: copyTxResultToClipboard, isCopiedToClipboard: isTxResultCopiedToClipboard } =
     useCopyToClipboard();
 
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <div className="flex text-sm rounded-3xl peer-checked:rounded-b-none min-h-0 bg-secondary py-0">
-      <div className="mt-1 pl-2">
-        {isTxResultCopiedToClipboard ? (
-          <CheckCircleIcon
-            className="ml-1.5 text-xl font-normal text-base-content h-5 w-5 cursor-pointer"
-            aria-hidden="true"
-          />
-        ) : (
-          <DocumentDuplicateIcon
-            className="ml-1.5 text-xl font-normal h-5 w-5 cursor-pointer"
-            aria-hidden="true"
-            onClick={() => copyTxResultToClipboard(JSON.stringify(txResult, replacer, 2))}
-          />
-        )}
-      </div>
-      <div tabIndex={0} className="flex-wrap collapse collapse-arrow">
-        <input type="checkbox" className="min-h-0! peer" />
-        <div className="collapse-title text-sm min-h-0! py-1.5 pl-1 after:top-4!">
-          <strong>Transaction Receipt</strong>
+    <div className={`text-sm bg-secondary ${isExpanded ? "rounded-t-3xl" : "rounded-3xl"} min-h-0 py-0`}>
+      <div className="flex items-center">
+        <div className="mt-1 pl-2 flex-shrink-0">
+          {isTxResultCopiedToClipboard ? (
+            <CheckCircleIcon
+              className="ml-1.5 text-xl font-normal text-base-content h-5 w-5 cursor-pointer"
+              aria-hidden="true"
+            />
+          ) : (
+            <DocumentDuplicateIcon
+              className="ml-1.5 text-xl font-normal h-5 w-5 cursor-pointer"
+              aria-hidden="true"
+              onClick={() => copyTxResultToClipboard(JSON.stringify(txResult, replacer, 2))}
+            />
+          )}
         </div>
-        <div className="collapse-content overflow-auto bg-secondary rounded-t-none rounded-3xl pl-0!">
-          <pre className="text-xs">
+        <div
+          className="flex-1 flex items-center justify-between cursor-pointer py-1.5 pl-1 pr-4"
+          onClick={toggleExpanded}
+        >
+          <strong className="text-sm">Transaction Receipt</strong>
+          <ChevronDownIcon
+            className={`h-4 w-4 transition-transform duration-200 flex-shrink-0 ${isExpanded ? "rotate-180" : ""}`}
+          />
+        </div>
+      </div>
+      <div
+        className={`overflow-auto transition-all duration-300 ease-in-out rounded-b-3xl ${
+          isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="overflow-auto bg-secondary rounded-b-3xl border-t border-gray-300/20">
+          <pre className="text-xs p-4 whitespace-pre-wrap break-words rounded-b-3xl">
             {Object.entries(txResult).map(([k, v]) => (
               <ObjectFieldDisplay name={k} value={v} size="xs" leftPad={false} key={k} />
             ))}
