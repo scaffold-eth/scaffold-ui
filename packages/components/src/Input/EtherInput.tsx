@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MAX_DECIMALS_USD, useEtherInput } from "@scaffold-ui/hooks";
 import { SwitchIcon } from "../icons/SwitchIcon";
-import { DEFAULT_COLORS, BaseInput } from "./BaseInput";
+import { BaseInput } from "./BaseInput";
 import { CommonInputProps } from "./utils";
 
 export type EtherInputProps = Omit<CommonInputProps<string>, "onChange" | "value"> & {
@@ -28,10 +28,7 @@ const SIGNED_NUMBER_REGEX = /^-?\d+\.?\d*$/;
  * @param {boolean} [props.defaultUsdMode] - (Optional) If true, input starts in USD mode; otherwise, ETH mode.
  * @param {boolean} [props.disabled] - (Optional) If true, the input and toggle button are disabled.
  * @param {(value: { valueInEth: string; valueInUsd: string; usdMode: boolean }) => void} props.onValueChange - (Optional) Callback fired when the value or mode changes.
- * @param {string} [props.colors] - (Optional) Colors for the input.
- * @param {string} [props.colors.border] - Border color.
- * @param {string} [props.colors.background] - Background color.
- * @param {string} [props.colors.text] - Text color.
+ * @param {CSSProperties} [props.style] - (Optional) Styles for the input.
  *
  * @example
  * <EtherInput onValueChange={({ valueInEth, valueInUsd, usdMode }) => { ... }} />
@@ -44,7 +41,7 @@ export const EtherInput = ({
   defaultUsdMode,
   disabled,
   onValueChange,
-  colors = DEFAULT_COLORS,
+  style,
 }: EtherInputProps) => {
   const [sourceValue, setSourceValue] = useState(defaultValue ?? "");
   const [sourceUsdMode, setSourceUsdMode] = useState(defaultUsdMode ?? false);
@@ -96,8 +93,8 @@ export const EtherInput = ({
         placeholder={placeholder}
         onChange={handleInputChange}
         disabled={isNativeCurrencyPriceLoading || disabled}
-        prefix={<span className="pl-4 -mr-2 text-accent self-center">{displayUsdMode ? "$" : "Ξ"}</span>}
-        colors={colors}
+        prefix={<span className="pl-4 -mr-2 self-center">{displayUsdMode ? "$" : "Ξ"}</span>}
+        style={style}
         suffix={
           <button
             className="h-[2.2rem] min-h-[2.2rem] cursor-pointer mr-3"

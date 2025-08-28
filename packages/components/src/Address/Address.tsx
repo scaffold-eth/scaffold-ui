@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { useAddress } from "@scaffold-ui/hooks";
 import { Chain, type Address as AddressType } from "viem";
 import { mainnet } from "viem/chains";
@@ -13,6 +13,7 @@ export type AddressProps = {
   size: "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl";
   onlyEnsOrAddress?: boolean;
   chain?: Chain;
+  style?: CSSProperties;
 };
 
 export const Address: React.FC<AddressProps> = ({
@@ -22,6 +23,7 @@ export const Address: React.FC<AddressProps> = ({
   size = "base",
   onlyEnsOrAddress,
   chain,
+  style,
 }) => {
   const { checkSumAddress, ens, ensAvatar, isEnsNameLoading, blockExplorerAddressLink, shortAddress, blockieUrl } =
     useAddress({ address, chain: chain || mainnet });
@@ -37,7 +39,7 @@ export const Address: React.FC<AddressProps> = ({
 
   if (!checkSumAddress) {
     return (
-      <div className="flex items-center">
+      <div className="flex items-center text-sui-primary-content" style={style}>
         <div
           className="shrink-0 skeleton rounded-full"
           style={{
@@ -60,7 +62,7 @@ export const Address: React.FC<AddressProps> = ({
   }
 
   return (
-    <div className="flex items-center shrink-0">
+    <div className="flex items-center shrink-0 text-sui-primary-content" style={style}>
       <div className="shrink-0">
         <img
           className="rounded-full"
