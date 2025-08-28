@@ -16,6 +16,7 @@ import { useTransactor } from "../hooks/useTransactor";
 import { ContractInput } from "./ContractInput";
 import { IntegerInput } from "./inputs/IntegerInput";
 import { TxReceipt } from "./TxReceipt";
+import { Tooltip } from "./Tooltip";
 
 type WriteOnlyFunctionFormProps = {
   abi: Abi;
@@ -120,17 +121,13 @@ export const WriteOnlyFunctionForm = ({
           {!zeroInputs && (
             <div className="grow basis-0">{displayedTxResult ? <TxReceipt txResult={displayedTxResult} /> : null}</div>
           )}
-          <div
-            className={`flex ${
-              writeDisabled &&
-              "tooltip tooltip-bottom tooltip-secondary before:content-[attr(data-tip)] before:-translate-x-1/3 before:left-auto before:transform-none"
-            }`}
-            data-tip={`${writeDisabled && "Wallet not connected or in the wrong network"}`}
-          >
-            <button className="btn btn-secondary btn-sm" disabled={writeDisabled || isPending} onClick={handleWrite}>
-              {isPending && <span className="loading loading-spinner loading-xs"></span>}
-              Send 💸
-            </button>
+          <div className="flex">
+            <Tooltip content="Wallet not connected or in the wrong network" position="bottom" show={writeDisabled}>
+              <button className="btn btn-secondary btn-sm" disabled={writeDisabled || isPending} onClick={handleWrite}>
+                {isPending && <span className="loading loading-spinner loading-xs"></span>}
+                Send 💸
+              </button>
+            </Tooltip>
           </div>
         </div>
       </div>

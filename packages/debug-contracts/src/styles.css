@@ -111,3 +111,51 @@
     background-position-x: 150%;
   }
 }
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full px-3 py-1.5 text-sm font-medium cursor-pointer;
+    @apply bg-secondary text-secondary-content border border-secondary;
+    @apply transition-transform duration-75 ease-out;
+    min-height: 2rem;
+  }
+
+  .btn:disabled {
+    @apply opacity-50 cursor-not-allowed pointer-events-none;
+  }
+
+  .btn:hover:not(:disabled) {
+    @apply brightness-90;
+  }
+
+  .btn:active:not(:disabled) {
+    @apply scale-95;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-content border-primary;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-accent-content border-accent;
+  }
+
+  .loading.loading-spinner {
+    @apply text-transparent relative;
+  }
+
+  .loading.loading-spinner:before {
+    content: "";
+    @apply absolute w-4 h-4 border-2 border-current border-b-transparent rounded-full animate-spin;
+    left: 50%;
+    top: 50%;
+    margin-left: -0.5rem;
+    margin-top: -0.5rem;
+  }
+
+  .loading-xs:before {
+    @apply w-3 h-3;
+    margin-left: -0.375rem;
+    margin-top: -0.375rem;
+  }
+}
