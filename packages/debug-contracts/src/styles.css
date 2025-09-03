@@ -141,7 +141,7 @@
   }
 
   .loading {
-    @apply pointer-events-none inline-block aspect-square bg-current align-middle;
+    @apply pointer-events-none inline-block aspect-square bg-current align-middle w-4;
     mask-size: 100%;
     mask-repeat: no-repeat;
     mask-position: center;
@@ -153,6 +153,7 @@
   }
 
   .link {
+    @apply underline;
     text-underline-offset: 2px;
   }
 
