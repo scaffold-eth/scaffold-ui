@@ -4,12 +4,14 @@ Debug contracts component.
 
 ## Installation
 
+**Note**: This package requires `@scaffold-ui/components` and `@scaffold-ui/hooks` as peer dependencies.
+
 ```bash
-npm install @scaffold-ui/debug-contracts
+npm install @scaffold-ui/components @scaffold-ui/hooks @scaffold-ui/debug-contracts
 # or
-yarn add @scaffold-ui/debug-contracts
+yarn add @scaffold-ui/components @scaffold-ui/hooks @scaffold-ui/debug-contracts
 # or
-pnpm add @scaffold-ui/debug-contracts
+pnpm add @scaffold-ui/components @scaffold-ui/hooks @scaffold-ui/debug-contracts
 ```
 
 #### Props
