@@ -18,7 +18,7 @@ export const Collapsible = ({ title, children, className = "" }: CollapsibleProp
       <button
         type="button"
         onClick={toggleOpen}
-        className="w-full flex items-center justify-between p-3 text-left bg-base-200 hover:brightness-90 transition-colors rounded-t-lg focus:outline-none focus:ring-2 focus:ring-primary"
+        className={`w-full flex items-center justify-between p-3 text-left bg-base-200 hover:brightness-90 transition-colors rounded-t-md focus:outline-none focus:ring-2 focus:ring-primary ${isOpen ? "rounded-b-none" : "rounded-b-md"}`}
       >
         <span className="text-primary-content/50 text-sm">{title}</span>
         <svg
