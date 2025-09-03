@@ -1,7 +1,7 @@
 export const deployedContracts = {
   11155111: {
     YourContract: {
-      address: "0x3A897AaAcFCdd13b6A5F2b9fb85F36AFFa49442c",
+      address: "0xBf6D6faFE5B0C009E5447A27A94E093F490Dd0FC",
       abi: [
         {
           inputs: [
@@ -47,6 +47,43 @@ export const deployedContracts = {
         },
         {
           inputs: [],
+          name: "geAllSData",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "a",
+                  type: "uint256",
+                },
+                {
+                  components: [
+                    {
+                      internalType: "uint256",
+                      name: "x",
+                      type: "uint256",
+                    },
+                    {
+                      internalType: "uint256",
+                      name: "y",
+                      type: "uint256",
+                    },
+                  ],
+                  internalType: "struct YourContract.SimpleStruct[][][]",
+                  name: "b",
+                  type: "tuple[][][]",
+                },
+              ],
+              internalType: "struct YourContract.NestedStruct",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
           name: "greeting",
           outputs: [
             {
@@ -85,6 +122,19 @@ export const deployedContracts = {
           type: "function",
         },
         {
+          inputs: [],
+          name: "sData",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "a",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
           inputs: [
             {
               internalType: "string",
@@ -99,6 +149,24 @@ export const deployedContracts = {
         },
         {
           inputs: [],
+          name: "tData",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "x",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "y",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
           name: "totalCounter",
           outputs: [
             {
@@ -108,6 +176,96 @@ export const deployedContracts = {
             },
           ],
           stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "a",
+                  type: "uint256",
+                },
+                {
+                  components: [
+                    {
+                      internalType: "uint256",
+                      name: "x",
+                      type: "uint256",
+                    },
+                    {
+                      internalType: "uint256",
+                      name: "y",
+                      type: "uint256",
+                    },
+                  ],
+                  internalType: "struct YourContract.SimpleStruct[][][]",
+                  name: "b",
+                  type: "tuple[][][]",
+                },
+              ],
+              internalType: "struct YourContract.NestedStruct",
+              name: "_nestedStruct",
+              type: "tuple",
+            },
+          ],
+          name: "totalPassedStruct",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "totalA",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "totalX",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "totalY",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "a",
+                  type: "uint256",
+                },
+                {
+                  components: [
+                    {
+                      internalType: "uint256",
+                      name: "x",
+                      type: "uint256",
+                    },
+                    {
+                      internalType: "uint256",
+                      name: "y",
+                      type: "uint256",
+                    },
+                  ],
+                  internalType: "struct YourContract.SimpleStruct[][][]",
+                  name: "b",
+                  type: "tuple[][][]",
+                },
+              ],
+              internalType: "struct YourContract.NestedStruct",
+              name: "_nestedStruct",
+              type: "tuple",
+            },
+          ],
+          name: "updateData",
+          outputs: [],
+          stateMutability: "payable",
           type: "function",
         },
         {
@@ -131,17 +289,20 @@ export const deployedContracts = {
         },
         {
           inputs: [],
-          name: "withdraw",
-          outputs: [],
-          stateMutability: "nonpayable",
+          name: "valueData",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
           type: "function",
-        },
-        {
-          stateMutability: "payable",
-          type: "receive",
         },
       ],
       inheritedFunctions: {},
+      deployedOnBlock: 9123889,
     },
   },
 } as const;
