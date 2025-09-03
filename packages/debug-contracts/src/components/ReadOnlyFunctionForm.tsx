@@ -14,6 +14,7 @@ import {
 import { displayTxResult } from "../utils/utilsDisplay";
 import { getParsedError } from "../utils/getParsedError";
 import { ContractInput } from "./ContractInput";
+import { notification } from "../utils/notification";
 
 type ReadOnlyFunctionFormProps = {
   contractAddress: Address;
@@ -48,8 +49,8 @@ export const ReadOnlyFunctionForm = ({
   useEffect(() => {
     if (error) {
       const parsedError = getParsedError(error);
-      console.log("the parsed error is:", parsedError);
-      //   notification.error(parsedError);
+      console.log("The parsedError is:", parsedError);
+      notification.error(parsedError);
     }
   }, [error]);
 

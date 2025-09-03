@@ -6,6 +6,7 @@ import { getParsedError } from "../utils/getParsedError";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { InheritanceTooltip } from "./InheritanceTooltip";
 import { displayTxResult } from "../utils/utilsDisplay";
+import { notification } from "../utils/notification";
 
 type DisplayVariableProps = {
   contractAddress: Address;
@@ -48,8 +49,8 @@ export const DisplayVariable = ({
   useEffect(() => {
     if (error) {
       const parsedError = getParsedError(error);
-      //   notification.error(parsedError);
       console.log("The parsedError is:", parsedError);
+      notification.error(parsedError);
     }
   }, [error]);
 
