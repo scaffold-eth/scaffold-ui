@@ -99,10 +99,10 @@ export const TupleArray = ({ abiTupleParameter, setParentForm, parentStateObject
 
   return (
     <Collapsible title={abiTupleParameter.internalType || "tuple-array"}>
-      <div className="ml-3 flex flex-col space-y-2 border-l-2 border-secondary/70 pl-4">
+      <div className="ml-3 flex flex-col space-y-2 border-l-2 border-sui-primary-subtle/70 pl-4">
         {additionalInputs.map((additionalInput, additionalIndex) => (
           <div key={additionalIndex} className="space-y-1">
-            <span className="inline-block bg-base-300 text-base-content text-xs px-2 py-1 rounded">
+            <span className="inline-block bg-sui-primary-subtle text-sui-primary-content text-xs px-2 py-1 rounded">
               {depth > 1 ? `${additionalIndex}` : `tuple[${additionalIndex}]`}
             </span>
             <div className="space-y-4">

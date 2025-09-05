@@ -66,7 +66,7 @@ const NumberDisplay = ({ value }: { value: bigint }) => {
       {isEther ? "Ξ" + formatEther(value) : String(value)}
       <Tooltip content={isEther ? "Multiply by 1e18" : "Divide by 1e18"} position="top" className="font-sans ml-2">
         <button
-          className="p-1 text-base-content/60 hover:text-base-content hover:bg-base-200 rounded-full transition-colors duration-200 w-6 h-6 flex items-center justify-center"
+          className="p-1 text-sui-primary-content/60 hover:text-sui-primary-content hover:bg-sui-primary-neutral rounded-full transition-colors duration-200 w-6 h-6 flex items-center justify-center"
           onClick={() => setIsEther(!isEther)}
         >
           <ArrowsRightLeftIcon className="h-3 w-3 opacity-65" />
@@ -89,8 +89,8 @@ export const ObjectFieldDisplay = ({
 }) => {
   return (
     <div className={`flex flex-row items-baseline ${leftPad ? "ml-4" : ""}`}>
-      <span className="text-base-content/60 mr-2">{name}:</span>
-      <span className="text-base-content">{displayTxResult(value, size)}</span>
+      <span className="text-sui-primary-content/60 mr-2">{name}:</span>
+      <span className="text-sui-primary-content">{displayTxResult(value, size)}</span>
     </div>
   );
 };

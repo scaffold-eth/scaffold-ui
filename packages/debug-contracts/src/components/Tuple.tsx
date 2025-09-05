@@ -26,7 +26,7 @@ export const Tuple = ({ abiTupleParameter, setParentForm, parentStateObjectKey }
 
   return (
     <Collapsible title={abiTupleParameter.internalType || "tuple"}>
-      <div className="flex flex-col space-y-4 border-l-2 border-secondary/80 pl-4 ml-3">
+      <div className="flex flex-col space-y-4 border-l-2 border-sui-primary-subtle/80 pl-4 ml-3">
         {abiTupleParameter?.components?.map((param: any, index: any) => {
           const key = getFunctionInputKey(abiTupleParameter.name || "tuple", param, index);
           return <ContractInput setForm={setForm} form={form} key={key} stateObjectKey={key} paramType={param} />;

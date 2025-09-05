@@ -15,12 +15,12 @@ export const TxReceipt = ({ txResult }: { txResult: TransactionReceipt }) => {
   };
 
   return (
-    <div className={`text-sm bg-secondary ${isExpanded ? "rounded-t-3xl" : "rounded-3xl"} min-h-0 py-0`}>
+    <div className={`text-sm bg-sui-primary-subtle ${isExpanded ? "rounded-t-3xl" : "rounded-3xl"} min-h-0 py-0`}>
       <div className="flex items-center">
         <div className="mt-1 pl-2 flex-shrink-0">
           {isTxResultCopiedToClipboard ? (
             <CheckCircleIcon
-              className="ml-1.5 text-xl font-normal text-base-content h-5 w-5 cursor-pointer"
+              className="ml-1.5 text-xl font-normal text-sui-primary-content h-5 w-5 cursor-pointer"
               aria-hidden="true"
             />
           ) : (
@@ -46,7 +46,7 @@ export const TxReceipt = ({ txResult }: { txResult: TransactionReceipt }) => {
           isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="overflow-auto bg-secondary rounded-b-3xl border-t border-gray-300/20">
+        <div className="overflow-auto bg-sui-primary-subtle rounded-b-3xl border-t border-gray-300/20">
           <pre className="text-xs p-4 whitespace-pre-wrap break-words rounded-b-3xl">
             {Object.entries(txResult).map(([k, v]) => (
               <ObjectFieldDisplay name={k} value={v} size="xs" leftPad={false} key={k} />

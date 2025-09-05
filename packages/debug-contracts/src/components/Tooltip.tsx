@@ -29,15 +29,15 @@ const getPositionClasses = (position: TooltipPosition): string => {
 const getArrowClasses = (position: TooltipPosition): string => {
   switch (position) {
     case "top":
-      return "absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-primary";
+      return "absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-sui-primary";
     case "bottom":
-      return "absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-primary";
+      return "absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-sui-primary";
     case "left":
-      return "absolute left-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-l-primary";
+      return "absolute left-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-l-sui-primary";
     case "right":
-      return "absolute right-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-r-primary";
+      return "absolute right-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-r-sui-primary";
     default:
-      return "absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-primary";
+      return "absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-sui-primary";
   }
 };
 
@@ -60,7 +60,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
     <div className={`relative group inline-block ${className}`}>
       {children}
       <div
-        className={`absolute ${positionClasses} px-2 py-1 text-sm rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 bg-primary text-primary-content ${contentClassName}`}
+        className={`absolute ${positionClasses} px-2 py-1 text-sm rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 bg-sui-primary text-sui-primary-content ${contentClassName}`}
       >
         {content}
         <div className={arrowClasses}></div>

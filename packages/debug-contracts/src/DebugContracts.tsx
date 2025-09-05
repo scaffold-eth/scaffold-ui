@@ -37,8 +37,8 @@ export const DebugContracts: React.FC<DebugContractsProps> = ({ contracts, chain
                 <button
                   className={`font-light hover:border-transparent ${
                     contractName === selectedContract
-                      ? "bg-base-300 hover:bg-base-300 no-animation"
-                      : "bg-base-100 hover:bg-secondary"
+                      ? "bg-sui-primary-subtle hover:bg-sui-primary-subtle no-animation"
+                      : "bg-sui-base-100 hover:bg-sui-primary-subtle"
                   }`}
                   key={contractName}
                   onClick={() => setSelectedContract(contractName)}
