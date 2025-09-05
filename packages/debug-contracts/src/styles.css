@@ -1,20 +1,9 @@
-@import "tailwindcss";
+@import "@scaffold-ui/components/src/styles.css";
 
 @custom-variant dark (&:where(.dark, .dark *, [data-theme=dark], [data-theme=dark] *));
 
 @theme {
-  /* components package colors */
-  --color-sui-primary: #93bbfb;
-  --color-sui-primary-subtle: #dae8ff;
-  --color-sui-primary-neutral: #f4f8ff;
-  --color-sui-primary-content: #212638;
-  --color-sui-success: #34eeb6;
-  --color-sui-warning: #ffcf72;
-  --color-sui-error: #ff8863;
-  --color-sui-skeleton-base: var(--color-sui-primary-subtle);
-  --color-sui-skeleton-highlight: var(--color-sui-primary-neutral);
-
-  /* Additional colors for debug-contracts */
+  /* Additional colors for debug-contracts only */
   --color-sui-base-100: #ffffff;
   --color-sui-neutral: #212638;
   --color-sui-neutral-content: #ffffff;
@@ -25,42 +14,11 @@
 }
 
 @variant dark {
-  /* components package colors */
-  --color-sui-primary: #212638;
-  --color-sui-primary-subtle: #323f61;
-  --color-sui-primary-neutral: #2a3655;
-  --color-sui-primary-content: #f9fbff;
-  --color-sui-skeleton-base: var(--color-sui-primary-subtle);
-  --color-sui-skeleton-highlight: var(--color-sui-primary-neutral);
-
-  /* Additional dark mode colors for debug-contracts */
+  /* Additional dark mode colors for debug-contracts only */
   --color-sui-base-100: #385183;
   --color-sui-neutral: #f9fbff;
   --color-sui-neutral-content: #385183;
   --color-sui-accent: #4969a6;
-}
-
-.skeleton {
-  border-radius: 0.2rem;
-  background-color: var(--color-sui-skeleton-base);
-  @media (prefers-reduced-motion: reduce) {
-    transition-duration: 15s;
-  }
-  will-change: background-position;
-  animation: skeleton 1.8s ease-in-out infinite;
-  background-image: linear-gradient(105deg, #0000 0% 40%, var(--color-sui-skeleton-highlight) 50%, #0000 60% 100%);
-  background-size: 200% auto;
-  background-repeat: no-repeat;
-  background-position-x: -50%;
-}
-
-@keyframes skeleton {
-  0% {
-    background-position-x: -50%;
-  }
-  100% {
-    background-position-x: 150%;
-  }
 }
 
 @layer components {
