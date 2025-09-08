@@ -3,10 +3,13 @@
   "tag": "rc",
   "initialVersions": {
     "@scaffold-ui/components": "0.1.1",
-    "@scaffold-ui/hooks": "0.1.1"
+    "@scaffold-ui/hooks": "0.1.1",
+    "@scaffold-ui/debug-contracts": "0.1.0"
   },
   "changesets": [
+    "floppy-feet-leave",
     "happy-rings-greet",
+    "six-glasses-fall",
     "slick-news-cheat"
   ]
 }
