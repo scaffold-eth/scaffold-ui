@@ -12,15 +12,12 @@ export default defineConfig({
         { text: "Installation", link: "/getting-started/installation" },
       ],
     },
-    {
-      text: "Components",
-      items: [{ text: "Address", link: "/components/address" }],
-    },
   ],
   topNav: [
-    { text: "Components", link: "/components/address" },
-    { text: "Hooks", link: "/hooks/use-address" },
-    { text: "Examples", link: "/examples" },
+    {
+      text: "Examples",
+      link: "https://github.com/scaffold-eth/scaffold-ui/tree/main/example",
+    },
     { text: "GitHub", link: "https://github.com/scaffold-eth/scaffold-ui" },
   ],
   theme: {
