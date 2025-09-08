@@ -1,0 +1,78 @@
+@import "@scaffold-ui/components/src/styles.css";
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  /* Additional colors for debug-contracts only */
+  --color-sui-base-100: #ffffff;
+  --color-sui-neutral: #212638;
+  --color-sui-neutral-content: #ffffff;
+
+  /* Utility colors */
+  --shadow-center: 0 0 12px -2px rgb(0 0 0 / 0.05);
+  --animate-pulse-fast: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@variant dark {
+  /* Additional dark mode colors for debug-contracts only */
+  --color-sui-base-100: #385183;
+  --color-sui-neutral: #f9fbff;
+  --color-sui-neutral-content: #385183;
+  --color-sui-accent: #4969a6;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full px-3 py-1.5 text-sm font-medium cursor-pointer;
+    background-color: var(--color-sui-primary-subtle);
+    color: var(--color-sui-primary-content);
+    border: 1px solid var(--color-sui-primary-subtle);
+    @apply transition-transform duration-75 ease-out;
+    min-height: 2rem;
+  }
+
+  .btn:disabled {
+    @apply opacity-50;
+  }
+
+  .btn:hover:not(:disabled) {
+    @apply brightness-90;
+  }
+
+  .btn:active:not(:disabled) {
+    @apply scale-95;
+  }
+
+  .btn-primary {
+    background-color: var(--color-sui-primary);
+    color: var(--color-sui-primary-content);
+    border-color: var(--color-sui-primary);
+  }
+
+  .btn-accent {
+    background-color: var(--color-sui-primary);
+    color: var(--color-sui-primary-content);
+    border-color: var(--color-sui-primary);
+  }
+
+  .loading {
+    @apply pointer-events-none inline-block aspect-square bg-current align-middle w-4;
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' stroke='black' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform-origin='center'%3E%3Ccircle cx='12' cy='12' r='9.5' fill='none' stroke-width='3' stroke-linecap='round'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 12 12' to='360 12 12' dur='2s' repeatCount='indefinite'/%3E%3Canimate attributeName='stroke-dasharray' values='0,150;42,150;42,150' keyTimes='0;0.475;1' dur='1.5s' repeatCount='indefinite'/%3E%3Canimate attributeName='stroke-dashoffset' values='0;-16;-59' keyTimes='0;0.475;1' dur='1.5s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .loading-spinner {
+    mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' stroke='black' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform-origin='center'%3E%3Ccircle cx='12' cy='12' r='9.5' fill='none' stroke-width='3' stroke-linecap='round'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 12 12' to='360 12 12' dur='2s' repeatCount='indefinite'/%3E%3Canimate attributeName='stroke-dasharray' values='0,150;42,150;42,150' keyTimes='0;0.475;1' dur='1.5s' repeatCount='indefinite'/%3E%3Canimate attributeName='stroke-dashoffset' values='0;-16;-59' keyTimes='0;0.475;1' dur='1.5s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .link {
+    @apply underline;
+    text-underline-offset: 2px;
+  }
+
+  .link:hover {
+    opacity: 80%;
+  }
+}

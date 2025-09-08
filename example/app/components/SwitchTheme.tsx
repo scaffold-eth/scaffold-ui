@@ -25,7 +25,7 @@ export const SwitchTheme = ({ className }: { className?: string }) => {
   if (!mounted) return null;
 
   return (
-    <div className={`flex items-center space-x-3 ${className}`}>
+    <div className={`fixed bottom-6 right-6 z-50 flex items-center space-x-3 p-3 rounded-lg shadow-lg ${className}`}>
       {/* Custom Toggle Switch */}
       <button
         onClick={handleToggle}
