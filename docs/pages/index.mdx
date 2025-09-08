@@ -1,0 +1,50 @@
+# Scaffold UI
+
+Scaffold UI is a collection of React components and hooks designed specifically for building Ethereum dApps. These components provide a seamless way to interact with Ethereum addresses, balances, and user inputs in your decentralized applications.
+
+## Features
+
+- 🏗️ **Built for Ethereum**: Components designed specifically for dApp development
+- ⚡ **TypeScript**: Full TypeScript support with comprehensive type definitions
+- 🎨 **Customizable**: Flexible theming and styling options
+- 🪝 **React Hooks**: Complementary hooks for enhanced functionality
+- 📱 **Responsive**: Mobile-friendly components out of the box
+
+## Quick Start
+
+```bash
+npm install @scaffold-eth-ui/components
+```
+
+```tsx
+import { Address, Balance } from "@scaffold-eth-ui/components";
+
+function App() {
+  return (
+    <div>
+      <Address address="0x..." />
+      <Balance address="0x..." />
+    </div>
+  );
+}
+```
+
+## Components Overview
+
+### Address Components
+
+- **Address**: Display Ethereum addresses with formatting and copy functionality
+- **AddressInput**: Input field for Ethereum addresses with validation
+
+### Balance Components
+
+- **Balance**: Display token balances with formatting options
+
+### Input Components
+
+- **EtherInput**: Input field for Ether amounts with validation
+- **InputBase**: Base input component with consistent styling
+
+## Getting Started
+
+Check out the [Installation Guide](/getting-started/installation) to get started, or jump directly to the [Components](/components/address) documentation.

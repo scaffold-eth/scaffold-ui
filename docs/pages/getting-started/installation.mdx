@@ -1,0 +1,80 @@
+---
+layout: docs
+---
+
+# Installation
+
+## Package Installation
+
+Install Scaffold UI using your preferred package manager:
+
+:::code-group
+
+```bash [npm]
+npm install @scaffold-eth/ui
+```
+
+```bash [pnpm]
+pnpm add @scaffold-eth/ui
+```
+
+```bash [yarn]
+yarn add @scaffold-eth/ui
+```
+
+:::
+
+## Peer Dependencies
+
+Scaffold UI requires React as a peer dependency:
+
+```bash
+npm install react react-dom
+```
+
+## TypeScript Support
+
+Scaffold UI is written in TypeScript and includes comprehensive type definitions. No additional type packages are needed.
+
+## Setup
+
+### Basic Usage
+
+Import and use components directly:
+
+```tsx
+import { Address, Balance } from "@scaffold-eth/ui";
+
+function MyComponent() {
+  const address = "0x1234567890123456789012345678901234567890";
+
+  return (
+    <div>
+      <Address address={address} />
+      <Balance address={address} />
+    </div>
+  );
+}
+```
+
+### With Theme Provider
+
+For consistent theming across your application:
+
+```tsx
+import { ThemeProvider } from "@scaffold-eth/ui";
+
+function App() {
+  return (
+    <ThemeProvider>
+      <YourApp />
+    </ThemeProvider>
+  );
+}
+```
+
+## Next Steps
+
+- Explore the [Components](/components/address) documentation
+- Check out the [Hooks](/hooks/use-address) for additional functionality
+- View [Examples](/examples) for common usage patterns

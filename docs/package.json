@@ -1,0 +1,21 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "Documentation for scaffold-ui components",
+  "type": "module",
+  "scripts": {
+    "dev": "vocs dev",
+    "build": "vocs build",
+    "preview": "vocs preview"
+  },
+  "keywords": [
+    "documentation",
+    "scaffold-ui",
+    "components"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vocs": "^1.0.13"
+  }
+}
