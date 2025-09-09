@@ -2,6 +2,7 @@
 layout: docs
 ---
 
+import React from "react";
 import { Address } from "@scaffold-ui/components";
 import { DocsProvider } from "../../components/DocsProvider";
 
@@ -31,75 +32,106 @@ import { Address } from "@scaffold-ui/components";
 ### Basic Usage
 
 <DocsProvider>
-  <Address address="0x1234567890123456789012345678901234567890" />
+  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" />
 </DocsProvider>
 
-```tsx
-<Address address="0x1234567890123456789012345678901234567890" />
-```
+```tsx twoslash
+import React from "react";
+import { Address } from "@scaffold-ui/components";
 
-### With ENS Name
-
-<DocsProvider>
-  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="lg" />
-</DocsProvider>
-
-```tsx
-<Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="lg" />
+<Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="base" />;
 ```
 
 ### Different Sizes
 
 <DocsProvider>
-  <Address address="0x1234567890123456789012345678901234567890" size="xs" />
-  <Address address="0x1234567890123456789012345678901234567890" size="sm" />
-  <Address address="0x1234567890123456789012345678901234567890" size="base" />
-  <Address address="0x1234567890123456789012345678901234567890" size="lg" />
-  <Address address="0x1234567890123456789012345678901234567890" size="xl" />
+  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="xs" />
+  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="sm" />
+  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="base" />
+  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="lg" />
+  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="xl" />
 </DocsProvider>
 
-```tsx
-<Address address="0x..." size="xs" />
-<Address address="0x..." size="sm" />
-<Address address="0x..." size="base" />
-<Address address="0x..." size="lg" />
-<Address address="0x..." size="xl" />
+```tsx twoslash
+import React from "react";
+import { Address } from "@scaffold-ui/components";
+
+<Address
+  address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+  size="xs"
+  // ^?
+/>;
 ```
 
 ### Long Format
 
-```tsx
+<DocsProvider>
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    format="long"
+    size="base"
+  />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { Address } from "@scaffold-ui/components";
+
 <Address
   address="0x1234567890123456789012345678901234567890"
   format="long"
-  size="sm"
-/>
+  size="base"
+/>;
 ```
 
 ### Disable Block Explorer Link
 
-```tsx
+<DocsProvider>
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    disableAddressLink={true}
+    size="base"
+  />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { Address } from "@scaffold-ui/components";
+
 <Address
   address="0x1234567890123456789012345678901234567890"
   disableAddressLink={true}
   size="base"
-/>
+/>;
 ```
 
 ### ENS or Address Only
 
-```tsx
+<DocsProvider>
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    onlyEnsOrAddress={true}
+    size="base"
+  />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { Address } from "@scaffold-ui/components";
+
 <Address
   address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
   onlyEnsOrAddress={true}
   size="base"
-/>
+/>;
 ```
 
 ### Custom Chain
 
-```tsx
+```tsx twoslash
+import React from "react";
 import { polygon } from "viem/chains";
+import { Address } from "@scaffold-ui/components";
 
 <Address
   address="0x1234567890123456789012345678901234567890"
