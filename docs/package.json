@@ -16,8 +16,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@scaffold-ui/components": "0.1.2-rc.1",
-    "@scaffold-ui/hooks": "0.1.2-rc.0",
+    "@scaffold-ui/components": "workspace:*",
+    "@scaffold-ui/hooks": "workspace:*",
     "@tanstack/react-query": "^5.59.15",
     "@types/react": "^19",
     "@types/react-dom": "^19",

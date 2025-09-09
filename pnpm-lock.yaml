@@ -15,11 +15,11 @@ importers:
   docs:
     dependencies:
       '@scaffold-ui/components':
-        specifier: 0.1.2-rc.1
-        version: 0.1.2-rc.1(@scaffold-ui/hooks@0.1.2-rc.0(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(react@19.0.0)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10))(wagmi@2.14.15(@tanstack/query-core@5.69.0)(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10))))(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(react@19.0.0)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10))(wagmi@2.14.15(@tanstack/query-core@5.69.0)(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)))
+        specifier: workspace:*
+        version: link:../packages/components
       '@scaffold-ui/hooks':
-        specifier: 0.1.2-rc.0
-        version: 0.1.2-rc.0(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(react@19.0.0)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10))(wagmi@2.14.15(@tanstack/query-core@5.69.0)(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)))
+        specifier: workspace:*
+        version: link:../packages/hooks
       '@tanstack/react-query':
         specifier: ^5.59.15
         version: 5.69.0(react@19.0.0)
@@ -2048,25 +2048,6 @@ packages:
   '@safe-global/safe-gateway-typescript-sdk@3.22.9':
     resolution: {integrity: sha512-7ojVK/crhOaGowEO8uYWaopZzcr5rR76emgllGIfjCLR70aY4PbASpi9Pbs+7jIRzPDBBkM0RBo+zYx5UduX8Q==}
     engines: {node: '>=16'}
-
-  '@scaffold-ui/components@0.1.2-rc.1':
-    resolution: {integrity: sha512-YJ7MmGRzwL1zFY32pVJq+D3SsB+sLB0L7JsR7LNgfppW7ZWyhnU5EF9+HxHSrKDxRhpVx70kbXlli1+47IaRFA==}
-    peerDependencies:
-      '@scaffold-ui/hooks': 0.1.2-rc.0
-      '@tanstack/react-query': ^5.59.15
-      '@types/react': ^19.0.7
-      react: ^19.0.0
-      viem: ^2.23.0
-      wagmi: ^2.14.11
-
-  '@scaffold-ui/hooks@0.1.2-rc.0':
-    resolution: {integrity: sha512-rCuE3Rhfj+BPF9nfZICevqBGS8UWTozRuCmMjM3UueDXeeu8LQBbWRiczf6dgqQj9ST+cVUJys71PvzT57JjpA==}
-    peerDependencies:
-      '@tanstack/react-query': ^5.59.15
-      '@types/react': ^19.0.7
-      react: ^19.0.0
-      viem: ^2.23.0
-      wagmi: ^2.14.11
 
   '@scure/base@1.1.9':
     resolution: {integrity: sha512-8YKhl8GHiNI/pU2VMaofa2Tor7PJRAjwQLBBuilkJ9L5+13yVbC7JO/wS7piioAvPSwR3JKM1IJ/u4xQzbcXKg==}
@@ -8722,27 +8703,6 @@ snapshots:
       - zod
 
   '@safe-global/safe-gateway-typescript-sdk@3.22.9': {}
-
-  '@scaffold-ui/components@0.1.2-rc.1(@scaffold-ui/hooks@0.1.2-rc.0(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(react@19.0.0)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10))(wagmi@2.14.15(@tanstack/query-core@5.69.0)(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10))))(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(react@19.0.0)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10))(wagmi@2.14.15(@tanstack/query-core@5.69.0)(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)))':
-    dependencies:
-      '@scaffold-ui/hooks': 0.1.2-rc.0(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(react@19.0.0)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10))(wagmi@2.14.15(@tanstack/query-core@5.69.0)(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)))
-      '@tanstack/react-query': 5.69.0(react@19.0.0)
-      '@types/react': 19.0.12
-      react: 19.0.0
-      usehooks-ts: 3.1.1(react@19.0.0)
-      viem: 2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)
-      wagmi: 2.14.15(@tanstack/query-core@5.69.0)(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10))
-
-  '@scaffold-ui/hooks@0.1.2-rc.0(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(react@19.0.0)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10))(wagmi@2.14.15(@tanstack/query-core@5.69.0)(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)))':
-    dependencies:
-      '@tanstack/react-query': 5.69.0(react@19.0.0)
-      '@types/react': 19.0.12
-      '@uniswap/sdk-core': 7.7.2
-      '@uniswap/v2-sdk': 4.15.2
-      blo: 1.2.0
-      react: 19.0.0
-      viem: 2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)
-      wagmi: 2.14.15(@tanstack/query-core@5.69.0)(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10))
 
   '@scure/base@1.1.9': {}
 
