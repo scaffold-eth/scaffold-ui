@@ -15,11 +15,11 @@ importers:
   docs:
     dependencies:
       '@scaffold-ui/components':
-        specifier: link:../packages/components
-        version: link:../packages/components
+        specifier: '@scaffold-ui/components@0.1.2-rc.1'
+        version: link:@scaffold-ui/components@0.1.2-rc.1
       '@scaffold-ui/hooks':
-        specifier: link:../packages/hooks
-        version: link:../packages/hooks
+        specifier: '@scaffold-ui/hooks@0.1.2-rc.0'
+        version: link:@scaffold-ui/hooks@0.1.2-rc.0
       '@tanstack/react-query':
         specifier: ^5.59.15
         version: 5.69.0(react@19.0.0)
