@@ -11,15 +11,15 @@ Install Scaffold UI using your preferred package manager:
 :::code-group
 
 ```bash [npm]
-npm install @scaffold-eth/ui
+npm install @scaffold-ui/components
 ```
 
 ```bash [pnpm]
-pnpm add @scaffold-eth/ui
+pnpm add @scaffold-ui/components
 ```
 
 ```bash [yarn]
-yarn add @scaffold-eth/ui
+yarn add @scaffold-ui/components
 ```
 
 :::
@@ -32,10 +32,6 @@ Scaffold UI requires React as a peer dependency:
 npm install react react-dom
 ```
 
-## TypeScript Support
-
-Scaffold UI is written in TypeScript and includes comprehensive type definitions. No additional type packages are needed.
-
 ## Setup
 
 ### Basic Usage
@@ -43,7 +39,7 @@ Scaffold UI is written in TypeScript and includes comprehensive type definitions
 Import and use components directly:
 
 ```tsx
-import { Address, Balance } from "@scaffold-eth/ui";
+import { Address, Balance } from "@scaffold-ui/components";
 
 function MyComponent() {
   const address = "0x1234567890123456789012345678901234567890";
@@ -56,25 +52,3 @@ function MyComponent() {
   );
 }
 ```
-
-### With Theme Provider
-
-For consistent theming across your application:
-
-```tsx
-import { ThemeProvider } from "@scaffold-eth/ui";
-
-function App() {
-  return (
-    <ThemeProvider>
-      <YourApp />
-    </ThemeProvider>
-  );
-}
-```
-
-## Next Steps
-
-- Explore the component documentation (coming soon)
-- Check out the hooks for additional functionality (coming soon)
-- View [Examples](https://github.com/scaffold-eth/scaffold-ui/tree/main/example) for common usage patterns

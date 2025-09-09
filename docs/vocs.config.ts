@@ -12,8 +12,16 @@ export default defineConfig({
         { text: "Installation", link: "/getting-started/installation" },
       ],
     },
+    {
+      text: "Components",
+      items: [
+        { text: "Address", link: "/components/address" },
+        { text: "Balance", link: "/components/balance" },
+      ],
+    },
   ],
   topNav: [
+    { text: "Components", link: "/components/address" },
     {
       text: "Examples",
       link: "https://github.com/scaffold-eth/scaffold-ui/tree/main/example",

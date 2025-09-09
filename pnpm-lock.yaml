@@ -14,9 +14,36 @@ importers:
 
   docs:
     dependencies:
+      '@scaffold-ui/components':
+        specifier: link:../packages/components
+        version: link:../packages/components
+      '@scaffold-ui/hooks':
+        specifier: link:../packages/hooks
+        version: link:../packages/hooks
+      '@tanstack/react-query':
+        specifier: ^5.59.15
+        version: 5.69.0(react@19.0.0)
+      '@types/react':
+        specifier: ^19
+        version: 19.0.12
+      '@types/react-dom':
+        specifier: ^19
+        version: 19.0.4(@types/react@19.0.12)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+      viem:
+        specifier: ^2.23.13
+        version: 2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)
       vocs:
         specifier: ^1.0.13
         version: 1.0.13(@types/node@20.17.25)(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(jiti@2.4.2)(lightningcss@1.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(rollup@4.50.1)(typescript@5.8.2)(yaml@2.8.1)
+      wagmi:
+        specifier: ^2.14.15
+        version: 2.14.15(@tanstack/query-core@5.69.0)(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10))
 
   example:
     dependencies:
