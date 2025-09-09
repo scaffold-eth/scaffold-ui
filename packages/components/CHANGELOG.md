@@ -1,5 +1,11 @@
 # @scaffold-ui/components
 
+## 0.1.2-rc.1
+
+### Patch Changes
+
+- b3da6fe: setup themeing for components package
+
 ## 0.1.2-rc.0
 
 ### Patch Changes
