@@ -10,7 +10,7 @@ export type AddressProps = {
   address?: AddressType;
   disableAddressLink?: boolean;
   format?: "short" | "long";
-  size: "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl";
+  size?: "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl";
   onlyEnsOrAddress?: boolean;
   chain?: Chain;
   style?: CSSProperties;

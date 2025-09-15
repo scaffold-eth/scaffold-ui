@@ -32,7 +32,7 @@ export const UseAddressExample = () => {
           <div className="space-y-4">
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">Default (base size, short format)</span>
-              <Address address={address} size="base" />
+              <Address address={address} />
             </div>
 
             <div className="flex flex-col">
