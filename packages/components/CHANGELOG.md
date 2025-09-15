@@ -1,5 +1,11 @@
 # @scaffold-ui/components
 
+## 0.1.2-rc.2
+
+### Patch Changes
+
+- 211c108: make Address size prop optional
+
 ## 0.1.2-rc.1
 
 ### Patch Changes
