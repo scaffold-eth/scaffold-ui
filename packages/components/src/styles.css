@@ -32,7 +32,8 @@
   --color-sui-primary-neutral: #2a3655;
   --color-sui-primary-content: #f9fbff;
 
-  --color-sui-input-text: var(--color-sui-primary-content);
+  --color-sui-input-text: color-mix(in srgb, var(--color-sui-primary-content) 70%, transparent);
+  --color-sui-input-border: var(--color-sui-primary);
 }
 
 .skeleton {
