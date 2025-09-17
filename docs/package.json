@@ -1,0 +1,30 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "Documentation for scaffold-ui components",
+  "type": "module",
+  "scripts": {
+    "dev": "vocs dev",
+    "build": "pnpm --filter @scaffold-ui/hooks --filter @scaffold-ui/components run build && vocs build",
+    "preview": "vocs preview"
+  },
+  "keywords": [
+    "documentation",
+    "scaffold-ui",
+    "components"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@scaffold-ui/components": "workspace:*",
+    "@scaffold-ui/hooks": "workspace:*",
+    "@tanstack/react-query": "^5.59.15",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "viem": "^2.23.13",
+    "vocs": "^1.0.13",
+    "wagmi": "^2.14.15"
+  }
+}
