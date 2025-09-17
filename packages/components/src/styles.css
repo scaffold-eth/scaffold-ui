@@ -37,21 +37,21 @@
   --color-sui-input-border: var(--color-sui-primary);
 }
 
-.skeleton {
+.sui-skeleton {
   border-radius: 0.2rem;
   background-color: var(--color-sui-skeleton-base);
   @media (prefers-reduced-motion: reduce) {
     transition-duration: 15s;
   }
   will-change: background-position;
-  animation: skeleton 1.8s ease-in-out infinite;
+  animation: sui-skeleton 1.8s ease-in-out infinite;
   background-image: linear-gradient(105deg, #0000 0% 40%, var(--color-sui-skeleton-highlight) 50%, #0000 60% 100%);
   background-size: 200% auto;
   background-repeat: no-repeat;
   background-position-x: -50%;
 }
 
-@keyframes skeleton {
+@keyframes sui-skeleton {
   0% {
     background-position-x: -50%;
   }
