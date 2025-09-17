@@ -1,0 +1,54 @@
+---
+layout: docs
+---
+
+# Installation
+
+## Package Installation
+
+Install Scaffold UI using your preferred package manager:
+
+:::code-group
+
+```bash [npm]
+npm install @scaffold-ui/components
+```
+
+```bash [pnpm]
+pnpm add @scaffold-ui/components
+```
+
+```bash [yarn]
+yarn add @scaffold-ui/components
+```
+
+:::
+
+## Peer Dependencies
+
+Scaffold UI requires React as a peer dependency:
+
+```bash
+npm install react react-dom
+```
+
+## Setup
+
+### Basic Usage
+
+Import and use components directly:
+
+```tsx
+import { Address, Balance } from "@scaffold-ui/components";
+
+function MyComponent() {
+  const address = "0x1234567890123456789012345678901234567890";
+
+  return (
+    <div>
+      <Address address={address} />
+      <Balance address={address} />
+    </div>
+  );
+}
+```

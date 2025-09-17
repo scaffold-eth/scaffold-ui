@@ -1,0 +1,141 @@
+---
+layout: docs
+---
+
+import React from "react";
+import { Address } from "@scaffold-ui/components";
+import { DocsProvider } from "../../components/DocsProvider";
+
+# Address Component
+
+The `Address` component displays Ethereum addresses with automatic ENS resolution, avatar display, and block explorer linking.
+
+## Import
+
+```tsx
+import { Address } from "@scaffold-ui/components";
+```
+
+## Props
+
+| Prop                 | Type                                                       | Default   | Description                              |
+| -------------------- | ---------------------------------------------------------- | --------- | ---------------------------------------- |
+| `address`            | `Address`                                                  | -         | The Ethereum address to display          |
+| `disableAddressLink` | `boolean`                                                  | `false`   | Disable linking to block explorer        |
+| `format`             | `"short" \| "long"`                                        | `"short"` | Display format for the address           |
+| `size`               | `"xs" \| "sm" \| "base" \| "lg" \| "xl" \| "2xl" \| "3xl"` | `"base"`  | Size of the component                    |
+| `onlyEnsOrAddress`   | `boolean`                                                  | `false`   | Show only ENS name or address (not both) |
+| `chain`              | `Chain`                                                    | `mainnet` | Blockchain network for resolution        |
+
+## Live Examples
+
+### Basic Usage
+
+<DocsProvider>
+  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { Address } from "@scaffold-ui/components";
+
+<Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="base" />;
+```
+
+### Different Sizes
+
+<DocsProvider>
+  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="xs" />
+  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="sm" />
+  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="base" />
+  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="lg" />
+  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="xl" />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { Address } from "@scaffold-ui/components";
+
+<Address
+  address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+  size="xs"
+  // ^?
+/>;
+```
+
+### Long Format
+
+<DocsProvider>
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    format="long"
+    size="base"
+  />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { Address } from "@scaffold-ui/components";
+
+<Address
+  address="0x1234567890123456789012345678901234567890"
+  format="long"
+  size="base"
+/>;
+```
+
+### Disable Block Explorer Link
+
+<DocsProvider>
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    disableAddressLink={true}
+    size="base"
+  />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { Address } from "@scaffold-ui/components";
+
+<Address
+  address="0x1234567890123456789012345678901234567890"
+  disableAddressLink={true}
+  size="base"
+/>;
+```
+
+### ENS or Address Only
+
+<DocsProvider>
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    onlyEnsOrAddress={true}
+    size="base"
+  />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { Address } from "@scaffold-ui/components";
+
+<Address
+  address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+  onlyEnsOrAddress={true}
+  size="base"
+/>;
+```
+
+### Custom Chain
+
+```tsx twoslash
+import React from "react";
+import { polygon } from "viem/chains";
+import { Address } from "@scaffold-ui/components";
+
+<Address
+  address="0x1234567890123456789012345678901234567890"
+  chain={polygon}
+  size="base"
+/>;
+```

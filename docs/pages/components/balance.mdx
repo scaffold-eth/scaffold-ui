@@ -1,0 +1,64 @@
+---
+layout: docs
+---
+
+import { Balance } from "@scaffold-ui/components";
+import { DocsProvider } from "../../components/DocsProvider";
+
+# Balance Component
+
+The `Balance` component displays token balances for Ethereum addresses with support for USD conversion and interactive toggling.
+
+## Import
+
+```tsx
+import { Balance } from "@scaffold-ui/components";
+```
+
+## Props
+
+| Prop             | Type      | Default                      | Description                                            |
+| ---------------- | --------- | ---------------------------- | ------------------------------------------------------ |
+| `address`        | `Address` | -                            | **Required.** The Ethereum address to show balance for |
+| `chain`          | `Chain`   | Connected chain or `mainnet` | Blockchain network to query                            |
+| `className`      | `string`  | `""`                         | Additional CSS classes                                 |
+| `defaultUsdMode` | `boolean` | `false`                      | Start in USD display mode                              |
+
+## Live Examples
+
+### Basic Usage
+
+<DocsProvider>
+  <Balance address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" />
+</DocsProvider>
+
+```tsx
+<Balance address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" />
+```
+
+### Default USD Mode
+
+<DocsProvider>
+  <Balance
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    defaultUsdMode={true}
+  />
+</DocsProvider>
+
+```tsx
+<Balance
+  address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+  defaultUsdMode={true}
+/>
+```
+
+### Custom Chain
+
+```tsx
+import { polygon } from "viem/chains";
+
+<Balance
+  address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+  chain={polygon}
+/>;
+```
