@@ -88,14 +88,14 @@ export const ReadOnlyFunctionForm = ({
           )}
         </div>
         <button
-          className="btn btn-secondary btn-sm self-end md:self-start"
+          className="btn-dc btn-dc-secondary btn-sm self-end md:self-start"
           onClick={async () => {
             const { data } = await refetch();
             setResult(data);
           }}
           disabled={isFetching}
         >
-          {isFetching && <span className="loading loading-spinner loading-xs"></span>}
+          {isFetching && <span className="loading-dc loading-dc-spinner loading-xs"></span>}
           Read 📡
         </button>
       </div>

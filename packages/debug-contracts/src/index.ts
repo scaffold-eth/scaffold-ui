@@ -1,1 +1,1 @@
-export { DebugContracts, type DebugContractsProps } from "./DebugContracts.js";
+export { Contract, type ContractProps } from "./Contract.js";
