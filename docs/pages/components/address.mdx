@@ -35,12 +35,17 @@ import { Address } from "@scaffold-ui/components";
   <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" />
 </DocsProvider>
 
+{/* prettier-ignore-start */}
 ```tsx twoslash
 import React from "react";
 import { Address } from "@scaffold-ui/components";
 
-<Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="base" />;
+<Address
+  address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+  size="base"
+/>;
 ```
+{/* prettier-ignore-end */}
 
 ### Different Sizes
 
@@ -52,6 +57,7 @@ import { Address } from "@scaffold-ui/components";
   <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="xl" />
 </DocsProvider>
 
+{/* prettier-ignore-start */}
 ```tsx twoslash
 import React from "react";
 import { Address } from "@scaffold-ui/components";
@@ -59,9 +65,9 @@ import { Address } from "@scaffold-ui/components";
 <Address
   address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
   size="xs"
-  // ^?
 />;
 ```
+{/* prettier-ignore-end */}
 
 ### Long Format
 
