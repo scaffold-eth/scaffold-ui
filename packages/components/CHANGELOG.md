@@ -1,5 +1,11 @@
 # @scaffold-ui/components
 
+## 0.1.2-rc.3
+
+### Patch Changes
+
+- bd0d241: UI polish
+
 ## 0.1.2-rc.2
 
 ### Patch Changes
