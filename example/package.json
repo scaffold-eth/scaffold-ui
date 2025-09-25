@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "pnpm --filter @scaffold-ui/hooks --filter @scaffold-ui/components run build && next build",
+    "build": "pnpm --filter @scaffold-ui/hooks --filter @scaffold-ui/components --filter @scaffold-ui/debug-contracts run build && next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write ."
