@@ -1,5 +1,13 @@
 # @scaffold-ui/debug-contracts
 
+## 0.1.1-rc.2
+
+### Patch Changes
+
+- bd0d241: UI polish
+- Updated dependencies [bd0d241]
+  - @scaffold-ui/components@0.1.2-rc.3
+
 ## 0.1.1-rc.1
 
 ### Patch Changes
