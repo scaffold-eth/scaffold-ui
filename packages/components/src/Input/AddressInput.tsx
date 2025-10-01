@@ -1,3 +1,5 @@
+"use client";
+
 import { blo } from "blo";
 import { Address } from "viem";
 import { useAddressInput } from "@scaffold-ui/hooks";

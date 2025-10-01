@@ -1,3 +1,5 @@
+"use client";
+
 import React, { CSSProperties } from "react";
 import { Address, Chain } from "viem";
 import { useBalance } from "@scaffold-ui/hooks";

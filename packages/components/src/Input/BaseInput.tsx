@@ -1,3 +1,5 @@
+"use client";
+
 import { ChangeEvent, FocusEvent, ReactNode, useCallback, useEffect, useRef } from "react";
 import { CommonInputProps } from "./utils";
 
