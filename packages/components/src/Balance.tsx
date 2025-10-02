@@ -7,7 +7,7 @@ import { useAccount } from "wagmi";
 import { mainnet } from "viem/chains";
 
 export type BalanceProps = {
-  address: Address;
+  address?: Address;
   chain?: Chain;
   defaultUsdMode?: boolean;
   style?: CSSProperties;
