@@ -7,11 +7,14 @@
     "@scaffold-ui/debug-contracts": "0.1.0"
   },
   "changesets": [
+    "empty-jokes-open",
     "floppy-feet-leave",
     "green-ties-own",
     "happy-rings-greet",
+    "sharp-groups-hope",
     "silly-cameras-fix",
     "six-glasses-fall",
-    "slick-news-cheat"
+    "slick-news-cheat",
+    "some-steaks-retire"
   ]
 }

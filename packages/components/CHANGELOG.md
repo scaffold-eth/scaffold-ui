@@ -1,5 +1,15 @@
 # @scaffold-ui/components
 
+## 0.1.2-rc.4
+
+### Patch Changes
+
+- 5e5778b: make address optional for useBalance and Balance component
+- 5e5778b: ui polish to debug component
+- 5e5778b: Address component blockexplorer link and "use client" for all components
+- Updated dependencies [5e5778b]
+  - @scaffold-ui/hooks@0.1.2-rc.1
+
 ## 0.1.2-rc.3
 
 ### Patch Changes
