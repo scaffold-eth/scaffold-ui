@@ -1,5 +1,16 @@
 # @scaffold-ui/debug-contracts
 
+## 0.1.1-rc.3
+
+### Patch Changes
+
+- 5e5778b: ui polish to debug component
+- Updated dependencies [5e5778b]
+- Updated dependencies [5e5778b]
+- Updated dependencies [5e5778b]
+  - @scaffold-ui/components@0.1.2-rc.4
+  - @scaffold-ui/hooks@0.1.2-rc.1
+
 ## 0.1.1-rc.2
 
 ### Patch Changes
