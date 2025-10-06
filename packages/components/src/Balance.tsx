@@ -22,7 +22,7 @@ export type BalanceProps = {
  * - Shows a loading skeleton while fetching, and an error message if fetching fails.
  *
  * @param {BalanceProps} props - The props for the Balance component.
- * @param {Address} [props.address] - The address to display the balance for.
+ * @param {Address} [props.address] - (Optional) The address to display the balance for.
  * @param {Chain} [props.chain] - (Optional) The blockchain network to use. Defaults to the connected chain or mainnet.
  * @param {boolean} [props.defaultUsdMode] - (Optional) If true, displays the balance in USD by default.
  *
