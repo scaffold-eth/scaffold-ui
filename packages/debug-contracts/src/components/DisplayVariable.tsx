@@ -59,7 +59,7 @@ export const DisplayVariable = ({
       <div className="flex items-center">
         <h3 className="font-medium text-lg mb-0 break-all">{abiFunction.name}</h3>
         <button
-          className="p-1 text-sui-primary-content/60 hover:text-sui-primary-content hover:bg-sui-primary-neutral rounded transition-colors duration-200"
+          className="p-1 text-sui-primary-content/60 hover:text-sui-primary-content dark:hover:bg-sui-primary-neutral hover:bg-sui-primary transition-colors duration-200 cursor-pointer ml-1 rounded-full"
           onClick={async () => await refetch()}
         >
           {isFetching ? (

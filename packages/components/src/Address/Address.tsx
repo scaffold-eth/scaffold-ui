@@ -1,3 +1,5 @@
+"use client";
+
 import React, { CSSProperties } from "react";
 import { useAddress } from "@scaffold-ui/hooks";
 import { Chain, type Address as AddressType } from "viem";
@@ -14,6 +16,7 @@ export type AddressProps = {
   onlyEnsOrAddress?: boolean;
   chain?: Chain;
   style?: CSSProperties;
+  blockExplorerAddressLink?: string;
 };
 
 export const Address: React.FC<AddressProps> = ({
@@ -24,9 +27,18 @@ export const Address: React.FC<AddressProps> = ({
   onlyEnsOrAddress,
   chain,
   style,
+  blockExplorerAddressLink,
 }) => {
-  const { checkSumAddress, ens, ensAvatar, isEnsNameLoading, blockExplorerAddressLink, shortAddress, blockieUrl } =
-    useAddress({ address, chain: chain || mainnet });
+  const {
+    checkSumAddress,
+    ens,
+    ensAvatar,
+    isEnsNameLoading,
+    blockExplorerAddressLink: blockExplorerLink,
+    shortAddress,
+    blockieUrl,
+  } = useAddress({ address, chain: chain || mainnet });
+  blockExplorerAddressLink = blockExplorerAddressLink || blockExplorerLink;
 
   const displayAddress = format === "long" ? checkSumAddress : shortAddress;
   const displayEnsOrAddress = ens || displayAddress;

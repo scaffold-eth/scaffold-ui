@@ -118,11 +118,11 @@ export const TupleArray = ({ abiTupleParameter, setParentForm, parentStateObject
           </div>
         ))}
         <div className="flex space-x-2">
-          <button className="btn-dc btn-dc-secondary" onClick={addInput}>
+          <button className="btn-dc btn-dc-secondary min-h-9 min-w-9" onClick={addInput}>
             +
           </button>
           {additionalInputs.length > 0 && (
-            <button className="btn-dc btn-dc-secondary" onClick={removeInput}>
+            <button className="btn-dc btn-dc-secondary min-h-9 min-w-9" onClick={removeInput}>
               -
             </button>
           )}
