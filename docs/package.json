@@ -26,5 +26,8 @@
     "viem": "^2.23.13",
     "vocs": "^1.0.13",
     "wagmi": "^2.14.15"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
   }
 }

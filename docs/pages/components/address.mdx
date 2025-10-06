@@ -39,17 +39,35 @@ import { Address } from "@scaffold-ui/components";
 import React from "react";
 import { Address } from "@scaffold-ui/components";
 
-<Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="base" />;
+<Address
+  address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+  size="base"
+/>;
 ```
 
 ### Different Sizes
 
 <DocsProvider>
-  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="xs" />
-  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="sm" />
-  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="base" />
-  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="lg" />
-  <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" size="xl" />
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    size="xs"
+  />
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    size="sm"
+  />
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    size="base"
+  />
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    size="lg"
+  />
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    size="xl"
+  />
 </DocsProvider>
 
 ```tsx twoslash
@@ -59,7 +77,6 @@ import { Address } from "@scaffold-ui/components";
 <Address
   address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
   size="xs"
-  // ^?
 />;
 ```
 
@@ -127,6 +144,16 @@ import { Address } from "@scaffold-ui/components";
 ```
 
 ### Custom Chain
+
+import { polygon } from "viem/chains";
+
+<DocsProvider>
+  <Address
+    address="0x1234567890123456789012345678901234567890"
+    chain={polygon}
+    size="base"
+  />
+</DocsProvider>
 
 ```tsx twoslash
 import React from "react";
