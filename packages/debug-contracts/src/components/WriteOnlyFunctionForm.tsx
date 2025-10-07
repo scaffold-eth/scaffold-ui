@@ -120,7 +120,7 @@ export const WriteOnlyFunctionForm = ({
         <div className="flex justify-between gap-2 min-w-0">
           {!zeroInputs && (
             <div className="flex-1 min-w-0 max-w-11/12 overflow-auto">
-              {displayedTxResult ? <TxReceipt txResult={displayedTxResult} /> : null}
+              {displayedTxResult ? <TxReceipt txResult={displayedTxResult} chainId={chainId} /> : null}
             </div>
           )}
           <div className="flex flex-shrink-0 self-start">
@@ -139,7 +139,7 @@ export const WriteOnlyFunctionForm = ({
       </div>
       {zeroInputs && txResult ? (
         <div className="w-full min-w-0 overflow-auto">
-          <TxReceipt txResult={txResult} />
+          <TxReceipt txResult={txResult} chainId={chainId} />
         </div>
       ) : null}
     </div>

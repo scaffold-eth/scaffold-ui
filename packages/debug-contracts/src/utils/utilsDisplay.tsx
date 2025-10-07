@@ -1,8 +1,9 @@
 import { ReactElement, useState } from "react";
-import { TransactionBase, TransactionReceipt, formatEther, isAddress, isHex } from "viem";
+import { TransactionBase, TransactionReceipt, extractChain, formatEther, isAddress, isHex } from "viem";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/solid";
 import { Address } from "@scaffold-ui/components";
 import { Tooltip } from "../components/Tooltip";
+import * as chains from "viem/chains";
 
 // To be used in JSON.stringify when a field might be bigint
 // https://wagmi.sh/react/faq#bigint-serialization
@@ -23,6 +24,7 @@ type ResultFontSize = "sm" | "base" | "xs" | "lg" | "xl" | "2xl" | "3xl";
 export const displayTxResult = (
   displayContent: DisplayContent | DisplayContent[],
   fontSize: ResultFontSize = "base",
+  chainId: number,
 ): string | ReactElement | number => {
   if (displayContent == null) {
     return "";
@@ -34,7 +36,11 @@ export const displayTxResult = (
 
   if (typeof displayContent === "string") {
     if (isAddress(displayContent)) {
-      return <Address address={displayContent} size={fontSize} onlyEnsOrAddress />;
+      const chain = extractChain({
+        chains: Object.values(chains),
+        id: chainId as any,
+      });
+      return <Address address={displayContent} size={fontSize} onlyEnsOrAddress chain={chain} />;
     }
 
     if (isHex(displayContent)) {
@@ -43,11 +49,11 @@ export const displayTxResult = (
   }
 
   if (Array.isArray(displayContent)) {
-    return <ArrayDisplay values={displayContent} size={fontSize} />;
+    return <ArrayDisplay values={displayContent} size={fontSize} chainId={chainId} />;
   }
 
   if (typeof displayContent === "object") {
-    return <StructDisplay struct={displayContent} size={fontSize} />;
+    return <StructDisplay struct={displayContent} size={fontSize} chainId={chainId} />;
   }
 
   return JSON.stringify(displayContent, replacer, 2);
@@ -81,37 +87,55 @@ export const ObjectFieldDisplay = ({
   value,
   size,
   leftPad = true,
+  chainId,
 }: {
   name: string;
   value: DisplayContent;
   size: ResultFontSize;
   leftPad?: boolean;
+  chainId: number;
 }) => {
   return (
     <div className={`flex flex-row items-baseline ${leftPad ? "ml-4" : ""}`}>
       <span className="text-sui-primary-content/60 mr-2">{name}:</span>
-      <span className="text-sui-primary-content">{displayTxResult(value, size)}</span>
+      <span className="text-sui-primary-content">{displayTxResult(value, size, chainId)}</span>
     </div>
   );
 };
 
-const ArrayDisplay = ({ values, size }: { values: DisplayContent[]; size: ResultFontSize }) => {
+const ArrayDisplay = ({
+  values,
+  size,
+  chainId,
+}: {
+  values: DisplayContent[];
+  size: ResultFontSize;
+  chainId: number;
+}) => {
   return (
     <div className="flex flex-col gap-y-1">
       {values.length ? "array" : "[]"}
       {values.map((v, i) => (
-        <ObjectFieldDisplay key={i} name={`[${i}]`} value={v} size={size} />
+        <ObjectFieldDisplay key={i} name={`[${i}]`} value={v} size={size} chainId={chainId} />
       ))}
     </div>
   );
 };
 
-const StructDisplay = ({ struct, size }: { struct: Record<string, any>; size: ResultFontSize }) => {
+const StructDisplay = ({
+  struct,
+  size,
+  chainId,
+}: {
+  struct: Record<string, any>;
+  size: ResultFontSize;
+  chainId: number;
+}) => {
   return (
     <div className="flex flex-col gap-y-1">
       struct
       {Object.entries(struct).map(([k, v]) => (
-        <ObjectFieldDisplay key={k} name={k} value={v} size={size} />
+        <ObjectFieldDisplay key={k} name={k} value={v} size={size} chainId={chainId} />
       ))}
     </div>
   );

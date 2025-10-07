@@ -77,7 +77,7 @@ export const DisplayVariable = ({
               showAnimation ? "bg-warning rounded-xs animate-pulse-fast" : ""
             }`}
           >
-            {displayTxResult(result)}
+            {displayTxResult(result, "base", chainId)}
           </div>
         </div>
       </div>

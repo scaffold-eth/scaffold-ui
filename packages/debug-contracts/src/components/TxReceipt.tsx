@@ -2,10 +2,9 @@ import { useState } from "react";
 import { TransactionReceipt } from "viem";
 import { CheckCircleIcon, DocumentDuplicateIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useCopyToClipboard } from "../hooks/useCopyToClipboard";
-import { replacer } from "../utils/utilsDisplay";
-import { ObjectFieldDisplay } from "./ObjectFieldDisplay";
+import { ObjectFieldDisplay, replacer } from "../utils/utilsDisplay";
 
-export const TxReceipt = ({ txResult }: { txResult: TransactionReceipt }) => {
+export const TxReceipt = ({ txResult, chainId }: { txResult: TransactionReceipt; chainId: number }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { copyToClipboard: copyTxResultToClipboard, isCopiedToClipboard: isTxResultCopiedToClipboard } =
     useCopyToClipboard();
@@ -49,7 +48,7 @@ export const TxReceipt = ({ txResult }: { txResult: TransactionReceipt }) => {
         <div className="overflow-auto bg-sui-primary-subtle rounded-b-3xl border-t border-gray-300/20">
           <pre className="text-xs p-4 whitespace-pre-wrap break-words rounded-b-3xl">
             {Object.entries(txResult).map(([k, v]) => (
-              <ObjectFieldDisplay name={k} value={v} size="xs" leftPad={false} key={k} />
+              <ObjectFieldDisplay name={k} value={v} size="xs" leftPad={false} key={k} chainId={chainId} />
             ))}
           </pre>
         </div>

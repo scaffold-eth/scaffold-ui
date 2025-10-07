@@ -1,10 +1,11 @@
 import { Address, Balance } from "@scaffold-ui/components";
 import { useReducer } from "react";
-import { Abi, type Address as AddressType } from "viem";
+import { Abi, extractChain, type Address as AddressType } from "viem";
 import { ContractVariables } from "./components/ContractVariables";
 import { ContractReadMethods } from "./components/ContractReadMethods";
 import { ContractWriteMethods } from "./components/ContractWriteMethods";
 import { Toaster } from "react-hot-toast";
+import * as chains from "viem/chains";
 
 export type ContractProps = {
   contractName: string;
@@ -17,6 +18,10 @@ export type ContractProps = {
 
 export const Contract: React.FC<ContractProps> = ({ contractName, contract, chainId }) => {
   const [refreshDisplayVariables, triggerRefreshDisplayVariables] = useReducer((value) => !value, false);
+  const chain = extractChain({
+    chains: Object.values(chains),
+    id: chainId as any,
+  });
 
   return (
     <>
@@ -27,7 +32,7 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
               <div className="flex">
                 <div className="flex flex-col gap-1">
                   <span className="font-bold">{contractName}</span>
-                  <Address address={contract.address} onlyEnsOrAddress size="base" />
+                  <Address address={contract.address} onlyEnsOrAddress size="base" chain={chain} />
                   <div className="flex gap-1 items-center">
                     <span className="font-bold text-sm">Balance:</span>
                     {contract.address && <Balance address={contract.address} />}

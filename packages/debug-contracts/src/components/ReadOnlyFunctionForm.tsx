@@ -83,7 +83,7 @@ export const ReadOnlyFunctionForm = ({
           {result !== null && result !== undefined && (
             <div className="bg-sui-primary-subtle rounded-3xl text-sm px-4 py-1.5 break-words overflow-auto">
               <p className="font-bold m-0 mb-1">Result:</p>
-              <pre className="whitespace-pre-wrap break-words">{displayTxResult(result, "sm")}</pre>
+              <pre className="whitespace-pre-wrap break-words">{displayTxResult(result, "sm", chainId)}</pre>
             </div>
           )}
         </div>
