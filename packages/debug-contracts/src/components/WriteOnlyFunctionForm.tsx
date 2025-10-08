@@ -17,6 +17,7 @@ import { ContractInput } from "./ContractInput";
 import { IntegerInput } from "./inputs/IntegerInput";
 import { TxReceipt } from "./TxReceipt";
 import { Tooltip } from "./Tooltip";
+import { useContractConfig } from "../contexts/ContractConfigContext";
 
 type WriteOnlyFunctionFormProps = {
   abi: Abi;
@@ -24,7 +25,6 @@ type WriteOnlyFunctionFormProps = {
   onChange: () => void;
   contractAddress: Address;
   inheritedFrom?: string;
-  chainId: number;
 };
 
 export const WriteOnlyFunctionForm = ({
@@ -33,8 +33,8 @@ export const WriteOnlyFunctionForm = ({
   onChange,
   contractAddress,
   inheritedFrom,
-  chainId,
 }: WriteOnlyFunctionFormProps) => {
+  const { chainId } = useContractConfig();
   const [form, setForm] = useState<Record<string, any>>(() => getInitialFormState(abiFunction));
   const [txValue, setTxValue] = useState<string>("");
   const { chain } = useAccount();
@@ -120,7 +120,7 @@ export const WriteOnlyFunctionForm = ({
         <div className="flex justify-between gap-2 min-w-0">
           {!zeroInputs && (
             <div className="flex-1 min-w-0 max-w-11/12 overflow-auto">
-              {displayedTxResult ? <TxReceipt txResult={displayedTxResult} chainId={chainId} /> : null}
+              {displayedTxResult ? <TxReceipt txResult={displayedTxResult} /> : null}
             </div>
           )}
           <div className="flex flex-shrink-0 self-start">
@@ -139,7 +139,7 @@ export const WriteOnlyFunctionForm = ({
       </div>
       {zeroInputs && txResult ? (
         <div className="w-full min-w-0 overflow-auto">
-          <TxReceipt txResult={txResult} chainId={chainId} />
+          <TxReceipt txResult={txResult} />
         </div>
       ) : null}
     </div>

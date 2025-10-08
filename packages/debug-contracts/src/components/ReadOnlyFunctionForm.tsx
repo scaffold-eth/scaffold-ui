@@ -15,13 +15,13 @@ import { displayTxResult } from "../utils/utilsDisplay";
 import { getParsedError } from "../utils/getParsedError";
 import { ContractInput } from "./ContractInput";
 import { notification } from "../utils/notification";
+import { useContractConfig } from "../contexts/ContractConfigContext";
 
 type ReadOnlyFunctionFormProps = {
   contractAddress: Address;
   abiFunction: AbiFunction;
   inheritedFrom?: string;
   abi: Abi;
-  chainId: number;
 };
 
 export const ReadOnlyFunctionForm = ({
@@ -29,8 +29,8 @@ export const ReadOnlyFunctionForm = ({
   abiFunction,
   inheritedFrom,
   abi,
-  chainId,
 }: ReadOnlyFunctionFormProps) => {
+  const { chainId } = useContractConfig();
   const [form, setForm] = useState<Record<string, any>>(() => getInitialFormState(abiFunction));
   const [result, setResult] = useState<unknown>();
 
@@ -83,7 +83,7 @@ export const ReadOnlyFunctionForm = ({
           {result !== null && result !== undefined && (
             <div className="bg-sui-primary-subtle rounded-3xl text-sm px-4 py-1.5 break-words overflow-auto">
               <p className="font-bold m-0 mb-1">Result:</p>
-              <pre className="whitespace-pre-wrap break-words">{displayTxResult(result, "sm", chainId)}</pre>
+              <pre className="whitespace-pre-wrap break-words">{displayTxResult(result, "sm")}</pre>
             </div>
           )}
         </div>

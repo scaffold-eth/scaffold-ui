@@ -1,9 +1,9 @@
 import { ReactElement, useState } from "react";
-import { TransactionBase, TransactionReceipt, extractChain, formatEther, isAddress, isHex } from "viem";
+import { TransactionBase, TransactionReceipt, formatEther, isAddress, isHex } from "viem";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/solid";
 import { Address } from "@scaffold-ui/components";
 import { Tooltip } from "../components/Tooltip";
-import * as chains from "viem/chains";
+import { useContractConfig } from "../contexts/ContractConfigContext";
 
 // To be used in JSON.stringify when a field might be bigint
 // https://wagmi.sh/react/faq#bigint-serialization
@@ -21,10 +21,22 @@ type DisplayContent =
 
 type ResultFontSize = "sm" | "base" | "xs" | "lg" | "xl" | "2xl" | "3xl";
 
+const AddressWithConfig = ({ address, size }: { address: string; size: ResultFontSize }) => {
+  const { chain, blockExplorerAddressLink } = useContractConfig();
+  return (
+    <Address
+      address={address as `0x${string}`}
+      size={size}
+      onlyEnsOrAddress
+      chain={chain}
+      blockExplorerAddressLink={blockExplorerAddressLink?.(address)}
+    />
+  );
+};
+
 export const displayTxResult = (
   displayContent: DisplayContent | DisplayContent[],
   fontSize: ResultFontSize = "base",
-  chainId: number,
 ): string | ReactElement | number => {
   if (displayContent == null) {
     return "";
@@ -36,11 +48,7 @@ export const displayTxResult = (
 
   if (typeof displayContent === "string") {
     if (isAddress(displayContent)) {
-      const chain = extractChain({
-        chains: Object.values(chains),
-        id: chainId as any,
-      });
-      return <Address address={displayContent} size={fontSize} onlyEnsOrAddress chain={chain} />;
+      return <AddressWithConfig address={displayContent} size={fontSize} />;
     }
 
     if (isHex(displayContent)) {
@@ -49,11 +57,11 @@ export const displayTxResult = (
   }
 
   if (Array.isArray(displayContent)) {
-    return <ArrayDisplay values={displayContent} size={fontSize} chainId={chainId} />;
+    return <ArrayDisplay values={displayContent} size={fontSize} />;
   }
 
   if (typeof displayContent === "object") {
-    return <StructDisplay struct={displayContent} size={fontSize} chainId={chainId} />;
+    return <StructDisplay struct={displayContent} size={fontSize} />;
   }
 
   return JSON.stringify(displayContent, replacer, 2);
@@ -87,55 +95,37 @@ export const ObjectFieldDisplay = ({
   value,
   size,
   leftPad = true,
-  chainId,
 }: {
   name: string;
   value: DisplayContent;
   size: ResultFontSize;
   leftPad?: boolean;
-  chainId: number;
 }) => {
   return (
     <div className={`flex flex-row items-baseline ${leftPad ? "ml-4" : ""}`}>
       <span className="text-sui-primary-content/60 mr-2">{name}:</span>
-      <span className="text-sui-primary-content">{displayTxResult(value, size, chainId)}</span>
+      <span className="text-sui-primary-content">{displayTxResult(value, size)}</span>
     </div>
   );
 };
 
-const ArrayDisplay = ({
-  values,
-  size,
-  chainId,
-}: {
-  values: DisplayContent[];
-  size: ResultFontSize;
-  chainId: number;
-}) => {
+const ArrayDisplay = ({ values, size }: { values: DisplayContent[]; size: ResultFontSize }) => {
   return (
     <div className="flex flex-col gap-y-1">
       {values.length ? "array" : "[]"}
       {values.map((v, i) => (
-        <ObjectFieldDisplay key={i} name={`[${i}]`} value={v} size={size} chainId={chainId} />
+        <ObjectFieldDisplay key={i} name={`[${i}]`} value={v} size={size} />
       ))}
     </div>
   );
 };
 
-const StructDisplay = ({
-  struct,
-  size,
-  chainId,
-}: {
-  struct: Record<string, any>;
-  size: ResultFontSize;
-  chainId: number;
-}) => {
+const StructDisplay = ({ struct, size }: { struct: Record<string, any>; size: ResultFontSize }) => {
   return (
     <div className="flex flex-col gap-y-1">
       struct
       {Object.entries(struct).map(([k, v]) => (
-        <ObjectFieldDisplay key={k} name={k} value={v} size={size} chainId={chainId} />
+        <ObjectFieldDisplay key={k} name={k} value={v} size={size} />
       ))}
     </div>
   );

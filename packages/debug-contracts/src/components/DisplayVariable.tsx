@@ -7,6 +7,7 @@ import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { InheritanceTooltip } from "./InheritanceTooltip";
 import { displayTxResult } from "../utils/utilsDisplay";
 import { notification } from "../utils/notification";
+import { useContractConfig } from "../contexts/ContractConfigContext";
 
 type DisplayVariableProps = {
   contractAddress: Address;
@@ -14,7 +15,6 @@ type DisplayVariableProps = {
   refreshDisplayVariables: boolean;
   inheritedFrom?: string;
   abi: Abi;
-  chainId: number;
 };
 
 export const DisplayVariable = ({
@@ -23,8 +23,8 @@ export const DisplayVariable = ({
   refreshDisplayVariables,
   abi,
   inheritedFrom,
-  chainId,
 }: DisplayVariableProps) => {
+  const { chainId } = useContractConfig();
   const {
     data: result,
     isFetching,
@@ -77,7 +77,7 @@ export const DisplayVariable = ({
               showAnimation ? "bg-warning rounded-xs animate-pulse-fast" : ""
             }`}
           >
-            {displayTxResult(result, "base", chainId)}
+            {displayTxResult(result, "base")}
           </div>
         </div>
       </div>
