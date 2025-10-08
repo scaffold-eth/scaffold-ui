@@ -29,7 +29,7 @@ const AddressWithConfig = ({ address, size }: { address: string; size: ResultFon
       size={size}
       onlyEnsOrAddress
       chain={chain}
-      blockExplorerAddressLink={blockExplorerAddressLink?.(address)}
+      blockExplorerAddressLink={blockExplorerAddressLink}
     />
   );
 };
