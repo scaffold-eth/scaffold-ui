@@ -7,6 +7,7 @@ import { ContractWriteMethods } from "./components/ContractWriteMethods";
 import { Toaster } from "react-hot-toast";
 import * as chains from "viem/chains";
 import { ContractConfigProvider } from "./contexts/ContractConfigContext";
+import { NETWORKS_EXTRA_DATA } from "./utils/common";
 
 export type ContractProps = {
   contractName: string;
@@ -45,6 +46,10 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
                     <span className="font-bold text-sm">Balance:</span>
                     {contract.address && <Balance address={contract.address} />}
                   </div>
+                  <p className="my-0 text-sm">
+                    <span className="font-bold">Network</span>:{" "}
+                    <span style={{ color: NETWORKS_EXTRA_DATA[chainId]?.color }}>{chain.name}</span>
+                  </p>
                 </div>
               </div>
             </div>
