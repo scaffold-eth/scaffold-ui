@@ -22,7 +22,7 @@ pnpm add @scaffold-ui/components @scaffold-ui/hooks
 You'll also need these peer dependencies if you don't already have them:
 
 ```bash
-npm install react @types/react viem wagmi @tanstack/react-query
+npm install viem wagmi @tanstack/react-query
 ```
 
 ## Components
