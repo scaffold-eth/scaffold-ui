@@ -1,0 +1,207 @@
+---
+layout: docs
+---
+
+import React from "react";
+import { DocsProvider } from "../../components/DocsProvider";
+
+# useAddress
+
+The `useAddress` hook provides comprehensive functionality for working with Ethereum addresses, including ENS resolution, address validation, and block explorer integration.
+
+## Import
+
+```tsx
+import { useAddress } from "@scaffold-ui/hooks";
+```
+
+## Usage
+
+```tsx
+import { useAddress } from "@scaffold-ui/hooks";
+import { mainnet } from "viem/chains";
+
+function MyComponent() {
+  const {
+    checkSumAddress,
+    ens,
+    ensAvatar,
+    shortAddress,
+    blockExplorerAddressLink,
+    isValidAddress,
+    blockieUrl,
+    isEnsNameLoading,
+  } = useAddress({
+    address: "0xd8da6bf26964af9d7eed9e03e53415d37aa96045",
+    chain: mainnet,
+  });
+
+  return (
+    <div>
+      {isEnsNameLoading ? (
+        <p>Loading ENS...</p>
+      ) : (
+        <div>
+          <h3>{ens || shortAddress}</h3>
+          {ensAvatar && <img src={ensAvatar} alt="ENS Avatar" />}
+          <a
+            href={blockExplorerAddressLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View on Explorer
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## Parameters
+
+The hook accepts an options object with the following properties:
+
+| Parameter | Type      | Required | Description                               |
+| --------- | --------- | -------- | ----------------------------------------- |
+| `address` | `Address` | No       | The Ethereum address to process           |
+| `chain`   | `Chain`   | No       | The blockchain network (default: mainnet) |
+
+## Return Values
+
+The hook returns an object with the following properties:
+
+| Property                   | Type                   | Description                                 |
+| -------------------------- | ---------------------- | ------------------------------------------- |
+| `checkSumAddress`          | `Address \| undefined` | The checksummed version of the address      |
+| `ens`                      | `string \| undefined`  | The ENS name associated with the address    |
+| `ensAvatar`                | `string \| undefined`  | URL of the ENS avatar                       |
+| `isEnsNameLoading`         | `boolean`              | Loading state for ENS name resolution       |
+| `blockExplorerAddressLink` | `string`               | URL to view the address on a block explorer |
+| `isValidAddress`           | `boolean`              | Whether the provided address is valid       |
+| `shortAddress`             | `string \| undefined`  | Shortened format (0x1234...5678)            |
+| `blockieUrl`               | `string \| undefined`  | URL for the blockie (identicon) image       |
+
+## Features
+
+### ENS Resolution
+
+Automatically resolves ENS names for Ethereum addresses:
+
+```tsx
+const { ens, ensAvatar } = useAddress({
+  address: "0xd8da6bf26964af9d7eed9e03e53415d37aa96045",
+});
+
+// ens might be "vitalik.eth"
+// ensAvatar might be "https://..."
+```
+
+### Address Validation
+
+Validates and checksums Ethereum addresses:
+
+```tsx
+const { isValidAddress, checkSumAddress } = useAddress({
+  address: "0xabc...",
+});
+
+if (isValidAddress) {
+  console.log("Valid address:", checkSumAddress);
+}
+```
+
+### Block Explorer Integration
+
+Generates block explorer links based on the chain:
+
+```tsx
+const { blockExplorerAddressLink } = useAddress({
+  address: "0x...",
+  chain: polygon,
+});
+
+// For Polygon: https://polygonscan.com/address/0x...
+// For Mainnet: https://etherscan.io/address/0x...
+```
+
+### Blockie Generation
+
+Generates blockie (identicon) URLs for addresses:
+
+```tsx
+const { blockieUrl } = useAddress({
+  address: "0x...",
+});
+
+return <img src={blockieUrl} alt="Blockie" />;
+```
+
+### Short Address Format
+
+Provides a shortened address format for display:
+
+```tsx
+const { shortAddress } = useAddress({
+  address: "0x1234567890123456789012345678901234567890",
+});
+
+// shortAddress: "0x1234...7890"
+```
+
+## Examples
+
+### Display ENS or Short Address
+
+```tsx
+function AddressDisplay({ address }: { address: Address }) {
+  const { ens, shortAddress, isEnsNameLoading } = useAddress({ address });
+
+  if (isEnsNameLoading) {
+    return <span>Loading...</span>;
+  }
+
+  return <span>{ens || shortAddress}</span>;
+}
+```
+
+### Address with Avatar
+
+```tsx
+function AddressWithAvatar({ address }: { address: Address }) {
+  const { ens, ensAvatar, blockieUrl, shortAddress } = useAddress({ address });
+
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+      <img
+        src={ensAvatar || blockieUrl}
+        alt="Avatar"
+        style={{ width: 24, height: 24, borderRadius: "50%" }}
+      />
+      <span>{ens || shortAddress}</span>
+    </div>
+  );
+}
+```
+
+### Multi-Chain Address Display
+
+```tsx
+function MultiChainAddress({ address }: { address: Address }) {
+  const mainnetData = useAddress({ address, chain: mainnet });
+  const polygonData = useAddress({ address, chain: polygon });
+
+  return (
+    <div>
+      <div>
+        <strong>Mainnet:</strong>
+        <a href={mainnetData.blockExplorerAddressLink}>View</a>
+      </div>
+      <div>
+        <strong>Polygon:</strong>
+        <a href={polygonData.blockExplorerAddressLink}>View</a>
+      </div>
+    </div>
+  );
+}
+```
