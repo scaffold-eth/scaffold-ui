@@ -29,8 +29,8 @@ export default defineConfig({
         text: "Components",
         items: [
           { text: "Installation", link: "/components" },
-          { text: "Address", link: "/components/address" },
-          { text: "Balance", link: "/components/balance" },
+          { text: "Address", link: "/components/Address" },
+          { text: "Balance", link: "/components/Balance" },
         ],
       },
     ],
