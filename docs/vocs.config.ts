@@ -28,7 +28,7 @@ export default defineConfig({
       {
         text: "Components",
         items: [
-          { text: "Overview", link: "/components" },
+          { text: "Installation", link: "/components" },
           { text: "Address", link: "/components/address" },
           { text: "Balance", link: "/components/balance" },
         ],
@@ -38,7 +38,7 @@ export default defineConfig({
       {
         text: "Hooks",
         items: [
-          { text: "Overview", link: "/hooks" },
+          { text: "Installation", link: "/hooks" },
           { text: "useAddress", link: "/hooks/useAddress" },
         ],
       },
