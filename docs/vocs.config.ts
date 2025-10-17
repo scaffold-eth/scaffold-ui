@@ -15,13 +15,13 @@ export default defineConfig({
     {
       text: "Components",
       items: [
-        { text: "Address", link: "/components/address" },
-        { text: "Balance", link: "/components/balance" },
+        { text: "Address", link: "/components/Address" },
+        { text: "Balance", link: "/components/Balance" },
       ],
     },
   ],
   topNav: [
-    { text: "Components", link: "/components/address" },
+    { text: "Components", link: "/components/Address" },
     {
       text: "Examples",
       link: "https://github.com/scaffold-eth/scaffold-ui/tree/main/example",
