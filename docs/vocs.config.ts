@@ -17,6 +17,7 @@ export default defineConfig({
       items: [
         { text: "Address", link: "/components/Address" },
         { text: "Balance", link: "/components/Balance" },
+        { text: "Address Input", link: "/components/AddressInput" },
       ],
     },
   ],
