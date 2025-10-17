@@ -1,0 +1,106 @@
+---
+layout: docs
+---
+
+import React from "react";
+import { EtherInput } from "@scaffold-ui/components";
+import { DocsProvider } from "../../components/DocsProvider";
+
+# EtherInput Component
+
+The `EtherInput` component provides an input for entering values in ETH or USD with a toggle to switch modes, automatic conversion based on the current native currency price, and a callback that reports both values.
+
+## Import
+
+```tsx
+import { EtherInput } from "@scaffold-ui/components";
+```
+
+## Props
+
+| Prop               | Type                                                                 | Default   | Description                                                                                 |
+| ------------------ | -------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------- |
+| `name`             | `string`                                                              | -         | Name attribute for the input element                                                         |
+| `placeholder`      | `string`                                                              | -         | Placeholder text for the input                                                              |
+| `defaultValue`     | `string`                                                              | -         | Initial value for the input                                                                 |
+| `defaultUsdMode`   | `boolean`                                                             | `false`   | Start with the input in USD mode instead of ETH                                             |
+| `disabled`         | `boolean`                                                             | `false`   | Disables the input and toggle button                                                         |
+| `onValueChange`    | `(value: { valueInEth: string; valueInUsd: string; displayUsdMode: boolean }) => void` | -         | Called when the value or display mode changes. Provides both ETH and USD values and current display mode |
+
+## Live Examples
+
+### Basic Usage
+
+<DocsProvider>
+  <EtherInput placeholder="Amount" />
+  <div style={{ height: 12 }} />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { EtherInput } from "@scaffold-ui/components";
+
+<EtherInput placeholder="Amount" />;
+```
+
+### Default USD Mode
+
+<DocsProvider>
+  <EtherInput defaultUsdMode placeholder="Enter amount in USD" />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { EtherInput } from "@scaffold-ui/components";
+
+<EtherInput defaultUsdMode placeholder="Enter amount in USD" />;
+```
+
+### Default Value
+
+<DocsProvider>
+  <EtherInput defaultValue="0.5" />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { EtherInput } from "@scaffold-ui/components";
+
+<EtherInput defaultValue="0.5" />;
+```
+
+### Disabled State
+
+<DocsProvider>
+  <EtherInput disabled placeholder="Disabled" />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { EtherInput } from "@scaffold-ui/components";
+
+<EtherInput disabled placeholder="Disabled" />;
+```
+
+### onValueChange Callback
+
+<DocsProvider>
+  <EtherInput
+    placeholder="With onValueChange"
+    onValueChange={({ valueInEth, valueInUsd, displayUsdMode }) => {
+      console.log({ valueInEth, valueInUsd, displayUsdMode });
+    }}
+  />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { EtherInput } from "@scaffold-ui/components";
+
+<EtherInput
+  placeholder="With onValueChange"
+  onValueChange={({ valueInEth, valueInUsd, displayUsdMode }) => {
+    console.log({ valueInEth, valueInUsd, displayUsdMode });
+  }}
+/>;
+```
