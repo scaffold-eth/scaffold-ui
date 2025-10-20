@@ -78,7 +78,7 @@ export const BaseInput = <T extends { toString: () => string } | undefined = str
     }
   };
   useEffect(() => {
-    if (reFocus) inputReft.current?.focus();
+    if (reFocus) inputReft.current?.focus({ preventScroll: true });
   }, [reFocus]);
 
   return (
