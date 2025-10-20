@@ -1,9 +1,17 @@
 import { defineConfig } from "vocs";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   rootDir: ".",
   title: "Scaffold UI",
   description: "React components and hooks for Ethereum dApps",
+  vite: {
+    envDir: __dirname,
+    envPrefix: "VITE_",
+  },
   sidebar: [
     {
       text: "Getting Started",
