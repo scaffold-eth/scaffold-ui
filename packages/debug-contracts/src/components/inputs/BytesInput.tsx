@@ -17,7 +17,7 @@ export const BytesInput = ({ value, onChange, name, placeholder, disabled }: Com
       disabled={disabled}
       suffix={
         <button
-          className="self-center cursor-pointer text-xl font-semibold px-4 text-sui-primary"
+          className="self-center cursor-pointer font-semibold px-4 text-sui-primary font-sans"
           onClick={convertStringToBytes}
           type="button"
         >
