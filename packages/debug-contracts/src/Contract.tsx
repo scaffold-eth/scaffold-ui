@@ -42,9 +42,16 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
                     chain={chain}
                     blockExplorerAddressLink={blockExplorerAddressLink}
                   />
-                  <div className="flex gap-1 items-center">
+                  <div className="flex gap-1 items-center mt-1">
                     <span className="font-bold text-sm">Balance:</span>
-                    {contract.address && <Balance address={contract.address} />}
+                    {contract.address && (
+                      <Balance
+                        address={contract.address}
+                        style={{
+                          fontSize: "0.75rem",
+                        }}
+                      />
+                    )}
                   </div>
                   <p className="my-0 text-sm">
                     <span className="font-bold">Network</span>:{" "}
