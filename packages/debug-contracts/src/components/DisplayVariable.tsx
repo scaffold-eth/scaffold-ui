@@ -73,7 +73,7 @@ export const DisplayVariable = ({
       <div className="text-sui-primary-content/80 flex flex-col items-start">
         <div>
           <div
-            className={`break-all block transition bg-transparent ${
+            className={`block transition bg-transparent ${
               showAnimation ? "bg-warning rounded-xs animate-pulse-fast" : ""
             }`}
           >
