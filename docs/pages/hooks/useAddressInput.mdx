@@ -1,0 +1,194 @@
+---
+layout: docs
+---
+
+import React from "react";
+import { DocsProvider } from "../../components/DocsProvider";
+import {
+  UseAddressInputBasicExample,
+  UseAddressInputWithResolutionExample,
+  UseAddressInputErrorExample
+} from "../../components/UseAddressInputExamples";
+
+# useAddressInput Hook
+
+The `useAddressInput` hook handles address input with debouncing, ENS name resolution (both directions), and ENS avatar fetching. It's designed for building custom address input components with real-time ENS lookups.
+
+## Import
+
+```tsx
+import { useAddressInput } from "@scaffold-ui/hooks";
+```
+
+## Usage
+
+```tsx
+const {
+  ensAddress,
+  ensName,
+  ensAvatar,
+  isEnsAddressLoading,
+  isEnsNameLoading,
+  isEnsAvatarLoading,
+  settledValue,
+  debouncedValue
+} = useAddressInput({
+  value: inputValue,
+  debounceDelay: 500
+});
+```
+
+## Parameters
+
+| Parameter        | Type                   | Default | Description                                              |
+| ---------------- | ---------------------- | ------- | -------------------------------------------------------- |
+| `value`          | `string`               | -       | The input value (can be an Ethereum address or ENS name).|
+| `debounceDelay`  | `number` *(optional)*  | `500`   | Debounce delay in milliseconds for ENS resolution.       |
+
+## Return Values
+
+| Property                | Type                  | Description                                                        |
+| ----------------------- | --------------------- | ------------------------------------------------------------------ |
+| `ensAddress`            | `Address \| undefined` | The resolved Ethereum address from an ENS name input.              |
+| `isEnsAddressLoading`   | `boolean`             | Loading state for ENS address resolution.                          |
+| `isEnsAddressError`     | `boolean`             | Error state for ENS address resolution.                            |
+| `isEnsAddressSuccess`   | `boolean`             | Success state for ENS address resolution.                          |
+| `ensName`               | `string \| undefined` | The resolved ENS name from an address input.                       |
+| `isEnsNameLoading`      | `boolean`             | Loading state for ENS name resolution.                             |
+| `isEnsNameError`        | `boolean`             | Error state for ENS name resolution.                               |
+| `isEnsNameSuccess`      | `boolean`             | Success state for ENS name resolution.                             |
+| `ensAvatar`             | `string \| undefined` | The ENS avatar URL for the resolved ENS name.                      |
+| `isEnsAvatarLoading`    | `boolean`             | Loading state for ENS avatar fetching.                             |
+| `isEnsAvatarError`      | `boolean`             | Error state for ENS avatar fetching.                               |
+| `isEnsAvatarSuccess`    | `boolean`             | Success state for ENS avatar fetching.                             |
+| `settledValue`          | `string \| undefined` | The debounced and validated input value (undefined while debouncing).|
+| `debouncedValue`        | `string`              | The debounced input value.                                         |
+
+## Live Examples
+
+### Basic Usage
+
+Simple ENS name to address resolution.
+
+<DocsProvider>
+  <UseAddressInputBasicExample />
+</DocsProvider>
+
+```tsx
+import React, { useState } from "react";
+import { useAddressInput } from "@scaffold-ui/hooks";
+
+function BasicAddressInput() {
+  const [value, setValue] = useState("");
+  const { ensAddress, isEnsAddressLoading } = useAddressInput({ value });
+
+  return (
+    <div>
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="Enter ENS name (e.g., vitalik.eth)"
+      />
+
+      {isEnsAddressLoading && <p>Resolving...</p>}
+
+      {ensAddress && (
+        <p><strong>Address:</strong> {ensAddress}</p>
+      )}
+    </div>
+  );
+}
+```
+
+### Bidirectional Resolution
+
+Resolves both ENS names to addresses and addresses to ENS names, with avatar display.
+
+<DocsProvider>
+  <UseAddressInputWithResolutionExample />
+</DocsProvider>
+
+```tsx
+import React, { useState } from "react";
+import { useAddressInput } from "@scaffold-ui/hooks";
+
+function BidirectionalResolution() {
+  const [value, setValue] = useState("");
+  const {
+    ensAddress,
+    ensName,
+    ensAvatar,
+    isEnsAddressLoading,
+    isEnsNameLoading
+  } = useAddressInput({ value });
+
+  return (
+    <div>
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="Try: vitalik.eth or 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+        disabled={isEnsAddressLoading || isEnsNameLoading}
+      />
+
+      {(isEnsAddressLoading || isEnsNameLoading) && (
+        <p>Resolving...</p>
+      )}
+
+      {ensAddress && (
+        <p><strong>Resolved Address:</strong> {ensAddress}</p>
+      )}
+
+      {ensName && (
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          {ensAvatar && <img src={ensAvatar} alt={ensName} style={{ width: "24px", height: "24px", borderRadius: "50%" }} />}
+          <span><strong>Resolved ENS:</strong> {ensName}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+### With Error Handling
+
+<DocsProvider>
+  <UseAddressInputErrorExample />
+</DocsProvider>
+
+```tsx
+import React, { useState } from "react";
+import { useAddressInput } from "@scaffold-ui/hooks";
+
+function AddressInputWithErrors() {
+  const [value, setValue] = useState("");
+  const {
+    ensAddress,
+    isEnsAddressLoading,
+    isEnsAddressError,
+    isEnsAddressSuccess
+  } = useAddressInput({ value });
+
+  const showError = !isEnsAddressLoading && value && (isEnsAddressError || (isEnsAddressSuccess && ensAddress === null));
+
+  return (
+    <div>
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="Enter ENS name (try: invalidensname.eth)"
+      />
+
+      {isEnsAddressLoading && <p>Resolving...</p>}
+
+      {showError && (
+        <p style={{ color: "red" }}>✗ Could not resolve ENS name</p>
+      )}
+
+      {ensAddress && (
+        <p style={{ color: "green" }}>✓ Resolved: {ensAddress}</p>
+      )}
+    </div>
+  );
+}
+```
