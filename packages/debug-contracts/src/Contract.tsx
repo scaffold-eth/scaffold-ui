@@ -1,5 +1,5 @@
 import { Address, Balance } from "@scaffold-ui/components";
-import { useReducer } from "react";
+import { useMemo, useReducer } from "react";
 import { Abi, extractChain, type Address as AddressType } from "viem";
 import { ContractVariables } from "./components/ContractVariables";
 import { ContractReadMethods } from "./components/ContractReadMethods";
@@ -26,6 +26,13 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
     id: chainId as any,
   });
 
+  const balanceStyle = useMemo(
+    () => ({
+      fontSize: "0.75rem",
+    }),
+    [],
+  );
+
   return (
     <ContractConfigProvider config={{ blockExplorerAddressLink, chain, chainId }}>
       <div className={`grid grid-cols-1 lg:grid-cols-6 px-6 lg:px-10 lg:gap-12 w-full max-w-7xl my-0`}>
@@ -44,14 +51,7 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
                   />
                   <div className="flex gap-1 items-center mt-1">
                     <span className="font-bold text-sm">Balance:</span>
-                    {contract.address && (
-                      <Balance
-                        address={contract.address}
-                        style={{
-                          fontSize: "0.75rem",
-                        }}
-                      />
-                    )}
+                    {contract.address && <Balance address={contract.address} style={balanceStyle} />}
                   </div>
                   <p className="my-0 text-sm">
                     <span className="font-bold">Network</span>:{" "}

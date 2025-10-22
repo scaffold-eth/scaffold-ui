@@ -1,5 +1,5 @@
 "use client";
-import React, { CSSProperties, useState } from "react";
+import React, { CSSProperties, useState, useMemo } from "react";
 import { EtherInput } from "@scaffold-ui/components";
 import { useEtherInput } from "@scaffold-ui/hooks";
 
@@ -8,6 +8,16 @@ export const UseEtherInputExample = () => {
   const [manualUsdMode, setManualUsdMode] = useState(false);
   const { valueInEth, valueInUsd, nativeCurrencyPrice, isNativeCurrencyPriceLoading, isNativeCurrencyPriceError } =
     useEtherInput({ value: manualValue, usdMode: manualUsdMode });
+
+  const customEtherInputStyle = useMemo(
+    () =>
+      ({
+        "--color-sui-input-border": "#eab308",
+        "--color-sui-input-background": "#fef9c3",
+        "--color-sui-input-text": "#713f12",
+      }) as CSSProperties,
+    [],
+  );
 
   return (
     <div className="mt-8 p-6 max-w-2xl rounded-lg bg-white/5 shadow-xl">
@@ -51,13 +61,7 @@ export const UseEtherInputExample = () => {
               onValueChange={({ valueInEth, valueInUsd, displayUsdMode }) =>
                 console.log("value changed", valueInEth, valueInUsd, displayUsdMode)
               }
-              style={
-                {
-                  "--color-sui-input-border": "#eab308",
-                  "--color-sui-input-background": "#fef9c3",
-                  "--color-sui-input-text": "#713f12",
-                } as CSSProperties
-              }
+              style={customEtherInputStyle}
             />
           </div>
         </div>
