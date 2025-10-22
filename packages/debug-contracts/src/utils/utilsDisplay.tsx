@@ -3,6 +3,7 @@ import { TransactionBase, TransactionReceipt, formatEther, isAddress, isHex } fr
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/solid";
 import { Address } from "@scaffold-ui/components";
 import { Tooltip } from "../components/Tooltip";
+import { useContractConfig } from "../contexts/ContractConfigContext";
 
 // To be used in JSON.stringify when a field might be bigint
 // https://wagmi.sh/react/faq#bigint-serialization
@@ -20,6 +21,19 @@ type DisplayContent =
 
 type ResultFontSize = "sm" | "base" | "xs" | "lg" | "xl" | "2xl" | "3xl";
 
+const AddressWithConfig = ({ address, size }: { address: string; size: ResultFontSize }) => {
+  const { chain, blockExplorerAddressLink } = useContractConfig();
+  return (
+    <Address
+      address={address as `0x${string}`}
+      size={size}
+      onlyEnsOrAddress
+      chain={chain}
+      blockExplorerAddressLink={blockExplorerAddressLink}
+    />
+  );
+};
+
 export const displayTxResult = (
   displayContent: DisplayContent | DisplayContent[],
   fontSize: ResultFontSize = "base",
@@ -34,7 +48,7 @@ export const displayTxResult = (
 
   if (typeof displayContent === "string") {
     if (isAddress(displayContent)) {
-      return <Address address={displayContent} size={fontSize} onlyEnsOrAddress />;
+      return <AddressWithConfig address={displayContent} size={fontSize} />;
     }
 
     if (isHex(displayContent)) {

@@ -2,8 +2,7 @@ import { useState } from "react";
 import { TransactionReceipt } from "viem";
 import { CheckCircleIcon, DocumentDuplicateIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useCopyToClipboard } from "../hooks/useCopyToClipboard";
-import { replacer } from "../utils/utilsDisplay";
-import { ObjectFieldDisplay } from "./ObjectFieldDisplay";
+import { ObjectFieldDisplay, replacer } from "../utils/utilsDisplay";
 
 export const TxReceipt = ({ txResult }: { txResult: TransactionReceipt }) => {
   const [isExpanded, setIsExpanded] = useState(false);

@@ -14,11 +14,11 @@ export const Collapsible = ({ title, children, className = "" }: CollapsibleProp
   };
 
   return (
-    <div className={`border-2 border-sui-primary-subtle rounded-lg ${className}`}>
+    <div className={`border-2 border-sui-primary-subtle rounded-2xl ${className}`}>
       <button
         type="button"
         onClick={toggleOpen}
-        className={`w-full flex items-center justify-between p-3 text-left bg-sui-primary-neutral hover:brightness-90 transition-colors rounded-t-md focus:outline-none focus:ring-2 focus:ring-sui-primary ${isOpen ? "rounded-b-none" : "rounded-b-md"}`}
+        className={`w-full flex items-center justify-between p-3 text-left bg-sui-primary-neutral hover:brightness-90 transition-colors rounded-t-[14px] focus:outline-none border-sui-primary-subtle focus:ring-2 focus:ring-sui-primary ${isOpen ? "rounded-b-none" : "rounded-b-[14px]"}`}
       >
         <span className="text-sui-primary-content/50 text-sm">{title}</span>
         <svg

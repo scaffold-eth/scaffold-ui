@@ -58,11 +58,7 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled, sty
 
   const [enteredEnsName, setEnteredEnsName] = useState<string>();
 
-  const reFocus =
-    isEnsAddressError ||
-    isEnsNameError ||
-    ensName === null ||
-    ensAddress === null;
+  const reFocus = isEnsAddressError || isEnsNameError || ensName === null || ensAddress === null;
 
   // ens => address
   useEffect(() => {
@@ -98,7 +94,7 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled, sty
                 <img className="w-full rounded-full" src={ensAvatar} alt={`${ensAddress} avatar`} />
               </span>
             ) : null}
-            <span className="px-2 text-sui-input-text">{enteredEnsName ?? ensName}</span>
+            <span className="px-2 text-sui-accent">{enteredEnsName ?? ensName}</span>
           </div>
         ) : (
           (isEnsNameLoading || isEnsAddressLoading) && (

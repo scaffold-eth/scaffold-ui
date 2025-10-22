@@ -1,10 +1,13 @@
 import { Address, Balance } from "@scaffold-ui/components";
 import { useReducer } from "react";
-import { Abi, type Address as AddressType } from "viem";
+import { Abi, extractChain, type Address as AddressType } from "viem";
 import { ContractVariables } from "./components/ContractVariables";
 import { ContractReadMethods } from "./components/ContractReadMethods";
 import { ContractWriteMethods } from "./components/ContractWriteMethods";
 import { Toaster } from "react-hot-toast";
+import * as chains from "viem/chains";
+import { ContractConfigProvider } from "./contexts/ContractConfigContext";
+import { NETWORKS_EXTRA_DATA } from "./utils/common";
 
 export type ContractProps = {
   contractName: string;
@@ -13,13 +16,18 @@ export type ContractProps = {
     abi: Abi;
   };
   chainId: number;
+  blockExplorerAddressLink?: string;
 };
 
-export const Contract: React.FC<ContractProps> = ({ contractName, contract, chainId }) => {
+export const Contract: React.FC<ContractProps> = ({ contractName, contract, chainId, blockExplorerAddressLink }) => {
   const [refreshDisplayVariables, triggerRefreshDisplayVariables] = useReducer((value) => !value, false);
+  const chain = extractChain({
+    chains: Object.values(chains),
+    id: chainId as any,
+  });
 
   return (
-    <>
+    <ContractConfigProvider config={{ blockExplorerAddressLink, chain, chainId }}>
       <div className={`grid grid-cols-1 lg:grid-cols-6 px-6 lg:px-10 lg:gap-12 w-full max-w-7xl my-0`}>
         <div className="col-span-5 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
           <div className="col-span-1 flex flex-col">
@@ -27,20 +35,33 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
               <div className="flex">
                 <div className="flex flex-col gap-1">
                   <span className="font-bold">{contractName}</span>
-                  <Address address={contract.address} onlyEnsOrAddress size="base" />
-                  <div className="flex gap-1 items-center">
+                  <Address
+                    address={contract.address}
+                    onlyEnsOrAddress
+                    size="base"
+                    chain={chain}
+                    blockExplorerAddressLink={blockExplorerAddressLink}
+                  />
+                  <div className="flex gap-1 items-center mt-1">
                     <span className="font-bold text-sm">Balance:</span>
-                    {contract.address && <Balance address={contract.address} />}
+                    {contract.address && (
+                      <Balance
+                        address={contract.address}
+                        style={{
+                          fontSize: "0.75rem",
+                        }}
+                      />
+                    )}
                   </div>
+                  <p className="my-0 text-sm">
+                    <span className="font-bold">Network</span>:{" "}
+                    <span style={{ color: NETWORKS_EXTRA_DATA[chainId]?.color }}>{chain.name}</span>
+                  </p>
                 </div>
               </div>
             </div>
             <div className="bg-sui-primary-subtle dark:bg-sui-primary rounded-3xl px-6 lg:px-8 py-4 shadow-lg shadow-sui-primary-subtle dark:shadow-sui-primary overflow-y-auto">
-              <ContractVariables
-                refreshDisplayVariables={refreshDisplayVariables}
-                contract={contract}
-                chainId={chainId}
-              />
+              <ContractVariables refreshDisplayVariables={refreshDisplayVariables} contract={contract} />
             </div>
           </div>
           <div className="col-span-1 lg:col-span-2 flex flex-col gap-6">
@@ -52,7 +73,7 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
                   </div>
                 </div>
                 <div className="p-5 divide-y divide-sui-primary-subtle">
-                  <ContractReadMethods contract={contract} chainId={chainId} />
+                  <ContractReadMethods contract={contract} />
                 </div>
               </div>
             </div>
@@ -64,11 +85,7 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
                   </div>
                 </div>
                 <div className="p-5 divide-y divide-sui-primary-subtle">
-                  <ContractWriteMethods
-                    contract={contract}
-                    onChange={triggerRefreshDisplayVariables}
-                    chainId={chainId}
-                  />
+                  <ContractWriteMethods contract={contract} onChange={triggerRefreshDisplayVariables} />
                 </div>
               </div>
             </div>
@@ -76,6 +93,6 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
         </div>
       </div>
       <Toaster />
-    </>
+    </ContractConfigProvider>
   );
 };

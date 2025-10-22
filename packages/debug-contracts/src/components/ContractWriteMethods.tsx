@@ -5,14 +5,12 @@ import { GenericContract, InheritedFunctions } from "../types";
 export const ContractWriteMethods = ({
   onChange,
   contract,
-  chainId,
 }: {
   onChange: () => void;
   contract: {
     address: Address;
     abi: Abi;
   };
-  chainId: number;
 }) => {
   if (!contract) {
     return null;
@@ -39,7 +37,6 @@ export const ContractWriteMethods = ({
     <>
       {functionsToDisplay.map(({ fn, inheritedFrom }, idx) => (
         <WriteOnlyFunctionForm
-          chainId={chainId}
           abi={contract.abi as Abi}
           key={`${fn.name}-${idx}}`}
           abiFunction={fn}

@@ -6,14 +6,12 @@ import { DisplayVariable } from "./DisplayVariable";
 export const ContractVariables = ({
   refreshDisplayVariables,
   contract,
-  chainId,
 }: {
   refreshDisplayVariables: boolean;
   contract: {
     address: Address;
     abi: Abi;
   };
-  chainId: number;
 }) => {
   if (!contract) {
     return null;
@@ -42,7 +40,6 @@ export const ContractVariables = ({
       {functionsToDisplay.map(({ fn, inheritedFrom }) => (
         <DisplayVariable
           abi={contract.abi}
-          chainId={chainId}
           abiFunction={fn}
           contractAddress={contract.address}
           key={fn.name}

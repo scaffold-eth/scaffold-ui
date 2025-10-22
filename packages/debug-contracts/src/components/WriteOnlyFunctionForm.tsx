@@ -17,6 +17,7 @@ import { ContractInput } from "./ContractInput";
 import { IntegerInput } from "./inputs/IntegerInput";
 import { TxReceipt } from "./TxReceipt";
 import { Tooltip } from "./Tooltip";
+import { useContractConfig } from "../contexts/ContractConfigContext";
 
 type WriteOnlyFunctionFormProps = {
   abi: Abi;
@@ -24,7 +25,6 @@ type WriteOnlyFunctionFormProps = {
   onChange: () => void;
   contractAddress: Address;
   inheritedFrom?: string;
-  chainId: number;
 };
 
 export const WriteOnlyFunctionForm = ({
@@ -33,8 +33,8 @@ export const WriteOnlyFunctionForm = ({
   onChange,
   contractAddress,
   inheritedFrom,
-  chainId,
 }: WriteOnlyFunctionFormProps) => {
+  const { chainId } = useContractConfig();
   const [form, setForm] = useState<Record<string, any>>(() => getInitialFormState(abiFunction));
   const [txValue, setTxValue] = useState<string>("");
   const { chain } = useAccount();

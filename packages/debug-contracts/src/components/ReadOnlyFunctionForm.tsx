@@ -15,13 +15,13 @@ import { displayTxResult } from "../utils/utilsDisplay";
 import { getParsedError } from "../utils/getParsedError";
 import { ContractInput } from "./ContractInput";
 import { notification } from "../utils/notification";
+import { useContractConfig } from "../contexts/ContractConfigContext";
 
 type ReadOnlyFunctionFormProps = {
   contractAddress: Address;
   abiFunction: AbiFunction;
   inheritedFrom?: string;
   abi: Abi;
-  chainId: number;
 };
 
 export const ReadOnlyFunctionForm = ({
@@ -29,8 +29,8 @@ export const ReadOnlyFunctionForm = ({
   abiFunction,
   inheritedFrom,
   abi,
-  chainId,
 }: ReadOnlyFunctionFormProps) => {
+  const { chainId } = useContractConfig();
   const [form, setForm] = useState<Record<string, any>>(() => getInitialFormState(abiFunction));
   const [result, setResult] = useState<unknown>();
 
