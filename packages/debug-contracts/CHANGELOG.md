@@ -1,5 +1,13 @@
 # @scaffold-ui/debug-contracts
 
+## 0.1.1-rc.4
+
+### Patch Changes
+
+- 8a1385f: use react context for chainId, chain and blockExplorerAddress to avoid prop drilling
+- Updated dependencies [8a1385f]
+  - @scaffold-ui/components@0.1.2-rc.5
+
 ## 0.1.1-rc.3
 
 ### Patch Changes
