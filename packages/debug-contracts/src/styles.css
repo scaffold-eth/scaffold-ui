@@ -33,7 +33,6 @@
     box-shadow:
       var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
       var(--tw-shadow);
-    /* border: 1px solid; */
   }
 
   .btn-dc:disabled {
