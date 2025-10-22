@@ -37,6 +37,7 @@ export type AddressProps = {
  * @param {boolean} [props.onlyEnsOrAddress] - (Optional) If true, shows only ENS name or address without additional UI elements.
  * @param {Chain} [props.chain] - (Optional) The blockchain network to use for ENS resolution. Defaults to mainnet.
  * @param {CSSProperties} [props.style] - (Optional) Custom CSS styles to apply to the component.
+ *   Performance Warning: Always memoize style objects to prevent unnecessary re-renders.
  * @param {string} [props.blockExplorerAddressLink] - (Optional) Custom block explorer URL for the address link.
  *
  * @example
