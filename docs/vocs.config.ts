@@ -1,9 +1,17 @@
 import { defineConfig } from "vocs";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   rootDir: ".",
   title: "Scaffold UI",
   description: "React components and hooks for Ethereum dApps",
+  vite: {
+    envDir: __dirname,
+    envPrefix: "VITE_",
+  },
   sidebar: [
     {
       text: "Getting Started",
@@ -15,13 +23,15 @@ export default defineConfig({
     {
       text: "Components",
       items: [
-        { text: "Address", link: "/components/address" },
-        { text: "Balance", link: "/components/balance" },
+        { text: "Address", link: "/components/Address" },
+        { text: "Balance", link: "/components/Balance" },
+        { text: "AddressInput", link: "/components/AddressInput" },
+        { text: "EtherInput", link: "/components/EtherInput" },
       ],
     },
   ],
   topNav: [
-    { text: "Components", link: "/components/address" },
+    { text: "Components", link: "/components/Address" },
     {
       text: "Examples",
       link: "https://github.com/scaffold-eth/scaffold-ui/tree/main/example",
