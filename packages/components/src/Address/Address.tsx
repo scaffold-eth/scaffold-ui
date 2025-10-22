@@ -19,6 +19,32 @@ export type AddressProps = {
   blockExplorerAddressLink?: string;
 };
 
+/**
+ * Address Component
+ *
+ * Displays an Ethereum address with ENS name resolution, avatar, and copy functionality.
+ * - Resolves ENS names and displays ENS avatars when available.
+ * - Shows a blockie (identicon) as fallback when no ENS avatar is available.
+ * - Provides copy-to-clipboard functionality for the address.
+ * - Supports linking to block explorers for address details.
+ * - Displays loading skeletons while resolving ENS names.
+ *
+ * @param {AddressProps} props - The props for the Address component.
+ * @param {AddressType} [props.address] - (Optional) The Ethereum address to display.
+ * @param {boolean} [props.disableAddressLink] - (Optional) If true, disables the link to block explorer.
+ * @param {"short" | "long"} [props.format] - (Optional) Display format for the address. "short" shows truncated version, "long" shows full address.
+ * @param {"xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl"} [props.size="base"] - (Optional) Size variant for the component display.
+ * @param {boolean} [props.onlyEnsOrAddress] - (Optional) If true, shows only ENS name or address without additional UI elements.
+ * @param {Chain} [props.chain] - (Optional) The blockchain network to use for ENS resolution. Defaults to mainnet.
+ * @param {CSSProperties} [props.style] - (Optional) Custom CSS styles to apply to the component.
+ * @param {string} [props.blockExplorerAddressLink] - (Optional) Custom block explorer URL for the address link.
+ *
+ * @example
+ * <Address address="0x123..." />
+ * <Address address="0x123..." format="long" size="lg" />
+ * <Address address="0x123..." onlyEnsOrAddress disableAddressLink />
+ * <Address address="0x123..." chain={mainnet} blockExplorerAddressLink="https://etherscan.io/address/0x123..." />
+ */
 export const Address: React.FC<AddressProps> = ({
   address,
   disableAddressLink,
