@@ -1,6 +1,6 @@
 "use client";
 
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useMemo } from "react";
 import { useAddress } from "@scaffold-ui/hooks";
 import { Chain, type Address as AddressType } from "viem";
 import { mainnet } from "viem/chains";
@@ -75,16 +75,17 @@ export const Address: React.FC<AddressProps> = ({
   const ensSize = getNextSize(textSizeMap, addressSize);
   const blockieSize = showSkeleton && !onlyEnsOrAddress ? getNextSize(blockieSizeMap, addressSize, 4) : addressSize;
 
+  const skeletonStyle = useMemo(() => {
+    return {
+      width: (blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"],
+      height: (blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"],
+    };
+  }, [blockieSize]);
+
   if (!checkSumAddress) {
     return (
       <div className="flex items-center text-sui-primary-content" style={style}>
-        <div
-          className="shrink-0 sui-skeleton !rounded-full"
-          style={{
-            width: (blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"],
-            height: (blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"],
-          }}
-        ></div>
+        <div className="shrink-0 sui-skeleton !rounded-full" style={skeletonStyle}></div>
         <div className="flex flex-col space-y-1">
           {!onlyEnsOrAddress && (
             <div className={`ml-1.5 sui-skeleton rounded-lg font-bold ${textSizeMap[ensSize]}`}>
