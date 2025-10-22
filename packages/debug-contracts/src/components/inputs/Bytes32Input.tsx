@@ -20,7 +20,7 @@ export const Bytes32Input = ({ value, onChange, name, placeholder, disabled }: C
       disabled={disabled}
       suffix={
         <button
-          className="self-center cursor-pointer text-xl font-semibold px-4 text-sui-primary font-sans"
+          className="self-center cursor-pointer text-xl font-semibold px-4 text-sui-primary"
           onClick={convertStringToBytes32}
           type="button"
         >
