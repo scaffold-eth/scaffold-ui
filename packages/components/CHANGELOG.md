@@ -1,5 +1,14 @@
 # @scaffold-ui/components
 
+## 0.1.2-rc.5
+
+### Patch Changes
+
+- 8a1385f: fix refocus scroll on Input components
+  update collapsible component to use rounded-2xl
+  have default font family for all components
+  fix base input component colors
+
 ## 0.1.2-rc.4
 
 ### Patch Changes
