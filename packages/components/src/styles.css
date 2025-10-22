@@ -8,6 +8,8 @@
   --color-sui-primary-subtle: #dae8ff;
   --color-sui-primary-neutral: #f4f8ff;
   --color-sui-primary-content: #212638;
+  --color-sui-accent: #93bbfb;
+  --color-sui-base-content: #212638;
 
   /* Status colors */
   --color-sui-success: #34eeb6;
@@ -17,7 +19,7 @@
   /* Input component colors */
   --color-sui-input-border: var(--color-sui-primary-subtle);
   --color-sui-input-background: var(--color-sui-primary-neutral);
-  --color-sui-input-text: var(--color-sui-primary);
+  --color-sui-input-text: color-mix(in oklab, var(--color-sui-base-content) 70%, transparent);
   --color-sui-input-border-error: var(--color-sui-error);
   --color-sui-input-border-disabled: var(--color-sui-primary-subtle);
 
@@ -31,8 +33,10 @@
   --color-sui-primary-subtle: #323f61;
   --color-sui-primary-neutral: #2a3655;
   --color-sui-primary-content: #f9fbff;
+  --color-sui-accent: #4969a6;
+  --color-sui-base-content: #f9fbff;
 
-  --color-sui-input-text: color-mix(in srgb, var(--color-sui-primary-content) 70%, transparent);
+  --color-sui-input-text: color-mix(in oklab, var(--color-sui-base-content) 70%, transparent);
   --color-sui-input-border-disabled: var(--color-sui-primary);
   --color-sui-input-border: var(--color-sui-primary);
 }

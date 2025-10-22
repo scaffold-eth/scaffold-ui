@@ -48,7 +48,7 @@ export const IntegerInput = ({
           <div className="space-x-4 flex items-center">
             <Tooltip content="Multiply by 1e18 (wei)" position="top">
               <button
-                className={`${disabled ? "cursor-not-allowed" : "cursor-pointer"} font-semibold px-4 text-sui-primary h-full`}
+                className={`${disabled ? "cursor-not-allowed" : "cursor-pointer"} font-semibold px-4 text-sui-accent h-full`}
                 onClick={multiplyBy1e18}
                 disabled={disabled}
                 type="button"

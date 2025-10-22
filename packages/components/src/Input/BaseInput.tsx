@@ -88,7 +88,7 @@ export const BaseInput = <T extends { toString: () => string } | undefined = str
     >
       {prefix}
       <input
-        className={`w-full h-[2.2rem] min-h-[2.2rem] px-4 border-0 bg-transparent font-medium text-sm focus:outline-none focus:ring-0 ${
+        className={`w-full h-[2.2rem] min-h-[2.2rem] px-4 border-0 bg-transparent font-medium placeholder:text-sui-accent/70 focus:text-sui-input-text text-sui-input-text disabled:text-sui-base-content/40 text-sm focus:outline-none focus:ring-0 ${
           disabled ? "cursor-not-allowed" : ""
         }`}
         placeholder={placeholder}
