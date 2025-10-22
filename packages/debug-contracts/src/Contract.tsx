@@ -35,7 +35,7 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
                 </div>
               </div>
             </div>
-            <div className="bg-sui-primary-subtle dark:bg-sui-primary rounded-3xl px-6 lg:px-8 py-4 shadow-lg shadow-sui-primary-subtle dark:shadow-sui-primary">
+            <div className="bg-sui-primary-subtle dark:bg-sui-primary rounded-3xl px-6 lg:px-8 py-4 shadow-lg shadow-sui-primary-subtle dark:shadow-sui-primary overflow-y-auto">
               <ContractVariables
                 refreshDisplayVariables={refreshDisplayVariables}
                 contract={contract}
