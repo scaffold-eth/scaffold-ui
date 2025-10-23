@@ -24,22 +24,19 @@ export type AddressInputProps = CommonInputProps<Address | string>;
  * @param {Address | string} [props.value] - The input value (can be an address or ENS name).
  * @param {string} [props.name] - The name attribute for the input field.
  * @param {string} [props.placeholder] - (Optional) Placeholder text for the input field.
- * @param {(value: Address) => void} [props.onChange] - Callback function called when the input value changes.
+ * @param {(value: Address) => void} [props.onChange] - Callback function called when the input value changes or ens address is resolved.
  * @param {boolean} [props.disabled] - (Optional) Whether the input is disabled.
  * @param {CSSProperties} [props.style] - (Optional) Styles for the input.
  *
  * @example
- * <AddressInput
- *   value="vitalik.eth"
- *   onChange={(address) => console.log(address)}
- *   placeholder="Enter address or ENS name"
- * />
+ * const [value, setValue] = useState<string>("vitalik.eth");
  *
  * <AddressInput
- *   value="0x123..."
- *   name="recipient"
- *   disabled={false}
+ *   value={value}
+ *   onChange={setValue}
+ *   placeholder="Enter address or ENS name"
  * />
+
  */
 export const AddressInput = ({ value, name, placeholder, onChange, disabled, style }: AddressInputProps) => {
   const {
