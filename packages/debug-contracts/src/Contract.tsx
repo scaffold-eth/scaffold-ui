@@ -55,7 +55,9 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
                   </div>
                   <p className="my-0 text-sm">
                     <span className="font-bold">Network</span>:{" "}
-                    <span style={{ color: NETWORKS_EXTRA_DATA[chainId]?.color }}>{chain.name}</span>
+                    <span style={{ color: NETWORKS_EXTRA_DATA[chainId]?.color }}>
+                      {chain.id === 31_337 ? "Localhost" : chain.name}
+                    </span>
                   </p>
                 </div>
               </div>
