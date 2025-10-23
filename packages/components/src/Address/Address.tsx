@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { CSSProperties } from "react";
 import { useAddress } from "@scaffold-ui/hooks";
 import { Chain, type Address as AddressType } from "viem";
 import { mainnet } from "viem/chains";
@@ -10,9 +12,11 @@ export type AddressProps = {
   address?: AddressType;
   disableAddressLink?: boolean;
   format?: "short" | "long";
-  size: "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl";
+  size?: "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl";
   onlyEnsOrAddress?: boolean;
   chain?: Chain;
+  style?: CSSProperties;
+  blockExplorerAddressLink?: string;
 };
 
 export const Address: React.FC<AddressProps> = ({
@@ -22,9 +26,19 @@ export const Address: React.FC<AddressProps> = ({
   size = "base",
   onlyEnsOrAddress,
   chain,
+  style,
+  blockExplorerAddressLink,
 }) => {
-  const { checkSumAddress, ens, ensAvatar, isEnsNameLoading, blockExplorerAddressLink, shortAddress, blockieUrl } =
-    useAddress({ address, chain: chain || mainnet });
+  const {
+    checkSumAddress,
+    ens,
+    ensAvatar,
+    isEnsNameLoading,
+    blockExplorerAddressLink: blockExplorerLink,
+    shortAddress,
+    blockieUrl,
+  } = useAddress({ address, chain: chain || mainnet });
+  blockExplorerAddressLink = blockExplorerAddressLink || blockExplorerLink;
 
   const displayAddress = format === "long" ? checkSumAddress : shortAddress;
   const displayEnsOrAddress = ens || displayAddress;
@@ -37,9 +51,9 @@ export const Address: React.FC<AddressProps> = ({
 
   if (!checkSumAddress) {
     return (
-      <div className="flex items-center">
+      <div className="flex items-center text-sui-primary-content" style={style}>
         <div
-          className="shrink-0 skeleton rounded-full"
+          className="shrink-0 sui-skeleton !rounded-full"
           style={{
             width: (blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"],
             height: (blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"],
@@ -47,11 +61,11 @@ export const Address: React.FC<AddressProps> = ({
         ></div>
         <div className="flex flex-col space-y-1">
           {!onlyEnsOrAddress && (
-            <div className={`ml-1.5 skeleton rounded-lg font-bold ${textSizeMap[ensSize]}`}>
+            <div className={`ml-1.5 sui-skeleton rounded-lg font-bold ${textSizeMap[ensSize]}`}>
               <span className="invisible">0x1234...56789</span>
             </div>
           )}
-          <div className={`ml-1.5 skeleton rounded-lg ${textSizeMap[addressSize]}`}>
+          <div className={`ml-1.5 sui-skeleton rounded-lg ${textSizeMap[addressSize]}`}>
             <span className="invisible">0x1234...56789</span>
           </div>
         </div>
@@ -60,7 +74,7 @@ export const Address: React.FC<AddressProps> = ({
   }
 
   return (
-    <div className="flex items-center shrink-0">
+    <div className="flex items-center shrink-0 text-sui-primary-content" style={style}>
       <div className="shrink-0">
         <img
           className="rounded-full"
@@ -73,7 +87,7 @@ export const Address: React.FC<AddressProps> = ({
       <div className="flex flex-col">
         {showSkeleton &&
           (isEnsNameLoading ? (
-            <div className={`ml-1.5 skeleton rounded-lg font-bold ${textSizeMap[ensSize]}`}>
+            <div className={`ml-1.5 sui-skeleton rounded-lg font-bold ${textSizeMap[ensSize]}`}>
               <span className="invisible">{shortAddress}</span>
             </div>
           ) : (

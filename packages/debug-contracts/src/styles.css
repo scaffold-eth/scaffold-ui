@@ -1,0 +1,73 @@
+@import "@scaffold-ui/components/src/styles.css";
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  /* Additional colors for debug-contracts only */
+  --color-sui-base-100: #ffffff;
+  --color-sui-neutral: #212638;
+  --color-sui-neutral-content: #ffffff;
+
+  /* Utility colors */
+  --shadow-center: 0 0 12px -2px rgb(0 0 0 / 0.05);
+  --animate-pulse-fast: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@variant dark {
+  /* Additional dark mode colors for debug-contracts only */
+  --color-sui-base-100: #385183;
+  --color-sui-neutral: #f9fbff;
+  --color-sui-neutral-content: #385183;
+  --color-sui-accent: #4969a6;
+}
+
+@layer components {
+  .btn-dc {
+    @apply inline-flex items-center justify-center rounded-full px-3 py-1.5 text-xs cursor-pointer font-semibold;
+    background-color: var(--color-sui-primary-subtle);
+    color: var(--color-sui-primary-content);
+    @apply transition-transform duration-75 ease-out;
+    min-height: 2rem;
+    --tw-shadow:
+      0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow:
+      var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
+      var(--tw-shadow);
+  }
+
+  .btn-dc:disabled {
+    @apply opacity-50;
+  }
+
+  .btn-dc:hover:not(:disabled) {
+    @apply brightness-90;
+  }
+
+  .btn-dc:active:not(:disabled) {
+    @apply scale-95;
+  }
+
+  .btn-dc-primary {
+    background-color: var(--color-sui-primary);
+    color: var(--color-sui-primary-content);
+  }
+
+  .btn-dc-secondary {
+    background-color: var(--color-sui-primary-subtle);
+    color: var(--color-sui-primary-content);
+  }
+
+  .btn-dc-accent {
+    background-color: var(--color-sui-primary);
+    color: var(--color-sui-primary-content);
+  }
+
+  .link-dc {
+    @apply underline;
+    text-underline-offset: 2px;
+  }
+
+  .link-dc:hover {
+    opacity: 80%;
+  }
+}

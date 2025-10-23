@@ -1,0 +1,22 @@
+{
+  "mode": "exit",
+  "tag": "rc",
+  "initialVersions": {
+    "@scaffold-ui/components": "0.1.1",
+    "@scaffold-ui/hooks": "0.1.1",
+    "@scaffold-ui/debug-contracts": "0.1.0"
+  },
+  "changesets": [
+    "empty-jokes-open",
+    "floppy-feet-leave",
+    "green-ties-own",
+    "happy-rings-greet",
+    "icy-views-take",
+    "sharp-groups-hope",
+    "silly-cameras-fix",
+    "six-glasses-fall",
+    "slick-news-cheat",
+    "some-steaks-retire",
+    "some-views-fix"
+  ]
+}

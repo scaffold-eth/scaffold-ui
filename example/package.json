@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "pnpm --filter @scaffold-ui/hooks --filter @scaffold-ui/components run build && next build",
+    "build": "pnpm --filter @scaffold-ui/hooks --filter @scaffold-ui/components --filter @scaffold-ui/debug-contracts run build && next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write ."
@@ -14,6 +14,7 @@
     "@rainbow-me/rainbowkit": "^2.2.4",
     "@tanstack/react-query": "^5.59.15",
     "@scaffold-ui/components": "workspace:*",
+    "@scaffold-ui/debug-contracts": "workspace:*",
     "@scaffold-ui/hooks": "workspace:*",
     "blo": "^1.2.0",
     "burner-connector": "^0.0.11",
@@ -22,7 +23,9 @@
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.2",
     "viem": "^2.23.13",
-    "wagmi": "^2.14.15"
+    "wagmi": "^2.14.15",
+    "@heroicons/react": "^2.1.5",
+    "next-themes": "^0.3.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

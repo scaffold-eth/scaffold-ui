@@ -1,13 +1,14 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { MAX_DECIMALS_USD, useEtherInput } from "@scaffold-ui/hooks";
-import { SwitchIcon } from "./icons/SwitchIcon";
+import { SwitchIcon } from "../icons/SwitchIcon";
+import { BaseInput } from "./BaseInput";
+import { CommonInputProps } from "./utils";
 
-export type EtherInputProps = {
-  name?: string;
-  placeholder?: string;
+export type EtherInputProps = Omit<CommonInputProps<string>, "onChange" | "value"> & {
   defaultValue?: string;
   defaultUsdMode?: boolean;
-  disabled?: boolean;
   onValueChange?: (value: { valueInEth: string; valueInUsd: string; displayUsdMode: boolean }) => void;
 };
 
@@ -29,6 +30,7 @@ const SIGNED_NUMBER_REGEX = /^-?\d+\.?\d*$/;
  * @param {boolean} [props.defaultUsdMode] - (Optional) If true, input starts in USD mode; otherwise, ETH mode.
  * @param {boolean} [props.disabled] - (Optional) If true, the input and toggle button are disabled.
  * @param {(value: { valueInEth: string; valueInUsd: string; usdMode: boolean }) => void} props.onValueChange - (Optional) Callback fired when the value or mode changes.
+ * @param {CSSProperties} [props.style] - (Optional) Styles for the input.
  *
  * @example
  * <EtherInput onValueChange={({ valueInEth, valueInUsd, usdMode }) => { ... }} />
@@ -41,6 +43,7 @@ export const EtherInput = ({
   defaultUsdMode,
   disabled,
   onValueChange,
+  style,
 }: EtherInputProps) => {
   const [sourceValue, setSourceValue] = useState(defaultValue ?? "");
   const [sourceUsdMode, setSourceUsdMode] = useState(defaultUsdMode ?? false);
@@ -62,8 +65,7 @@ export const EtherInput = ({
     }
   }, [valueInEth, valueInUsd, displayUsdMode]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+  const handleInputChange = (value: string) => {
     if (value && !SIGNED_NUMBER_REGEX.test(value)) {
       return;
     }
@@ -87,35 +89,36 @@ export const EtherInput = ({
 
   return (
     <div className="flex items-center gap-2">
-      <span className="pl-4 -mr-2 text-accent self-center">{displayUsdMode ? "$" : "Ξ"}</span>
-      <input
+      <BaseInput<string>
         name={name}
         value={activeValue}
         placeholder={placeholder}
         onChange={handleInputChange}
         disabled={isNativeCurrencyPriceLoading || disabled}
-        className="input input-bordered w-40"
-        autoComplete="off"
-      />
-      <button
-        className="btn btn-primary h-[2.2rem] min-h-[2.2rem] cursor-pointer"
-        onClick={(e) => {
-          e.preventDefault();
-          handleToggleMode();
-        }}
-        disabled={isNativeCurrencyPriceLoading || isNativeCurrencyPriceError || disabled}
-        type="button"
-        tabIndex={-1}
-        title={
-          isNativeCurrencyPriceLoading
-            ? "Fetching price"
-            : isNativeCurrencyPriceError
-              ? "Unable to fetch price"
-              : "Toggle USD/ETH"
+        prefix={<span className="pl-4 -mr-2 self-center">{displayUsdMode ? "$" : "Ξ"}</span>}
+        style={style}
+        suffix={
+          <button
+            className="h-[2.2rem] min-h-[2.2rem] cursor-pointer mr-3"
+            onClick={(e) => {
+              e.preventDefault();
+              handleToggleMode();
+            }}
+            disabled={isNativeCurrencyPriceLoading || isNativeCurrencyPriceError || disabled}
+            type="button"
+            tabIndex={-1}
+            title={
+              isNativeCurrencyPriceLoading
+                ? "Fetching price"
+                : isNativeCurrencyPriceError
+                  ? "Unable to fetch price"
+                  : "Toggle USD/ETH"
+            }
+          >
+            <SwitchIcon height={15} width={15} />
+          </button>
         }
-      >
-        <SwitchIcon width={16} height={16} />
-      </button>
+      />
     </div>
   );
 };
