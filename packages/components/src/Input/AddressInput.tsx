@@ -26,7 +26,8 @@ export type AddressInputProps = CommonInputProps<Address | string>;
  * @param {string} [props.placeholder] - (Optional) Placeholder text for the input field.
  * @param {(value: Address) => void} [props.onChange] - Callback function called when the input value changes.
  * @param {boolean} [props.disabled] - (Optional) Whether the input is disabled.
- * @param {CSSProperties} [props.style] - (Optional) Styles for the input.
+ * @param {CSSProperties} [props.style] - (Optional) Custom CSS styles to apply to the component.
+ *   Performance Warning: Always memoize style objects to prevent unnecessary re-renders.
  *
  * @example
  * <AddressInput

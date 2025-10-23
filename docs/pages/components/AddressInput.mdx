@@ -2,7 +2,7 @@
 layout: docs
 ---
 
-import React from "react";
+import React, { useMemo } from "react";
 import { AddressInput } from "@scaffold-ui/components";
 import { DocsProvider } from "../../components/DocsProvider";
 import { AddressInputExample } from "../../components/AddressInputExample";
@@ -19,13 +19,14 @@ import { AddressInput } from "@scaffold-ui/components";
 
 ## Props
 
-| Prop           | Type                     | Default | Description |
-| -------------- | ------------------------ | ------- | ----------- |
-| `value`        | `Address \| string`      | -       | Current input value. Accepts an Ethereum address or an ENS name. |
-| `onChange`     | `(value: Address \| string) => void` | -       | Called when the input changes. After ENS resolution, it emits the resolved `Address`. |
-| `name`         | `string`                 | -       | Name attribute of the input element. |
-| `placeholder`  | `string`                 | -       | Placeholder text for the input. |
-| `disabled`     | `boolean`                | `false` | Disables the input. While resolving ENS, the input is temporarily disabled. |
+| Prop          | Type                                 | Default | Description                                                                           |
+| ------------- | ------------------------------------ | ------- | ------------------------------------------------------------------------------------- |
+| `value`       | `Address \| string`                  | -       | Current input value. Accepts an Ethereum address or an ENS name.                      |
+| `onChange`    | `(value: Address \| string) => void` | -       | Called when the input changes. After ENS resolution, it emits the resolved `Address`. |
+| `name`        | `string`                             | -       | Name attribute of the input element.                                                  |
+| `placeholder` | `string`                             | -       | Placeholder text for the input.                                                       |
+| `disabled`    | `boolean`                            | `false` | Disables the input. While resolving ENS, the input is temporarily disabled.           |
+| `style`       | `CSSProperties`                      | -       | Custom CSS styles (memoize to prevent re-renders)                                     |
 
 ## Live Examples
 
@@ -48,7 +49,10 @@ import { AddressInput } from "@scaffold-ui/components";
 ### Default value (ENS Name)
 
 <DocsProvider>
-  <AddressInputExample initialValue="vitalik.eth" placeholder="Enter address or ENS" />
+  <AddressInputExample
+    initialValue="vitalik.eth"
+    placeholder="Enter address or ENS"
+  />
 </DocsProvider>
 
 ```tsx
@@ -79,7 +83,10 @@ import { AddressInput } from "@scaffold-ui/components";
 ### Disabled State
 
 <DocsProvider>
-  <AddressInputExample initialValue="0x1234567890123456789012345678901234567890" disabled={true} />
+  <AddressInputExample
+    initialValue="0x1234567890123456789012345678901234567890"
+    disabled={true}
+  />
 </DocsProvider>
 
 ```tsx
@@ -90,4 +97,50 @@ import { AddressInput } from "@scaffold-ui/components";
   onChange={(address) => console.log(address)}
   disabled={true}
 />
+```
+
+### Custom Styles
+
+⚠️ **Performance Warning**: Always memoize style objects to prevent unnecessary re-renders.
+
+<DocsProvider>
+  <AddressInputExample
+    placeholder="Custom styled input"
+    style={useMemo(
+      () => ({
+        "--color-sui-input-border": "#4ade80",
+        "--color-sui-input-background": "#dcfce7",
+        "--color-sui-input-text": "#166534",
+      }),
+      []
+    )}
+  />
+</DocsProvider>
+
+```tsx
+import React, { useMemo } from "react";
+import { AddressInput } from "@scaffold-ui/components";
+import type { CSSProperties } from "react";
+
+function MyComponent() {
+  // Memoized style object
+  const customInputStyle = useMemo(
+    () =>
+      ({
+        "--color-sui-input-border": "#4ade80",
+        "--color-sui-input-background": "#dcfce7",
+        "--color-sui-input-text": "#166534",
+      }) as CSSProperties,
+    []
+  );
+
+  return (
+    <AddressInput
+      value=""
+      onChange={(address) => console.log(address)}
+      placeholder="Custom styled input"
+      style={customInputStyle}
+    />
+  );
+}
 ```

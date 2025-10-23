@@ -2,7 +2,7 @@
 layout: docs
 ---
 
-import React from "react";
+import React, { useMemo } from "react";
 import { Address } from "@scaffold-ui/components";
 import { DocsProvider } from "../../components/DocsProvider";
 
@@ -18,14 +18,15 @@ import { Address } from "@scaffold-ui/components";
 
 ## Props
 
-| Prop                 | Type                                                       | Default   | Description                              |
-| -------------------- | ---------------------------------------------------------- | --------- | ---------------------------------------- |
-| `address`            | `Address`                                                  | -         | The Ethereum address to display          |
-| `disableAddressLink` | `boolean`                                                  | `false`   | Disable linking to block explorer        |
-| `format`             | `"short" \| "long"`                                        | `"short"` | Display format for the address           |
-| `size`               | `"xs" \| "sm" \| "base" \| "lg" \| "xl" \| "2xl" \| "3xl"` | `"base"`  | Size of the component                    |
-| `onlyEnsOrAddress`   | `boolean`                                                  | `false`   | Show only ENS name or address (not both) |
-| `chain`              | `Chain`                                                    | `mainnet` | Blockchain network for resolution        |
+| Prop                 | Type                                                       | Default   | Description                                       |
+| -------------------- | ---------------------------------------------------------- | --------- | ------------------------------------------------- |
+| `address`            | `Address`                                                  | -         | The Ethereum address to display                   |
+| `disableAddressLink` | `boolean`                                                  | `false`   | Disable linking to block explorer                 |
+| `format`             | `"short" \| "long"`                                        | `"short"` | Display format for the address                    |
+| `size`               | `"xs" \| "sm" \| "base" \| "lg" \| "xl" \| "2xl" \| "3xl"` | `"base"`  | Size of the component                             |
+| `onlyEnsOrAddress`   | `boolean`                                                  | `false`   | Show only ENS name or address (not both)          |
+| `chain`              | `Chain`                                                    | `mainnet` | Blockchain network for resolution                 |
+| `style`              | `CSSProperties`                                            | -         | Custom CSS styles (memoize to prevent re-renders) |
 
 ## Live Examples
 
@@ -138,4 +139,50 @@ import { Address } from "@scaffold-ui/components";
   chain={polygon}
   size="base"
 />;
+```
+
+### Custom Styles
+
+⚠️ **Performance Warning**: Always memoize style objects to prevent unnecessary re-renders.
+
+<DocsProvider>
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    style={useMemo(
+      () => ({
+        "--color-sui-primary-content": "var(--color-sui-success)",
+        padding: "16px",
+        borderRadius: "8px",
+        backgroundColor: "rgba(34, 197, 94, 0.1)",
+      }),
+      []
+    )}
+  />
+</DocsProvider>
+
+```tsx twoslash
+import React, { useMemo } from "react";
+import { Address } from "@scaffold-ui/components";
+import type { CSSProperties } from "react";
+
+function MyComponent() {
+  // Memoized style object
+  const customStyle = useMemo(
+    () =>
+      ({
+        "--color-sui-primary-content": "var(--color-sui-success)",
+        padding: "8px",
+        borderRadius: "4px",
+        backgroundColor: "rgba(34, 197, 94, 0.1)",
+      }) as CSSProperties,
+    []
+  );
+
+  return (
+    <Address
+      address="0x1234567890123456789012345678901234567890"
+      style={customStyle}
+    />
+  );
+}
 ```

@@ -2,7 +2,7 @@
 layout: docs
 ---
 
-import React from "react";
+import React, { useMemo } from "react";
 import { EtherInput } from "@scaffold-ui/components";
 import { DocsProvider } from "../../components/DocsProvider";
 
@@ -18,14 +18,15 @@ import { EtherInput } from "@scaffold-ui/components";
 
 ## Props
 
-| Prop               | Type                                                                 | Default   | Description                                                                                 |
-| ------------------ | -------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------- |
-| `name`             | `string`                                                              | -         | Name attribute for the input element                                                         |
-| `placeholder`      | `string`                                                              | -         | Placeholder text for the input                                                              |
-| `defaultValue`     | `string`                                                              | -         | Initial value for the input                                                                 |
-| `defaultUsdMode`   | `boolean`                                                             | `false`   | Start with the input in USD mode instead of ETH                                             |
-| `disabled`         | `boolean`                                                             | `false`   | Disables the input and toggle button                                                         |
-| `onValueChange`    | `(value: { valueInEth: string; valueInUsd: string; displayUsdMode: boolean }) => void` | -         | Called when the value or display mode changes. Provides both ETH and USD values and current display mode |
+| Prop             | Type                                                                                   | Default | Description                                                                                              |
+| ---------------- | -------------------------------------------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------- |
+| `name`           | `string`                                                                               | -       | Name attribute for the input element                                                                     |
+| `placeholder`    | `string`                                                                               | -       | Placeholder text for the input                                                                           |
+| `defaultValue`   | `string`                                                                               | -       | Initial value for the input                                                                              |
+| `defaultUsdMode` | `boolean`                                                                              | `false` | Start with the input in USD mode instead of ETH                                                          |
+| `disabled`       | `boolean`                                                                              | `false` | Disables the input and toggle button                                                                     |
+| `onValueChange`  | `(value: { valueInEth: string; valueInUsd: string; displayUsdMode: boolean }) => void` | -       | Called when the value or display mode changes. Provides both ETH and USD values and current display mode |
+| `style`          | `CSSProperties`                                                                        | -       | Custom CSS styles (memoize to prevent re-renders)                                                        |
 
 ## Live Examples
 
@@ -103,4 +104,51 @@ import { EtherInput } from "@scaffold-ui/components";
     console.log({ valueInEth, valueInUsd, displayUsdMode });
   }}
 />;
+```
+
+### Custom Styles
+
+⚠️ **Performance Warning**: Always memoize style objects to prevent unnecessary re-renders.
+
+<DocsProvider>
+  <EtherInput
+    placeholder="Custom styled input"
+    style={useMemo(
+      () => ({
+        "--color-sui-input-border": "#eab308",
+        "--color-sui-input-background": "#fef9c3",
+        "--color-sui-input-text": "#713f12",
+      }),
+      []
+    )}
+  />
+</DocsProvider>
+
+```tsx
+import React, { useMemo } from "react";
+import { EtherInput } from "@scaffold-ui/components";
+import type { CSSProperties } from "react";
+
+function MyComponent() {
+  // Memoized style object
+  const customEtherInputStyle = useMemo(
+    () =>
+      ({
+        "--color-sui-input-border": "#eab308",
+        "--color-sui-input-background": "#fef9c3",
+        "--color-sui-input-text": "#713f12",
+      }) as CSSProperties,
+    []
+  );
+
+  return (
+    <EtherInput
+      placeholder="Custom styled input"
+      style={customEtherInputStyle}
+      onValueChange={({ valueInEth, valueInUsd, displayUsdMode }) => {
+        console.log({ valueInEth, valueInUsd, displayUsdMode });
+      }}
+    />
+  );
+}
 ```
