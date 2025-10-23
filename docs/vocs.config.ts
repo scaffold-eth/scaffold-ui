@@ -29,9 +29,17 @@ export default defineConfig({
         { text: "EtherInput", link: "/components/EtherInput" },
       ],
     },
+    {
+      text: "Hooks",
+      items: [
+        { text: "useAddress", link: "/hooks/useAddress" },
+        { text: "useAddressInput", link: "/hooks/useAddressInput" },
+      ],
+    },
   ],
   topNav: [
     { text: "Components", link: "/components/Address" },
+    { text: "Hooks", link: "/hooks/useAddress" },
     {
       text: "Examples",
       link: "https://github.com/scaffold-eth/scaffold-ui/tree/main/example",
