@@ -1,5 +1,24 @@
 # @scaffold-ui/components
 
+## 0.1.2
+
+### Patch Changes
+
+- b884a95: make address optional for useBalance and Balance component
+- b884a95: make Address size prop optional
+- b884a95: ui polish to debug component
+- b884a95: UI polish
+- b884a95: setup themeing for components package
+- b884a95: feat: have common BaseInput for Input components
+- b884a95: Address component blockexplorer link and "use client" for all components
+- b884a95: fix refocus scroll on Input components
+  update collapsible component to use rounded-2xl
+  have default font family for all components
+  fix base input component colors
+- Updated dependencies [b884a95]
+- Updated dependencies [b884a95]
+  - @scaffold-ui/hooks@0.1.2
+
 ## 0.1.2-rc.5
 
 ### Patch Changes

@@ -1,5 +1,25 @@
 # @scaffold-ui/debug-contracts
 
+## 0.1.1
+
+### Patch Changes
+
+- b884a95: Intial version
+- b884a95: use react context for chainId, chain and blockExplorerAddress to avoid prop drilling
+- b884a95: ui polish to debug component
+- b884a95: UI polish
+- Updated dependencies [b884a95]
+- Updated dependencies [b884a95]
+- Updated dependencies [b884a95]
+- Updated dependencies [b884a95]
+- Updated dependencies [b884a95]
+- Updated dependencies [b884a95]
+- Updated dependencies [b884a95]
+- Updated dependencies [b884a95]
+- Updated dependencies [b884a95]
+  - @scaffold-ui/components@0.1.2
+  - @scaffold-ui/hooks@0.1.2
+
 ## 0.1.1-rc.4
 
 ### Patch Changes
