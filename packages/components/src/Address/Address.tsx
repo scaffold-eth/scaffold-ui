@@ -7,7 +7,7 @@ import { mainnet } from "viem/chains";
 import { AddressLinkWrapper } from "./AddressLinkWrapper";
 import { AddressCopyIcon } from "./AddressCopyIcon";
 import { textSizeMap, blockieSizeMap, copyIconSizeMap, getNextSize, getPrevSize } from "./utils";
-import { ComponentWrapper } from "../utils/ComponentWrapper";
+import { DefaultStylesWrapper } from "../utils/ComponentWrapper";
 
 export type AddressProps = {
   address?: AddressType;
@@ -52,7 +52,7 @@ export const Address: React.FC<AddressProps> = ({
 
   if (!checkSumAddress) {
     return (
-      <ComponentWrapper className="flex items-center text-sui-primary-content" style={style}>
+      <DefaultStylesWrapper className="flex items-center text-sui-primary-content" style={style}>
         <div
           className="shrink-0 sui-skeleton !rounded-full"
           style={{
@@ -70,12 +70,12 @@ export const Address: React.FC<AddressProps> = ({
             <span className="invisible">0x1234...56789</span>
           </div>
         </div>
-      </ComponentWrapper>
+      </DefaultStylesWrapper>
     );
   }
 
   return (
-    <ComponentWrapper className="flex items-center shrink-0 text-sui-primary-content" style={style}>
+    <DefaultStylesWrapper className="flex items-center shrink-0 text-sui-primary-content" style={style}>
       <div className="shrink-0">
         <img
           className="rounded-full"
@@ -116,6 +116,6 @@ export const Address: React.FC<AddressProps> = ({
           />
         </div>
       </div>
-    </ComponentWrapper>
+    </DefaultStylesWrapper>
   );
 };

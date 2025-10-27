@@ -11,7 +11,7 @@ type ComponentWrapperProps<T extends ElementType = "div"> = {
  * Base wrapper component for all scaffold-ui components
  * Automatically applies the font-sans class for consistent styling
  */
-export const ComponentWrapper = <T extends ElementType = "div">({
+export const DefaultStylesWrapper = <T extends ElementType = "div">({
   children,
   className = "",
   style,
