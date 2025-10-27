@@ -5,6 +5,7 @@ import { Address, Chain } from "viem";
 import { useBalance } from "@scaffold-ui/hooks";
 import { useAccount } from "wagmi";
 import { mainnet } from "viem/chains";
+import { ComponentWrapper } from "./utils/ComponentWrapper";
 
 export type BalanceProps = {
   address?: Address;
@@ -39,26 +40,27 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, defaultUsdMode
 
   if (isLoading || !balance) {
     return (
-      <div className="flex items-center animate-pulse" style={style}>
+      <ComponentWrapper className="flex items-center animate-pulse" style={style}>
         <div className="h-4 w-20 bg-sui-skeleton-base rounded" />
-      </div>
+      </ComponentWrapper>
     );
   }
 
   if (isError) {
     return (
-      <div
+      <ComponentWrapper
         className="border border-gray-300 rounded px-2 flex flex-col items-center max-w-fit text-sui-primary-content"
         style={style}
       >
         <div className="text-sui-warning text-sm">Error</div>
-      </div>
+      </ComponentWrapper>
     );
   }
 
   return (
-    <button
-      className={`flex flex-col items-center font-normal bg-transparent focus:outline-none cursor-pointer text-sui-primary-content`}
+    <ComponentWrapper
+      as="button"
+      className="flex flex-col items-center font-normal bg-transparent focus:outline-none cursor-pointer text-sui-primary-content"
       onClick={toggleDisplayUsdMode}
       type="button"
       title="Toggle balance display mode"
@@ -77,6 +79,6 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, defaultUsdMode
           </div>
         )}
       </div>
-    </button>
+    </ComponentWrapper>
   );
 };
