@@ -53,9 +53,9 @@ const {
 | `shortAddress`              | `string \| undefined`          | Shortened address format (first 6 and last 4 characters).        |
 | `blockieUrl`                | `string \| undefined`          | Data URL for a deterministic blockie image of the address.       |
 
-::::info
-ENS fields are tri-state: `undefined` (not requested/loading/error), `null` (no record), or a value (resolved).
-::::
+:::info
+`ens` and `ensAvatar` fields are tri-state: `undefined` (not requested, still resolving, or error), `null` (no record), or a value (resolved).
+:::
 
 ## Live Examples
 

@@ -64,9 +64,9 @@ const {
 | `settledValue`          | `string \| undefined`          | The debounced and validated input value (undefined while debouncing).|
 | `debouncedValue`        | `string`                       | The debounced input value.                                         |
 
-::::info
-ENS fields are tri-state: `undefined` (not requested/loading/error), `null` (no record), or a value (resolved).
-::::
+:::info
+`ensAddress`, `ensName`, and `ensAvatar` fields are tri-state: `undefined` (not requested, still resolving, or error), `null` (no record), or a value (resolved).
+:::
 
 ## Live Examples
 
