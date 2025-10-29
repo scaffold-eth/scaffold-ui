@@ -42,16 +42,20 @@ const {
 
 ## Return Values
 
-| Property                    | Type                   | Description                                                      |
-| --------------------------- | ---------------------- | ---------------------------------------------------------------- |
-| `checkSumAddress`           | `Address \| undefined` | The checksummed version of the provided address.                 |
-| `ens`                       | `string \| undefined`  | The resolved ENS name for the address (if available).            |
-| `ensAvatar`                 | `string \| undefined`  | The ENS avatar URL (if available).                               |
-| `isEnsNameLoading`          | `boolean`              | Loading state for ENS name resolution.                           |
-| `blockExplorerAddressLink`  | `string`               | Full URL to view the address on the chain's block explorer.      |
-| `isValidAddress`            | `boolean`              | Whether the provided address is a valid Ethereum address.        |
-| `shortAddress`              | `string \| undefined`  | Shortened address format (first 6 and last 4 characters).        |
-| `blockieUrl`                | `string \| undefined`  | Data URL for a deterministic blockie image of the address.       |
+| Property                    | Type                           | Description                                                      |
+| --------------------------- | ------------------------------ | ---------------------------------------------------------------- |
+| `checkSumAddress`           | `Address \| undefined`         | The checksummed version of the provided address.                 |
+| `ens`                       | `string \| null \| undefined`  | The resolved ENS name for the address (if available).            |
+| `ensAvatar`                 | `string \| null \| undefined`  | The ENS avatar URL (if available).                               |
+| `isEnsNameLoading`          | `boolean`                      | Loading state for ENS name resolution.                           |
+| `blockExplorerAddressLink`  | `string`                       | Full URL to view the address on the chain's block explorer.      |
+| `isValidAddress`            | `boolean`                      | Whether the provided address is a valid Ethereum address.        |
+| `shortAddress`              | `string \| undefined`          | Shortened address format (first 6 and last 4 characters).        |
+| `blockieUrl`                | `string \| undefined`          | Data URL for a deterministic blockie image of the address.       |
+
+::::info
+ENS fields are tri-state: `undefined` (not requested/loading/error), `null` (no record), or a value (resolved).
+::::
 
 ## Live Examples
 

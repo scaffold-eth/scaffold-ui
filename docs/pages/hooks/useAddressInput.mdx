@@ -47,22 +47,26 @@ const {
 
 ## Return Values
 
-| Property                | Type                  | Description                                                        |
-| ----------------------- | --------------------- | ------------------------------------------------------------------ |
-| `ensAddress`            | `Address \| undefined` | The resolved Ethereum address from an ENS name input.              |
-| `isEnsAddressLoading`   | `boolean`             | Loading state for ENS address resolution.                          |
-| `isEnsAddressError`     | `boolean`             | Error state for ENS address resolution.                            |
-| `isEnsAddressSuccess`   | `boolean`             | Success state for ENS address resolution.                          |
-| `ensName`               | `string \| undefined` | The resolved ENS name from an address input.                       |
-| `isEnsNameLoading`      | `boolean`             | Loading state for ENS name resolution.                             |
-| `isEnsNameError`        | `boolean`             | Error state for ENS name resolution.                               |
-| `isEnsNameSuccess`      | `boolean`             | Success state for ENS name resolution.                             |
-| `ensAvatar`             | `string \| undefined` | The ENS avatar URL for the resolved ENS name.                      |
-| `isEnsAvatarLoading`    | `boolean`             | Loading state for ENS avatar fetching.                             |
-| `isEnsAvatarError`      | `boolean`             | Error state for ENS avatar fetching.                               |
-| `isEnsAvatarSuccess`    | `boolean`             | Success state for ENS avatar fetching.                             |
-| `settledValue`          | `string \| undefined` | The debounced and validated input value (undefined while debouncing).|
-| `debouncedValue`        | `string`              | The debounced input value.                                         |
+| Property                | Type                           | Description                                                        |
+| ----------------------- | ------------------------------ | ------------------------------------------------------------------ |
+| `ensAddress`            | `Address \| null \| undefined` | The resolved Ethereum address from an ENS name input.              |
+| `isEnsAddressLoading`   | `boolean`                      | Loading state for ENS address resolution.                          |
+| `isEnsAddressError`     | `boolean`                      | Error state for ENS address resolution.                            |
+| `isEnsAddressSuccess`   | `boolean`                      | Success state for ENS address resolution.                          |
+| `ensName`               | `string \| null \| undefined`  | The resolved ENS name from an address input.                       |
+| `isEnsNameLoading`      | `boolean`                      | Loading state for ENS name resolution.                             |
+| `isEnsNameError`        | `boolean`                      | Error state for ENS name resolution.                               |
+| `isEnsNameSuccess`      | `boolean`                      | Success state for ENS name resolution.                             |
+| `ensAvatar`             | `string \| null \| undefined`  | The ENS avatar URL for the resolved ENS name.                      |
+| `isEnsAvatarLoading`    | `boolean`                      | Loading state for ENS avatar fetching.                             |
+| `isEnsAvatarError`      | `boolean`                      | Error state for ENS avatar fetching.                               |
+| `isEnsAvatarSuccess`    | `boolean`                      | Success state for ENS avatar fetching.                             |
+| `settledValue`          | `string \| undefined`          | The debounced and validated input value (undefined while debouncing).|
+| `debouncedValue`        | `string`                       | The debounced input value.                                         |
+
+::::info
+ENS fields are tri-state: `undefined` (not requested/loading/error), `null` (no record), or a value (resolved).
+::::
 
 ## Live Examples
 
