@@ -127,6 +127,64 @@ importers:
         specifier: ^5
         version: 5.8.2
 
+  packages/block-explorer:
+    dependencies:
+      '@heroicons/react':
+        specifier: ^2.2.0
+        version: 2.2.0(react@19.0.0)
+      '@scaffold-ui/components':
+        specifier: workspace:*
+        version: link:../components
+      '@scaffold-ui/hooks':
+        specifier: workspace:*
+        version: link:../hooks
+      '@tanstack/react-query':
+        specifier: ^5.59.15
+        version: 5.69.0(react@19.0.0)
+      '@types/react':
+        specifier: ^19.0.7
+        version: 19.0.12
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-hot-toast:
+        specifier: ^2.5.2
+        version: 2.5.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      viem:
+        specifier: ^2.23.0
+        version: 2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)
+      wagmi:
+        specifier: ^2.14.11
+        version: 2.14.15(@tanstack/query-core@5.69.0)(@tanstack/react-query@5.69.0(react@19.0.0))(@types/react@19.0.12)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10))
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.22.0
+        version: 9.22.0
+      '@tailwindcss/cli':
+        specifier: ^4.1.10
+        version: 4.1.10
+      eslint:
+        specifier: ^9
+        version: 9.22.0(jiti@2.4.2)
+      eslint-config-prettier:
+        specifier: ^10.1.1
+        version: 10.1.1(eslint@9.22.0(jiti@2.4.2))
+      eslint-plugin-prettier:
+        specifier: ^5.2.3
+        version: 5.2.3(eslint-config-prettier@10.1.1(eslint@9.22.0(jiti@2.4.2)))(eslint@9.22.0(jiti@2.4.2))(prettier@3.5.3)
+      prettier:
+        specifier: ^3.5.3
+        version: 3.5.3
+      tailwindcss:
+        specifier: ^4
+        version: 4.1.12
+      typescript:
+        specifier: ^5.8.2
+        version: 5.8.2
+      typescript-eslint:
+        specifier: ^8.27.0
+        version: 8.27.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2)
+
   packages/components:
     dependencies:
       '@scaffold-ui/hooks':
