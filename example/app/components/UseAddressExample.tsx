@@ -27,12 +27,12 @@ export const UseAddressExample = () => {
       <div className="space-y-8">
         {/* Address Component Examples */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-200">Address Component Examples</h2>
+          <h2 className="text-xl font-semibold text-[var(--color-sui-primary-content)]">Address Component Examples</h2>
 
           <div className="space-y-4">
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">Default (base size, short format)</span>
-              <Address address={address} size="base" />
+              <Address address={address} />
             </div>
 
             <div className="flex flex-col">
@@ -84,7 +84,9 @@ export const UseAddressExample = () => {
 
         {/* Manual Implementation using useAddress hook */}
         <div className="space-y-4 border-t border-gray-700 pt-6">
-          <h2 className="text-xl font-semibold text-gray-200">Manual Implementation (useAddress Hook)</h2>
+          <h2 className="text-xl font-semibold text-[var(--color-sui-primary-content)]">
+            Manual Implementation (useAddress Hook)
+          </h2>
 
           <div className="flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useWatchBalance } from "./useWatchBalance.js";
 
 type UseBalanceOptions = {
-  address: Address;
+  address?: Address;
   chain: Chain;
   defaultUsdMode?: boolean;
 };

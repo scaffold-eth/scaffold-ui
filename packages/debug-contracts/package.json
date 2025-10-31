@@ -1,0 +1,56 @@
+{
+  "name": "@scaffold-ui/debug-contracts",
+  "version": "0.1.2",
+  "description": "Debug contracts component for scaffold-ui",
+  "type": "module",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "default": "./dist/esm/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "pnpm run /^dev:.*/",
+    "dev:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
+    "dev:types": "tsc --project tsconfig.json --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types --watch",
+    "build": "pnpm run clean && pnpm run build:css && pnpm build:esm+types",
+    "build:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
+    "build:esm+types": "tsc --project tsconfig.json --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types",
+    "clean": "rm -rf dist",
+    "lint": "eslint . --ignore-pattern 'dist/' ",
+    "format": "prettier --write . '!(node_modules|dist)/**/*' '!CHANGELOG.md'",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@scaffold-ui/components": "workspace:*",
+    "@scaffold-ui/hooks": "workspace:*",
+    "@tanstack/react-query": "^5.59.15",
+    "@types/react": "^19.0.7",
+    "react": "^19.0.0",
+    "viem": "^2.23.0",
+    "wagmi": "^2.14.11"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@tailwindcss/cli": "^4.1.10",
+    "eslint": "^9",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.5.3",
+    "tailwindcss": "^4",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.27.0"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "react-hot-toast": "^2.5.2"
+  }
+}
