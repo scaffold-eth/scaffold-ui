@@ -43,11 +43,18 @@ function AddressInfo() {
         <div>Loading ENS name...</div>
       ) : (
         <div>
-          <img src={ensAvatar ?? blockieUrl} alt="Avatar" />
+          <img
+            src={ensAvatar ?? blockieUrl}
+            alt="Avatar"
+          />
           <div>ENS Name: {ens ?? "No ENS name"}</div>
           <div>Address: {checkSumAddress}</div>
           <div>Short Address: {shortAddress}</div>
-          <a href={blockExplorerAddressLink} target="_blank" rel="noopener noreferrer">
+          <a
+            href={blockExplorerAddressLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             View on Block Explorer
           </a>
           {isValidAddress && <div>✓ Valid Address</div>}

@@ -32,10 +32,16 @@ export const Header = () => {
           {/* Navigation Items */}
           <nav className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              <Link href="/" className={getLinkClassName("/")}>
+              <Link
+                href="/"
+                className={getLinkClassName("/")}
+              >
                 Home
               </Link>
-              <Link href="/debug" className={getLinkClassName("/debug")}>
+              <Link
+                href="/debug"
+                className={getLinkClassName("/debug")}
+              >
                 Debug Contracts
               </Link>
             </div>

@@ -14,7 +14,11 @@ export const AddressLinkWrapper = ({
   return disableAddressLink ? (
     <>{children}</>
   ) : (
-    <a href={blockExplorerAddressLink} target="_blank" rel="noopener noreferrer">
+    <a
+      href={blockExplorerAddressLink}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       {children}
     </a>
   );

@@ -65,7 +65,10 @@ export const DisplayVariable = ({
           {isFetching ? (
             <div className="w-3 h-3 border border-sui-primary-subtle border-t-transparent rounded-full animate-spin"></div>
           ) : (
-            <ArrowPathIcon className="h-3 w-3 cursor-pointer" aria-hidden="true" />
+            <ArrowPathIcon
+              className="h-3 w-3 cursor-pointer"
+              aria-hidden="true"
+            />
           )}
         </button>
         <InheritanceTooltip inheritedFrom={inheritedFrom} />

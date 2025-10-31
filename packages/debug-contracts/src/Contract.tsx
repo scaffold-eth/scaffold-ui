@@ -63,7 +63,10 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
               </div>
             </div>
             <div className="bg-sui-primary-subtle dark:bg-sui-primary rounded-3xl px-6 lg:px-8 py-4 shadow-lg shadow-sui-primary-subtle dark:shadow-sui-primary overflow-y-auto">
-              <ContractVariables refreshDisplayVariables={refreshDisplayVariables} contract={contract} />
+              <ContractVariables
+                refreshDisplayVariables={refreshDisplayVariables}
+                contract={contract}
+              />
             </div>
           </div>
           <div className="col-span-1 lg:col-span-2 flex flex-col gap-6">
@@ -87,7 +90,10 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
                   </div>
                 </div>
                 <div className="p-5 divide-y divide-sui-primary-subtle">
-                  <ContractWriteMethods contract={contract} onChange={triggerRefreshDisplayVariables} />
+                  <ContractWriteMethods
+                    contract={contract}
+                    onChange={triggerRefreshDisplayVariables}
+                  />
                 </div>
               </div>
             </div>

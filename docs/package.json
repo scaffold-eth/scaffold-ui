@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vocs dev",
     "build": "pnpm --filter @scaffold-ui/hooks --filter @scaffold-ui/components run build && vocs build",
-    "preview": "vocs preview"
+    "preview": "vocs preview",
+    "format": "prettier --write ."
   },
   "keywords": [
     "documentation",
@@ -26,5 +27,8 @@
     "viem": "^2.23.13",
     "vocs": "^1.0.13",
     "wagmi": "^2.14.15"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
   }
 }

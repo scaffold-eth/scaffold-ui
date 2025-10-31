@@ -9,11 +9,7 @@ interface AddressInputExampleProps {
   disabled?: boolean;
 }
 
-export const AddressInputExample = ({
-  initialValue = "",
-  placeholder,
-  disabled
-}: AddressInputExampleProps) => {
+export const AddressInputExample = ({ initialValue = "", placeholder, disabled }: AddressInputExampleProps) => {
   const [address, setAddress] = useState(initialValue);
 
   return (

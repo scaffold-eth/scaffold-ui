@@ -35,13 +35,7 @@ export const UseAddressInputBasicExample = () => {
 
 export const UseAddressInputWithResolutionExample = () => {
   const [value, setValue] = useState("");
-  const {
-    ensAddress,
-    ensName,
-    ensAvatar,
-    isEnsAddressLoading,
-    isEnsNameLoading
-  } = useAddressInput({ value });
+  const { ensAddress, ensName, ensAvatar, isEnsAddressLoading, isEnsNameLoading } = useAddressInput({ value });
 
   return (
     <div>
@@ -71,9 +65,19 @@ export const UseAddressInputWithResolutionExample = () => {
       )}
 
       {ensName && (
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem", fontSize: "0.875rem" }}>
-          {ensAvatar && <img src={ensAvatar} alt={ensName} style={{ width: "24px", height: "24px", borderRadius: "50%" }} />}
-          <span><strong>Resolved ENS:</strong> {ensName}</span>
+        <div
+          style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem", fontSize: "0.875rem" }}
+        >
+          {ensAvatar && (
+            <img
+              src={ensAvatar}
+              alt={ensName}
+              style={{ width: "24px", height: "24px", borderRadius: "50%" }}
+            />
+          )}
+          <span>
+            <strong>Resolved ENS:</strong> {ensName}
+          </span>
         </div>
       )}
     </div>
@@ -82,14 +86,10 @@ export const UseAddressInputWithResolutionExample = () => {
 
 export const UseAddressInputErrorExample = () => {
   const [value, setValue] = useState("");
-  const {
-    ensAddress,
-    isEnsAddressLoading,
-    isEnsAddressError,
-    isEnsAddressSuccess
-  } = useAddressInput({ value });
+  const { ensAddress, isEnsAddressLoading, isEnsAddressError, isEnsAddressSuccess } = useAddressInput({ value });
 
-  const showError = !isEnsAddressLoading && value && (isEnsAddressError || (isEnsAddressSuccess && ensAddress === null));
+  const showError =
+    !isEnsAddressLoading && value && (isEnsAddressError || (isEnsAddressSuccess && ensAddress === null));
 
   return (
     <div>
@@ -109,13 +109,9 @@ export const UseAddressInputErrorExample = () => {
 
       {isEnsAddressLoading && <p>Resolving...</p>}
 
-      {showError && (
-        <p style={{ color: "red" }}>✗ Could not resolve ENS name</p>
-      )}
+      {showError && <p style={{ color: "red" }}>✗ Could not resolve ENS name</p>}
 
-      {ensAddress && (
-        <p style={{ color: "green" }}>✓ Resolved: {ensAddress}</p>
-      )}
+      {ensAddress && <p style={{ color: "green" }}>✓ Resolved: {ensAddress}</p>}
     </div>
   );
 };

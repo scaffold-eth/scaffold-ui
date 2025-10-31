@@ -124,7 +124,11 @@ export const WriteOnlyFunctionForm = ({
             </div>
           )}
           <div className="flex flex-shrink-0 self-start">
-            <Tooltip content="Wallet not connected or in the wrong network" position="bottom" show={writeDisabled}>
+            <Tooltip
+              content="Wallet not connected or in the wrong network"
+              position="bottom"
+              show={writeDisabled}
+            >
               <button
                 className="btn-dc btn-dc-secondary btn-sm"
                 disabled={writeDisabled || isPending}

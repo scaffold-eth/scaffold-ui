@@ -43,7 +43,11 @@ function ParentComponent() {
   const [value, setValue] = useState<string>("");
 
   return (
-    <AddressInput value={value} onChange={setValue} placeholder="0x or ENS" />
+    <AddressInput
+      value={value}
+      onChange={setValue}
+      placeholder="0x or ENS"
+    />
   );
 }
 ```
@@ -85,11 +89,14 @@ import React, { useState } from "react";
 import { AddressInput } from "@scaffold-ui/components";
 
 function ParentComponent() {
-  const [value, setValue] = useState<string>(
-    "0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
-  );
+  const [value, setValue] = useState<string>("0xd8da6bf26964af9d7eed9e03e53415d37aa96045");
 
-  return <AddressInput value={value} onChange={setValue} />;
+  return (
+    <AddressInput
+      value={value}
+      onChange={setValue}
+    />
+  );
 }
 ```
 
@@ -107,10 +114,14 @@ import React, { useState } from "react";
 import { AddressInput } from "@scaffold-ui/components";
 
 function ParentComponent() {
-  const [value, setValue] = useState<string>(
-    "0x1234567890123456789012345678901234567890"
-  );
+  const [value, setValue] = useState<string>("0x1234567890123456789012345678901234567890");
 
-  return <AddressInput value={value} onChange={setValue} disabled={true} />;
+  return (
+    <AddressInput
+      value={value}
+      onChange={setValue}
+      disabled={true}
+    />
+  );
 }
 ```

@@ -37,7 +37,10 @@ export const UseBalanceExample = () => {
             </div>
             <div className="flex flex-col items-center">
               <span className="text-sm text-gray-500 mb-1 self-start">USD mode by default</span>
-              <Balance address={address} defaultUsdMode={true} />
+              <Balance
+                address={address}
+                defaultUsdMode={true}
+              />
             </div>
             <div className="flex flex-col items-center">
               <span className="text-sm text-gray-500 mb-1 self-start">Custom styles</span>
@@ -57,7 +60,10 @@ export const UseBalanceExample = () => {
           <h2 className="text-xl font-semibold text-purple-400">Fetch Polygon Balance</h2>
           <div className="flex flex-col items-center">
             <span className="text-sm text-gray-500 mb-1 self-start">Polygon (POL) Balance</span>
-            <Balance address={address} chain={polygon} />
+            <Balance
+              address={address}
+              chain={polygon}
+            />
           </div>
         </div>
         {/* Manual Implementation using useBalance hook */}
