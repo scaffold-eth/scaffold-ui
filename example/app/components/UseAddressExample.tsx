@@ -37,47 +37,80 @@ export const UseAddressExample = () => {
 
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">Large size with long format</span>
-              <Address address={address} size="lg" format="long" />
+              <Address
+                address={address}
+                size="lg"
+                format="long"
+              />
             </div>
 
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">Extra large size</span>
-              <Address address={address} size="xl" />
+              <Address
+                address={address}
+                size="xl"
+              />
             </div>
 
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">Small size</span>
-              <Address address={address} size="sm" />
+              <Address
+                address={address}
+                size="sm"
+              />
             </div>
 
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">Extra small size</span>
-              <Address address={address} size="xs" />
+              <Address
+                address={address}
+                size="xs"
+              />
             </div>
 
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">2XL size with long format</span>
-              <Address address={address} size="2xl" format="long" />
+              <Address
+                address={address}
+                size="2xl"
+                format="long"
+              />
             </div>
 
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">3XL size</span>
-              <Address address={address} size="3xl" />
+              <Address
+                address={address}
+                size="3xl"
+              />
             </div>
 
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">Disabled address link</span>
-              <Address address={address} size="base" disableAddressLink={true} />
+              <Address
+                address={address}
+                size="base"
+                disableAddressLink={true}
+              />
             </div>
 
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">Only ENS or Address (no additional info)</span>
-              <Address address={address} size="base" onlyEnsOrAddress={true} />
+              <Address
+                address={address}
+                size="base"
+                onlyEnsOrAddress={true}
+              />
             </div>
 
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">Large, only ENS/Address, no link</span>
-              <Address address={address} size="lg" onlyEnsOrAddress={true} disableAddressLink={true} />
+              <Address
+                address={address}
+                size="lg"
+                onlyEnsOrAddress={true}
+                disableAddressLink={true}
+              />
             </div>
           </div>
         </div>
@@ -90,7 +123,11 @@ export const UseAddressExample = () => {
 
           <div className="flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={ensAvatar ?? blo(address)} alt="ENS Avatar" className="w-8 h-8 rounded-full" />
+            <img
+              src={ensAvatar ?? blo(address)}
+              alt="ENS Avatar"
+              className="w-8 h-8 rounded-full"
+            />
             {isEnsNameLoading ? (
               <div className="h-6 w-32 bg-gray-700 animate-pulse rounded" />
             ) : (
