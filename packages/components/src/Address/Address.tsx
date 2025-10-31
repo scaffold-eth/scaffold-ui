@@ -7,6 +7,7 @@ import { mainnet } from "viem/chains";
 import { AddressLinkWrapper } from "./AddressLinkWrapper";
 import { AddressCopyIcon } from "./AddressCopyIcon";
 import { textSizeMap, blockieSizeMap, copyIconSizeMap, getNextSize, getPrevSize } from "./utils";
+import { DefaultStylesWrapper } from "../utils/ComponentWrapper";
 
 export type AddressProps = {
   address?: AddressType;
@@ -85,8 +86,14 @@ export const Address: React.FC<AddressProps> = ({
 
   if (!checkSumAddress) {
     return (
-      <div className="flex items-center text-sui-primary-content" style={style}>
-        <div className="shrink-0 sui-skeleton !rounded-full" style={skeletonStyle}></div>
+      <DefaultStylesWrapper
+        className="flex items-center text-sui-primary-content"
+        style={style}
+      >
+        <div
+          className="shrink-0 sui-skeleton !rounded-full"
+          style={skeletonStyle}
+        />
         <div className="flex flex-col space-y-1">
           {!onlyEnsOrAddress && (
             <div className={`ml-1.5 sui-skeleton rounded-lg font-bold ${textSizeMap[ensSize]}`}>
@@ -97,12 +104,15 @@ export const Address: React.FC<AddressProps> = ({
             <span className="invisible">0x1234...56789</span>
           </div>
         </div>
-      </div>
+      </DefaultStylesWrapper>
     );
   }
 
   return (
-    <div className="flex items-center shrink-0 text-sui-primary-content" style={style}>
+    <DefaultStylesWrapper
+      className="flex items-center shrink-0 text-sui-primary-content"
+      style={style}
+    >
       <div className="shrink-0">
         <img
           className="rounded-full"
@@ -143,6 +153,6 @@ export const Address: React.FC<AddressProps> = ({
           />
         </div>
       </div>
-    </div>
+    </DefaultStylesWrapper>
   );
 };

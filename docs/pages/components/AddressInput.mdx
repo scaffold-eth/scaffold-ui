@@ -37,13 +37,16 @@ import { AddressInput } from "@scaffold-ui/components";
 </DocsProvider>
 
 ```tsx
+import React, { useState } from "react";
 import { AddressInput } from "@scaffold-ui/components";
 
-<AddressInput
-  value=""
-  onChange={(address) => console.log(address)}
-  placeholder="0x or ENS"
-/>
+function ParentComponent() {
+  const [value, setValue] = useState<string>("");
+
+  return (
+    <AddressInput value={value} onChange={setValue} placeholder="0x or ENS" />
+  );
+}
 ```
 
 ### Default value (ENS Name)
@@ -56,13 +59,20 @@ import { AddressInput } from "@scaffold-ui/components";
 </DocsProvider>
 
 ```tsx
+import React, { useState } from "react";
 import { AddressInput } from "@scaffold-ui/components";
 
-<AddressInput
-  value="vitalik.eth"
-  onChange={(address) => console.log(address)}
-  placeholder="Enter address or ENS"
-/>
+function ParentComponent() {
+  const [value, setValue] = useState<string>("vitalik.eth");
+
+  return (
+    <AddressInput
+      value={value}
+      onChange={setValue}
+      placeholder="Enter address or ENS"
+    />
+  );
+}
 ```
 
 ### Default value (Ethereum Address)
@@ -72,12 +82,16 @@ import { AddressInput } from "@scaffold-ui/components";
 </DocsProvider>
 
 ```tsx
+import React, { useState } from "react";
 import { AddressInput } from "@scaffold-ui/components";
 
-<AddressInput
-  value="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
-  onChange={(address) => console.log(address)}
-/>
+function ParentComponent() {
+  const [value, setValue] = useState<string>(
+    "0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+  );
+
+  return <AddressInput value={value} onChange={setValue} />;
+}
 ```
 
 ### Disabled State
@@ -90,13 +104,16 @@ import { AddressInput } from "@scaffold-ui/components";
 </DocsProvider>
 
 ```tsx
+import React, { useState } from "react";
 import { AddressInput } from "@scaffold-ui/components";
 
-<AddressInput
-  value="0x1234567890123456789012345678901234567890"
-  onChange={(address) => console.log(address)}
-  disabled={true}
-/>
+function ParentComponent() {
+  const [value, setValue] = useState<string>(
+    "0x1234567890123456789012345678901234567890"
+  );
+
+  return <AddressInput value={value} onChange={setValue} disabled={true} />;
+}
 ```
 
 ### Custom Styles

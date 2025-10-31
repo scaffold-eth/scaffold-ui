@@ -35,7 +35,7 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
 
   return (
     <ContractConfigProvider config={{ blockExplorerAddressLink, chain, chainId }}>
-      <div className={`grid grid-cols-1 lg:grid-cols-6 px-6 lg:px-10 lg:gap-12 w-full max-w-7xl my-0`}>
+      <div className="grid grid-cols-1 lg:grid-cols-6 px-6 lg:px-10 lg:gap-12 w-full max-w-7xl my-0 font-sans">
         <div className="col-span-5 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
           <div className="col-span-1 flex flex-col">
             <div className="bg-sui-base-100 border-sui-primary-subtle dark:border-sui-primary border shadow-md shadow-sui-primary-subtle rounded-3xl px-6 lg:px-8 mb-6 space-y-1 py-4">
@@ -55,7 +55,9 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
                   </div>
                   <p className="my-0 text-sm">
                     <span className="font-bold">Network</span>:{" "}
-                    <span style={{ color: NETWORKS_EXTRA_DATA[chainId]?.color }}>{chain.name}</span>
+                    <span style={{ color: NETWORKS_EXTRA_DATA[chainId]?.color }}>
+                      {chain.id === 31_337 ? "Localhost" : chain.name}
+                    </span>
                   </p>
                 </div>
               </div>

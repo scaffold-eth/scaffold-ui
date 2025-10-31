@@ -41,11 +41,6 @@
   --color-sui-input-border: var(--color-sui-primary);
 }
 
-/* Apply default font family to all component elements */
-* {
-  font-family: var(--font-sans);
-}
-
 .sui-skeleton {
   border-radius: 0.2rem;
   background-color: var(--color-sui-skeleton-base);
