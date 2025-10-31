@@ -1,0 +1,184 @@
+---
+layout: docs
+---
+
+import React from "react";
+import { useAddress } from "@scaffold-ui/hooks";
+import { DocsProvider } from "../../components/DocsProvider";
+
+# useAddress Hook
+
+The `useAddress` hook provides utilities for working with Ethereum addresses, including ENS name resolution, ENS avatar fetching, checksum formatting, shortened display formats, block explorer links, and blockie image generation.
+
+## Import
+
+```tsx
+import { useAddress } from "@scaffold-ui/hooks";
+```
+
+## Usage
+
+```tsx
+const {
+  checkSumAddress,
+  ens,
+  ensAvatar,
+  isEnsNameLoading,
+  blockExplorerAddressLink,
+  isValidAddress,
+  shortAddress,
+  blockieUrl
+} = useAddress({
+  address: "0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+});
+```
+
+## Parameters
+
+| Parameter       | Type               | Default   | Description                                           |
+| --------------- | ------------------ | --------- | ----------------------------------------------------- |
+| `address`       | `Address` *(optional)* | -         | The Ethereum address to process and fetch data for.   |
+| `chain`         | `Chain` *(optional)*   | `mainnet` | The blockchain network for ENS resolution and links.  |
+
+## Return Values
+
+| Property                    | Type                           | Description                                                      |
+| --------------------------- | ------------------------------ | ---------------------------------------------------------------- |
+| `checkSumAddress`           | `Address \| undefined`         | The checksummed version of the provided address.                 |
+| `ens`                       | `string \| null \| undefined`  | The resolved ENS name for the address (if available).            |
+| `ensAvatar`                 | `string \| null \| undefined`  | The ENS avatar URL (if available).                               |
+| `isEnsNameLoading`          | `boolean`                      | Loading state for ENS name resolution.                           |
+| `blockExplorerAddressLink`  | `string`                       | Full URL to view the address on the chain's block explorer.      |
+| `isValidAddress`            | `boolean`                      | Whether the provided address is a valid Ethereum address.        |
+| `shortAddress`              | `string \| undefined`          | Shortened address format (first 6 and last 4 characters).        |
+| `blockieUrl`                | `string \| undefined`          | Data URL for a deterministic blockie image of the address.       |
+
+:::info
+`ens` and `ensAvatar` fields are tri-state: `undefined` (not requested, still resolving, or error), `null` (no record), or a value (resolved).
+:::
+
+## Live Examples
+
+### Basic Usage
+
+export function UseAddressBasicExample() {
+  const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
+  const { checkSumAddress, shortAddress, blockExplorerAddressLink } = useAddress({ address });
+  return (
+    <div>
+      <p>Short: {shortAddress}</p>
+      <p>
+        Full with blockexplorer link: <a href={blockExplorerAddressLink} target="_blank" rel="noopener noreferrer">
+          {checkSumAddress}
+        </a>
+      </p>
+    </div>
+  );
+}
+
+<DocsProvider>
+  <UseAddressBasicExample />
+</DocsProvider>
+
+```tsx
+import React from "react";
+import { useAddress } from "@scaffold-ui/hooks";
+
+function AddressDisplay() {
+  const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
+  const { checkSumAddress, shortAddress, blockExplorerAddressLink } = useAddress({ address });
+
+  return (
+    <div>
+      <p>Short: {shortAddress}</p>
+      <p>
+        Full with blockexplorer link: <a href={blockExplorerAddressLink} target="_blank" rel="noopener noreferrer">
+          {checkSumAddress}
+        </a>
+      </p>
+    </div>
+  );
+}
+```
+
+### With ENS and Avatar
+
+export function UseAddressWithAvatarExample() {
+  const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
+  const { ens, ensAvatar, blockieUrl, shortAddress } = useAddress({ address });
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+      <img
+        src={ensAvatar ?? blockieUrl}
+        alt="Avatar"
+        style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+      />
+      <span>{ens ?? shortAddress}</span>
+    </div>
+  );
+}
+
+<DocsProvider>
+  <UseAddressWithAvatarExample />
+</DocsProvider>
+
+```tsx
+import React from "react";
+import { useAddress } from "@scaffold-ui/hooks";
+
+function AddressWithENS() {
+  const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
+  const { ens, ensAvatar, blockieUrl, shortAddress } = useAddress({ address });
+
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+      <img
+        src={ensAvatar ?? blockieUrl}
+        alt="Avatar"
+        style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+      />
+      <span>{ens ?? shortAddress}</span>
+    </div>
+  );
+}
+```
+
+### Loading State
+
+export function UseAddressLoadingExample() {
+  const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
+  const { ens, shortAddress, isEnsNameLoading } = useAddress({ address });
+  return (
+    <div>
+      {isEnsNameLoading ? (
+        <span>Loading ENS name...</span>
+      ) : (
+        <span>{ens ?? shortAddress}</span>
+      )}
+    </div>
+  );
+}
+
+<DocsProvider>
+  <UseAddressLoadingExample />
+</DocsProvider>
+
+```tsx
+import React from "react";
+import { useAddress } from "@scaffold-ui/hooks";
+
+function AddressWithLoading() {
+  const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
+  const { ens, shortAddress, isEnsNameLoading } = useAddress({ address });
+
+  return (
+    <div>
+      {isEnsNameLoading ? (
+        <span>Loading ENS name...</span>
+      ) : (
+        <span>{ens ?? shortAddress}</span>
+      )}
+    </div>
+  );
+}
+```

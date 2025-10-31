@@ -7,6 +7,7 @@ import { mainnet, polygon } from "viem/chains";
 import { createConfig, http } from "wagmi";
 import { createClient } from "viem";
 import "@scaffold-ui/components/styles.css";
+import { getAlchemyHttpUrl } from "../utils";
 
 export const chains = [mainnet, polygon] as const;
 
@@ -15,7 +16,10 @@ const wagmiConfig = createConfig({
   connectors: [],
   ssr: true,
   client({ chain }) {
-    return createClient({ chain, transport: http() });
+    return createClient({
+      chain,
+      transport: http(getAlchemyHttpUrl(chain.id)),
+    });
   },
 });
 
