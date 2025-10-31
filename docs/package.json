@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vocs dev",
     "build": "pnpm --filter @scaffold-ui/hooks --filter @scaffold-ui/components run build && vocs build",
-    "preview": "vocs preview"
+    "preview": "vocs preview",
+    "format": "prettier --write ."
   },
   "keywords": [
     "documentation",
