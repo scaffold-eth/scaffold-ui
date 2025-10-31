@@ -2,6 +2,7 @@
 layout: docs
 ---
 
+import React, { useMemo } from "react";
 import { Balance } from "@scaffold-ui/components";
 import { DocsProvider } from "../../components/DocsProvider";
 
@@ -17,12 +18,12 @@ import { Balance } from "@scaffold-ui/components";
 
 ## Props
 
-| Prop             | Type      | Default                      | Description                                            |
-| ---------------- | --------- | ---------------------------- | ------------------------------------------------------ |
-| `address`        | `Address` | -                            | **Required.** The Ethereum address to show balance for |
-| `chain`          | `Chain`   | Connected chain or `mainnet` | Blockchain network to query                            |
-| `className`      | `string`  | `""`                         | Additional CSS classes                                 |
-| `defaultUsdMode` | `boolean` | `false`                      | Start in USD display mode                              |
+| Prop             | Type            | Default                      | Description                                            |
+| ---------------- | --------------- | ---------------------------- | ------------------------------------------------------ |
+| `address`        | `Address`       | -                            | **Required.** The Ethereum address to show balance for |
+| `chain`          | `Chain`         | Connected chain or `mainnet` | Blockchain network to query                            |
+| `defaultUsdMode` | `boolean`       | `false`                      | Start in USD display mode                              |
+| `style`          | `CSSProperties` | -                            | Custom CSS styles (memoize to prevent re-renders)      |
 
 ## Live Examples
 
@@ -61,4 +62,48 @@ import { polygon } from "viem/chains";
   address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
   chain={polygon}
 />;
+```
+
+### Custom Styles
+
+⚠️ **Performance Warning**: Always memoize style objects to prevent unnecessary re-renders.
+
+<DocsProvider>
+  <Balance
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    style={useMemo(
+      () => ({
+        "--color-sui-primary-content": "var(--color-sui-success)",
+        fontSize: "1.2rem",
+        fontWeight: "bold",
+      }),
+      []
+    )}
+  />
+</DocsProvider>
+
+```tsx
+import React, { useMemo } from "react";
+import { Balance } from "@scaffold-ui/components";
+import type { CSSProperties } from "react";
+
+function MyComponent() {
+  // Memoized style object
+  const customBalanceStyle = useMemo(
+    () =>
+      ({
+        "--color-sui-primary-content": "var(--color-sui-success)",
+        fontSize: "1.2rem",
+        fontWeight: "bold",
+      }) as CSSProperties,
+    []
+  );
+
+  return (
+    <Balance
+      address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+      style={customBalanceStyle}
+    />
+  );
+}
 ```
