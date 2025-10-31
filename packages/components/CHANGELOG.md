@@ -1,5 +1,11 @@
 # @scaffold-ui/components
 
+## 0.1.3
+
+### Patch Changes
+
+- d2504c6: set font-family at component level instead of global css rule
+
 ## 0.1.2
 
 ### Patch Changes

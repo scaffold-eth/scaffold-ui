@@ -2,6 +2,7 @@
 
 import { ChangeEvent, FocusEvent, ReactNode, useCallback, useEffect, useRef } from "react";
 import { CommonInputProps } from "./utils";
+import { DefaultStylesWrapper } from "../utils/ComponentWrapper";
 
 export type BaseInputProps<T> = CommonInputProps<T> & {
   error?: boolean;
@@ -82,7 +83,7 @@ export const BaseInput = <T extends { toString: () => string } | undefined = str
   }, [reFocus]);
 
   return (
-    <div
+    <DefaultStylesWrapper
       className={`flex border-2 rounded-full border-sui-input-border bg-sui-input-background text-sui-input-text ${modifier}`}
       style={style}
     >
@@ -101,6 +102,6 @@ export const BaseInput = <T extends { toString: () => string } | undefined = str
         onFocus={onFocus}
       />
       {suffix}
-    </div>
+    </DefaultStylesWrapper>
   );
 };
