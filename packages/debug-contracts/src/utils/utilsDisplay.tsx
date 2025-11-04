@@ -48,7 +48,12 @@ export const displayTxResult = (
 
   if (typeof displayContent === "string") {
     if (isAddress(displayContent)) {
-      return <AddressWithConfig address={displayContent} size={fontSize} />;
+      return (
+        <AddressWithConfig
+          address={displayContent}
+          size={fontSize}
+        />
+      );
     }
 
     if (isHex(displayContent)) {
@@ -57,11 +62,21 @@ export const displayTxResult = (
   }
 
   if (Array.isArray(displayContent)) {
-    return <ArrayDisplay values={displayContent} size={fontSize} />;
+    return (
+      <ArrayDisplay
+        values={displayContent}
+        size={fontSize}
+      />
+    );
   }
 
   if (typeof displayContent === "object") {
-    return <StructDisplay struct={displayContent} size={fontSize} />;
+    return (
+      <StructDisplay
+        struct={displayContent}
+        size={fontSize}
+      />
+    );
   }
 
   return JSON.stringify(displayContent, replacer, 2);
@@ -78,7 +93,11 @@ const NumberDisplay = ({ value }: { value: bigint }) => {
   return (
     <div className="flex items-baseline">
       {isEther ? "Ξ" + formatEther(value) : String(value)}
-      <Tooltip content={isEther ? "Multiply by 1e18" : "Divide by 1e18"} position="top" className="font-sans ml-2">
+      <Tooltip
+        content={isEther ? "Multiply by 1e18" : "Divide by 1e18"}
+        position="top"
+        className="font-sans ml-2"
+      >
         <button
           className="p-1 text-sui-primary-content/60 hover:text-sui-primary-content hover:bg-sui-primary-neutral rounded-full transition-colors duration-200 w-6 h-6 flex items-center justify-center cursor-pointer"
           onClick={() => setIsEther(!isEther)}
@@ -114,7 +133,12 @@ const ArrayDisplay = ({ values, size }: { values: DisplayContent[]; size: Result
     <div className="flex flex-col gap-y-1">
       {values.length ? "array" : "[]"}
       {values.map((v, i) => (
-        <ObjectFieldDisplay key={i} name={`[${i}]`} value={v} size={size} />
+        <ObjectFieldDisplay
+          key={i}
+          name={`[${i}]`}
+          value={v}
+          size={size}
+        />
       ))}
     </div>
   );
@@ -125,7 +149,12 @@ const StructDisplay = ({ struct, size }: { struct: Record<string, any>; size: Re
     <div className="flex flex-col gap-y-1">
       struct
       {Object.entries(struct).map(([k, v]) => (
-        <ObjectFieldDisplay key={k} name={k} value={v} size={size} />
+        <ObjectFieldDisplay
+          key={k}
+          name={k}
+          value={v}
+          size={size}
+        />
       ))}
     </div>
   );

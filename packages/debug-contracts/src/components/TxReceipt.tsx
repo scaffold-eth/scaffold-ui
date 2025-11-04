@@ -48,7 +48,13 @@ export const TxReceipt = ({ txResult }: { txResult: TransactionReceipt }) => {
         <div className="overflow-auto bg-sui-primary-subtle rounded-b-3xl border-t border-gray-300/20">
           <pre className="text-xs p-4 whitespace-pre-wrap break-words rounded-b-3xl">
             {Object.entries(txResult).map(([k, v]) => (
-              <ObjectFieldDisplay name={k} value={v} size="xs" leftPad={false} key={k} />
+              <ObjectFieldDisplay
+                name={k}
+                value={v}
+                size="xs"
+                leftPad={false}
+                key={k}
+              />
             ))}
           </pre>
         </div>

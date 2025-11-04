@@ -101,7 +101,10 @@ export const TupleArray = ({ abiTupleParameter, setParentForm, parentStateObject
     <Collapsible title={abiTupleParameter.internalType || "tuple-array"}>
       <div className="ml-3 flex flex-col space-y-2 border-l-2 border-sui-primary-subtle/70 pl-4">
         {additionalInputs.map((additionalInput, additionalIndex) => (
-          <div key={additionalIndex} className="space-y-1">
+          <div
+            key={additionalIndex}
+            className="space-y-1"
+          >
             <span className="inline-block bg-sui-primary-subtle text-sui-primary-content text-xs px-2 py-1 rounded">
               {depth > 1 ? `${additionalIndex}` : `tuple[${additionalIndex}]`}
             </span>
@@ -112,17 +115,31 @@ export const TupleArray = ({ abiTupleParameter, setParentForm, parentStateObject
                   param,
                   index,
                 );
-                return <ContractInput setForm={setForm} form={form} key={key} stateObjectKey={key} paramType={param} />;
+                return (
+                  <ContractInput
+                    setForm={setForm}
+                    form={form}
+                    key={key}
+                    stateObjectKey={key}
+                    paramType={param}
+                  />
+                );
               })}
             </div>
           </div>
         ))}
         <div className="flex space-x-2">
-          <button className="btn-dc btn-dc-secondary min-h-9 min-w-9" onClick={addInput}>
+          <button
+            className="btn-dc btn-dc-secondary min-h-9 min-w-9"
+            onClick={addInput}
+          >
             +
           </button>
           {additionalInputs.length > 0 && (
-            <button className="btn-dc btn-dc-secondary min-h-9 min-w-9" onClick={removeInput}>
+            <button
+              className="btn-dc btn-dc-secondary min-h-9 min-w-9"
+              onClick={removeInput}
+            >
               -
             </button>
           )}
