@@ -145,9 +145,6 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.0.0
-      usehooks-ts:
-        specifier: ^3.1.1
-        version: 3.1.1(react@19.0.0)
       viem:
         specifier: ^2.23.0
         version: 2.23.13(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)
