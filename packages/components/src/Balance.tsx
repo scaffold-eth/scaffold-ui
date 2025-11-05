@@ -42,7 +42,10 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, defaultUsdMode
 
   if (isLoading || !balance) {
     return (
-      <DefaultStylesWrapper className="flex items-center animate-pulse" style={style}>
+      <DefaultStylesWrapper
+        className="flex items-center animate-pulse"
+        style={style}
+      >
         <div className="h-4 w-20 bg-sui-skeleton-base rounded" />
       </DefaultStylesWrapper>
     );

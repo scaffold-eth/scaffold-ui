@@ -116,7 +116,10 @@ export const EtherInput = ({
                   : "Toggle USD/ETH"
             }
           >
-            <SwitchIcon height={15} width={15} />
+            <SwitchIcon
+              height={15}
+              width={15}
+            />
           </button>
         }
       />

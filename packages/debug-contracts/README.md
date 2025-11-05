@@ -36,6 +36,11 @@ const deployedContracts = {
 } as const;
 
 function App() {
-  return <Contract contracts={deployedContracts} chainId={sepolia.id} />;
+  return (
+    <Contract
+      contracts={deployedContracts}
+      chainId={sepolia.id}
+    />
+  );
 }
 ```

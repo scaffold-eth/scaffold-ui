@@ -83,20 +83,30 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled, sty
       reFocus={reFocus}
       prefix={
         ensName ? (
-          <div className="flex rounded-l-full items-center bg-sui-input-border" style={style}>
+          <div
+            className="flex rounded-l-full items-center bg-sui-input-border"
+            style={style}
+          >
             {isEnsAvatarLoading && (
               <div className="animate-pulse w-[35px] h-[35px] rounded-full shrink-0 bg-sui-input-background" />
             )}
             {ensAvatar ? (
               <span className="w-[35px]">
-                <img className="w-full rounded-full" src={ensAvatar} alt={`${ensAddress} avatar`} />
+                <img
+                  className="w-full rounded-full"
+                  src={ensAvatar}
+                  alt={`${ensAddress} avatar`}
+                />
               </span>
             ) : null}
             <span className="px-2 text-sui-accent">{enteredEnsName ?? ensName}</span>
           </div>
         ) : (
           (isEnsNameLoading || isEnsAddressLoading) && (
-            <div className="flex rounded-l-full items-center gap-2 pr-2 bg-sui-input-border" style={style}>
+            <div
+              className="flex rounded-l-full items-center gap-2 pr-2 bg-sui-input-border"
+              style={style}
+            >
               <div className="animate-pulse w-[35px] h-[35px] rounded-full shrink-0 bg-sui-input-background" />
               <div className="animate-pulse h-3 w-20 bg-sui-input-background" />
             </div>
@@ -105,7 +115,15 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled, sty
       }
       suffix={
         // Don't want to use nextJS Image here (and adding remote patterns for the URL)
-        value && <img alt="" className="rounded-full!" src={blo(value as `0x${string}`)} width="35" height="35" />
+        value && (
+          <img
+            alt=""
+            className="rounded-full!"
+            src={blo(value as `0x${string}`)}
+            width="35"
+            height="35"
+          />
+        )
       }
     />
   );

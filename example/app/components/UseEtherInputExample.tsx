@@ -47,11 +47,17 @@ export const UseEtherInputExample = () => {
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-gray-500 mb-1 self-start">Disabled</span>
-            <EtherInput name="ether-input-disabled" disabled />
+            <EtherInput
+              name="ether-input-disabled"
+              disabled
+            />
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-gray-500 mb-1 self-start">Default value</span>
-            <EtherInput name="ether-input-default-value" defaultValue="10" />
+            <EtherInput
+              name="ether-input-default-value"
+              defaultValue="10"
+            />
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-gray-500 mb-1 self-start">Custom</span>

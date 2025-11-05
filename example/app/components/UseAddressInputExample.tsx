@@ -52,17 +52,28 @@ export const UseAddressInputExample = () => {
           <div className="space-y-4">
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">Default</span>
-              <AddressInput value={value} onChange={setValue} />
+              <AddressInput
+                value={value}
+                onChange={setValue}
+              />
             </div>
 
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">Disabled</span>
-              <AddressInput value={value} onChange={setValue} disabled />
+              <AddressInput
+                value={value}
+                onChange={setValue}
+                disabled
+              />
             </div>
 
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">With placeholder</span>
-              <AddressInput value={value} onChange={setValue} placeholder="Enter an address" />
+              <AddressInput
+                value={value}
+                onChange={setValue}
+                placeholder="Enter an address"
+              />
             </div>
 
             <div className="flex flex-col">
@@ -72,7 +83,11 @@ export const UseAddressInputExample = () => {
 
             <div className="flex flex-col" style={errorInputStyle}>
               <span className="text-sm text-gray-500 mb-1">Custom colors using CSS variables</span>
-              <AddressInput value={value} onChange={setValue} placeholder="Enter an address" />
+              <AddressInput
+                value={value}
+                onChange={setValue}
+                placeholder="Enter an address"
+              />
             </div>
           </div>
         </div>
@@ -95,7 +110,11 @@ export const UseAddressInputExample = () => {
                 <span className="w-[35px]">
                   {
                     // eslint-disable-next-line
-                    <img className="w-full rounded-full" src={ensAvatar} alt={`${ensAddress} avatar`} />
+                    <img
+                      className="w-full rounded-full"
+                      src={ensAvatar}
+                      alt={`${ensAddress} avatar`}
+                    />
                   }
                 </span>
               ) : null}

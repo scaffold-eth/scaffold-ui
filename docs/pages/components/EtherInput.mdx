@@ -47,14 +47,20 @@ import { EtherInput } from "@scaffold-ui/components";
 ### Default USD Mode
 
 <DocsProvider>
-  <EtherInput defaultUsdMode placeholder="Enter amount in USD" />
+  <EtherInput
+    defaultUsdMode
+    placeholder="Enter amount in USD"
+  />
 </DocsProvider>
 
 ```tsx twoslash
 import React from "react";
 import { EtherInput } from "@scaffold-ui/components";
 
-<EtherInput defaultUsdMode placeholder="Enter amount in USD" />;
+<EtherInput
+  defaultUsdMode
+  placeholder="Enter amount in USD"
+/>;
 ```
 
 ### Default Value
@@ -73,14 +79,20 @@ import { EtherInput } from "@scaffold-ui/components";
 ### Disabled State
 
 <DocsProvider>
-  <EtherInput disabled placeholder="Disabled" />
+  <EtherInput
+    disabled
+    placeholder="Disabled"
+  />
 </DocsProvider>
 
 ```tsx twoslash
 import React from "react";
 import { EtherInput } from "@scaffold-ui/components";
 
-<EtherInput disabled placeholder="Disabled" />;
+<EtherInput
+  disabled
+  placeholder="Disabled"
+/>;
 ```
 
 ### onValueChange Callback
@@ -119,7 +131,7 @@ import { EtherInput } from "@scaffold-ui/components";
         "--color-sui-input-background": "#fef9c3",
         "--color-sui-input-text": "#713f12",
       }),
-      []
+      [],
     )}
   />
 </DocsProvider>
@@ -138,7 +150,7 @@ function MyComponent() {
         "--color-sui-input-background": "#fef9c3",
         "--color-sui-input-text": "#713f12",
       }) as CSSProperties,
-    []
+    [],
   );
 
   return (

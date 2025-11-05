@@ -11,12 +11,7 @@ interface AddressInputExampleProps {
   style?: CSSProperties;
 }
 
-export const AddressInputExample = ({
-  initialValue = "",
-  placeholder,
-  disabled,
-  style,
-}: AddressInputExampleProps) => {
+export const AddressInputExample = ({ initialValue = "", placeholder, disabled, style }: AddressInputExampleProps) => {
   const [address, setAddress] = useState(initialValue);
 
   return (
