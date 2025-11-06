@@ -1,0 +1,114 @@
+---
+layout: docs
+---
+
+import React, { useMemo } from "react";
+import { Address } from "@scaffold-ui/components";
+import { DocsProvider } from "../../components/DocsProvider";
+
+# Styling components
+
+## Style Prop
+
+Every component has a `style` prop that you can use to pass custom styles to the top-level element of the component.
+
+| Prop    | Type            | Default | Description                                       |
+| ------- | --------------- | ------- | ------------------------------------------------- |
+| `style` | `CSSProperties` | -       | Custom CSS styles (memoize to prevent re-renders) |
+
+⚠️ **Performance Warning**: Always memoize style objects to prevent unnecessary re-renders.
+
+Example:
+
+<DocsProvider>
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    style={useMemo(
+      () => ({
+        padding: "16px",
+        borderRadius: "8px",
+        backgroundColor: "rgba(34, 197, 94, 0.1)",
+      }),
+      [],
+    )}
+  />
+</DocsProvider>
+
+```tsx twoslash
+import React, { useMemo } from "react";
+import { Address } from "@scaffold-ui/components";
+import type { CSSProperties } from "react";
+
+function MyComponent() {
+  // Memoized style object
+  const customStyle = useMemo(
+    () =>
+      ({
+        padding: "16px",
+        borderRadius: "8px",
+        backgroundColor: "rgba(34, 197, 94, 0.1)",
+      }) as CSSProperties,
+    [],
+  );
+
+  return (
+    <Address
+      address="0x1234567890123456789012345678901234567890"
+      style={customStyle}
+    />
+  );
+}
+```
+
+## Redefining Inner Styles
+
+All Scaffold-UI component styles rely on the default CSS variables defined [here](https://github.com/scaffold-eth/scaffold-ui/blob/main/packages/components/src/styles.css).
+
+To change the inner styles of components, you need to:
+
+- Check the source code of the component to identify which variable is used for the desired style
+- Redefine the variable, and all dependent styles will update accordingly
+
+For example, if you want to change the text color of the Address component, you can check the [source code](https://github.com/scaffold-eth/scaffold-ui/blob/ea325159a4f733d79c99c7805fb50e4945e96873/packages/components/src/Address/Address.tsx#L82) and see that the `Address` component has the class `text-sui-primary-content`, which uses the `--sui-primary-content` variable for the text color. Let's redefine it:
+
+<DocsProvider>
+  <Address
+    address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+    style={useMemo(
+      () => ({
+        "--color-sui-primary-content": "green",
+        padding: "16px",
+        borderRadius: "8px",
+        backgroundColor: "rgba(34, 197, 94, 0.1)",
+      }),
+      [],
+    )}
+  />
+</DocsProvider>
+
+```tsx twoslash
+import React, { useMemo } from "react";
+import { Address } from "@scaffold-ui/components";
+import type { CSSProperties } from "react";
+
+function MyComponent() {
+  // Memoized style object
+  const customStyle = useMemo(
+    () =>
+      ({
+        "--color-sui-primary-content": "green",
+        padding: "16px",
+        borderRadius: "8px",
+        backgroundColor: "rgba(34, 197, 94, 0.1)",
+      }) as CSSProperties,
+    [],
+  );
+
+  return (
+    <Address
+      address="0x1234567890123456789012345678901234567890"
+      style={customStyle}
+    />
+  );
+}
+```
