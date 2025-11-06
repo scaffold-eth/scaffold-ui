@@ -15,14 +15,12 @@ export default defineConfig({
   sidebar: [
     {
       text: "Getting Started",
-      items: [
-        { text: "Introduction", link: "/" },
-        { text: "Installation", link: "/getting-started/installation" },
-      ],
+      items: [{ text: "Introduction", link: "/" }],
     },
     {
       text: "Components",
       items: [
+        { text: "Installation", link: "/components" },
         { text: "Address", link: "/components/Address" },
         { text: "Balance", link: "/components/Balance" },
         { text: "AddressInput", link: "/components/AddressInput" },
@@ -33,6 +31,7 @@ export default defineConfig({
     {
       text: "Hooks",
       items: [
+        { text: "Installation", link: "/hooks" },
         { text: "useAddress", link: "/hooks/useAddress" },
         { text: "useAddressInput", link: "/hooks/useAddressInput" },
       ],
