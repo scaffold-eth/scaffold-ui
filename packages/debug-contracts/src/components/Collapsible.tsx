@@ -27,7 +27,12 @@ export const Collapsible = ({ title, children, className = "" }: CollapsibleProp
           stroke="currentColor"
           viewBox="0 0 24 24"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
         </svg>
       </button>
       {isOpen && <div className="p-4 border-t border-sui-primary-subtle/80">{children}</div>}

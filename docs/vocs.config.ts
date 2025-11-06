@@ -15,23 +15,30 @@ export default defineConfig({
   sidebar: [
     {
       text: "Getting Started",
-      items: [
-        { text: "Introduction", link: "/" },
-        { text: "Installation", link: "/getting-started/installation" },
-      ],
+      items: [{ text: "Introduction", link: "/" }],
     },
     {
       text: "Components",
       items: [
+        { text: "Installation", link: "/components" },
         { text: "Address", link: "/components/Address" },
         { text: "Balance", link: "/components/Balance" },
         { text: "AddressInput", link: "/components/AddressInput" },
         { text: "EtherInput", link: "/components/EtherInput" },
       ],
     },
+    {
+      text: "Hooks",
+      items: [
+        { text: "Installation", link: "/hooks" },
+        { text: "useAddress", link: "/hooks/useAddress" },
+        { text: "useAddressInput", link: "/hooks/useAddressInput" },
+      ],
+    },
   ],
   topNav: [
     { text: "Components", link: "/components/Address" },
+    { text: "Hooks", link: "/hooks/useAddress" },
     {
       text: "Examples",
       link: "https://github.com/scaffold-eth/scaffold-ui/tree/main/example",

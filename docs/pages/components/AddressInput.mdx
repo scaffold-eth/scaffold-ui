@@ -19,13 +19,13 @@ import { AddressInput } from "@scaffold-ui/components";
 
 ## Props
 
-| Prop           | Type                     | Default | Description |
-| -------------- | ------------------------ | ------- | ----------- |
-| `value`        | `Address \| string`      | -       | Current input value. Accepts an Ethereum address or an ENS name. |
-| `onChange`     | `(value: Address \| string) => void` | -       | Called when the input changes. After ENS resolution, it emits the resolved `Address`. |
-| `name`         | `string`                 | -       | Name attribute of the input element. |
-| `placeholder`  | `string`                 | -       | Placeholder text for the input. |
-| `disabled`     | `boolean`                | `false` | Disables the input. While resolving ENS, the input is temporarily disabled. |
+| Prop          | Type                                 | Default | Description                                                                           |
+| ------------- | ------------------------------------ | ------- | ------------------------------------------------------------------------------------- |
+| `value`       | `Address \| string`                  | -       | Current input value. Accepts an Ethereum address or an ENS name.                      |
+| `onChange`    | `(value: Address \| string) => void` | -       | Called when the input changes. After ENS resolution, it emits the resolved `Address`. |
+| `name`        | `string`                             | -       | Name attribute of the input element.                                                  |
+| `placeholder` | `string`                             | -       | Placeholder text for the input.                                                       |
+| `disabled`    | `boolean`                            | `false` | Disables the input. While resolving ENS, the input is temporarily disabled.           |
 
 ## Live Examples
 
@@ -36,29 +36,46 @@ import { AddressInput } from "@scaffold-ui/components";
 </DocsProvider>
 
 ```tsx
+import React, { useState } from "react";
 import { AddressInput } from "@scaffold-ui/components";
 
-<AddressInput
-  value=""
-  onChange={(address) => console.log(address)}
-  placeholder="0x or ENS"
-/>
+function ParentComponent() {
+  const [value, setValue] = useState<string>("");
+
+  return (
+    <AddressInput
+      value={value}
+      onChange={setValue}
+      placeholder="0x or ENS"
+    />
+  );
+}
 ```
 
 ### Default value (ENS Name)
 
 <DocsProvider>
-  <AddressInputExample initialValue="vitalik.eth" placeholder="Enter address or ENS" />
+  <AddressInputExample
+    initialValue="vitalik.eth"
+    placeholder="Enter address or ENS"
+  />
 </DocsProvider>
 
 ```tsx
+import React, { useState } from "react";
 import { AddressInput } from "@scaffold-ui/components";
 
-<AddressInput
-  value="vitalik.eth"
-  onChange={(address) => console.log(address)}
-  placeholder="Enter address or ENS"
-/>
+function ParentComponent() {
+  const [value, setValue] = useState<string>("vitalik.eth");
+
+  return (
+    <AddressInput
+      value={value}
+      onChange={setValue}
+      placeholder="Enter address or ENS"
+    />
+  );
+}
 ```
 
 ### Default value (Ethereum Address)
@@ -68,26 +85,43 @@ import { AddressInput } from "@scaffold-ui/components";
 </DocsProvider>
 
 ```tsx
+import React, { useState } from "react";
 import { AddressInput } from "@scaffold-ui/components";
 
-<AddressInput
-  value="0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
-  onChange={(address) => console.log(address)}
-/>
+function ParentComponent() {
+  const [value, setValue] = useState<string>("0xd8da6bf26964af9d7eed9e03e53415d37aa96045");
+
+  return (
+    <AddressInput
+      value={value}
+      onChange={setValue}
+    />
+  );
+}
 ```
 
 ### Disabled State
 
 <DocsProvider>
-  <AddressInputExample initialValue="0x1234567890123456789012345678901234567890" disabled={true} />
+  <AddressInputExample
+    initialValue="0x1234567890123456789012345678901234567890"
+    disabled={true}
+  />
 </DocsProvider>
 
 ```tsx
+import React, { useState } from "react";
 import { AddressInput } from "@scaffold-ui/components";
 
-<AddressInput
-  value="0x1234567890123456789012345678901234567890"
-  onChange={(address) => console.log(address)}
-  disabled={true}
-/>
+function ParentComponent() {
+  const [value, setValue] = useState<string>("0x1234567890123456789012345678901234567890");
+
+  return (
+    <AddressInput
+      value={value}
+      onChange={setValue}
+      disabled={true}
+    />
+  );
+}
 ```

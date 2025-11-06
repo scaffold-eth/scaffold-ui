@@ -20,7 +20,11 @@ export const DefaultStylesWrapper = <T extends ElementType = "div">({
 }: ComponentWrapperProps<T>) => {
   const Component = as || "div";
   return (
-    <Component className={`${className} font-sans`} style={style} {...props}>
+    <Component
+      className={`${className} font-sans`}
+      style={style}
+      {...props}
+    >
       {children}
     </Component>
   );

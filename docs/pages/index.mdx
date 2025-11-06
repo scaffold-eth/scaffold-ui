@@ -1,34 +1,23 @@
 # Scaffold UI
 
-Scaffold UI is a collection of React components and hooks designed specifically for building Ethereum dApps. These components provide a seamless way to interact with Ethereum addresses, balances, and user inputs in your decentralized applications.
+**Scaffold-UI** exposes a clean set of components and hooks that give you everything you need to build Ethereum dApps.
 
-## Features
+## Components
 
-- 🏗️ **Built for Ethereum**: Components designed specifically for dApp development
-- ⚡ **TypeScript**: Full TypeScript support with comprehensive type definitions
-- 🎨 **Customizable**: Flexible theming and styling options
-- 🪝 **React Hooks**: Complementary hooks for enhanced functionality
-- 📱 **Responsive**: Mobile-friendly components out of the box
+Pre-built React components for common Ethereum UI patterns:
 
-## Quick Start
+- **[Address](/components/Address)** - Display Ethereum addresses with ENS support, blockie, and copy functionality
+- **[AddressInput](/components/AddressInput)** - Input field for Ethereum addresses with ENS resolution
+- **[Balance](/components/Balance)** - Display ETH or ERC20 token balances
+- **[EtherInput](/components/EtherInput)** - Input field for ETH amounts with USD conversion
 
-```bash
-npm install @scaffold-eth-ui/components
-```
+**[View Installation Guide →](/components#installation)**
 
-```tsx
-import { Address, Balance } from "@scaffold-eth-ui/components";
+## Hooks
 
-function App() {
-  return (
-    <div>
-      <Address address="0x..." />
-      <Balance address="0x..." />
-    </div>
-  );
-}
-```
+Our components are built on top of these React hooks, which you can use directly to create your own custom Ethereum components, or even combine them to build more complex ones.
 
-## Getting Started
+- **[useAddress](/hooks/useAddress)** - Manage address state with ENS resolution
+- **[useAddressInput](/hooks/useAddressInput)** - Handle address input validation and formatting
 
-Check out the [Installation Guide](/getting-started/installation) to get started with Scaffold UI.
+**[View Installation Guide →](/hooks#installation)**
