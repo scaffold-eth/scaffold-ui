@@ -30,22 +30,22 @@ const {
 
 ## Parameters
 
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `string` | - | The current input value. Interpreted as ETH when `usdMode` is `false`, USD when `true`. |
-| `usdMode` | `boolean` | - | If `true`, `value` is USD; if `false`, `value` is ETH. |
+| Parameter | Type      | Default | Description                                                      |
+| --------- | --------- | ------- | ---------------------------------------------------------------- |
+| `value`   | `string`   | -       | The current input value. Interpreted as ETH when `usdMode` is `false`, USD when `true`. |
+| `usdMode` | `boolean`  | -       | If `true`, `value` is USD; if `false`, `value` is ETH.           |
 
 ## Return Values
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `valueInEth` | `string` | The input value expressed in ETH. Empty string while conversion is unavailable. |
-| `valueInUsd` | `string` | The input value expressed in USD. Empty string while conversion is unavailable. |
-| `nativeCurrencyPrice` | `number` | The fetched native currency price in USD. `0` when not yet available. |
-| `isNativeCurrencyPriceLoading` | `boolean` | Loading state for fetching the native currency price. |
-| `isNativeCurrencyPriceError` | `boolean` | Error state for fetching the native currency price. |
+| Property                      | Type      | Description                                                          |
+| ----------------------------- | --------- | -------------------------------------------------------------------- |
+| `valueInEth`                  | `string`   | The input value expressed in ETH. Empty string while conversion is unavailable. |
+| `valueInUsd`                  | `string`   | The input value expressed in USD. Empty string while conversion is unavailable. |
+| `nativeCurrencyPrice`        | `number`   | The fetched native currency price in USD. `0` when not yet available. |
+| `isNativeCurrencyPriceLoading`| `boolean`  | Loading state for fetching the native currency price.                |
+| `isNativeCurrencyPriceError`  | `boolean`  | Error state for fetching the native currency price.                  |
 
-:::info Info
+:::info
 This hook fetches price data using mainnet under the hood. When the price is not yet available, conversion outputs may be empty strings—keep showing the raw input in your UI.
 :::
 
