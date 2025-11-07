@@ -8,7 +8,7 @@ import { DocsProvider } from "../../components/DocsProvider";
 
 # useEtherInput Hook
 
-Convert between ETH and USD amounts for a given input value and display mode. It returns both values, the current native currency price, and loading/error flags so you can build responsive inputs.
+The `useEtherInput` hook converts between ETH and USD for a given input and display mode. It returns both values, the current native currency price, and loading/error flags so you can build responsive inputs.
 
 ## Import
 
@@ -51,7 +51,7 @@ This hook fetches price data using mainnet under the hood. When the price is not
 
 ## Live Examples
 
-### Basic Two-Way Conversion
+### Basic Usage
 
 export function UseEtherInputBasicExample() {
   const [value, setValue] = useState("");
@@ -71,10 +71,10 @@ export function UseEtherInputBasicExample() {
         </button>
       </div>
       {isNativeCurrencyPriceLoading ? (
-        <p>Fetching price…</p>
+        <p>Fetching price...</p>
       ) : (
         <p>
-          ETH: <strong>{valueInEth || "–"}</strong> &nbsp;|&nbsp; USD: <strong>{valueInUsd || "–"}</strong>
+          ETH: <strong>{valueInEth || "–"}</strong> | USD: <strong>{valueInUsd || "–"}</strong>
         </p>
       )}
     </div>
@@ -83,8 +83,6 @@ export function UseEtherInputBasicExample() {
 
 <DocsProvider>
   <UseEtherInputBasicExample />
-  <div style={{ height: 12 }} />
-
 </DocsProvider>
 
 ```tsx
@@ -107,7 +105,7 @@ function EtherUsdConverter() {
         <button onClick={() => setUsdMode((m) => !m)}>{usdMode ? "USD" : "ETH"}</button>
       </div>
       {isNativeCurrencyPriceLoading ? (
-        <p>Fetching price…</p>
+        <p>Fetching price...</p>
       ) : (
         <p>
           ETH: <strong>{valueInEth || "–"}</strong> | USD: <strong>{valueInUsd || "–"}</strong>
@@ -118,7 +116,7 @@ function EtherUsdConverter() {
 }
 ```
 
-### Handling Errors Gracefully
+### With Error Handling
 
 export function UseEtherInputErrorHint() {
   const [value, setValue] = useState("1000");

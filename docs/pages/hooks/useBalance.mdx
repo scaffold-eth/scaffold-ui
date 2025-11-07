@@ -9,7 +9,7 @@ import { mainnet } from "viem/chains";
 
 # useBalance Hook
 
-Fetch and watch an address balance on a given chain, with optional USD conversion and a UI-friendly toggle between native and USD modes.
+The `useBalance` hook fetches and watches an address balance on a given chain, pairing live USD conversion with a UI-friendly toggle between native currency and USD modes.
 
 ## Import
 
@@ -41,27 +41,27 @@ const {
 
 ## Parameters
 
-| Parameter       | Type                    | Default | Description                                                      |
-| --------------- | ----------------------- | ------- | ---------------------------------------------------------------- |
-| `address`       | `Address`               | -       | The address to fetch and watch the balance for.                  |
-| `chain`         | `Chain`                 | -       | The blockchain network to query.                                  |
-| `defaultUsdMode` | `boolean` _(optional)_  | `false` | If `true` and price is available, show USD by default.          |
+| Parameter        | Type                     | Default | Description                                                                 |
+| ---------------- | ------------------------ | ------- | --------------------------------------------------------------------------- |
+| `address`        | `Address` _(optional)_   | -       | The address to watch. When omitted, the hook returns zeroed balance values. |
+| `chain`          | `Chain`                  | -       | The **viem** chain configuration used for fetching balances and USD prices. |
+| `defaultUsdMode` | `boolean` _(optional)_   | `false` | If `true` and price data is available, show USD values by default.          |
 
 ## Return Values
 
-| Property                      | Type                    | Description                                                          |
-| ----------------------------- | ----------------------- | -------------------------------------------------------------------- |
-| `displayUsdMode`              | `boolean`               | Whether the display is currently in USD mode.                        |
-| `toggleDisplayUsdMode`        | `() => void`            | Toggle between native and USD display (only active when price is fetched). |
-| `formattedBalance`            | `number`                | Balance in native currency (ETH) as a number.                        |
-| `balanceInUsd`                | `number`                | Balance converted to USD using the fetched native currency price.   |
-| `balance`                     | `object \| undefined`   | The raw balance object (from wagmi).                                 |
-| `isBalanceLoading`            | `boolean`               | Loading state for the balance fetch.                                 |
-| `isBalanceError`               | `boolean`               | Error state for the balance fetch.                                   |
-| `isNativeCurrencyPriceLoading`| `boolean`               | Loading state for the USD price fetch.                               |
-| `isNativeCurrencyPriceError`  | `boolean`               | Error state for the USD price fetch.                                 |
-| `isLoading`                   | `boolean`               | Combined loading state: balance or price is loading.                 |
-| `isError`                     | `boolean`               | Combined error state: balance or price errored.                      |
+| Property                       | Type                             | Description                                                                 |
+| ------------------------------ | -------------------------------- | --------------------------------------------------------------------------- |
+| `displayUsdMode`               | `boolean`                        | Whether the display is currently set to USD.                                |
+| `toggleDisplayUsdMode`         | `() => void`                     | Toggle between native and USD display (only active when price data exists). |
+| `formattedBalance`             | `number`                         | Native balance normalized with `formatEther`.                               |
+| `balanceInUsd`                 | `number`                         | USD value derived from `formattedBalance * nativeCurrencyPrice`.            |
+| `balance`                      | `GetBalanceReturnType \| undefined` | Raw wagmi balance payload containing value, decimals, and symbol.          |
+| `isBalanceLoading`             | `boolean`                        | Loading state for the balance fetch.                                       |
+| `isBalanceError`               | `boolean`                        | Error state for the balance fetch.                                         |
+| `isNativeCurrencyPriceLoading` | `boolean`                        | Loading state for fetching the native currency price.                       |
+| `isNativeCurrencyPriceError`   | `boolean`                        | Error state for fetching the native currency price.                         |
+| `isLoading`                    | `boolean`                        | Combined loading state: balance data or price is still loading.             |
+| `isError`                      | `boolean`                        | Combined error state: balance data or price failed to load.                 |
 
 :::info
 USD display is enabled only after the native currency price has been fetched. If the price is not available, toggling to USD is disabled and native balance is shown.
@@ -70,6 +70,8 @@ USD display is enabled only after the native currency price has been fetched. If
 ## Live Examples
 
 ### Basic Usage
+
+Display a live balance with an inline USD toggle.
 
 export function UseBalanceBasicExample() {
   const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
@@ -107,9 +109,15 @@ import React from "react";
 import { useBalance } from "@scaffold-ui/hooks";
 import { mainnet } from "viem/chains";
 
-function BalanceWidget() {
+function BalanceWithToggle() {
   const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
-  const { formattedBalance, balanceInUsd, displayUsdMode, toggleDisplayUsdMode, isLoading } = useBalance({
+  const {
+    formattedBalance,
+    balanceInUsd,
+    displayUsdMode,
+    toggleDisplayUsdMode,
+    isLoading,
+  } = useBalance({
     address,
     chain: mainnet,
   });
@@ -119,13 +127,17 @@ function BalanceWidget() {
       <p>
         Balance: {displayUsdMode ? `$${balanceInUsd.toLocaleString()}` : `${formattedBalance.toLocaleString()} ETH`}
       </p>
-      <button onClick={toggleDisplayUsdMode} disabled={isLoading}>Toggle USD / ETH</button>
+      <button onClick={toggleDisplayUsdMode} disabled={isLoading}>
+        Toggle USD / ETH
+      </button>
     </div>
   );
 }
 ```
 
 ### Loading and Error States
+
+Handle asynchronous fetch states while keeping the toggle experience consistent.
 
 export function UseBalanceLoadingErrorExample() {
   const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
@@ -164,9 +176,16 @@ import React from "react";
 import { useBalance } from "@scaffold-ui/hooks";
 import { mainnet } from "viem/chains";
 
-function BalanceStates() {
+function BalanceWithLoadingStates() {
   const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
-  const { formattedBalance, balanceInUsd, displayUsdMode, toggleDisplayUsdMode, isLoading, isError } = useBalance({
+  const {
+    formattedBalance,
+    balanceInUsd,
+    displayUsdMode,
+    toggleDisplayUsdMode,
+    isLoading,
+    isError,
+  } = useBalance({
     address,
     chain: mainnet,
     defaultUsdMode: true,
