@@ -21,13 +21,9 @@ export function getBlockExplorerAddressLink(network: Chain, address: string) {
 
 // make the chain optional, if not provided, it will use from wagmi conig
 export const useAddress = (UseAddressOptions: UseAddressOptions) => {
-  let checkSumAddress: AddressType | undefined;
-
-  try {
-    checkSumAddress = getAddress(UseAddressOptions?.address as string);
-  } catch (error) {
-    // do nothing
-  }
+  const checkSumAddress =
+    UseAddressOptions?.address &&
+    (isAddress(UseAddressOptions?.address) ? getAddress(UseAddressOptions.address) : undefined);
 
   const { data: ens, isLoading: isEnsNameLoading } = useEnsName({
     address: checkSumAddress,
