@@ -1,5 +1,12 @@
 # @scaffold-ui/components
 
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies [c805b7e]
+  - @scaffold-ui/hooks@0.1.3
+
 ## 0.1.3
 
 ### Patch Changes

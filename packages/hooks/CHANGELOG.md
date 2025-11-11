@@ -1,5 +1,11 @@
 # @scaffold-ui/hooks
 
+## 0.1.3
+
+### Patch Changes
+
+- c805b7e: Fixed useAddress bug when address is invalid
+
 ## 0.1.2
 
 ### Patch Changes
