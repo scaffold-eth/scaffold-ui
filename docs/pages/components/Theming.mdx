@@ -1,0 +1,75 @@
+---
+layout: docs
+---
+
+import React, { useMemo } from "react";
+import { DocsProvider } from "../../components/DocsProvider";
+import { EtherInput } from "@scaffold-ui/components";
+
+# Theming
+
+:::info
+Before reading this page, we recommend checking out the [Styling](/components/Styling) page to understand the basics of styling Scaffold-UI components.
+:::
+
+## Dark Theme
+
+All Scaffold-UI component styles use the default [Tailwind CSS theme variables](https://tailwindcss.com/docs/theme#what-are-theme-variables) defined [here](https://github.com/scaffold-eth/scaffold-ui/blob/main/packages/components/src/styles.css).
+
+The stylesheet includes dark theme styles that automatically apply based on your theme configuration.
+
+```
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme=dark], [data-theme=dark] *));
+
+...
+
+@variant dark {
+  --color-sui-primary: #212638;
+  ...
+}
+
+```
+
+To enable dark mode, add either a `.dark` class or a `[data-theme=dark]` attribute to a parent element (typically the `<html>` or `<body>` tag). This will automatically apply the dark variant colors to all child components.
+
+- **Next.js apps**: We recommend using the `next-themes` library. See example implementations of [SwitchTheme](https://github.com/scaffold-eth/scaffold-ui/blob/main/example/app/components/SwitchTheme.tsx) and [ThemeProvider](https://github.com/scaffold-eth/scaffold-ui/blob/main/example/app/components/ThemeProvider.tsx).
+- **create-eth apps**: These components are already included and configured.
+- **Vite apps**: You'll need to implement theme switching manually.
+
+### Example
+
+Use the theme switcher in the bottom left corner to see how the component colors change between light and dark modes.
+
+<DocsProvider>
+  <EtherInput placeholder="Amount" />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { EtherInput } from "@scaffold-ui/components";
+
+<EtherInput placeholder="Amount" />;
+```
+
+## Customizing Theme Colors Globally
+
+You can override the default theme colors by redefining CSS variables in your global stylesheet.
+
+```
+/* Override Scaffold UI theme colors */
+:root {
+  --color-sui-primary: #ff4444;
+  --color-sui-primary-subtle: #ff9999;
+  ...
+}
+
+/* Dark mode - explicit selectors matching the custom-variant definition */
+.dark {
+  --color-sui-primary: #654321;
+  --color-sui-primary-subtle: #987654;
+  ...
+}
+
+```
