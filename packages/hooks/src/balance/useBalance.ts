@@ -2,6 +2,7 @@ import { formatEther, type Address, type Chain } from "viem";
 import { useFetchNativeCurrencyPrice } from "../useFetchNativeCurrencyPrice.js";
 import { useCallback, useEffect, useState } from "react";
 import { useWatchBalance } from "./useWatchBalance.js";
+import { mainnet } from "viem/chains";
 
 type UseBalanceOptions = {
   address?: Address;
@@ -18,7 +19,7 @@ type UseBalanceOptions = {
  *
  * @param {UseBalanceOptions} options - Options for fetching the balance.
  * @param {Address} [options.address] - The address to fetch the balance for.
- * @param {Chain} [options.chain] - The blockchain network to use.
+ * @param {Chain} [options.chain=mainnet] - The blockchain network to use. Defaults to Ethereum mainnet.
  * @param {boolean} [options.defaultUsdMode=false] - (Optional) If true, displays the balance in USD by default. If the price is not fetched, the balance is displayed in native currency.
  *
  * @returns {Object} An object containing:
@@ -41,7 +42,7 @@ type UseBalanceOptions = {
  *   defaultUsdMode: true,
  * });
  */
-export const useBalance = ({ address, chain, defaultUsdMode = false }: UseBalanceOptions) => {
+export const useBalance = ({ address, chain = mainnet, defaultUsdMode = false }: UseBalanceOptions) => {
   const {
     price: nativeCurrencyPrice,
     isLoading: isNativeCurrencyPriceLoading,
