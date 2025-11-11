@@ -2,7 +2,7 @@
 layout: docs
 ---
 
-import React from "react";
+import React, { useMemo } from "react";
 import { EtherInput } from "@scaffold-ui/components";
 import { DocsProvider } from "../../components/DocsProvider";
 
@@ -26,6 +26,7 @@ import { EtherInput } from "@scaffold-ui/components";
 | `defaultUsdMode` | `boolean`                                                                              | `false` | Start with the input in USD mode instead of ETH                                                          |
 | `disabled`       | `boolean`                                                                              | `false` | Disables the input and toggle button                                                                     |
 | `onValueChange`  | `(value: { valueInEth: string; valueInUsd: string; displayUsdMode: boolean }) => void` | -       | Called when the value or display mode changes. Provides both ETH and USD values and current display mode |
+| `style`          | `CSSProperties`                                                                        | -       | Custom CSS styles (memoize to prevent re-renders)                                                        |
 
 ## Live Examples
 

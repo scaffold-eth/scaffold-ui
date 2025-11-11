@@ -31,7 +31,8 @@ export type BaseInputProps<T> = CommonInputProps<T> & {
  * @param {ReactNode} [props.prefix] - (Optional) Element to render before the input (e.g., icon).
  * @param {ReactNode} [props.suffix] - (Optional) Element to render after the input (e.g., button).
  * @param {boolean} [props.reFocus] - (Optional) If true, input auto-focuses and cursor moves to end.
- * @param {CSSProperties} [props.style] - (Optional) Styles for the input.
+ * @param {CSSProperties} [props.style] - (Optional) Custom CSS styles to apply to the component.
+ *   Performance Warning: Always memoize style objects to prevent unnecessary re-renders.
  *
  * @example
  * <BaseInput
