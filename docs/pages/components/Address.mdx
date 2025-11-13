@@ -148,3 +148,27 @@ import { Address } from "@scaffold-ui/components";
   chain={polygon}
 />;
 ```
+
+### Invalid Address Handling
+
+When an invalid Ethereum address is provided, the component displays an error message with "Invalid address" text. The error color uses the `--color-sui-error` CSS variable, which can be customized in your theme.
+
+<DocsProvider>
+  <Address address="0xInvalidAddress123" />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { Address } from "@scaffold-ui/components";
+
+// Invalid address - shows error message
+<Address address="0xInvalidAddress123" />;
+```
+
+To customize the error color, override the CSS variable in your theme:
+
+```css
+:root {
+  --color-sui-error: #ff8863;
+}
+```

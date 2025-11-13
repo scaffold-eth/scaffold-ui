@@ -29,7 +29,8 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
     address: checkSumAddress,
     chainId: 1,
     query: {
-      enabled: isAddress(checkSumAddress ?? ""),
+      // Only fetch ENS when address is valid (checkSumAddress will be undefined for invalid addresses)
+      enabled: !!checkSumAddress,
     },
   });
 
@@ -37,18 +38,24 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
     name: ens ? normalize(ens) : undefined,
     chainId: 1,
     query: {
-      enabled: Boolean(ens),
+      // Only fetch avatar when we have both valid address and ENS name
+      enabled: !!checkSumAddress && Boolean(ens),
       gcTime: 30_000,
     },
   });
 
   const shortAddress = checkSumAddress ? `${checkSumAddress.slice(0, 6)}...${checkSumAddress.slice(-4)}` : undefined;
 
-  const isValidAddress = checkSumAddress ? isAddress(checkSumAddress) : false;
-  const blockExplorerAddressLink = getBlockExplorerAddressLink(
-    UseAddressOptions?.chain ?? mainnet,
-    checkSumAddress ?? "",
-  );
+  // If checkSumAddress exists, it means the address is valid (already validated by isAddress check above)
+  // So we can directly use !!checkSumAddress instead of calling isAddress again
+  const isValidAddress = !!checkSumAddress;
+
+  const blockExplorerAddressLink = checkSumAddress
+    ? getBlockExplorerAddressLink(UseAddressOptions?.chain ?? mainnet, checkSumAddress)
+    : "";
+
+  // Use checkSumAddress for blockie generation to ensure consistency
+  const blockieUrl = checkSumAddress ? blo(checkSumAddress) : undefined;
 
   return {
     checkSumAddress,
@@ -58,6 +65,6 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
     blockExplorerAddressLink,
     isValidAddress,
     shortAddress,
-    blockieUrl: UseAddressOptions.address ? blo(UseAddressOptions.address as `0x${string}`) : undefined,
+    blockieUrl,
   };
 };
