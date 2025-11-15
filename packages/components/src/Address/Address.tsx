@@ -62,6 +62,8 @@ export const Address: React.FC<AddressProps> = ({
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           {/* prettier-ignore */}
           <circle cx="12" cy="12" r="10" />
