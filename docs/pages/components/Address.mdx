@@ -148,3 +148,19 @@ import { Address } from "@scaffold-ui/components";
   chain={polygon}
 />;
 ```
+
+### Invalid Address Handling
+
+When an invalid Ethereum address is provided, the component displays an error message with "Invalid address" text.
+
+<DocsProvider>
+  <Address address="0xInvalidAddress123" />
+</DocsProvider>
+
+```tsx twoslash
+import React from "react";
+import { Address } from "@scaffold-ui/components";
+
+// Invalid address - shows error message
+<Address address="0xInvalidAddress123" />;
+```

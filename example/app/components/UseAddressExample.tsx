@@ -112,6 +112,11 @@ export const UseAddressExample = () => {
                 disableAddressLink={true}
               />
             </div>
+
+            <div className="flex flex-col">
+              <span className="text-sm text-gray-500 mb-1">Invalid address</span>
+              <Address address="0x34aA3F359A9D61423901xyz" />
+            </div>
           </div>
         </div>
 

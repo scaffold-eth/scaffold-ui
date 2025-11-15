@@ -36,13 +36,10 @@ export const Address: React.FC<AddressProps> = ({
     ensAvatar,
     isEnsNameLoading,
     blockExplorerAddressLink: blockExplorerLink,
+    isValidAddress,
     shortAddress,
     blockieUrl,
   } = useAddress({ address, chain: chain || mainnet });
-  blockExplorerAddressLink = blockExplorerAddressLink || blockExplorerLink;
-
-  const displayAddress = format === "long" ? checkSumAddress : shortAddress;
-  const displayEnsOrAddress = ens || displayAddress;
 
   const showSkeleton = !checkSumAddress || (!onlyEnsOrAddress && (ens || isEnsNameLoading));
 
@@ -50,6 +47,40 @@ export const Address: React.FC<AddressProps> = ({
   const ensSize = getNextSize(textSizeMap, addressSize);
   const blockieSize = showSkeleton && !onlyEnsOrAddress ? getNextSize(blockieSizeMap, addressSize, 4) : addressSize;
 
+  // If address is provided but invalid, show error message
+  if (address && !isValidAddress) {
+    return (
+      <DefaultStylesWrapper
+        className="flex items-center text-sui-error"
+        style={style}
+      >
+        <svg
+          className="shrink-0"
+          width={(blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"]}
+          height={(blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"]}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* prettier-ignore */}
+          <circle cx="12" cy="12" r="10" />
+          {/* prettier-ignore */}
+          <line x1="12" y1="8" x2="12" y2="12" />
+          {/* prettier-ignore */}
+          <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
+        <div className="flex flex-col space-y-1">
+          <span className={`ml-1.5 ${textSizeMap[ensSize]} font-bold`}>Invalid address</span>
+          <span className={`ml-1.5 ${textSizeMap[addressSize]} break-all`}>{address}</span>
+        </div>
+      </DefaultStylesWrapper>
+    );
+  }
+
+  // If address is not provided yet, show loading skeleton
   if (!checkSumAddress) {
     return (
       <DefaultStylesWrapper
@@ -76,6 +107,11 @@ export const Address: React.FC<AddressProps> = ({
       </DefaultStylesWrapper>
     );
   }
+
+  // Valid address - prepare display variables
+  blockExplorerAddressLink = blockExplorerAddressLink || blockExplorerLink;
+  const displayAddress = format === "long" ? checkSumAddress : shortAddress;
+  const displayEnsOrAddress = ens || displayAddress;
 
   return (
     <DefaultStylesWrapper

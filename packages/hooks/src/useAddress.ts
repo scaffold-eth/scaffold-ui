@@ -29,7 +29,7 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
     address: checkSumAddress,
     chainId: 1,
     query: {
-      enabled: isAddress(checkSumAddress ?? ""),
+      enabled: Boolean(checkSumAddress),
     },
   });
 
@@ -44,11 +44,13 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
 
   const shortAddress = checkSumAddress ? `${checkSumAddress.slice(0, 6)}...${checkSumAddress.slice(-4)}` : undefined;
 
-  const isValidAddress = checkSumAddress ? isAddress(checkSumAddress) : false;
-  const blockExplorerAddressLink = getBlockExplorerAddressLink(
-    UseAddressOptions?.chain ?? mainnet,
-    checkSumAddress ?? "",
-  );
+  const isValidAddress = Boolean(checkSumAddress);
+
+  const blockExplorerAddressLink = checkSumAddress
+    ? getBlockExplorerAddressLink(UseAddressOptions?.chain ?? mainnet, checkSumAddress)
+    : "";
+
+  const blockieUrl = checkSumAddress ? blo(checkSumAddress) : undefined;
 
   return {
     checkSumAddress,
@@ -58,6 +60,6 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
     blockExplorerAddressLink,
     isValidAddress,
     shortAddress,
-    blockieUrl: UseAddressOptions.address ? blo(UseAddressOptions.address as `0x${string}`) : undefined,
+    blockieUrl,
   };
 };
