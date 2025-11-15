@@ -48,50 +48,31 @@ export const Address: React.FC<AddressProps> = ({
   const blockieSize = showSkeleton && !onlyEnsOrAddress ? getNextSize(blockieSizeMap, addressSize, 4) : addressSize;
 
   // If address is provided but invalid, show error message
-  // Colors use CSS variables (--color-sui-error) so users can customize them
   if (address && !isValidAddress) {
     return (
       <DefaultStylesWrapper
-        className="flex items-center text-sui-primary-content"
+        className="flex items-center text-sui-error"
         style={style}
       >
-        <div
-          className="shrink-0 rounded-full flex items-center justify-center"
-          style={{
-            width: (blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"],
-            height: (blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"],
-            backgroundColor: "color-mix(in srgb, var(--color-sui-error) 10%, transparent)",
-          }}
+        <svg
+          className="shrink-0"
+          width={(blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"]}
+          height={(blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"]}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
         >
-          <svg
-            width={(blockieSizeMap[blockieSize] * 16) / blockieSizeMap["base"]}
-            height={(blockieSizeMap[blockieSize] * 16) / blockieSizeMap["base"]}
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="var(--color-sui-error)"
-            strokeWidth="2"
-          >
-            {/* prettier-ignore */}
-            <circle cx="12" cy="12" r="10" />
-            {/* prettier-ignore */}
-            <line x1="12" y1="8" x2="12" y2="12" />
-            {/* prettier-ignore */}
-            <line x1="12" y1="16" x2="12.01" y2="16" />
-          </svg>
-        </div>
+          {/* prettier-ignore */}
+          <circle cx="12" cy="12" r="10" />
+          {/* prettier-ignore */}
+          <line x1="12" y1="8" x2="12" y2="12" />
+          {/* prettier-ignore */}
+          <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
         <div className="flex flex-col space-y-1">
-          <span
-            className={`ml-1.5 ${textSizeMap[ensSize]} font-bold`}
-            style={{ color: "var(--color-sui-error)" }}
-          >
-            Invalid address
-          </span>
-          <span
-            className={`ml-1.5 ${textSizeMap[addressSize]} break-all`}
-            style={{ color: "var(--color-sui-error)", opacity: 0.7 }}
-          >
-            {address}
-          </span>
+          <span className={`ml-1.5 ${textSizeMap[ensSize]} font-bold`}>Invalid address</span>
+          <span className={`ml-1.5 ${textSizeMap[addressSize]} break-all`}>{address}</span>
         </div>
       </DefaultStylesWrapper>
     );
