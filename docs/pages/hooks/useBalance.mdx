@@ -2,14 +2,14 @@
 layout: docs
 ---
 
-import React from "react";
+import React, { useState } from "react";
 import { useBalance } from "@scaffold-ui/hooks";
 import { DocsProvider } from "../../components/DocsProvider";
 import { mainnet } from "viem/chains";
 
 # useBalance Hook
 
-The `useBalance` hook fetches and watches an address balance on a given chain, pairing live USD conversion with a UI-friendly toggle between native currency and USD modes.
+The `useBalance` hook fetches and watches an address balance on a given chain, pairing live USD conversion.
 
 ## Import
 
@@ -140,7 +140,9 @@ function BalanceWithToggle() {
 Handle asynchronous fetch states while keeping the toggle experience consistent.
 
 export function UseBalanceLoadingErrorExample() {
-  const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
+  const [isValidAddress, setIsValidAddress] = useState(true);
+  const validAddress = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
+  const brokenAddress = "0x";
   const {
     formattedBalance,
     balanceInUsd,
@@ -149,20 +151,35 @@ export function UseBalanceLoadingErrorExample() {
     isLoading,
     isError,
   } = useBalance({
-    address,
+    address: isValidAddress ? validAddress : brokenAddress,
     chain: mainnet,
     defaultUsdMode: true,
   });
 
   if (isLoading) return <p>Fetching balance…</p>;
-  if (isError) return <p style={{ color: "red" }}>Could not fetch balance</p>;
+  if (isError) return (
+    <div>
+        <p style={{ color: "red" }}>Could not fetch balance</p>
+        <button
+            style={{ display: "block", padding: "8px", background: "#dae8ff", borderRadius: "4px", marginTop: "4px", border: "none", cursor: "pointer", color: "#000" }}
+            onClick={() => setIsValidAddress((v) => !v)}
+        >
+            Fetch balance of the valid address
+        </button>
+    </div>
+  );
 
   return (
     <div>
-      <p>
-        Balance: {displayUsdMode ? `$${balanceInUsd.toLocaleString()}` : `${formattedBalance.toLocaleString()} ETH`}
-      </p>
+      <p>Balance: {displayUsdMode ? `$${balanceInUsd.toLocaleString()}` : `${formattedBalance.toLocaleString()} ETH`}</p>
       <button onClick={toggleDisplayUsdMode}>Toggle USD / ETH</button>
+
+      <button
+        style={{ display: "block", padding: "8px", background: "#dae8ff", borderRadius: "4px", marginTop: "4px", border: "none", cursor: "pointer", color: "#000" }}
+        onClick={() => setIsValidAddress((v) => !v)}
+      >
+        Try to fetch balance of the broken address
+      </button>
     </div>
   );
 }
@@ -172,12 +189,14 @@ export function UseBalanceLoadingErrorExample() {
 </DocsProvider>
 
 ```tsx
-import React from "react";
+import React, { useState } from "react";
 import { useBalance } from "@scaffold-ui/hooks";
 import { mainnet } from "viem/chains";
 
 function BalanceWithLoadingStates() {
-  const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
+  const [isValidAddress, setIsValidAddress] = useState(true);
+  const validAddress = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
+  const brokenAddress = "0x";
   const {
     formattedBalance,
     balanceInUsd,
@@ -186,13 +205,23 @@ function BalanceWithLoadingStates() {
     isLoading,
     isError,
   } = useBalance({
-    address,
+    address: isValidAddress ? validAddress : brokenAddress,
     chain: mainnet,
     defaultUsdMode: true,
   });
 
   if (isLoading) return <p>Fetching balance…</p>;
-  if (isError) return <p style={{ color: "red" }}>Could not fetch balance</p>;
+  if (isError) return (
+    <div>
+        <p style={{ color: "red" }}>Could not fetch balance</p>
+        <button
+            style={{ display: "block", padding: "8px", background: "#dae8ff", borderRadius: "4px", marginTop: "4px", border: "none", cursor: "pointer", color: "#000" }}
+            onClick={() => setIsValidAddress((v) => !v)}
+        >
+            Fetch balance of the valid address
+        </button>
+    </div>
+  );
 
   return (
     <div>
@@ -200,6 +229,12 @@ function BalanceWithLoadingStates() {
         Balance: {displayUsdMode ? `$${balanceInUsd.toLocaleString()}` : `${formattedBalance.toLocaleString()} ETH`}
       </p>
       <button onClick={toggleDisplayUsdMode}>Toggle USD / ETH</button>
+      <button
+        style={{ display: "block", padding: "8px", background: "#dae8ff", borderRadius: "4px", marginTop: "4px", border: "none", cursor: "pointer", color: "#000" }}
+        onClick={() => setIsValidAddress((v) => !v)}
+      >
+        Try to fetch balance of the broken address
+      </button>
     </div>
   );
 }
