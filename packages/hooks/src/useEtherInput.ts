@@ -3,7 +3,7 @@ import { mainnet } from "viem/chains";
 
 export const MAX_DECIMALS_USD = 2;
 
-export const SIGNED_NUMBER_REGEX = /^-?\d+\.?\d*$/;
+export const SIGNED_NUMBER_REGEX = /^-?\d*\.?\d*$/;
 
 function etherValueToUsd(etherValue: string, nativeCurrencyPrice: number) {
   if (!etherValue || !nativeCurrencyPrice) {
