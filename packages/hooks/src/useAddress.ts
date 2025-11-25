@@ -25,11 +25,13 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
     UseAddressOptions?.address &&
     (isAddress(UseAddressOptions?.address) ? getAddress(UseAddressOptions.address) : undefined);
 
+  const isValidAddress = Boolean(checkSumAddress);
+
   const { data: ens, isLoading: isEnsNameLoading } = useEnsName({
     address: checkSumAddress,
     chainId: 1,
     query: {
-      enabled: Boolean(checkSumAddress),
+      enabled: isValidAddress,
     },
   });
 
@@ -43,8 +45,6 @@ export const useAddress = (UseAddressOptions: UseAddressOptions) => {
   });
 
   const shortAddress = checkSumAddress ? `${checkSumAddress.slice(0, 6)}...${checkSumAddress.slice(-4)}` : undefined;
-
-  const isValidAddress = Boolean(checkSumAddress);
 
   const blockExplorerAddressLink = checkSumAddress
     ? getBlockExplorerAddressLink(UseAddressOptions?.chain ?? mainnet, checkSumAddress)
