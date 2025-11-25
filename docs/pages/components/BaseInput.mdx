@@ -2,9 +2,10 @@
 layout: docs
 ---
 
-import React, { useState } from "react";
+import React from "react";
 import { BaseInput } from "@scaffold-ui/components";
 import { DocsProvider } from "../../components/DocsProvider";
+import { BaseInputExample } from "../../components/BaseInputExample";
 
 # BaseInput Component
 
@@ -35,20 +36,8 @@ import { BaseInput } from "@scaffold-ui/components";
 
 ### Basic Usage
 
-export function BaseInputBasicExample() {
-  const [value, setValue] = useState("");
-  return (
-    <BaseInput
-      value={value}
-      onChange={setValue}
-      placeholder="Enter your name"
-    />
-  );
-}
-
 <DocsProvider>
-  <BaseInputBasicExample />
-  <div style={{ height: 12 }} />
+  <BaseInputExample placeholder="Enter your name" />
 </DocsProvider>
 
 ```tsx
@@ -70,59 +59,28 @@ function BasicInput() {
 
 ### With Prefix and Suffix
 
-export function BaseInputPrefixSuffixExample() {
-  const [value, setValue] = useState("");
-  return (
-    <BaseInput
-      value={value}
-      onChange={setValue}
-      placeholder="Search..."
-      prefix={
-        <span style={{ paddingLeft: 12, display: "flex", alignItems: "center", color: "#888" }}>
-          🔍
-        </span>
-      }
-      suffix={
-        <button
-          onClick={() => setValue("")}
-          style={{
-            padding: "0 12px",
-            background: "transparent",
-            border: "none",
-            cursor: "pointer",
-            color: "#888",
-          }}
-        >
-          ✕
-        </button>
-      }
-    />
-  );
-}
-
 <DocsProvider>
-  <BaseInputPrefixSuffixExample />
-  <div style={{ height: 12 }} />
+  <BaseInputExample
+    placeholder="0.00"
+    prefix={<span style={{ paddingLeft: 12, display: "flex", alignItems: "center", color: "#888" }}>$</span>}
+    suffix={<span style={{ paddingRight: 12, display: "flex", alignItems: "center", color: "#888" }}>USD</span>}
+  />
 </DocsProvider>
 
 ```tsx
 import React, { useState } from "react";
 import { BaseInput } from "@scaffold-ui/components";
 
-function InputWithAdornments() {
+function CurrencyInput() {
   const [value, setValue] = useState("");
 
   return (
     <BaseInput
       value={value}
       onChange={setValue}
-      placeholder="Search..."
-      prefix={<span style={{ paddingLeft: 12 }}>🔍</span>}
-      suffix={
-        <button onClick={() => setValue("")} style={{ padding: "0 12px" }}>
-          ✕
-        </button>
-      }
+      placeholder="0.00"
+      prefix={<span style={{ paddingLeft: 12 }}>$</span>}
+      suffix={<span style={{ paddingRight: 12 }}>USD</span>}
     />
   );
 }
@@ -130,25 +88,12 @@ function InputWithAdornments() {
 
 ### Error State
 
-export function BaseInputErrorExample() {
-  const [value, setValue] = useState("invalid-email");
-  const hasError = value.length > 0 && !value.includes("@");
-  return (
-    <div>
-      <BaseInput
-        value={value}
-        onChange={setValue}
-        placeholder="Enter your email"
-        error={hasError}
-      />
-      {hasError && <p style={{ color: "red", fontSize: 12, marginTop: 4 }}>Please enter a valid email</p>}
-    </div>
-  );
-}
-
 <DocsProvider>
-  <BaseInputErrorExample />
-  <div style={{ height: 12 }} />
+  <BaseInputExample
+    initialValue="invalid-email"
+    placeholder="Enter your email"
+    validateEmail={true}
+  />
 </DocsProvider>
 
 ```tsx
@@ -175,18 +120,11 @@ function InputWithValidation() {
 
 ### Disabled State
 
-export function BaseInputDisabledExample() {
-  return (
-    <BaseInput
-      value="Read-only content"
-      onChange={() => {}}
-      disabled={true}
-    />
-  );
-}
-
 <DocsProvider>
-  <BaseInputDisabledExample />
+  <BaseInputExample
+    initialValue="Read-only content"
+    disabled={true}
+  />
 </DocsProvider>
 
 ```tsx
