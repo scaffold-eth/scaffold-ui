@@ -25,6 +25,7 @@ export default defineConfig({
         { text: "Balance", link: "/components/Balance" },
         { text: "AddressInput", link: "/components/AddressInput" },
         { text: "EtherInput", link: "/components/EtherInput" },
+        { text: "BaseInput", link: "/components/BaseInput" },
       ],
     },
     {
