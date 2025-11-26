@@ -18,7 +18,7 @@ All Scaffold-UI component styles use the default [Tailwind CSS theme variables](
 
 The stylesheet includes dark theme styles that automatically apply based on your theme configuration.
 
-```
+```css
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *, [data-theme=dark], [data-theme=dark] *));
@@ -57,7 +57,7 @@ import { EtherInput } from "@scaffold-ui/components";
 
 You can override the default theme colors by redefining CSS variables in your global stylesheet.
 
-```
+```css
 /* Override Scaffold UI theme colors */
 :root {
   --color-sui-primary: #ff4444;
