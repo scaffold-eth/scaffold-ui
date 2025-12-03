@@ -1,5 +1,13 @@
 # @scaffold-ui/debug-contracts
 
+## 0.1.5
+
+### Patch Changes
+
+- Updated dependencies [d9590fe]
+  - @scaffold-ui/components@0.1.6
+  - @scaffold-ui/hooks@0.1.5
+
 ## 0.1.4
 
 ### Patch Changes

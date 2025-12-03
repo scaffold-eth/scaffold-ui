@@ -1,5 +1,13 @@
 # @scaffold-ui/components
 
+## 0.1.6
+
+### Patch Changes
+
+- d9590fe: move usehooks-ts dependency to @scaffol-ui/hooks
+- Updated dependencies [d9590fe]
+  - @scaffold-ui/hooks@0.1.5
+
 ## 0.1.5
 
 ### Patch Changes

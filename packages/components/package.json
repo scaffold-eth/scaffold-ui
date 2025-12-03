@@ -1,6 +1,6 @@
 {
   "name": "@scaffold-ui/components",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "React components for scaffold-ui",
   "type": "module",
   "main": "dist/esm/index.js",
