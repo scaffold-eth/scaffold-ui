@@ -50,19 +50,20 @@ export const useEtherInput = ({ value, usdMode }: { value: string; usdMode: bool
 
   let valueInEth = "";
   let valueInUsd = "";
-  let valueError = null;
+  let error: string | null = null;
 
   try {
     valueInEth = usdMode ? usdValueToEth(value, nativeCurrencyPrice || 0) : value;
     valueInUsd = usdMode ? value : etherValueToUsd(value, nativeCurrencyPrice || 0);
-  } catch (error: unknown) {
-    valueError = (error as Error).message;
+  } catch (err: unknown) {
+    error = (err as Error).message;
   }
 
   return {
     valueInEth,
     valueInUsd,
-    valueError,
+    error,
+    isError: Boolean(error),
     nativeCurrencyPrice,
     isNativeCurrencyPriceLoading,
     isNativeCurrencyPriceError,

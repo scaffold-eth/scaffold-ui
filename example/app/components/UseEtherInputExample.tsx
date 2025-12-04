@@ -10,7 +10,8 @@ export const UseEtherInputExample = () => {
     valueInEth,
     valueInUsd,
     nativeCurrencyPrice,
-    valueError,
+    error,
+    isError,
     isNativeCurrencyPriceLoading,
     isNativeCurrencyPriceError,
   } = useEtherInput({ value: manualValue, usdMode: manualUsdMode });
@@ -80,10 +81,10 @@ export const UseEtherInputExample = () => {
         <h2 className="text-xl font-semibold text-[var(--color-sui-primary-content)]">
           Manual Implementation (useEtherInput Hook)
         </h2>
-        {valueError && <p className="text-red-500 mb-0">{valueError}</p>}
+        {isError && <p className="text-red-500 mb-0">{error}</p>}
         <div className="flex items-center gap-2 mb-2">
           <input
-            className={`w-40 px-3 py-2 rounded-md bg-transparent border ${valueError ? "border-red-500 border-2" : "border-gray-300 dark:border-gray-600"}`}
+            className={`w-40 px-3 py-2 rounded-md bg-transparent border ${isError ? "border-red-500 border-2" : "border-gray-300 dark:border-gray-600"}`}
             type="text"
             value={manualValue}
             onChange={(e) => setManualValue(e.target.value)}
