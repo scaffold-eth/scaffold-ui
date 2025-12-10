@@ -1,5 +1,18 @@
 # @scaffold-ui/components
 
+## 0.1.6
+
+### Patch Changes
+
+- d9590fe: move usehooks-ts dependency to @scaffol-ui/hooks
+- 5a3a506: update peerDeps
+- 6582fcd: - EtherInput: Allow numbers directly start with decimal
+  - useEtherInput: Expose the error message and isError
+- Updated dependencies [d9590fe]
+- Updated dependencies [5a3a506]
+- Updated dependencies [6582fcd]
+  - @scaffold-ui/hooks@0.1.5
+
 ## 0.1.5
 
 ### Patch Changes
