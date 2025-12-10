@@ -1,5 +1,16 @@
 # @scaffold-ui/debug-contracts
 
+## 0.1.5
+
+### Patch Changes
+
+- 5a3a506: update peerDeps
+- Updated dependencies [d9590fe]
+- Updated dependencies [5a3a506]
+- Updated dependencies [6582fcd]
+  - @scaffold-ui/components@0.1.6
+  - @scaffold-ui/hooks@0.1.5
+
 ## 0.1.4
 
 ### Patch Changes

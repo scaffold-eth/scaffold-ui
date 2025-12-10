@@ -26,6 +26,8 @@ export type BalanceProps = {
  * @param {Address} [props.address] - (Optional) The address to display the balance for.
  * @param {Chain} [props.chain] - (Optional) The blockchain network to use. Defaults to the connected chain or mainnet.
  * @param {boolean} [props.defaultUsdMode] - (Optional) If true, displays the balance in USD by default.
+ * @param {CSSProperties} [props.style] - (Optional) Custom CSS styles to apply to the component.
+ *   Performance Warning: Always memoize style objects to prevent unnecessary re-renders.
  *
  * @example
  * <Balance address="0x123..." />

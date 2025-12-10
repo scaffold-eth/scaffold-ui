@@ -2,7 +2,7 @@
 import { useBalance } from "@scaffold-ui/hooks";
 import { Balance } from "@scaffold-ui/components";
 import { mainnet, polygon } from "viem/chains";
-import { CSSProperties } from "react";
+import { CSSProperties, useMemo } from "react";
 
 export const UseBalanceExample = () => {
   // atg.eth
@@ -12,6 +12,15 @@ export const UseBalanceExample = () => {
     address,
     chain: mainnet,
   });
+
+  const customBalanceStyle = useMemo(
+    () =>
+      ({
+        "--color-sui-primary-content": "var(--color-sui-success)",
+        fontSize: "1.2rem",
+      }) as CSSProperties,
+    [],
+  );
 
   if (!address) {
     return (
@@ -44,15 +53,7 @@ export const UseBalanceExample = () => {
             </div>
             <div className="flex flex-col items-center">
               <span className="text-sm text-gray-500 mb-1 self-start">Custom styles</span>
-              <Balance
-                address={address}
-                style={
-                  {
-                    "--color-sui-primary-content": "var(--color-sui-success)",
-                    fontSize: "1.2rem",
-                  } as CSSProperties
-                }
-              />
+              <Balance address={address} style={customBalanceStyle} />
             </div>
           </div>
         </div>

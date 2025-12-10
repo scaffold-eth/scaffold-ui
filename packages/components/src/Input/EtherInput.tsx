@@ -28,7 +28,8 @@ export type EtherInputProps = Omit<CommonInputProps<string>, "onChange" | "value
  * @param {boolean} [props.defaultUsdMode] - (Optional) If true, input starts in USD mode; otherwise, ETH mode.
  * @param {boolean} [props.disabled] - (Optional) If true, the input and toggle button are disabled.
  * @param {(value: { valueInEth: string; valueInUsd: string; usdMode: boolean }) => void} props.onValueChange - (Optional) Callback fired when the value or mode changes.
- * @param {CSSProperties} [props.style] - (Optional) Styles for the input.
+ * @param {CSSProperties} [props.style] - (Optional) Custom CSS styles to apply to the component.
+ *   Performance Warning: Always memoize style objects to prevent unnecessary re-renders.
  *
  * @example
  * <EtherInput onValueChange={({ valueInEth, valueInUsd, usdMode }) => { ... }} />
