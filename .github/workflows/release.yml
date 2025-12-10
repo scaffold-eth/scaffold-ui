@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write # Required for OIDC
+
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 env:
