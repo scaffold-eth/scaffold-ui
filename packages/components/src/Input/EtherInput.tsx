@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { MAX_DECIMALS_USD, useEtherInput } from "@scaffold-ui/hooks";
+import { MAX_DECIMALS_USD, useEtherInput, SIGNED_NUMBER_REGEX } from "@scaffold-ui/hooks";
 import { SwitchIcon } from "../icons/SwitchIcon";
 import { BaseInput } from "./BaseInput";
 import { CommonInputProps } from "./utils";
@@ -11,8 +11,6 @@ export type EtherInputProps = Omit<CommonInputProps<string>, "onChange" | "value
   defaultUsdMode?: boolean;
   onValueChange?: (value: { valueInEth: string; valueInUsd: string; displayUsdMode: boolean }) => void;
 };
-
-const SIGNED_NUMBER_REGEX = /^-?\d+\.?\d*$/;
 
 /**
  * EtherInput Component
