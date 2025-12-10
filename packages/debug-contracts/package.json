@@ -1,6 +1,6 @@
 {
   "name": "@scaffold-ui/debug-contracts",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Debug contracts component for scaffold-ui",
   "type": "module",
   "main": "dist/esm/index.js",
@@ -34,7 +34,7 @@
     "@scaffold-ui/hooks": "workspace:*",
     "@tanstack/react-query": "^5.59.15",
     "@types/react": "^19.0.7",
-    "react": "^19.0.0",
+    "react": "^19.0.1",
     "viem": "^2.23.0",
     "wagmi": "^2.14.11"
   },

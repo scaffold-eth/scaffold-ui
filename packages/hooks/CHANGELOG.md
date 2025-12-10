@@ -1,5 +1,17 @@
 # @scaffold-ui/hooks
 
+## 0.1.4
+
+### Patch Changes
+
+- 5e23fdf: make `chain` optional in useBalance hook. Defaults to mainnet
+
+## 0.1.3
+
+### Patch Changes
+
+- c805b7e: Fixed useAddress bug when address is invalid
+
 ## 0.1.2
 
 ### Patch Changes
