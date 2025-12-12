@@ -18,15 +18,15 @@ import { Address } from "@scaffold-ui/components";
 
 ## Props
 
-| Prop                 | Type                                                       | Default   | Description                                       |
-| -------------------- | ---------------------------------------------------------- | --------- | ------------------------------------------------- |
-| `address`            | `Address`                                                  | -         | The Ethereum address to display                   |
-| `disableAddressLink` | `boolean`                                                  | `false`   | Disable linking to block explorer                 |
-| `format`             | `"short" \| "long"`                                        | `"short"` | Display format for the address                    |
-| `size`               | `"xs" \| "sm" \| "base" \| "lg" \| "xl" \| "2xl" \| "3xl"` | `"base"`  | Size of the component                             |
-| `onlyEnsOrAddress`   | `boolean`                                                  | `false`   | Show only ENS name or address (not both)          |
-| `chain`              | `Chain`                                                    | `mainnet` | Blockchain network for resolution                 |
-| `style`              | `CSSProperties`                                            | -         | Custom CSS styles (memoize to prevent re-renders) |
+| Prop                 | Type                                                       | Default                                                                                        | Description                                       |
+| -------------------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `address`            | `Address`                                                  | -                                                                                              | The Ethereum address to display                   |
+| `disableAddressLink` | `boolean`                                                  | `false`                                                                                        | Disable linking to block explorer                 |
+| `format`             | `"short" \| "long"`                                        | `"short"`                                                                                      | Display format for the address                    |
+| `size`               | `"xs" \| "sm" \| "base" \| "lg" \| "xl" \| "2xl" \| "3xl"` | `"base"`                                                                                       | Size of the component                             |
+| `onlyEnsOrAddress`   | `boolean`                                                  | `false`                                                                                        | Show only ENS name or address (not both)          |
+| `chain`              | `Chain`                                                    | First chain from [WagmiProvider](https://wagmi.sh/react/api/WagmiProvider) config or `mainnet` | Blockchain network for resolution                 |
+| `style`              | `CSSProperties`                                            | -                                                                                              | Custom CSS styles (memoize to prevent re-renders) |
 
 ## Live Examples
 
