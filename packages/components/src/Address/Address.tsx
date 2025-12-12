@@ -8,6 +8,7 @@ import { AddressLinkWrapper } from "./AddressLinkWrapper";
 import { AddressCopyIcon } from "./AddressCopyIcon";
 import { textSizeMap, blockieSizeMap, copyIconSizeMap, getNextSize, getPrevSize } from "./utils";
 import { DefaultStylesWrapper } from "../utils/ComponentWrapper";
+import { useConfig } from "wagmi";
 
 export type AddressProps = {
   address?: AddressType;
@@ -57,6 +58,9 @@ export const Address: React.FC<AddressProps> = ({
   style,
   blockExplorerAddressLink,
 }) => {
+  const { chains: configuredChains } = useConfig();
+  const chainToUse = chain ? chain : configuredChains[0] ? configuredChains[0] : mainnet;
+
   const {
     checkSumAddress,
     ens,
@@ -66,7 +70,7 @@ export const Address: React.FC<AddressProps> = ({
     isValidAddress,
     shortAddress,
     blockieUrl,
-  } = useAddress({ address, chain: chain || mainnet });
+  } = useAddress({ address, chain: chainToUse });
 
   const showSkeleton = !checkSumAddress || (!onlyEnsOrAddress && (ens || isEnsNameLoading));
 
