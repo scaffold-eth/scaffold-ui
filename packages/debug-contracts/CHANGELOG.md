@@ -1,5 +1,12 @@
 # @scaffold-ui/debug-contracts
 
+## 0.1.6
+
+### Patch Changes
+
+- Updated dependencies [20f846e]
+  - @scaffold-ui/components@0.1.7
+
 ## 0.1.5
 
 ### Patch Changes
