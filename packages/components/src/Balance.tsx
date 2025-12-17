@@ -3,7 +3,7 @@
 import React, { CSSProperties } from "react";
 import { Address, Chain } from "viem";
 import { useBalance } from "@scaffold-ui/hooks";
-import { useAccount } from "wagmi";
+import { useConfig } from "wagmi";
 import { mainnet } from "viem/chains";
 import { DefaultStylesWrapper } from "./utils/ComponentWrapper";
 
@@ -24,7 +24,7 @@ export type BalanceProps = {
  *
  * @param {BalanceProps} props - The props for the Balance component.
  * @param {Address} [props.address] - (Optional) The address to display the balance for.
- * @param {Chain} [props.chain] - (Optional) The blockchain network to use. Defaults to the connected chain or mainnet.
+ * @param {Chain} [props.chain] - (Optional) The blockchain network to use. Defaults to the first configured chain or mainnet.
  * @param {boolean} [props.defaultUsdMode] - (Optional) If true, displays the balance in USD by default.
  * @param {CSSProperties} [props.style] - (Optional) Custom CSS styles to apply to the component.
  *   Performance Warning: Always memoize style objects to prevent unnecessary re-renders.
@@ -35,8 +35,8 @@ export type BalanceProps = {
  * <Balance address="0x123..." chain={mainnet} />
  */
 export const Balance: React.FC<BalanceProps> = ({ address, chain, defaultUsdMode, style }) => {
-  const { chain: connectedChain } = useAccount();
-  const chainToUse = chain ? chain : (connectedChain ?? mainnet);
+  const { chains: configuredChains } = useConfig();
+  const chainToUse = chain ? chain : configuredChains[0] ? configuredChains[0] : mainnet;
   const { displayUsdMode, toggleDisplayUsdMode, formattedBalance, balanceInUsd, isLoading, isError, balance } =
     useBalance({ address, chain: chainToUse, defaultUsdMode });
 
