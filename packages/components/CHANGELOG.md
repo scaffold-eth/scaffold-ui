@@ -1,5 +1,11 @@
 # @scaffold-ui/components
 
+## 0.1.7
+
+### Patch Changes
+
+- 20f846e: fallback to wagmi config chain
+
 ## 0.1.6
 
 ### Patch Changes
