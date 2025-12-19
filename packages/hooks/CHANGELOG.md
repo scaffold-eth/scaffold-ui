@@ -1,5 +1,26 @@
 # @scaffold-ui/hooks
 
+## 0.1.5
+
+### Patch Changes
+
+- d9590fe: move usehooks-ts dependency to @scaffol-ui/hooks
+- 5a3a506: update peerDeps
+- 6582fcd: - EtherInput: Allow numbers directly start with decimal
+  - useEtherInput: Expose the error message and isError
+
+## 0.1.4
+
+### Patch Changes
+
+- 5e23fdf: make `chain` optional in useBalance hook. Defaults to mainnet
+
+## 0.1.3
+
+### Patch Changes
+
+- c805b7e: Fixed useAddress bug when address is invalid
+
 ## 0.1.2
 
 ### Patch Changes

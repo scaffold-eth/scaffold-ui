@@ -1,13 +1,30 @@
 "use client";
-import React, { CSSProperties, useState } from "react";
+import React, { CSSProperties, useState, useMemo } from "react";
 import { EtherInput } from "@scaffold-ui/components";
 import { useEtherInput } from "@scaffold-ui/hooks";
 
 export const UseEtherInputExample = () => {
   const [manualValue, setManualValue] = useState("1");
   const [manualUsdMode, setManualUsdMode] = useState(false);
-  const { valueInEth, valueInUsd, nativeCurrencyPrice, isNativeCurrencyPriceLoading, isNativeCurrencyPriceError } =
-    useEtherInput({ value: manualValue, usdMode: manualUsdMode });
+  const {
+    valueInEth,
+    valueInUsd,
+    nativeCurrencyPrice,
+    error,
+    isError,
+    isNativeCurrencyPriceLoading,
+    isNativeCurrencyPriceError,
+  } = useEtherInput({ value: manualValue, usdMode: manualUsdMode });
+
+  const customEtherInputStyle = useMemo(
+    () =>
+      ({
+        "--color-sui-input-border": "#eab308",
+        "--color-sui-input-background": "#fef9c3",
+        "--color-sui-input-text": "#713f12",
+      }) as CSSProperties,
+    [],
+  );
 
   return (
     <div className="mt-8 p-6 max-w-2xl rounded-lg bg-white/5 shadow-xl">
@@ -57,13 +74,7 @@ export const UseEtherInputExample = () => {
               onValueChange={({ valueInEth, valueInUsd, displayUsdMode }) =>
                 console.log("value changed", valueInEth, valueInUsd, displayUsdMode)
               }
-              style={
-                {
-                  "--color-sui-input-border": "#eab308",
-                  "--color-sui-input-background": "#fef9c3",
-                  "--color-sui-input-text": "#713f12",
-                } as CSSProperties
-              }
+              style={customEtherInputStyle}
             />
           </div>
         </div>
@@ -74,9 +85,10 @@ export const UseEtherInputExample = () => {
         <h2 className="text-xl font-semibold text-[var(--color-sui-primary-content)]">
           Manual Implementation (useEtherInput Hook)
         </h2>
+        {isError && <p className="text-red-500 mb-0">{error}</p>}
         <div className="flex items-center gap-2 mb-2">
           <input
-            className="input input-bordered w-40"
+            className={`w-40 px-3 py-2 rounded-md bg-transparent border ${isError ? "border-red-500 border-2" : "border-gray-300 dark:border-gray-600"}`}
             type="text"
             value={manualValue}
             onChange={(e) => setManualValue(e.target.value)}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { MAX_DECIMALS_USD, useEtherInput } from "@scaffold-ui/hooks";
+import { MAX_DECIMALS_USD, useEtherInput, SIGNED_NUMBER_REGEX } from "@scaffold-ui/hooks";
 import { SwitchIcon } from "../icons/SwitchIcon";
 import { BaseInput } from "./BaseInput";
 import { CommonInputProps } from "./utils";
@@ -11,8 +11,6 @@ export type EtherInputProps = Omit<CommonInputProps<string>, "onChange" | "value
   defaultUsdMode?: boolean;
   onValueChange?: (value: { valueInEth: string; valueInUsd: string; displayUsdMode: boolean }) => void;
 };
-
-const SIGNED_NUMBER_REGEX = /^-?\d+\.?\d*$/;
 
 /**
  * EtherInput Component
@@ -30,7 +28,8 @@ const SIGNED_NUMBER_REGEX = /^-?\d+\.?\d*$/;
  * @param {boolean} [props.defaultUsdMode] - (Optional) If true, input starts in USD mode; otherwise, ETH mode.
  * @param {boolean} [props.disabled] - (Optional) If true, the input and toggle button are disabled.
  * @param {(value: { valueInEth: string; valueInUsd: string; usdMode: boolean }) => void} props.onValueChange - (Optional) Callback fired when the value or mode changes.
- * @param {CSSProperties} [props.style] - (Optional) Styles for the input.
+ * @param {CSSProperties} [props.style] - (Optional) Custom CSS styles to apply to the component.
+ *   Performance Warning: Always memoize style objects to prevent unnecessary re-renders.
  *
  * @example
  * <EtherInput onValueChange={({ valueInEth, valueInUsd, usdMode }) => { ... }} />

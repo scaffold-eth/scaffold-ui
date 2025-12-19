@@ -2,6 +2,7 @@
 layout: docs
 ---
 
+import React, { useMemo } from "react";
 import { Balance } from "@scaffold-ui/components";
 import { DocsProvider } from "../../components/DocsProvider";
 
@@ -17,12 +18,12 @@ import { Balance } from "@scaffold-ui/components";
 
 ## Props
 
-| Prop             | Type      | Default                      | Description                                            |
-| ---------------- | --------- | ---------------------------- | ------------------------------------------------------ |
-| `address`        | `Address` | -                            | **Required.** The Ethereum address to show balance for |
-| `chain`          | `Chain`   | Connected chain or `mainnet` | Blockchain network to query                            |
-| `className`      | `string`  | `""`                         | Additional CSS classes                                 |
-| `defaultUsdMode` | `boolean` | `false`                      | Start in USD display mode                              |
+| Prop             | Type            | Default                      | Description                                            |
+| ---------------- | --------------- | ---------------------------- | ------------------------------------------------------ |
+| `address`        | `Address`       | -                            | **Required.** The Ethereum address to show balance for |
+| `chain`          | `Chain`         | First chain from [WagmiProvider](https://wagmi.sh/react/api/WagmiProvider) config or `mainnet` | Blockchain network to query                            |
+| `defaultUsdMode` | `boolean`       | `false`                      | Start in USD display mode                              |
+| `style`          | `CSSProperties` | -                            | Custom CSS styles (memoize to prevent re-renders)      |
 
 ## Live Examples
 

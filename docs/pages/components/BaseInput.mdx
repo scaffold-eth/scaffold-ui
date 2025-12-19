@@ -1,0 +1,147 @@
+---
+layout: docs
+---
+
+import React from "react";
+import { BaseInput } from "@scaffold-ui/components";
+import { DocsProvider } from "../../components/DocsProvider";
+import { BaseInputExample } from "../../components/BaseInputExample";
+
+# BaseInput Component
+
+The `BaseInput` component is a styled input used as the foundation for custom inputs like `AddressInput` and `EtherInput`. It supports prefix and suffix elements, and handles error and disabled states.
+
+## Import
+
+```tsx
+import { BaseInput } from "@scaffold-ui/components";
+```
+
+## Props
+
+| Prop          | Type                      | Default     | Description                                                                              |
+| ------------- | ------------------------- | ----------- | ---------------------------------------------------------------------------------------- |
+| `value`       | `string`                  | `undefined` | The current input value.                                                                 |
+| `onChange`    | `(value: string) => void` | -           | Callback fired when the input value changes.                                             |
+| `name`        | `string`                  | -           | Name attribute for the input element.                                                    |
+| `placeholder` | `string`                  | -           | Placeholder text displayed when the input is empty.                                      |
+| `error`       | `boolean`                 | `false`     | When `true`, applies error styling to the input border.                                  |
+| `disabled`    | `boolean`                 | `false`     | When `true`, disables the input and applies disabled styling.                            |
+| `prefix`      | `ReactNode`               | -           | Element rendered before the input (e.g., an icon).                                       |
+| `suffix`      | `ReactNode`               | -           | Element rendered after the input (e.g., a button or icon).                               |
+| `reFocus`     | `boolean`                 | -           | When `true`, auto-focuses the input and positions cursor at the end. Useful for programmatic focus. |
+| `style`       | `CSSProperties`           | -           | Custom inline styles for the input container.                                            |
+
+## Live Examples
+
+### Basic Usage
+
+<DocsProvider>
+  <BaseInputExample placeholder="Enter your name" />
+</DocsProvider>
+
+```tsx
+import React, { useState } from "react";
+import { BaseInput } from "@scaffold-ui/components";
+
+function BasicInput() {
+  const [value, setValue] = useState("");
+
+  return (
+    <BaseInput
+      value={value}
+      onChange={setValue}
+      placeholder="Enter your name"
+    />
+  );
+}
+```
+
+### With Prefix and Suffix
+
+<DocsProvider>
+  <BaseInputExample
+    placeholder="0.00"
+    prefix={<span style={{ paddingLeft: 12, display: "flex", alignItems: "center", color: "#888" }}>$</span>}
+    suffix={<span style={{ paddingRight: 12, display: "flex", alignItems: "center", color: "#888" }}>USD</span>}
+  />
+</DocsProvider>
+
+```tsx
+import React, { useState } from "react";
+import { BaseInput } from "@scaffold-ui/components";
+
+function CurrencyInput() {
+  const [value, setValue] = useState("");
+
+  return (
+    <BaseInput
+      value={value}
+      onChange={setValue}
+      placeholder="0.00"
+      prefix={<span style={{ paddingLeft: 12 }}>$</span>}
+      suffix={<span style={{ paddingRight: 12 }}>USD</span>}
+    />
+  );
+}
+```
+
+### Error State
+
+<DocsProvider>
+  <BaseInputExample
+    initialValue="invalid-email"
+    placeholder="Enter your email"
+    validateEmail={true}
+  />
+</DocsProvider>
+
+```tsx
+import React, { useState } from "react";
+import { BaseInput } from "@scaffold-ui/components";
+
+function InputWithValidation() {
+  const [value, setValue] = useState("invalid-email");
+  const hasError = value.length > 0 && !value.includes("@");
+
+  return (
+    <div>
+      <BaseInput
+        value={value}
+        onChange={setValue}
+        placeholder="Enter your email"
+        error={hasError}
+      />
+      {hasError && <p style={{ color: "red" }}>Please enter a valid email</p>}
+    </div>
+  );
+}
+```
+
+### Disabled State
+
+<DocsProvider>
+  <BaseInputExample
+    initialValue="Read-only content"
+    disabled={true}
+  />
+</DocsProvider>
+
+```tsx
+import React from "react";
+import { BaseInput } from "@scaffold-ui/components";
+
+function DisabledInput() {
+  return (
+    <BaseInput
+      value="Read-only content"
+      onChange={() => {}}
+      disabled={true}
+    />
+  );
+}
+```
+
+:::info
+`BaseInput` is designed as a building block. For common use cases like Ethereum addresses or ETH/USD amounts, consider using the specialized [`AddressInput`](/components/AddressInput) or [`EtherInput`](/components/EtherInput) components instead.
+:::

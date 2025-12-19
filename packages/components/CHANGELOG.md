@@ -1,5 +1,38 @@
 # @scaffold-ui/components
 
+## 0.1.7
+
+### Patch Changes
+
+- 20f846e: fallback to wagmi config chain
+
+## 0.1.6
+
+### Patch Changes
+
+- d9590fe: move usehooks-ts dependency to @scaffol-ui/hooks
+- 5a3a506: update peerDeps
+- 6582fcd: - EtherInput: Allow numbers directly start with decimal
+  - useEtherInput: Expose the error message and isError
+- Updated dependencies [d9590fe]
+- Updated dependencies [5a3a506]
+- Updated dependencies [6582fcd]
+  - @scaffold-ui/hooks@0.1.5
+
+## 0.1.5
+
+### Patch Changes
+
+- Updated dependencies [5e23fdf]
+  - @scaffold-ui/hooks@0.1.4
+
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies [c805b7e]
+  - @scaffold-ui/hooks@0.1.3
+
 ## 0.1.3
 
 ### Patch Changes
