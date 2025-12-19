@@ -3,13 +3,33 @@
 import { AddressInput, BaseInput } from "@scaffold-ui/components";
 import { useAddressInput } from "@scaffold-ui/hooks";
 import { useTheme } from "next-themes";
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useState, useMemo } from "react";
 import { Address } from "viem";
 
 export const UseAddressInputExample = () => {
   const [value, setValue] = useState<string>("");
   const { theme } = useTheme();
   const isDark = theme === "dark";
+
+  const customInputStyle = useMemo(
+    () =>
+      ({
+        "--color-sui-input-border": isDark ? "#4ade80" : "#22c55e",
+        "--color-sui-input-background": isDark ? "#14532d" : "#dcfce7",
+        "--color-sui-input-text": isDark ? "#dcfce7" : "#166534",
+      }) as CSSProperties,
+    [isDark],
+  );
+
+  const errorInputStyle = useMemo(
+    () =>
+      ({
+        "--color-sui-input-border": isDark ? "#f87171" : "#ff6b6b",
+        "--color-sui-input-background": isDark ? "#7f1d1d" : "#fff5f5",
+        "--color-sui-input-text": isDark ? "#fecaca" : "#d63031",
+      }) as CSSProperties,
+    [isDark],
+  );
 
   const [manualImplementationValue, setManualImplementationValue] = useState<string>("");
   const { ensAddress, ensName, ensAvatar, isEnsAddressLoading, isEnsNameLoading, isEnsAvatarLoading } = useAddressInput(
@@ -58,29 +78,10 @@ export const UseAddressInputExample = () => {
 
             <div className="flex flex-col">
               <span className="text-sm text-gray-500 mb-1">Custom colors</span>
-              <AddressInput
-                value={value}
-                onChange={setValue}
-                style={
-                  {
-                    "--color-sui-input-border": isDark ? "#4ade80" : "#22c55e",
-                    "--color-sui-input-background": isDark ? "#14532d" : "#dcfce7",
-                    "--color-sui-input-text": isDark ? "#dcfce7" : "#166534",
-                  } as CSSProperties
-                }
-              />
+              <AddressInput value={value} onChange={setValue} style={customInputStyle} />
             </div>
 
-            <div
-              className="flex flex-col"
-              style={
-                {
-                  "--color-sui-input-border": isDark ? "#f87171" : "#ff6b6b",
-                  "--color-sui-input-background": isDark ? "#7f1d1d" : "#fff5f5",
-                  "--color-sui-input-text": isDark ? "#fecaca" : "#d63031",
-                } as React.CSSProperties
-              }
-            >
+            <div className="flex flex-col" style={errorInputStyle}>
               <span className="text-sm text-gray-500 mb-1">Custom colors using CSS variables</span>
               <AddressInput
                 value={value}
