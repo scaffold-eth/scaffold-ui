@@ -36,6 +36,8 @@ export default defineConfig({
         { text: "Installation", link: "/hooks" },
         { text: "useAddress", link: "/hooks/useAddress" },
         { text: "useAddressInput", link: "/hooks/useAddressInput" },
+        { text: "useBalance", link: "/hooks/useBalance" },
+        { text: "useEtherInput", link: "/hooks/useEtherInput" },
       ],
     },
   ],

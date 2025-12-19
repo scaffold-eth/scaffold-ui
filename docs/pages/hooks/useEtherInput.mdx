@@ -1,0 +1,152 @@
+---
+layout: docs
+---
+
+import React, { useState } from "react";
+import { useEtherInput } from "@scaffold-ui/hooks";
+import { DocsProvider } from "../../components/DocsProvider";
+
+# useEtherInput Hook
+
+The `useEtherInput` hook converts between ETH and USD for a given input and display mode. It returns both values, the current native currency price, and loading/error flags so you can build responsive inputs.
+
+## Import
+
+```tsx
+import { useEtherInput } from "@scaffold-ui/hooks";
+```
+
+## Usage
+
+```tsx
+const {
+  valueInEth,
+  valueInUsd,
+  nativeCurrencyPrice,
+  isNativeCurrencyPriceLoading,
+  isNativeCurrencyPriceError,
+} = useEtherInput({ value, usdMode });
+```
+
+## Parameters
+
+| Parameter | Type      | Default | Description                                                      |
+| --------- | --------- | ------- | ---------------------------------------------------------------- |
+| `value`   | `string`   | -       | The current input value. Interpreted as ETH when `usdMode` is `false`, USD when `true`. |
+| `usdMode` | `boolean`  | -       | If `true`, `value` is USD; if `false`, `value` is ETH.           |
+
+## Return Values
+
+| Property                      | Type      | Description                                                          |
+| ----------------------------- | --------- | -------------------------------------------------------------------- |
+| `valueInEth`                  | `string`   | The input value expressed in ETH. Empty string while conversion is unavailable. |
+| `valueInUsd`                  | `string`   | The input value expressed in USD. Empty string while conversion is unavailable. |
+| `nativeCurrencyPrice`        | `number`   | The fetched native currency price in USD. `0` when not yet available. |
+| `isNativeCurrencyPriceLoading`| `boolean`  | Loading state for fetching the native currency price.                |
+| `isNativeCurrencyPriceError`  | `boolean`  | Error state for fetching the native currency price.                  |
+
+:::info
+This hook fetches price data using mainnet under the hood. When the price is not yet available, conversion outputs may be empty strings—keep showing the raw input in your UI.
+:::
+
+## Live Examples
+
+### Basic Usage
+
+export function UseEtherInputBasicExample() {
+  const [value, setValue] = useState("");
+  const [usdMode, setUsdMode] = useState(false);
+  const { valueInEth, valueInUsd, isNativeCurrencyPriceLoading } = useEtherInput({ value, usdMode });
+
+  return (
+    <div>
+      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+        <input
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder={usdMode ? "Enter amount in USD" : "Enter amount in ETH"}
+        />
+        <button onClick={() => setUsdMode((m) => !m)}>
+          {usdMode ? "USD" : "ETH"}
+        </button>
+      </div>
+      {isNativeCurrencyPriceLoading ? (
+        <p>Fetching price...</p>
+      ) : (
+        <p>
+          ETH: <strong>{valueInEth || "–"}</strong> | USD: <strong>{valueInUsd || "–"}</strong>
+        </p>
+      )}
+    </div>
+  );
+}
+
+<DocsProvider>
+  <UseEtherInputBasicExample />
+</DocsProvider>
+
+```tsx
+import React, { useState } from "react";
+import { useEtherInput } from "@scaffold-ui/hooks";
+
+function EtherUsdConverter() {
+  const [value, setValue] = useState("");
+  const [usdMode, setUsdMode] = useState(false);
+  const { valueInEth, valueInUsd, isNativeCurrencyPriceLoading } = useEtherInput({ value, usdMode });
+
+  return (
+    <div>
+      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+        <input
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder={usdMode ? "Enter amount in USD" : "Enter amount in ETH"}
+        />
+        <button onClick={() => setUsdMode((m) => !m)}>{usdMode ? "USD" : "ETH"}</button>
+      </div>
+      {isNativeCurrencyPriceLoading ? (
+        <p>Fetching price...</p>
+      ) : (
+        <p>
+          ETH: <strong>{valueInEth || "–"}</strong> | USD: <strong>{valueInUsd || "–"}</strong>
+        </p>
+      )}
+    </div>
+  );
+}
+```
+
+### With Error Handling
+
+export function UseEtherInputErrorHint() {
+  const [value, setValue] = useState("1000");
+  const [usdMode] = useState(true);
+  const { valueInEth, valueInUsd, isNativeCurrencyPriceError } = useEtherInput({ value, usdMode });
+
+  if (isNativeCurrencyPriceError) {
+    return <p style={{ color: "red" }}>Price feed unavailable. Showing entered value: ${valueInUsd}</p>;
+  }
+
+  return <p>ETH: {valueInEth || "–"} | USD: {valueInUsd || "–"}</p>;
+}
+
+<DocsProvider>
+  <UseEtherInputErrorHint />
+</DocsProvider>
+
+```tsx
+import React, { useState } from "react";
+import { useEtherInput } from "@scaffold-ui/hooks";
+
+function ConverterWithErrors() {
+  const [value, setValue] = useState("1000");
+  const [usdMode] = useState(true);
+  const { valueInEth, valueInUsd, isNativeCurrencyPriceError } = useEtherInput({ value, usdMode });
+
+  if (isNativeCurrencyPriceError) {
+    return <p style={{ color: "red" }}>Price feed unavailable. Showing entered value: ${valueInUsd}</p>;
+  }
+
+  return <p>ETH: {valueInEth || "–"} | USD: {valueInUsd || "–"}</p>;
+}
+```
