@@ -1,6 +1,6 @@
 {
   "name": "@scaffold-ui/debug-contracts",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Debug contracts component for scaffold-ui",
   "type": "module",
   "main": "dist/esm/index.js",
