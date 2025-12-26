@@ -1,5 +1,13 @@
 # @scaffold-ui/components
 
+## 0.1.8
+
+### Patch Changes
+
+- 5b6f98e: up react and next
+- Updated dependencies [5b6f98e]
+  - @scaffold-ui/hooks@0.1.6
+
 ## 0.1.7
 
 ### Patch Changes
