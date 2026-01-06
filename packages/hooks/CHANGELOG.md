@@ -1,5 +1,11 @@
 # @scaffold-ui/hooks
 
+## 0.1.6
+
+### Patch Changes
+
+- 5b6f98e: up react and next
+
 ## 0.1.5
 
 ### Patch Changes
