@@ -42,7 +42,10 @@ export default defineConfig({
     },
     {
       text: "Debug Contracts",
-      items: [{ text: "Contract", link: "/debug-contracts/Contract" }],
+      items: [
+        { text: "Contract", link: "/debug-contracts/Contract" },
+        { text: "IntegerInput", link: "/debug-contracts/IntegerInput" },
+      ],
     },
   ],
   topNav: [
