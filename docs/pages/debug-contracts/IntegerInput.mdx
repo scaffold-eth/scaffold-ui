@@ -23,11 +23,11 @@ import { IntegerInput, IntegerVariant } from "@scaffold-ui/debug-contracts";
 | ----------------------- | ------------------------- | ------------------------ | --------------------------------------------------------------------------- |
 | `value`                 | `string`                  | -                        | Current input value (decimal string).                                       |
 | `onChange`              | `(value: string) => void` | -                        | Called whenever the input changes.                                          |
-| `name`                  | `string`                  | -                        | Name attribute for the input element.                                       |
-| `placeholder`           | `string`                  | -                        | Placeholder text.                                                           |
+| `name`                  | `string`                  | `undefined`              | Name attribute for the input element.                                       |
+| `placeholder`           | `string`                  | `undefined`              | Placeholder text.                                                           |
 | `variant`               | `IntegerVariant`          | `IntegerVariant.UINT256` | Solidity integer type used for validation (signed/unsigned & bit length).   |
 | `disableMultiplyBy1e18` | `boolean`                 | `false`                  | Hide the `× 1e18` helper button (useful when the value is not ETH-denoted). |
-| `disabled`              | `boolean`                 | `false`                  | Disables the input.                                                         |
+| `disabled`              | `boolean`                 | `undefined`              | Disables the input.                                                         |
 
 ## Live Examples
 
