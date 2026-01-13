@@ -40,10 +40,18 @@ export default defineConfig({
         { text: "useEtherInput", link: "/hooks/useEtherInput" },
       ],
     },
+    {
+      text: "Debug Contracts",
+      items: [
+        { text: "Contract", link: "/debug-contracts/Contract" },
+        { text: "IntegerInput", link: "/debug-contracts/IntegerInput" },
+      ],
+    },
   ],
   topNav: [
     { text: "Components", link: "/components/Address" },
     { text: "Hooks", link: "/hooks/useAddress" },
+    { text: "Debug Contracts", link: "/debug-contracts/Contract" },
     {
       text: "Examples",
       link: "https://github.com/scaffold-eth/scaffold-ui/tree/main/example",

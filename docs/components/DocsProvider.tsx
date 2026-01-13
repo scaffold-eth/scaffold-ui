@@ -3,13 +3,14 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiProvider } from "wagmi";
-import { mainnet, polygon } from "viem/chains";
+import { mainnet, polygon, sepolia } from "viem/chains";
 import { createConfig, http } from "wagmi";
 import { createClient } from "viem";
 import "@scaffold-ui/components/styles.css";
+import "@scaffold-ui/debug-contracts/styles.css";
 import { getAlchemyHttpUrl } from "../utils";
 
-export const chains = [mainnet, polygon] as const;
+export const chains = [mainnet, polygon, sepolia] as const;
 
 const wagmiConfig = createConfig({
   chains: chains,
