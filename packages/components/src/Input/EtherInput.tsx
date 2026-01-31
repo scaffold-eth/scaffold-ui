@@ -3,13 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { MAX_DECIMALS_USD, useEtherInput, SIGNED_NUMBER_REGEX } from "@scaffold-ui/hooks";
 import { SwitchIcon } from "../icons/SwitchIcon";
-import { BaseInput } from "./BaseInput";
+import { BaseInput, TextSize } from "./BaseInput";
 import { CommonInputProps } from "./utils";
 
 export type EtherInputProps = Omit<CommonInputProps<string>, "onChange" | "value"> & {
   defaultValue?: string;
   defaultUsdMode?: boolean;
   onValueChange?: (value: { valueInEth: string; valueInUsd: string; displayUsdMode: boolean }) => void;
+  textSize?: TextSize;
 };
 
 /**
@@ -30,6 +31,7 @@ export type EtherInputProps = Omit<CommonInputProps<string>, "onChange" | "value
  * @param {(value: { valueInEth: string; valueInUsd: string; usdMode: boolean }) => void} props.onValueChange - (Optional) Callback fired when the value or mode changes.
  * @param {CSSProperties} [props.style] - (Optional) Custom CSS styles to apply to the component.
  *   Performance Warning: Always memoize style objects to prevent unnecessary re-renders.
+ * @param {TextSize} [props.textSize] - (Optional) Text size for the input. Accepts "xs", "sm", "base", "lg", "xl", or "2xl". Defaults to "base".
  *
  * @example
  * <EtherInput onValueChange={({ valueInEth, valueInUsd, usdMode }) => { ... }} />
@@ -43,6 +45,7 @@ export const EtherInput = ({
   disabled,
   onValueChange,
   style,
+  textSize,
 }: EtherInputProps) => {
   const [sourceValue, setSourceValue] = useState(defaultValue ?? "");
   const [sourceUsdMode, setSourceUsdMode] = useState(defaultUsdMode ?? false);
@@ -96,6 +99,7 @@ export const EtherInput = ({
         disabled={isNativeCurrencyPriceLoading || disabled}
         prefix={<span className="pl-4 -mr-2 self-center">{displayUsdMode ? "$" : "Ξ"}</span>}
         style={style}
+        textSize={textSize}
         suffix={
           <button
             className="h-[2.2rem] min-h-[2.2rem] cursor-pointer mr-3"
