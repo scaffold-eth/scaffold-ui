@@ -8,11 +8,11 @@
   "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "default": "./dist/esm/index.js"
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./src/styles.css",
+    "./src/styles.css": "./src/styles.css"
   },
   "files": [
     "dist"
