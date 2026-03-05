@@ -1,4 +1,4 @@
-import { useFetchNativeCurrencyPrice } from "./useFetchNativeCurrencyPrice.js";
+import { useFetchNativeCurrencyPrice } from "./useFetchNativeCurrencyPrice";
 import { mainnet } from "viem/chains";
 
 export const MAX_DECIMALS_USD = 2;

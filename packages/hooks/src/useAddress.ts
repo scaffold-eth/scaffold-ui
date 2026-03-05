@@ -4,19 +4,25 @@ import { useEnsAvatar, useEnsName } from "wagmi";
 import { blo } from "blo";
 import { mainnet } from "viem/chains";
 
+const HEDERA_CHAIN_IDS: Set<number> = new Set([295, 296]);
+
 type UseAddressOptions = {
   address?: AddressType;
   chain?: Chain;
 };
 
+/** HashScan uses /account/ instead of /address/ for Hedera chains. */
 export function getBlockExplorerAddressLink(network: Chain, address: string) {
   const blockExplorerBaseURL = network.blockExplorers?.default?.url;
 
   if (!blockExplorerBaseURL) {
-    return `https://etherscan.io/address/${address}`;
+    return HEDERA_CHAIN_IDS.has(network.id)
+      ? `https://hashscan.io/testnet/account/${address}`
+      : `https://etherscan.io/address/${address}`;
   }
 
-  return `${blockExplorerBaseURL}/address/${address}`;
+  const pathSegment = HEDERA_CHAIN_IDS.has(network.id) ? "account" : "address";
+  return `${blockExplorerBaseURL}/${pathSegment}/${address}`;
 }
 
 // make the chain optional, if not provided, it will use from wagmi conig

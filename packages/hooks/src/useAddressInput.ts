@@ -2,7 +2,7 @@ import { useDebounceValue } from "usehooks-ts";
 import { type Address, isAddress } from "viem";
 import { normalize } from "viem/ens";
 import { useEnsAddress, useEnsAvatar, useEnsName } from "wagmi";
-import { isENS } from "./utils/ens.js";
+import { isENS } from "./utils/ens";
 
 type UseAddressInputOptions = {
   value: string;

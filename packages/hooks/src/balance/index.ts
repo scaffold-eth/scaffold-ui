@@ -1,2 +1,2 @@
-export { useBalance } from "./useBalance.js";
-export { useWatchBalance } from "./useWatchBalance.js";
+export { useBalance } from "./useBalance";
+export { useWatchBalance } from "./useWatchBalance";

@@ -1,7 +1,7 @@
 import { formatEther, type Address, type Chain } from "viem";
-import { useFetchNativeCurrencyPrice } from "../useFetchNativeCurrencyPrice.js";
+import { useFetchNativeCurrencyPrice } from "../useFetchNativeCurrencyPrice";
 import { useCallback, useEffect, useState } from "react";
-import { useWatchBalance } from "./useWatchBalance.js";
+import { useWatchBalance } from "./useWatchBalance";
 import { mainnet } from "viem/chains";
 
 type UseBalanceOptions = {

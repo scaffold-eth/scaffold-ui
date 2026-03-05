@@ -1,6 +1,9 @@
-export { useAddress } from "./useAddress.js";
-export { useAddressInput } from "./useAddressInput.js";
-export { useBalance, useWatchBalance } from "./balance/index.js";
-export { useFetchNativeCurrencyPrice } from "./useFetchNativeCurrencyPrice.js";
-export { isENS } from "./utils/ens.js";
-export { useEtherInput, MAX_DECIMALS_USD, SIGNED_NUMBER_REGEX } from "./useEtherInput.js";
+export { useAddress, getBlockExplorerAddressLink } from "./useAddress";
+export { useAddressInput } from "./useAddressInput";
+export { useBalance, useWatchBalance } from "./balance/index";
+export { useFetchNativeCurrencyPrice } from "./useFetchNativeCurrencyPrice";
+export { useFetchHbarPrice } from "./useFetchHbarPrice";
+export { useHederaAccountId } from "./useHederaAccountId";
+export { fetchHbarPrice, HBAR_PRICE_CACHE_DURATION_MS } from "./hbarPrice";
+export { isENS } from "./utils/ens";
+export { useEtherInput, MAX_DECIMALS_USD, SIGNED_NUMBER_REGEX } from "./useEtherInput";
