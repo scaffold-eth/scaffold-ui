@@ -73,10 +73,10 @@ export const ReadOnlyFunctionForm = ({
 
   return (
     <div className="flex flex-col gap-3 py-5 first:pt-0 last:pb-1">
-      <p className="font-medium my-0 break-words">
+      <div className="font-medium my-0 break-words">
         {abiFunction.name}
         <InheritanceTooltip inheritedFrom={inheritedFrom} />
-      </p>
+      </div>
       {inputElements}
       <div className="flex flex-col md:flex-row justify-between gap-2 flex-wrap">
         <div className="grow w-full md:max-w-[80%]">

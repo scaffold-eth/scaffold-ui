@@ -11,7 +11,7 @@
       "import": "./src/index.ts",
       "default": "./src/index.ts"
     },
-    "./styles.css": "./src/styles.css",
+    "./styles.css": "./dist/styles.css",
     "./src/styles.css": "./src/styles.css"
   },
   "files": [
