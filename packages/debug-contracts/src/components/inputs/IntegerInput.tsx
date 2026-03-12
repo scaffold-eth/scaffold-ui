@@ -1,12 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
-import { parseEther } from "viem";
+import { useEffect, useState } from "react";
 import { CommonInputProps, IntegerVariant, isValidInteger } from "../../utils/inputs";
 import { BaseInput } from "@scaffold-ui/components";
-import { Tooltip } from "../Tooltip";
+import { DecimalMultiplierButtons } from "./DecimalMultiplierButtons";
 
 type IntegerInputProps = CommonInputProps<string> & {
   variant?: IntegerVariant;
-  disableMultiplyBy1e18?: boolean;
 };
 
 export const IntegerInput = ({
@@ -16,15 +14,8 @@ export const IntegerInput = ({
   placeholder,
   disabled,
   variant = IntegerVariant.UINT256,
-  disableMultiplyBy1e18 = false,
 }: IntegerInputProps) => {
   const [inputError, setInputError] = useState(false);
-  const multiplyBy1e18 = useCallback(() => {
-    if (!value) {
-      return;
-    }
-    return onChange(parseEther(value).toString());
-  }, [onChange, value]);
 
   useEffect(() => {
     if (isValidInteger(variant, value)) {
@@ -43,23 +34,8 @@ export const IntegerInput = ({
       onChange={onChange}
       disabled={disabled}
       suffix={
-        !inputError &&
-        !disableMultiplyBy1e18 && (
-          <div className="space-x-4 flex items-center">
-            <Tooltip
-              content="Multiply by 1e18 (wei)"
-              position="top"
-            >
-              <button
-                className={`${disabled ? "cursor-not-allowed" : "cursor-pointer"} font-semibold px-4 text-sui-accent h-full`}
-                onClick={multiplyBy1e18}
-                disabled={disabled}
-                type="button"
-              >
-                ∗
-              </button>
-            </Tooltip>
-          </div>
+        !inputError && (
+          <DecimalMultiplierButtons value={value} onChange={onChange} disabled={disabled} />
         )
       }
     />

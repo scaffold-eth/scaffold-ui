@@ -9,7 +9,7 @@ import { IntegerInputExample } from "../../components/IntegerInputExample";
 
 # IntegerInput Component
 
-The `IntegerInput` component provides validation and UX helpers for Solidity integer parameters. It supports all `int` and `uint` bit-sizes, validates signed/unsigned ranges, and includes a quick `× 1e18` helper for working with wei values.
+The `IntegerInput` component provides validation and UX helpers for Solidity integer parameters. It supports all `int` and `uint` bit-sizes, validates signed/unsigned ranges, and includes quick multiply helpers: `× 1e18` (wei) and `× 1e8` (Hedera decimals).
 
 ## Import
 
@@ -25,9 +25,8 @@ import { IntegerInput, IntegerVariant } from "@scaffold-ui/debug-contracts";
 | `onChange`              | `(value: string) => void` | -                        | Called whenever the input changes.                                          |
 | `name`                  | `string`                  | `undefined`              | Name attribute for the input element.                                       |
 | `placeholder`           | `string`                  | `undefined`              | Placeholder text.                                                           |
-| `variant`               | `IntegerVariant`          | `IntegerVariant.UINT256` | Solidity integer type used for validation (signed/unsigned & bit length).   |
-| `disableMultiplyBy1e18` | `boolean`                 | `false`                  | Hide the `× 1e18` helper button (useful when the value is not ETH-denoted). |
-| `disabled`              | `boolean`                 | `undefined`              | Disables the input.                                                         |
+| `variant`  | `IntegerVariant`          | `IntegerVariant.UINT256` | Solidity integer type used for validation (signed/unsigned & bit length). |
+| `disabled` | `boolean`                 | `undefined`              | Disables the input.                                                       |
 
 ## Live Examples
 
@@ -77,33 +76,6 @@ function SignedInput() {
       onChange={setValue}
       variant={IntegerVariant.INT64}
       placeholder="Signed int64"
-    />
-  );
-}
-```
-
-### Hide the multiply helper
-
-<DocsProvider>
-  <IntegerInputExample
-    placeholder="Token amount (no helper)"
-    disableMultiplyBy1e18={true}
-  />
-</DocsProvider>
-
-```tsx twoslash
-import React, { useState } from "react";
-import { IntegerInput } from "@scaffold-ui/debug-contracts";
-
-function NoHelper() {
-  const [value, setValue] = useState("");
-
-  return (
-    <IntegerInput
-      value={value}
-      onChange={setValue}
-      placeholder="Token amount (no helper)"
-      disableMultiplyBy1e18
     />
   );
 }
