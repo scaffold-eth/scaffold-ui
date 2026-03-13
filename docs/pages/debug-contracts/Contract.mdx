@@ -1,0 +1,49 @@
+---
+layout: docs
+---
+
+import React, { useMemo } from "react";
+import { ContractExample } from "../../components/ContractExample";
+import { DocsProvider } from "../../components/DocsProvider";
+
+# Contract Component
+
+The `Contract` is a UI component for debugging deployed contracts.
+
+## Import
+
+```tsx
+import { Contract } from "@scaffold-ui/debug-contracts";
+```
+
+## Props
+
+| Prop                       | Type                             | Default     | Description                                      |
+| -------------------------- | -------------------------------- | ----------- | ------------------------------------------------ |
+| `contractName`             | `string`                         | -           | The name of the contract to display              |
+| `contract`                 | `{ address: Address, abi: Abi }` | -           | The abi and address of the contract to display   |
+| `chainId`                  | `number`                         | -           | The chain ID where the contract is deployed      |
+| `blockExplorerAddressLink` | `string`                         | `undefined` | The block explorer link for the contract address |
+
+## Live Example:
+
+#### Code
+
+```tsx twoslash
+import React from "react";
+import { Contract } from "@scaffold-ui/debug-contracts";
+import { deployedContracts } from "./components/ContractExample/deployedContracts";
+import { sepolia } from "viem/chains";
+
+<Contract
+  contractName="YourCollectible"
+  contract={deployedContracts[sepolia.id]["YourCollectible"]}
+  chainId={sepolia.id}
+/>;
+```
+
+#### Example
+
+<DocsProvider>
+  <ContractExample />
+</DocsProvider>

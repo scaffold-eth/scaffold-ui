@@ -17,6 +17,9 @@ importers:
       '@scaffold-ui/components':
         specifier: workspace:*
         version: link:../packages/components
+      '@scaffold-ui/debug-contracts':
+        specifier: workspace:*
+        version: link:../packages/debug-contracts
       '@scaffold-ui/hooks':
         specifier: workspace:*
         version: link:../packages/hooks
