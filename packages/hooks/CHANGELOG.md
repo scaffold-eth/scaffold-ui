@@ -1,5 +1,11 @@
 # @scaffold-ui/hooks
 
+## 0.1.7
+
+### Patch Changes
+
+- b62e94c: fix: broken @uniswap/v2-sdk version
+
 ## 0.1.6
 
 ### Patch Changes
