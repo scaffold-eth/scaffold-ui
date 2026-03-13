@@ -4,11 +4,14 @@ import { ChangeEvent, FocusEvent, ReactNode, useCallback, useEffect, useRef } fr
 import { CommonInputProps } from "./utils";
 import { DefaultStylesWrapper } from "../utils/ComponentWrapper";
 
+export type TextSize = "xs" | "sm" | "base" | "lg" | "xl" | "2xl";
+
 export type BaseInputProps<T> = CommonInputProps<T> & {
   error?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
   reFocus?: boolean;
+  textSize?: TextSize;
 };
 
 /**
@@ -33,6 +36,7 @@ export type BaseInputProps<T> = CommonInputProps<T> & {
  * @param {boolean} [props.reFocus] - (Optional) If true, input auto-focuses and cursor moves to end.
  * @param {CSSProperties} [props.style] - (Optional) Custom CSS styles to apply to the component.
  *   Performance Warning: Always memoize style objects to prevent unnecessary re-renders.
+ * @param {TextSize} [props.textSize] - (Optional) Text size for the input. Accepts "xs", "sm", "base", "lg", "xl", or "2xl". Defaults to "base".
  *
  * @example
  * <BaseInput
@@ -55,6 +59,7 @@ export const BaseInput = <T extends { toString: () => string } | undefined = str
   suffix,
   reFocus,
   style,
+  textSize = "base",
 }: BaseInputProps<T>) => {
   const inputReft = useRef<HTMLInputElement>(null);
 
@@ -90,7 +95,7 @@ export const BaseInput = <T extends { toString: () => string } | undefined = str
     >
       {prefix}
       <input
-        className={`w-full h-[2.2rem] min-h-[2.2rem] px-4 border-0 bg-transparent font-medium placeholder:text-sui-accent/70 focus:text-sui-input-text text-sui-input-text disabled:text-sui-base-content/40 text-sm focus:outline-none focus:ring-0 ${
+        className={`w-full h-[2.2rem] min-h-[2.2rem] px-4 border-0 bg-transparent font-medium placeholder:text-sui-accent/70 focus:text-sui-input-text text-sui-input-text disabled:text-sui-base-content/40 text-${textSize} focus:outline-none focus:ring-0 ${
           disabled ? "cursor-not-allowed" : ""
         }`}
         placeholder={placeholder}
