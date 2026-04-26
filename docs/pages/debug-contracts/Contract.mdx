@@ -23,7 +23,7 @@ import { Contract } from "@scaffold-ui/debug-contracts";
 | `contractName`             | `string`                         | -           | The name of the contract to display              |
 | `contract`                 | `{ address: Address, abi: Abi }` | -           | The abi and address of the contract to display   |
 | `chainId`                  | `number`                         | -           | The chain ID where the contract is deployed      |
-| `blockExplorerAddressLink` | `string`                         | `undefined` | The block explorer link for the contract address |
+| `blockExplorerBaseUrl`     | `string`                         | `undefined` | Base URL of the block explorer. The component appends `/address/{addr}` per rendered address. Defaults to `/blockexplorer` for local chain (31337) and to the chain's configured explorer otherwise. |
 
 ## Live Example:
 
