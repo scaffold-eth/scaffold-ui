@@ -13,7 +13,8 @@ export function getBlockExplorerAddressLink(network: Chain, address: string) {
   const blockExplorerBaseURL = network.blockExplorers?.default?.url;
 
   if (!blockExplorerBaseURL) {
-    return `https://etherscan.io/address/${address}`;
+    if (network.id === 31337) return `/blockexplorer/address/${address}`;
+    return "";
   }
 
   return `${blockExplorerBaseURL}/address/${address}`;

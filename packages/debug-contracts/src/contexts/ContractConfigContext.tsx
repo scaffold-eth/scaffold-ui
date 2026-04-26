@@ -2,7 +2,7 @@ import { createContext, useContext, ReactNode } from "react";
 import { Chain } from "viem";
 
 export type ContractConfig = {
-  blockExplorerAddressLink?: string;
+  resolveAddressLink?: (address: string) => string | undefined;
   chain: Chain;
   chainId: number;
 };
