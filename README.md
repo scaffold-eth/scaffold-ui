@@ -26,13 +26,17 @@ cd packages/hooks && pnpm run dev &
 
 # For components
 cd packages/components && pnpm run dev &
+
+# For debug-contracts
+cd packages/debug-contracts && pnpm run dev &
 ```
 
-2. Add both packages in Scaffold-ETH 2 inside the `packages/nextjs/package.json` file:
+2. Add packages in Scaffold-ETH 2 inside the `packages/nextjs/package.json` file:
 
 ```json
+"@scaffold-ui/components": "file:../../../scaffold-ui/packages/components",
+"@scaffold-ui/debug-contracts": "file:../../../scaffold-ui/packages/debug-contracts",
 "@scaffold-ui/hooks": "file:../../../scaffold-ui/packages/hooks",
-"@scaffold-ui/components": "file:../../../scaffold-ui/packages/components"
 ```
 
 **Note:** The relative paths use `../../../` because they are resolved from the `packages/nextjs` directory in Scaffold-ETH 2's workspace structure.
