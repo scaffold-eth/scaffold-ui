@@ -18,7 +18,7 @@ pnpm add @scaffold-ui/components @scaffold-ui/hooks @scaffold-ui/debug-contracts
 
 - `contracts` (required): An object containing deployed contracts organized by chain ID, where each contract includes address and ABI
 - `chainId` (required): The chain ID to use for debugging contracts (number)
-- `blockExplorerAddressLink` (optional): The block explorer link for the contract address
+- `blockExplorerBaseUrl` (optional): Base URL of the block explorer. The component appends `/address/{addr}` per rendered address. Defaults to `/blockexplorer` for local chain (31337) and to the chain's configured explorer otherwise.
 
 ## Usage
 

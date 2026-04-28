@@ -16,15 +16,25 @@ export type ContractProps = {
     abi: Abi;
   };
   chainId: number;
-  blockExplorerAddressLink?: string;
+  /**
+   * Optional base URL override for the block explorer. The component appends `/address/{addr}`
+   * per-rendered address. If omitted, uses the chain's default resolution (local `/blockexplorer`
+   * for chain 31337, `chain.blockExplorers.default.url` otherwise).
+   */
+  blockExplorerBaseUrl?: string;
 };
 
-export const Contract: React.FC<ContractProps> = ({ contractName, contract, chainId, blockExplorerAddressLink }) => {
+export const Contract: React.FC<ContractProps> = ({ contractName, contract, chainId, blockExplorerBaseUrl }) => {
   const [refreshDisplayVariables, triggerRefreshDisplayVariables] = useReducer((value) => !value, false);
   const chain = extractChain({
     chains: Object.values(chains),
     id: chainId as any,
   });
+
+  const resolveAddressLink = (addr: string): string | undefined => {
+    if (blockExplorerBaseUrl) return `${blockExplorerBaseUrl.replace(/\/$/, "")}/address/${addr}`;
+    return undefined;
+  };
 
   const balanceStyle = useMemo(
     () => ({
@@ -34,7 +44,7 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
   );
 
   return (
-    <ContractConfigProvider config={{ blockExplorerAddressLink, chain, chainId }}>
+    <ContractConfigProvider config={{ resolveAddressLink, chain, chainId }}>
       <div className="grid grid-cols-1 lg:grid-cols-6 px-6 lg:px-10 lg:gap-12 w-full max-w-7xl my-0 font-sans">
         <div className="col-span-5 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
           <div className="col-span-1 flex flex-col">
@@ -47,7 +57,7 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
                     onlyEnsOrAddress
                     size="base"
                     chain={chain}
-                    blockExplorerAddressLink={blockExplorerAddressLink}
+                    blockExplorerAddressLink={resolveAddressLink(contract.address)}
                   />
                   <div className="flex gap-1 items-center mt-1">
                     <span className="font-bold text-sm">Balance:</span>

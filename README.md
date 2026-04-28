@@ -26,13 +26,17 @@ cd packages/hooks && pnpm run dev &
 
 # For components
 cd packages/components && pnpm run dev &
+
+# For debug-contracts
+cd packages/debug-contracts && pnpm run dev &
 ```
 
-2. Add both packages in Scaffold-ETH 2 inside the `packages/nextjs/package.json` file:
+2. Add packages in Scaffold-ETH 2 inside the `packages/nextjs/package.json` file:
 
 ```json
 "@scaffold-ui/hooks": "file:../../../scaffold-ui/packages/hooks",
-"@scaffold-ui/components": "file:../../../scaffold-ui/packages/components"
+"@scaffold-ui/components": "file:../../../scaffold-ui/packages/components",
+"@scaffold-ui/debug-contracts": "file:../../../scaffold-ui/packages/debug-contracts",
 ```
 
 **Note:** The relative paths use `../../../` because they are resolved from the `packages/nextjs` directory in Scaffold-ETH 2's workspace structure.
@@ -54,13 +58,7 @@ webpack: (config, { dev }) => {
 },
 ```
 
-4. Add the css file in `packages/nextjs/app/layout.tsx` file for the components package:
-
-```tsx
-import "@scaffold-ui/components/styles.css";
-```
-
-5. Install dependencies in Scaffold-ETH 2:
+4. Install dependencies in Scaffold-ETH 2:
 
 ```bash
 yarn install

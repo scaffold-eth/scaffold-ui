@@ -22,14 +22,14 @@ type DisplayContent =
 type ResultFontSize = "sm" | "base" | "xs" | "lg" | "xl" | "2xl" | "3xl";
 
 const AddressWithConfig = ({ address, size }: { address: string; size: ResultFontSize }) => {
-  const { chain, blockExplorerAddressLink } = useContractConfig();
+  const { chain, resolveAddressLink } = useContractConfig();
   return (
     <Address
       address={address as `0x${string}`}
       size={size}
       onlyEnsOrAddress
       chain={chain}
-      blockExplorerAddressLink={blockExplorerAddressLink}
+      blockExplorerAddressLink={resolveAddressLink?.(address)}
     />
   );
 };
