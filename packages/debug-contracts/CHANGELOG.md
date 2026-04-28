@@ -1,5 +1,14 @@
 # @scaffold-ui/debug-contracts
 
+## 0.1.9
+
+### Patch Changes
+
+- e2861ab: Fix wrong block explorer links in Contract and local chain fallback
+- Updated dependencies [e2861ab]
+  - @scaffold-ui/components@0.1.10
+  - @scaffold-ui/hooks@0.1.8
+
 ## 0.1.8
 
 ### Patch Changes
