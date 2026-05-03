@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "</llms.txt>; rel=\"alternate\"; type=\"text/plain\"; title=\"LLM-friendly documentation index\", </llms-full.txt>; rel=\"alternate\"; type=\"text/plain\"; title=\"LLM-friendly full documentation\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\", </.well-known/agent-skills/index.json>; rel=\"describedby\"; type=\"application/json\"; title=\"Agent skills discovery index\""
+        }
+      ]
+    }
+  ]
+}
