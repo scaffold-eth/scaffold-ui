@@ -1,8 +1,11 @@
 import { defineConfig } from "vocs";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
+import { generateSitemap } from "./scripts/gen-sitemap";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+generateSitemap();
 
 export default defineConfig({
   rootDir: ".",
