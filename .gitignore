@@ -4,3 +4,6 @@ node_modules
 
 # Generated at build time by docs/scripts/gen-sitemap.ts (see docs/vocs.config.ts)
 docs/public/sitemap.xml
+
+# Generated at build time by docs/scripts/gen-agent-skills-index.ts
+docs/public/.well-known/

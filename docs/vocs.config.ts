@@ -1,11 +1,13 @@
 import { defineConfig } from "vocs";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
+import { generateAgentSkillsIndex } from "./scripts/gen-agent-skills-index";
 import { generateSitemap } from "./scripts/gen-sitemap";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 generateSitemap();
+generateAgentSkillsIndex();
 
 export default defineConfig({
   rootDir: ".",
