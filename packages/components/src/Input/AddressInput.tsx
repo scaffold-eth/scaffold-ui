@@ -3,11 +3,13 @@
 import { blo } from "blo";
 import { Address } from "viem";
 import { useAddressInput } from "@scaffold-ui/hooks";
-import { BaseInput } from "./BaseInput";
+import { BaseInput, TextSize } from "./BaseInput";
 import { CommonInputProps } from "./utils";
 import { useEffect, useState } from "react";
 
-export type AddressInputProps = CommonInputProps<Address | string>;
+export type AddressInputProps = CommonInputProps<Address | string> & {
+  textSize?: TextSize;
+};
 
 /**
  * AddressInput Component
@@ -28,6 +30,7 @@ export type AddressInputProps = CommonInputProps<Address | string>;
  * @param {boolean} [props.disabled] - (Optional) Whether the input is disabled.
  * @param {CSSProperties} [props.style] - (Optional) Custom CSS styles to apply to the component.
  *   Performance Warning: Always memoize style objects to prevent unnecessary re-renders.
+ * @param {TextSize} [props.textSize] - (Optional) Text size for the input. Accepts "xs", "sm", "base", "lg", "xl", or "2xl". Defaults to "base".
  *
  * @example
  * const [value, setValue] = useState<string>("vitalik.eth");
@@ -39,7 +42,7 @@ export type AddressInputProps = CommonInputProps<Address | string>;
  * />
 
  */
-export const AddressInput = ({ value, name, placeholder, onChange, disabled, style }: AddressInputProps) => {
+export const AddressInput = ({ value, name, placeholder, onChange, disabled, style, textSize }: AddressInputProps) => {
   const {
     ensAddress,
     ensName,
@@ -81,6 +84,7 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled, sty
       style={style}
       disabled={isEnsAddressLoading || isEnsNameLoading || disabled}
       reFocus={reFocus}
+      textSize={textSize}
       prefix={
         ensName ? (
           <div
