@@ -5,7 +5,7 @@ description: "Add scaffold-ui's React components and hooks (Address, Balance, us
 
 # scaffold-ui
 
-For full API docs (every prop, every hook return value, every example), fetch https://ui.scaffoldeth.io/llms-full.txt. That's the complete docs as one file. This page covers what those docs the integration gotchas that bite agents when wiring scaffold-ui into a real project.
+For full API docs (every prop, every hook return value, every example), fetch https://ui.scaffoldeth.io/llms-full.txt. That's the complete docs as one file. This page covers the integration gotchas that bite agents when wiring scaffold-ui into a real project.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ pnpm add @scaffold-ui/components @scaffold-ui/hooks
 
 `@scaffold-ui/components` peer-depends on `@scaffold-ui/hooks` because the components call into the hooks internally. Installing only components fails the build with a missing-peer error. Install both even if your code doesn't import the hooks directly.
 
-The third package, `@scaffold-ui/debug-contracts`, is opt-in. Skip it unless the user explicitly wants the SE-2 contract debugger UI in their project. It pulls in `@uniswap/sdk-core` and other deps that aren't needed for plain UI work.
+The third package, `@scaffold-ui/debug-contracts`, is opt-in. Skip it unless the user explicitly wants the SE-2 contract debugger UI in their project.
 
 After installing, import the styles in your root layout (`layout.tsx` for Next App Router, `app.tsx` for Vite or CRA):
 
@@ -57,7 +57,6 @@ import { base, mainnet, sepolia } from "viem/chains";
 
 export const wagmiConfig = createConfig({
   chains: [base, mainnet, sepolia],
-  ssr: true,
   client: ({ chain }) => createClient({ chain, transport: http() }),
 });
 ```
