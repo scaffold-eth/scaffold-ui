@@ -42,6 +42,8 @@ export default defineConfig({
         { text: "useAddress", link: "/hooks/useAddress" },
         { text: "useAddressInput", link: "/hooks/useAddressInput" },
         { text: "useBalance", link: "/hooks/useBalance" },
+        { text: "useWatchBalance", link: "/hooks/useWatchBalance" },
+        { text: "useFetchNativeCurrencyPrice", link: "/hooks/useFetchNativeCurrencyPrice" },
         { text: "useEtherInput", link: "/hooks/useEtherInput" },
       ],
     },
