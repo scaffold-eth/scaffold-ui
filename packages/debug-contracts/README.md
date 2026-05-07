@@ -1,46 +1,47 @@
 # @scaffold-ui/debug-contracts
 
-Debug contracts component.
+The Scaffold-ETH 2 contract debugger UI as a standalone React component. Drop it into any wagmi-based React app.
 
-## Installation
+**[Documentation](https://ui.scaffoldeth.io/debug-contracts)** · [Repo](https://github.com/scaffold-eth/scaffold-ui)
 
-**Note**: This package requires `@scaffold-ui/components` and `@scaffold-ui/hooks` as peer dependencies.
+## Install
 
 ```bash
-npm install @scaffold-ui/components @scaffold-ui/hooks @scaffold-ui/debug-contracts
+npm install @scaffold-ui/debug-contracts @scaffold-ui/components @scaffold-ui/hooks
 # or
-yarn add @scaffold-ui/components @scaffold-ui/hooks @scaffold-ui/debug-contracts
+yarn add @scaffold-ui/debug-contracts @scaffold-ui/components @scaffold-ui/hooks
 # or
-pnpm add @scaffold-ui/components @scaffold-ui/hooks @scaffold-ui/debug-contracts
+pnpm add @scaffold-ui/debug-contracts @scaffold-ui/components @scaffold-ui/hooks
 ```
 
-#### Props
-
-- `contracts` (required): An object containing deployed contracts organized by chain ID, where each contract includes address and ABI
-- `chainId` (required): The chain ID to use for debugging contracts (number)
-- `blockExplorerBaseUrl` (optional): Base URL of the block explorer. The component appends `/address/{addr}` per rendered address. Defaults to `/blockexplorer` for local chain (31337) and to the chain's configured explorer otherwise.
+`@scaffold-ui/debug-contracts` peer-depends on `@scaffold-ui/components` and `@scaffold-ui/hooks`.
 
 ## Usage
 
 ```tsx
-import { Contract } from "@scaffold-ui/debug-contracts";
 import "@scaffold-ui/debug-contracts/styles.css";
+import { Contract } from "@scaffold-ui/debug-contracts";
 import { sepolia } from "viem/chains";
 
-// Define your deployed contracts
-const deployedContracts = {
+const deployedContract = {
   address: "0xBf6D6faFE5B0C009E5447A27A94E093F490Dd0FC",
   abi: [
-    // ... your contract ABI
+    /* ... */
   ],
 } as const;
 
-function App() {
+export default function Debug() {
   return (
     <Contract
-      contracts={deployedContracts}
+      contracts={deployedContract}
       chainId={sepolia.id}
     />
   );
 }
 ```
+
+See the [docs](https://ui.scaffoldeth.io/debug-contracts/Contract) for all props.
+
+## License
+
+MIT

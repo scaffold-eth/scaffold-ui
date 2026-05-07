@@ -1,74 +1,36 @@
 # Scaffold UI
 
-## Testing packages with local example
+React components and hooks for building Ethereum dApps. Drop them into any wagmi-based React app — no Scaffold-ETH 2 required.
 
-1. Start the dev mode of the monorepo
+**[Documentation](https://ui.scaffoldeth.io)** · **[Example app](https://scaffold-ui-example.vercel.app)** · **[Contributing](./CONTRIBUTING.md)**
 
-```bash
-pnpm dev
-```
+## Packages
 
-This will start the dev mode of both the hooks and components packages, along with the example app.
+| Package                                                      | Description                                                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| [`@scaffold-ui/components`](./packages/components)           | Pre-built React components — Address, Balance, AddressInput, EtherInput, BaseInput               |
+| [`@scaffold-ui/hooks`](./packages/hooks)                     | React hooks the components are built on — useAddress, useAddressInput, useBalance, useEtherInput |
+| [`@scaffold-ui/debug-contracts`](./packages/debug-contracts) | The Scaffold-ETH 2 contract debugger UI as a standalone component                                |
 
-2. Visit the example app at [http://localhost:3000](http://localhost:3000)
-
-3. Make changes to the packages and see them reflected in the example app
-
-## Testing packages with Scaffold-ETH 2 locally
-
-### Quick Setup
-
-1. Start the dev mode for both packages in the scaffold-ui directory:
+## Quick start
 
 ```bash
-# For hooks
-cd packages/hooks && pnpm run dev &
-
-# For components
-cd packages/components && pnpm run dev &
-
-# For debug-contracts
-cd packages/debug-contracts && pnpm run dev &
+pnpm add @scaffold-ui/components @scaffold-ui/hooks
 ```
 
-2. Add packages in Scaffold-ETH 2 inside the `packages/nextjs/package.json` file:
+```tsx
+import "@scaffold-ui/components/styles.css";
+import { Address } from "@scaffold-ui/components";
 
-```json
-"@scaffold-ui/hooks": "file:../../../scaffold-ui/packages/hooks",
-"@scaffold-ui/components": "file:../../../scaffold-ui/packages/components",
-"@scaffold-ui/debug-contracts": "file:../../../scaffold-ui/packages/debug-contracts",
+<Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" />;
 ```
 
-**Note:** The relative paths use `../../../` because they are resolved from the `packages/nextjs` directory in Scaffold-ETH 2's workspace structure.
+Your app needs `wagmi`, `viem`, and `@tanstack/react-query` already configured. See the [Getting Started guide](https://ui.scaffoldeth.io) for the full setup.
 
-3. Update the `webpack` section in the `next.config.js` or `next.config.ts` file:
+## Contributing
 
-```js
-webpack: (config, { dev }) => {
-  config.resolve.fallback = { fs: false, net: false, tls: false };
-  config.externals.push("pino-pretty", "lokijs", "encoding");
-  if (dev) {
-    config.watchOptions = {
-      followSymlinks: true,
-    };
+Bug reports, feature requests, and PRs welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md) for local development setup.
 
-    config.snapshot.managedPaths = [];
-  }
-  return config;
-},
-```
+## License
 
-4. Install dependencies in Scaffold-ETH 2:
-
-```bash
-yarn install
-```
-
-5. Run Scaffold-ETH 2 app:
-
-```bash
-yarn chain    # In one terminal
-yarn start    # In another terminal
-```
-
-6. Any changes in this repo will require running `yarn install` in Scaffold-ETH 2 again.
+MIT — see [LICENCE](./LICENCE).

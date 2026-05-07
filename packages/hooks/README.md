@@ -1,69 +1,48 @@
 # @scaffold-ui/hooks
 
-A collection of React hooks for managing UI state.
+React hooks for building custom Ethereum UI — ENS resolution, balance fetching with USD conversion, address validation, ETH-amount input handling.
 
-## Installation
+**[Documentation](https://ui.scaffoldeth.io/hooks)** · [Repo](https://github.com/scaffold-eth/scaffold-ui)
+
+## Install
 
 ```bash
 npm install @scaffold-ui/hooks
 # or
 yarn add @scaffold-ui/hooks
+# or
+pnpm add @scaffold-ui/hooks
 ```
 
-## Hooks
+You also need `react`, `viem`, `wagmi`, and `@tanstack/react-query` configured in your app.
 
-### useAddress
-
-A hook for managing Ethereum addresses with ENS support.
+## Usage
 
 ```tsx
 import { useAddress } from "@scaffold-ui/hooks";
 import { useAccount } from "wagmi";
 
-function AddressInfo() {
+export function Profile() {
   const { address } = useAccount();
-
-  const {
-    checkSumAddress,
-    ens,
-    ensAvatar,
-    isEnsNameLoading,
-    blockExplorerAddressLink,
-    isValidAddress,
-    shortAddress,
-    blockieUrl,
-  } = useAddress({
-    address,
-    chain: mainnet, // Optional chain parameter
-  });
+  const { ens, ensAvatar, shortAddress, blockExplorerAddressLink } = useAddress({ address });
 
   return (
-    <div>
-      {isEnsNameLoading ? (
-        <div>Loading ENS name...</div>
-      ) : (
-        <div>
-          <img
-            src={ensAvatar ?? blockieUrl}
-            alt="Avatar"
-          />
-          <div>ENS Name: {ens ?? "No ENS name"}</div>
-          <div>Address: {checkSumAddress}</div>
-          <div>Short Address: {shortAddress}</div>
-          <a
-            href={blockExplorerAddressLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on Block Explorer
-          </a>
-          {isValidAddress && <div>✓ Valid Address</div>}
-        </div>
-      )}
-    </div>
+    <a
+      href={blockExplorerAddressLink}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img
+        src={ensAvatar ?? undefined}
+        alt=""
+      />
+      {ens ?? shortAddress}
+    </a>
   );
 }
 ```
+
+See the [docs](https://ui.scaffoldeth.io/hooks) for every hook and return value.
 
 ## License
 
