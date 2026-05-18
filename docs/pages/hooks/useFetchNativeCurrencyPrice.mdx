@@ -117,7 +117,7 @@ function EthToUsd({ amount }: { amount: number }) {
 
 ### Non-ETH Chain (Polygon)
 
-For chains whose native currency isn't ETH, the hook resolves the price from `NETWORKS_EXTRA_DATA[chain.id].nativeCurrencyTokenAddress` (the WPOL/WMATIC pair on mainnet for Polygon) — no extra config required for chains already registered.
+For chains whose native currency isn't ETH, the hook resolves the price from `NETWORKS_EXTRA_DATA[chain.id].nativeCurrencyTokenAddress` (e.g. the POL/DAI Uniswap V2 pair on mainnet for Polygon, where the token is the POL ERC-20 at `0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0`) — no extra config required for chains already registered.
 
 export function UseFetchNativeCurrencyPricePolygonExample() {
   const { price, isLoading, isError } = useFetchNativeCurrencyPrice(polygon);
