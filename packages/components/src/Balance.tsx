@@ -43,7 +43,7 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, defaultUsdMode
     formattedBalance,
     balanceInUsd,
     isLoading,
-    isError,
+    isBalanceError,
     balance,
     isNativeCurrencyPriceLoading,
     isNativeCurrencyPriceError,
@@ -62,7 +62,7 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, defaultUsdMode
     );
   }
 
-  if (isError) {
+  if (isBalanceError) {
     return (
       <DefaultStylesWrapper
         className="border border-gray-300 rounded px-2 flex flex-col items-center max-w-fit text-sui-primary-content"

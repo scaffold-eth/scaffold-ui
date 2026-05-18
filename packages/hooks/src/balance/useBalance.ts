@@ -85,6 +85,6 @@ export const useBalance = ({ address, chain = mainnet, defaultUsdMode = false }:
     isNativeCurrencyPriceLoading,
     isNativeCurrencyPriceError,
     isLoading: isBalanceLoading || isNativeCurrencyPriceLoading,
-    isError: isBalanceError,
+    isError: isBalanceError || isNativeCurrencyPriceError,
   };
 };
