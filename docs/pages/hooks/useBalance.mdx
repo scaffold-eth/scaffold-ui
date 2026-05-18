@@ -61,7 +61,7 @@ const {
 | `isNativeCurrencyPriceLoading` | `boolean`                        | Loading state for fetching the native currency price.                       |
 | `isNativeCurrencyPriceError`   | `boolean`                        | Error state for fetching the native currency price.                         |
 | `isLoading`                    | `boolean`                        | Combined loading state: balance data or price is still loading.             |
-| `isError`                      | `boolean`                        | Combined error state: balance data or price failed to load.                 |
+| `isError`                      | `boolean`                        | Error state for the balance fetch only. A price-fetch failure is exposed separately via `isNativeCurrencyPriceError` so it doesn't blank the balance UI. |
 
 :::info
 USD display is enabled only after the native currency price has been fetched. If the price is not available, toggling to USD is disabled and native balance is shown.
