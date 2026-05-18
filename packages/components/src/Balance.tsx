@@ -37,8 +37,19 @@ export type BalanceProps = {
 export const Balance: React.FC<BalanceProps> = ({ address, chain, defaultUsdMode, style }) => {
   const { chains: configuredChains } = useConfig();
   const chainToUse = chain ? chain : configuredChains[0] ? configuredChains[0] : mainnet;
-  const { displayUsdMode, toggleDisplayUsdMode, formattedBalance, balanceInUsd, isLoading, isError, balance } =
-    useBalance({ address, chain: chainToUse, defaultUsdMode });
+  const {
+    displayUsdMode,
+    toggleDisplayUsdMode,
+    formattedBalance,
+    balanceInUsd,
+    isLoading,
+    isError,
+    balance,
+    isNativeCurrencyPriceLoading,
+    isNativeCurrencyPriceError,
+  } = useBalance({ address, chain: chainToUse, defaultUsdMode });
+
+  const isToggleDisabled = isNativeCurrencyPriceLoading || isNativeCurrencyPriceError;
 
   if (isLoading || !balance) {
     return (
@@ -65,10 +76,17 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, defaultUsdMode
   return (
     <DefaultStylesWrapper
       as="button"
-      className="flex flex-col items-center font-normal bg-transparent focus:outline-none cursor-pointer text-sui-primary-content"
+      className={`flex flex-col items-center font-normal bg-transparent focus:outline-none text-sui-primary-content ${isToggleDisabled ? "cursor-not-allowed! opacity-50" : "cursor-pointer"}`}
       onClick={toggleDisplayUsdMode}
+      disabled={isToggleDisabled}
       type="button"
-      title="Toggle balance display mode"
+      title={
+        isNativeCurrencyPriceLoading
+          ? "Fetching price"
+          : isNativeCurrencyPriceError
+            ? "Unable to fetch price"
+            : "Toggle balance display mode"
+      }
       style={style}
     >
       <div className="flex items-center justify-center">
