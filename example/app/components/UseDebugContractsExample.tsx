@@ -29,7 +29,7 @@ export const UseDebugContractsExample = () => {
             <div className="flex flex-row gap-2 w-full max-w-7xl pb-1 px-6 lg:px-10 flex-wrap">
               {contractNames.map((contractName) => (
                 <button
-                  className={`font-light hover:border-transparent p-2 px-4 rounded-full ${
+                  className={`font-light hover:border-transparent p-2 px-4 ${
                     contractName === selectedContract
                       ? "bg-[var(--color-sui-primary-subtle)] hover:bg-[var(--color-sui-primary-subtle)] no-animation"
                       : "bg-[var(--color-sui-base-100)] hover:bg-[var(--color-sui-primary-subtle)]"

@@ -59,11 +59,11 @@ export const DisplayVariable = ({
       <div className="flex items-center">
         <h3 className="font-medium text-lg mb-0 break-all">{abiFunction.name}</h3>
         <button
-          className="p-1 text-sui-primary-content/60 hover:text-sui-primary-content dark:hover:bg-sui-primary-neutral hover:bg-sui-primary transition-colors duration-200 cursor-pointer ml-1 rounded-full"
+          className="p-1 text-sui-primary-content/60 hover:text-sui-primary-content dark:hover:bg-sui-primary-neutral hover:bg-sui-primary transition-colors duration-200 cursor-pointer ml-1"
           onClick={async () => await refetch()}
         >
           {isFetching ? (
-            <div className="w-3 h-3 border border-sui-primary-subtle border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-3 h-3 border border-sui-primary-subtle border-t-transparent animate-spin"></div>
           ) : (
             <ArrowPathIcon
               className="h-3 w-3 cursor-pointer"
@@ -76,7 +76,7 @@ export const DisplayVariable = ({
       <div className="text-sui-primary-content/80 flex flex-col items-start">
         <div>
           <div
-            className={`block transition ${showAnimation ? "bg-[#e2d563] rounded-xs animate-pulse-fast" : "bg-transparent"}`}
+            className={`block transition ${showAnimation ? "bg-[#e2d563] animate-pulse-fast" : "bg-transparent"}`}
           >
             {displayTxResult(result, "base")}
           </div>

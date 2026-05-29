@@ -60,7 +60,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
     <div className={`relative group inline-block ${className}`}>
       {children}
       <div
-        className={`absolute ${positionClasses} px-2 py-1 text-sm rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 bg-sui-primary text-sui-primary-content ${contentClassName}`}
+        className={`absolute ${positionClasses} px-2 py-1 text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 bg-sui-primary text-sui-primary-content ${contentClassName}`}
       >
         {content}
         <div className={arrowClasses}></div>

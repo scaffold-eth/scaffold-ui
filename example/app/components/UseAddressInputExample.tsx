@@ -39,7 +39,7 @@ export const UseAddressInputExample = () => {
   );
 
   return (
-    <div className="mt-8 p-6 max-w-2xl rounded-lg bg-white/5 shadow-xl  w-full">
+    <div className="mt-8 p-6 max-w-2xl bg-white/5 shadow-xl  w-full">
       <h1 className="text-2xl font-bold mb-6">useAddressInput Hook & AddressInput Component Examples</h1>
 
       <div className="space-y-8">
@@ -104,14 +104,14 @@ export const UseAddressInputExample = () => {
 
           {ensAddress ? <div className="bg-[#dae8ff] items-center">Address: {ensAddress}</div> : null}
           {ensName ? (
-            <div className="flex bg-[#dae8ff] rounded-l-full items-center">
-              {isEnsAvatarLoading && <div className="skeleton w-[35px] h-[35px] rounded-full shrink-0"></div>}
+            <div className="flex bg-[#dae8ff] items-center">
+              {isEnsAvatarLoading && <div className="skeleton w-[35px] h-[35px] shrink-0"></div>}
               {ensAvatar ? (
                 <span className="w-[35px]">
                   {
                     // eslint-disable-next-line
                     <img
-                      className="w-full rounded-full"
+                      className="w-full"
                       src={ensAvatar}
                       alt={`${ensAddress} avatar`}
                     />
@@ -122,8 +122,8 @@ export const UseAddressInputExample = () => {
             </div>
           ) : (
             (isEnsNameLoading || isEnsAddressLoading) && (
-              <div className="flex bg-[#dae8ff] rounded-l-full items-center gap-2 pr-2">
-                <div className="animate-pulse bg-[#f4f8ff] w-[35px] h-[35px] rounded-full shrink-0"></div>
+              <div className="flex bg-[#dae8ff] items-center gap-2 pr-2">
+                <div className="animate-pulse bg-[#f4f8ff] w-[35px] h-[35px] shrink-0"></div>
                 <div className="animate-pulse bg-[#f4f8ff] h-3 w-20"></div>
               </div>
             )

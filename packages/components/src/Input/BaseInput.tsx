@@ -85,7 +85,7 @@ export const BaseInput = <T extends { toString: () => string } | undefined = str
 
   return (
     <DefaultStylesWrapper
-      className={`flex border-2 rounded-full border-sui-input-border bg-sui-input-background text-sui-input-text ${modifier}`}
+      className={`flex border-2 border-sui-input-border bg-sui-input-background text-sui-input-text ${modifier}`}
       style={style}
     >
       {prefix}

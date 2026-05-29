@@ -27,7 +27,7 @@ export const UseEtherInputExample = () => {
   );
 
   return (
-    <div className="mt-8 p-6 max-w-2xl rounded-lg bg-white/5 shadow-xl">
+    <div className="mt-8 p-6 max-w-2xl bg-white/5 shadow-xl">
       <h1 className="text-2xl font-bold mb-6">useEtherInput Hook & EtherInput Component Examples</h1>
       <div className="space-y-4">
         {/* EtherInput Component Examples */}
@@ -88,7 +88,7 @@ export const UseEtherInputExample = () => {
         {isError && <p className="text-red-500 mb-0">{error}</p>}
         <div className="flex items-center gap-2 mb-2">
           <input
-            className={`w-40 px-3 py-2 rounded-md bg-transparent border ${isError ? "border-red-500 border-2" : "border-gray-300 dark:border-gray-600"}`}
+            className={`w-40 px-3 py-2 bg-transparent border ${isError ? "border-red-500 border-2" : "border-gray-300 dark:border-gray-600"}`}
             type="text"
             value={manualValue}
             onChange={(e) => setManualValue(e.target.value)}

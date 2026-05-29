@@ -9,7 +9,7 @@ export const Header = () => {
 
   const getLinkClassName = (href: string) => {
     const isActive = pathname === href;
-    const baseClasses = "px-3 py-2 rounded-md text-sm font-medium transition-colors";
+    const baseClasses = "px-3 py-2 text-sm font-medium transition-colors";
 
     if (isActive) {
       return `${baseClasses} bg-[var(--color-sui-primary)] text-[var(--color-sui-primary-content)] font-semibold`;

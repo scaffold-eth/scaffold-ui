@@ -24,7 +24,7 @@ export const UseBalanceExample = () => {
 
   if (!address) {
     return (
-      <div className="mt-8 p-6 max-w-2xl rounded-lg bg-white/5 shadow-xl">
+      <div className="mt-8 p-6 max-w-2xl bg-white/5 shadow-xl">
         <h1 className="text-2xl font-bold mb-6">useBalance Example</h1>
         <p>Connect your wallet to see the balance information</p>
       </div>
@@ -32,7 +32,7 @@ export const UseBalanceExample = () => {
   }
 
   return (
-    <div className="mt-8 p-6 max-w-2xl rounded-lg bg-white/5 shadow-xl w-full">
+    <div className="mt-8 p-6 max-w-2xl bg-white/5 shadow-xl w-full">
       <h1 className="text-2xl font-bold mb-6">useBalance Hook & Balance Component Examples</h1>
 
       <div className="space-y-8">
