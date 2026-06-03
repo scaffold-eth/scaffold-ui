@@ -17,6 +17,7 @@ export const UseAddressInputExample = () => {
         "--color-sui-input-border": isDark ? "#4ade80" : "#22c55e",
         "--color-sui-input-background": isDark ? "#14532d" : "#dcfce7",
         "--color-sui-input-text": isDark ? "#dcfce7" : "#166534",
+        "--color-sui-accent": isDark ? "#dcfce7" : "#14532d",
       }) as CSSProperties,
     [isDark],
   );
@@ -27,6 +28,7 @@ export const UseAddressInputExample = () => {
         "--color-sui-input-border": isDark ? "#f87171" : "#ff6b6b",
         "--color-sui-input-background": isDark ? "#7f1d1d" : "#fff5f5",
         "--color-sui-input-text": isDark ? "#fecaca" : "#d63031",
+        "--color-sui-accent": isDark ? "#fecaca" : "#7f1d1d",
       }) as CSSProperties,
     [isDark],
   );
