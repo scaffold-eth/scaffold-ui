@@ -46,7 +46,7 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, defaultUsdMode
         className="flex items-center animate-pulse"
         style={style}
       >
-        <div className="h-4 w-20 bg-sui-skeleton-base rounded" />
+        <div className="h-4 w-20 bg-sui-skeleton-base" />
       </DefaultStylesWrapper>
     );
   }
@@ -54,7 +54,7 @@ export const Balance: React.FC<BalanceProps> = ({ address, chain, defaultUsdMode
   if (isError) {
     return (
       <DefaultStylesWrapper
-        className="border border-gray-300 rounded px-2 flex flex-col items-center max-w-fit text-sui-primary-content"
+        className="border border-gray-300 px-2 flex flex-col items-center max-w-fit text-sui-primary-content"
         style={style}
       >
         <div className="text-sui-warning text-sm">Error</div>
