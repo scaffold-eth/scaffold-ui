@@ -1,5 +1,11 @@
 # @scaffold-ui/components
 
+## 0.1.11
+
+### Patch Changes
+
+- 1e44ea6: change font-size of the inputs to text-base
+
 ## 0.1.10
 
 ### Patch Changes
