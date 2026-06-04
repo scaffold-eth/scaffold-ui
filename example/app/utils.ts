@@ -22,9 +22,8 @@ import {
 
 const DEFAULT_ALCHEMY_API_KEY = "cR4WnXePioePZ5fFrnSiR";
 
-const ALCHEMY_API_KEY = import.meta.env.VITE_ALCHEMY_API_KEY || DEFAULT_ALCHEMY_API_KEY;
+const ALCHEMY_API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY || DEFAULT_ALCHEMY_API_KEY;
 
-// Mapping of chainId to RPC chain name an format followed by alchemy and infura
 export const RPC_CHAIN_NAMES: Record<number, string> = {
   [mainnet.id]: "eth-mainnet",
   [goerli.id]: "eth-goerli",
