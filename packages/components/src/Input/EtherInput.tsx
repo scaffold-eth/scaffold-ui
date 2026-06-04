@@ -86,6 +86,8 @@ export const EtherInput = ({
     setDisplayUsdMode((prev) => !prev);
   };
 
+  const isToggleDisabled = isNativeCurrencyPriceLoading || isNativeCurrencyPriceError || disabled;
+
   return (
     <div className="flex items-center gap-2">
       <BaseInput<string>
@@ -98,12 +100,12 @@ export const EtherInput = ({
         style={style}
         suffix={
           <button
-            className="h-[2.2rem] min-h-[2.2rem] cursor-pointer mr-3"
+            className={`h-[2.2rem] min-h-[2.2rem] mr-3 ${isToggleDisabled ? "cursor-not-allowed! opacity-50" : "cursor-pointer"}`}
             onClick={(e) => {
               e.preventDefault();
               handleToggleMode();
             }}
-            disabled={isNativeCurrencyPriceLoading || isNativeCurrencyPriceError || disabled}
+            disabled={isToggleDisabled}
             type="button"
             tabIndex={-1}
             title={
