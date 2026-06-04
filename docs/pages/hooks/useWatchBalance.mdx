@@ -1,0 +1,98 @@
+---
+layout: docs
+---
+
+import React from "react";
+import { useWatchBalance } from "@scaffold-ui/hooks";
+import { DocsProvider } from "../../components/DocsProvider";
+import { mainnet } from "viem/chains";
+import { formatEther } from "viem";
+
+# useWatchBalance Hook
+
+The `useWatchBalance` hook watches an address balance on a given chain and re-fetches it on every new block. It is a thin wrapper around wagmi's `useBalance` that invalidates the underlying query whenever the block number changes.
+
+## Import
+
+```tsx
+import { useWatchBalance } from "@scaffold-ui/hooks";
+```
+
+## Usage
+
+```tsx
+const { data, isLoading, isError } = useWatchBalance({
+  address: "0xd8da6bf26964af9d7eed9e03e53415d37aa96045",
+  chain: mainnet,
+});
+```
+
+## Parameters
+
+`useWatchBalance` accepts every parameter wagmi's [`useBalance`](https://wagmi.sh/react/api/hooks/useBalance) accepts, plus an optional `chain`.
+
+| Parameter | Type                   | Default | Description                                                                                |
+| --------- | ---------------------- | ------- | ------------------------------------------------------------------------------------------ |
+| `address` | `Address` _(optional)_ | -       | The address to watch. When omitted, no balance is fetched.                                 |
+| `chain`   | `Chain` _(optional)_   | -       | The **viem** chain to fetch the balance from. Internally maps to wagmi's `chainId` option. |
+| `...rest` | `UseBalanceParameters` | -       | Any other [`useBalance`](https://wagmi.sh/react/api/hooks/useBalance) parameter.           |
+
+## Return Values
+
+The hook returns wagmi's `useBalance` result, **without** the internal `queryKey` (it's used internally to invalidate on each new block).
+
+| Property    | Type                                | Description                                                                |
+| ----------- | ----------------------------------- | -------------------------------------------------------------------------- |
+| `data`      | `GetBalanceReturnType \| undefined` | The balance payload (`value`, `decimals`, `formatted`, `symbol`).          |
+| `isLoading` | `boolean`                           | Loading state for the balance fetch.                                       |
+| `isError`   | `boolean`                           | Error state for the balance fetch.                                         |
+| `...rest`   | `UseBalanceReturnType`              | All other wagmi `useBalance` return values (`refetch`, `status`, `error`). |
+
+:::info
+Use `useWatchBalance` when you only need the raw balance refreshed each block. If you also want USD conversion and a built-in toggle, use [`useBalance`](/hooks/useBalance) instead.
+:::
+
+## Live Examples
+
+### Basic Usage
+
+Display a balance that automatically updates each block.
+
+export function UseWatchBalanceBasicExample() {
+  const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
+  const { data, isLoading, isError } = useWatchBalance({ address, chain: mainnet });
+
+  if (isLoading) return <p>Fetching balance…</p>;
+  if (isError || !data) return <p style={{ color: "red" }}>Could not fetch balance</p>;
+
+  return (
+    <p>
+      Balance: {Number(formatEther(data.value)).toLocaleString()} {data.symbol}
+    </p>
+  );
+}
+
+<DocsProvider>
+  <UseWatchBalanceBasicExample />
+</DocsProvider>
+
+```tsx
+import React from "react";
+import { useWatchBalance } from "@scaffold-ui/hooks";
+import { mainnet } from "viem/chains";
+import { formatEther } from "viem";
+
+function LiveBalance() {
+  const address = "0xd8da6bf26964af9d7eed9e03e53415d37aa96045";
+  const { data, isLoading, isError } = useWatchBalance({ address, chain: mainnet });
+
+  if (isLoading) return <p>Fetching balance…</p>;
+  if (isError || !data) return <p>Could not fetch balance</p>;
+
+  return (
+    <p>
+      Balance: {Number(formatEther(data.value)).toLocaleString()} {data.symbol}
+    </p>
+  );
+}
+```

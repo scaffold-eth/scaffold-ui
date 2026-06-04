@@ -4,6 +4,7 @@ import { base, mainnet, polygon, sepolia } from "viem/chains";
 import { metaMaskWallet } from "@rainbow-me/rainbowkit/wallets";
 import { createClient, http } from "viem";
 import { rainbowkitBurnerWallet } from "burner-connector";
+import { getAlchemyHttpUrl } from "./utils";
 
 const wallets = [metaMaskWallet, rainbowkitBurnerWallet];
 const walletConnectProjectID = "3a8170812b534d0ff9d794f19a901d64";
@@ -28,6 +29,6 @@ export const wagmiConfig = createConfig({
   connectors: wagmiConnectors,
   ssr: true,
   client({ chain }) {
-    return createClient({ chain, transport: http() });
+    return createClient({ chain, transport: http(getAlchemyHttpUrl(chain.id)) });
   },
 });
