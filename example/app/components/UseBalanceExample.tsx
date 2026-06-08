@@ -40,27 +40,30 @@ export const UseBalanceExample = () => {
         <div className="space-y-4">
           <h2 className="text-xl font-semibold text-[var(--color-sui-primary-content)]">Balance Component Examples</h2>
           <div className="space-y-4">
-            <div className="flex flex-col items-center">
-              <span className="text-sm text-gray-500 mb-1 self-start">Default (ETH, click to toggle USD)</span>
+            <div className="flex flex-col items-start">
+              <span className="text-sm text-gray-500 mb-1">Default (ETH, click to toggle USD)</span>
               <Balance address={address} />
             </div>
-            <div className="flex flex-col items-center">
-              <span className="text-sm text-gray-500 mb-1 self-start">USD mode by default</span>
+            <div className="flex flex-col items-start">
+              <span className="text-sm text-gray-500 mb-1">USD mode by default</span>
               <Balance
                 address={address}
                 defaultUsdMode={true}
               />
             </div>
-            <div className="flex flex-col items-center">
-              <span className="text-sm text-gray-500 mb-1 self-start">Custom styles</span>
-              <Balance address={address} style={customBalanceStyle} />
+            <div className="flex flex-col items-start">
+              <span className="text-sm text-gray-500 mb-1">Custom styles</span>
+              <Balance
+                address={address}
+                style={customBalanceStyle}
+              />
             </div>
           </div>
         </div>
         <div className="space-y-4 border-t border-gray-700 pt-6">
           <h2 className="text-xl font-semibold text-purple-400">Fetch Polygon Balance</h2>
-          <div className="flex flex-col items-center">
-            <span className="text-sm text-gray-500 mb-1 self-start">Polygon (POL) Balance</span>
+          <div className="flex flex-col items-start">
+            <span className="text-sm text-gray-500 mb-1">Polygon (POL) Balance</span>
             <Balance
               address={address}
               chain={polygon}
@@ -75,7 +78,7 @@ export const UseBalanceExample = () => {
           <div className="flex flex-col gap-2">
             <span className="text-sm text-gray-500">Balance</span>
             <button
-              className="flex items-center gap-2 px-3 py-1 bg-gray-800 hover:bg-gray-700 transition-colors"
+              className="flex items-center gap-2 px-3 py-1 bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
               onClick={toggleDisplayUsdMode}
               type="button"
               title="Toggle balance display mode"

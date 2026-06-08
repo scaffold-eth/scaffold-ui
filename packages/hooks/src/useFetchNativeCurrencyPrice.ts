@@ -37,6 +37,7 @@ export const useFetchNativeCurrencyPrice = (chain: Chain = mainnet) => {
       return fetchPriceFromUniswap({ chain, mainnetPublicClient });
     },
     enabled: !!mainnetPublicClient,
+    retry: 1,
   });
 
   return { price: price ?? 0, isLoading, error, isError };
@@ -87,10 +88,9 @@ const fetchPriceFromUniswap = async ({
       CurrencyAmount.fromRawAmount(token1, reserves[1].toString()),
     );
     const route = new Route([pair], TOKEN, DAI);
-    const price = parseFloat(route.midPrice.toSignificant(6));
-    return price;
+    return parseFloat(route.midPrice.toSignificant(6));
   } catch (error) {
     console.error(`useNativeCurrencyPrice - Error fetching ${chain.nativeCurrency.symbol} price from Uniswap: `, error);
-    return 0;
+    throw error;
   }
 };
