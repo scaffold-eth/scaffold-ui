@@ -99,7 +99,7 @@ const NumberDisplay = ({ value }: { value: bigint }) => {
         className="font-sans ml-2"
       >
         <button
-          className="p-1 text-sui-primary-content/60 hover:text-sui-primary-content hover:bg-sui-primary-neutral rounded-full transition-colors duration-200 w-6 h-6 flex items-center justify-center cursor-pointer"
+          className="p-1 text-sui-primary-content/60 hover:text-sui-primary-content hover:bg-sui-primary-neutral transition-colors duration-200 w-6 h-6 flex items-center justify-center cursor-pointer"
           onClick={() => setIsEther(!isEther)}
         >
           <ArrowsRightLeftIcon className="h-3 w-3 opacity-65" />

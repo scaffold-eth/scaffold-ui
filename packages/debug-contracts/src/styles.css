@@ -23,7 +23,7 @@
 
 @layer components {
   .btn-dc {
-    @apply inline-flex items-center justify-center rounded-full px-3 py-1.5 text-xs cursor-pointer font-semibold;
+    @apply inline-flex items-center justify-center px-3 py-1.5 text-xs cursor-pointer font-semibold;
     background-color: var(--color-sui-primary-subtle);
     color: var(--color-sui-primary-content);
     @apply transition-transform duration-75 ease-out;
@@ -73,7 +73,7 @@
 
   .loading-dc {
     @apply pointer-events-none inline-block aspect-square bg-current align-middle;
-    width: calc(var(0.25rem) * 6);
+    width: 1.5rem;
     mask-size: 100%;
     mask-repeat: no-repeat;
     mask-position: center;

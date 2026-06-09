@@ -13,7 +13,7 @@ export const UseAddressExample = () => {
 
   if (!address) {
     return (
-      <div className="mt-8 p-6 max-w-2xl rounded-lg bg-white/5 shadow-xl">
+      <div className="mt-8 p-6 max-w-2xl bg-white/5 shadow-xl">
         <h1 className="text-2xl font-bold mb-6">useAddress Example</h1>
         <p>Connect your wallet to see the information</p>
       </div>
@@ -21,7 +21,7 @@ export const UseAddressExample = () => {
   }
 
   return (
-    <div className="mt-8 p-6 max-w-2xl rounded-lg bg-white/5 shadow-xl w-full">
+    <div className="mt-8 p-6 max-w-2xl bg-white/5 shadow-xl w-full">
       <h1 className="text-2xl font-bold mb-6">useAddress Hook & Address Component Examples</h1>
 
       <div className="space-y-8">
@@ -131,10 +131,10 @@ export const UseAddressExample = () => {
             <img
               src={ensAvatar ?? blo(address)}
               alt="ENS Avatar"
-              className="w-8 h-8 rounded-full"
+              className="w-8 h-8"
             />
             {isEnsNameLoading ? (
-              <div className="h-6 w-32 bg-gray-700 animate-pulse rounded" />
+              <div className="h-6 w-32 bg-gray-700 animate-pulse" />
             ) : (
               <span className="text-lg font-medium">{ens ?? "No ENS name found"}</span>
             )}

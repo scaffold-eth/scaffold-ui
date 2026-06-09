@@ -14,7 +14,7 @@ export const TxReceipt = ({ txResult }: { txResult: TransactionReceipt }) => {
   };
 
   return (
-    <div className={`text-sm bg-sui-primary-subtle ${isExpanded ? "rounded-t-3xl" : "rounded-3xl"} min-h-0 py-0`}>
+    <div className="text-sm bg-sui-primary-subtle min-h-0 py-0">
       <div className="flex items-center">
         <div className="mt-1 pl-2 flex-shrink-0">
           {isTxResultCopiedToClipboard ? (
@@ -41,12 +41,12 @@ export const TxReceipt = ({ txResult }: { txResult: TransactionReceipt }) => {
         </div>
       </div>
       <div
-        className={`overflow-auto transition-all duration-300 ease-in-out rounded-b-3xl ${
+        className={`overflow-auto transition-all duration-300 ease-in-out ${
           isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="overflow-auto bg-sui-primary-subtle rounded-b-3xl border-t border-gray-300/20">
-          <pre className="text-xs p-4 whitespace-pre-wrap break-words rounded-b-3xl">
+        <div className="overflow-auto bg-sui-primary-subtle border-t border-gray-300/20">
+          <pre className="text-xs p-4 whitespace-pre-wrap break-words">
             {Object.entries(txResult).map(([k, v]) => (
               <ObjectFieldDisplay
                 name={k}

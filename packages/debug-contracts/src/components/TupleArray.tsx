@@ -105,7 +105,7 @@ export const TupleArray = ({ abiTupleParameter, setParentForm, parentStateObject
             key={additionalIndex}
             className="space-y-1"
           >
-            <span className="inline-block bg-sui-primary-subtle text-sui-primary-content text-xs px-2 py-1 rounded">
+            <span className="inline-block bg-sui-primary-subtle text-sui-primary-content text-xs px-2 py-1">
               {depth > 1 ? `${additionalIndex}` : `tuple[${additionalIndex}]`}
             </span>
             <div className="space-y-4">

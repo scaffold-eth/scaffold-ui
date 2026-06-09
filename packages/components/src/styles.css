@@ -42,7 +42,7 @@
 }
 
 .sui-skeleton {
-  border-radius: 0.2rem;
+  border-radius: 0;
   background-color: var(--color-sui-skeleton-base);
   @media (prefers-reduced-motion: reduce) {
     transition-duration: 15s;

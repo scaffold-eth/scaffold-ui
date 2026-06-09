@@ -25,16 +25,16 @@ export const SwitchTheme = ({ className }: { className?: string }) => {
   if (!mounted) return null;
 
   return (
-    <div className={`fixed bottom-6 right-6 z-50 flex items-center space-x-3 p-3 rounded-lg shadow-lg ${className}`}>
+    <div className={`fixed bottom-6 right-6 z-50 flex items-center space-x-3 p-3 shadow-lg ${className}`}>
       {/* Custom Toggle Switch */}
       <button
         onClick={handleToggle}
-        className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-opacity-50 bg-[var(--color-sui-primary-subtle)] dark:bg-[var(--color-sui-primary)] focus:ring-[var(--color-sui-primary)]"
+        className="relative inline-flex h-6 w-11 items-center transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-opacity-50 bg-[var(--color-sui-primary-subtle)] dark:bg-[var(--color-sui-primary)] focus:ring-[var(--color-sui-primary)]"
         aria-label={`Switch to ${isDarkMode ? "light" : "dark"} theme`}
       >
         {/* Toggle Circle */}
         <span
-          className={`inline-block h-4 w-4 transform rounded-full transition-transform duration-200 ease-in-out bg-[var(--color-sui-primary)] dark:bg-[var(--color-sui-primary-content)]  ${
+          className={`inline-block h-4 w-4 transform transition-transform duration-200 ease-in-out bg-[var(--color-sui-primary)] dark:bg-[var(--color-sui-primary-content)]  ${
             isDarkMode ? "translate-x-6" : "translate-x-1"
           }`}
         />

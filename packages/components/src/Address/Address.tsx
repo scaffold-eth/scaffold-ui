@@ -126,16 +126,16 @@ export const Address: React.FC<AddressProps> = ({
         style={style}
       >
         <div
-          className="shrink-0 sui-skeleton !rounded-full"
+          className="shrink-0 sui-skeleton"
           style={skeletonStyle}
         />
         <div className="flex flex-col space-y-1">
           {!onlyEnsOrAddress && (
-            <div className={`ml-1.5 sui-skeleton rounded-lg font-bold ${textSizeMap[ensSize]}`}>
+            <div className={`ml-1.5 sui-skeleton font-bold ${textSizeMap[ensSize]}`}>
               <span className="invisible">0x1234...56789</span>
             </div>
           )}
-          <div className={`ml-1.5 sui-skeleton rounded-lg ${textSizeMap[addressSize]}`}>
+          <div className={`ml-1.5 sui-skeleton ${textSizeMap[addressSize]}`}>
             <span className="invisible">0x1234...56789</span>
           </div>
         </div>
@@ -155,7 +155,6 @@ export const Address: React.FC<AddressProps> = ({
     >
       <div className="shrink-0">
         <img
-          className="rounded-full"
           src={ensAvatar || blockieUrl}
           width={(blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"]}
           height={(blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"]}
@@ -165,7 +164,7 @@ export const Address: React.FC<AddressProps> = ({
       <div className="flex flex-col">
         {showSkeleton &&
           (isEnsNameLoading ? (
-            <div className={`ml-1.5 sui-skeleton rounded-lg font-bold ${textSizeMap[ensSize]}`}>
+            <div className={`ml-1.5 sui-skeleton font-bold ${textSizeMap[ensSize]}`}>
               <span className="invisible">{shortAddress}</span>
             </div>
           ) : (

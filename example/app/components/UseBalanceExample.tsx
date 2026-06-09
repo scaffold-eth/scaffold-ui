@@ -24,7 +24,7 @@ export const UseBalanceExample = () => {
 
   if (!address) {
     return (
-      <div className="mt-8 p-6 max-w-2xl rounded-lg bg-white/5 shadow-xl">
+      <div className="mt-8 p-6 max-w-2xl bg-white/5 shadow-xl">
         <h1 className="text-2xl font-bold mb-6">useBalance Example</h1>
         <p>Connect your wallet to see the balance information</p>
       </div>
@@ -32,7 +32,7 @@ export const UseBalanceExample = () => {
   }
 
   return (
-    <div className="mt-8 p-6 max-w-2xl rounded-lg bg-white/5 shadow-xl w-full">
+    <div className="mt-8 p-6 max-w-2xl bg-white/5 shadow-xl w-full">
       <h1 className="text-2xl font-bold mb-6">useBalance Hook & Balance Component Examples</h1>
 
       <div className="space-y-8">
@@ -53,7 +53,10 @@ export const UseBalanceExample = () => {
             </div>
             <div className="flex flex-col items-start">
               <span className="text-sm text-gray-500 mb-1">Custom styles</span>
-              <Balance address={address} style={customBalanceStyle} />
+              <Balance
+                address={address}
+                style={customBalanceStyle}
+              />
             </div>
           </div>
         </div>
@@ -75,7 +78,7 @@ export const UseBalanceExample = () => {
           <div className="flex flex-col gap-2">
             <span className="text-sm text-gray-500">Balance</span>
             <button
-              className="flex items-center gap-2 px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
+              className="flex items-center gap-2 px-3 py-1 bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
               onClick={toggleDisplayUsdMode}
               type="button"
               title="Toggle balance display mode"
