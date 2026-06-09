@@ -1,5 +1,13 @@
 # @scaffold-ui/debug-contracts
 
+## 0.1.11
+
+### Patch Changes
+
+- 4945a7f: Ui redesign remove rounded corners
+- Updated dependencies [4945a7f]
+  - @scaffold-ui/components@0.1.12
+
 ## 0.1.10
 
 ### Patch Changes

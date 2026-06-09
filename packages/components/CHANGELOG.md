@@ -1,5 +1,11 @@
 # @scaffold-ui/components
 
+## 0.1.12
+
+### Patch Changes
+
+- 4945a7f: Ui redesign remove rounded corners
+
 ## 0.1.11
 
 ### Patch Changes
