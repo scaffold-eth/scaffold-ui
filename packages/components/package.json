@@ -2,6 +2,7 @@
   "name": "@scaffold-ui/components",
   "version": "0.1.12",
   "description": "React components for scaffold-ui",
+  "license": "MIT",
   "type": "module",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",

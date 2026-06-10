@@ -1,80 +1,36 @@
 # @scaffold-ui/components
 
-React components for scaffold-ui applications.
+Pre-built React components for Ethereum dApps — addresses with ENS, balances, address inputs, ETH amount inputs.
 
-## Installation
+**[Documentation](https://ui.scaffoldeth.io/components)** · [Repo](https://github.com/scaffold-eth/scaffold-ui)
 
-**Note**: This package requires `@scaffold-ui/hooks` as a peer dependency.
+## Install
 
 ```bash
-# Install both packages
 npm install @scaffold-ui/components @scaffold-ui/hooks
-
-# Or with yarn
+# or
 yarn add @scaffold-ui/components @scaffold-ui/hooks
-
-# Or with pnpm
+# or
 pnpm add @scaffold-ui/components @scaffold-ui/hooks
 ```
 
-### Peer Dependencies
+`@scaffold-ui/components` peer-depends on `@scaffold-ui/hooks`. You also need `react`, `viem`, `wagmi`, and `@tanstack/react-query` configured in your app.
 
-You'll also need these peer dependencies if you don't already have them:
+## Usage
 
-```bash
-npm install react @types/react viem wagmi @tanstack/react-query
-```
-
-## Components
-
-### Address
-
-A React component for displaying Ethereum addresses with ENS support, avatars, and block explorer links.
-
-#### Props
-
-- `address?` - The Ethereum address to display (optional)
-- `disableAddressLink?` - Whether to disable the link to block explorer (optional)
-- `format?` - Display format for the address - "short" | "long" (optional)
-- `size` - Size of the component - "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" (required)
-- `onlyEnsOrAddress?` - Whether to show only ENS name or address without additional info (optional)
-- `chain?` - The blockchain chain to use for block explorer links and ENS resolution (optional, defaults to mainnet)
-
-#### Example
+Import the styles once in your root layout, then use any component:
 
 ```tsx
+import "@scaffold-ui/components/styles.css";
 import { Address } from "@scaffold-ui/components";
-import { optimism } from "viem/chains";
 
-function MyComponent() {
-  return (
-    <Address
-      address="0x1234567890123456789012345678901234567890"
-      size="base"
-      format="short"
-      disableAddressLink={false}
-      onlyEnsOrAddress={false}
-      chain={optimism} // Optional: specify chain for block explorer links
-    />
-  );
+export default function Profile() {
+  return <Address address="0xd8da6bf26964af9d7eed9e03e53415d37aa96045" />;
 }
 ```
 
-## Development
+See the [docs](https://ui.scaffoldeth.io/components) for the full component list, props, and examples.
 
-```bash
-# Install dependencies
-pnpm install
+## License
 
-# Build the package
-pnpm build
-
-# Watch for changes during development
-pnpm dev
-
-# Lint the code
-pnpm lint
-
-# Format the code
-pnpm format
-```
+MIT

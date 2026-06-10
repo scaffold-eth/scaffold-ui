@@ -1,0 +1,61 @@
+---
+layout: docs
+---
+
+# Debug Contracts
+
+A standalone React component that ports the Scaffold-ETH 2 contract debugger UI. Drop it into any wagmi-based React app to read and write to deployed contracts during development.
+
+## Installation
+
+### Peer Dependencies
+
+Install the required peer dependencies using your preferred package manager:
+
+:::code-group
+
+```bash [npm]
+npm install react react-dom @types/react viem wagmi @tanstack/react-query
+```
+
+```bash [pnpm]
+pnpm add react react-dom @types/react viem wagmi @tanstack/react-query
+```
+
+```bash [yarn]
+yarn add react react-dom @types/react viem wagmi @tanstack/react-query
+```
+
+:::
+
+### Package Installation
+
+`@scaffold-ui/debug-contracts` peer-depends on `@scaffold-ui/components` and `@scaffold-ui/hooks`. Install all three:
+
+:::code-group
+
+```bash [npm]
+npm install @scaffold-ui/debug-contracts @scaffold-ui/components @scaffold-ui/hooks
+```
+
+```bash [pnpm]
+pnpm add @scaffold-ui/debug-contracts @scaffold-ui/components @scaffold-ui/hooks
+```
+
+```bash [yarn]
+yarn add @scaffold-ui/debug-contracts @scaffold-ui/components @scaffold-ui/hooks
+```
+
+:::
+
+### Import Styles
+
+Import the styles in your root component file (`app.tsx` for React or `layout.tsx` for Next.js):
+
+```typescript
+import "@scaffold-ui/debug-contracts/styles.css";
+```
+
+### Create wagmi config and setup Tanstack query
+
+https://wagmi.sh/react/getting-started#create-config

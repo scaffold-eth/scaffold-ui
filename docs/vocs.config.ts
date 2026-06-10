@@ -50,6 +50,7 @@ export default defineConfig({
     {
       text: "Debug Contracts",
       items: [
+        { text: "Installation", link: "/debug-contracts" },
         { text: "Contract", link: "/debug-contracts/Contract" },
         { text: "IntegerInput", link: "/debug-contracts/IntegerInput" },
       ],
