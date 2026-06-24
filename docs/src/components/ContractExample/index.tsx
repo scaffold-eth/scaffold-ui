@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { sepolia } from "viem/chains";
 import { Contract } from "@scaffold-ui/debug-contracts";

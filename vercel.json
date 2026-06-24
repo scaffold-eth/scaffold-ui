@@ -1,4 +1,6 @@
 {
+  "$comment": "installCommand forces a full re-link: pnpm 10's hoisted node-linker doesn't link rolldown's transitive optional native binding (vite 8 needs it), so a plain install yields a missing-binding build failure. --force re-links it.",
+  "installCommand": "pnpm install --force",
   "headers": [
     {
       "source": "/(.*)",

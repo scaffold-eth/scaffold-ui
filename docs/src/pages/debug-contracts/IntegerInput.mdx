@@ -3,7 +3,6 @@ layout: docs
 ---
 
 import React from "react";
-import { IntegerInput, IntegerVariant } from "@scaffold-ui/debug-contracts";
 import { DocsProvider } from "../../components/DocsProvider";
 import { IntegerInputExample } from "../../components/IntegerInputExample";
 
@@ -59,7 +58,7 @@ function BasicUint256() {
 <DocsProvider>
   <IntegerInputExample
     initialValue="-42"
-    variant={IntegerVariant.INT64}
+    variant="INT64"
     placeholder="Signed int64"
   />
 </DocsProvider>

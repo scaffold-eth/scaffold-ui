@@ -1,3 +1,4 @@
+"use client";
 import { useCallback, useEffect, useState } from "react";
 import { parseEther } from "viem";
 import { CommonInputProps, IntegerVariant, isValidInteger } from "../../utils/inputs";

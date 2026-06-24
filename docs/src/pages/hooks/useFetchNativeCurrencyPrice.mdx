@@ -3,9 +3,12 @@ layout: docs
 ---
 
 import React from "react";
-import { useFetchNativeCurrencyPrice } from "@scaffold-ui/hooks";
 import { DocsProvider } from "../../components/DocsProvider";
-import { mainnet, polygon } from "viem/chains";
+import {
+  UseFetchNativeCurrencyPriceBasicExample,
+  UseFetchNativeCurrencyPriceConvertExample,
+  UseFetchNativeCurrencyPricePolygonExample,
+} from "../../components/UseFetchNativeCurrencyPriceExamples";
 
 # useFetchNativeCurrencyPrice Hook
 
@@ -48,15 +51,6 @@ Pricing is read from a Uniswap V2 pair on **Ethereum mainnet** regardless of the
 
 Show the current ETH price on mainnet.
 
-export function UseFetchNativeCurrencyPriceBasicExample() {
-  const { price, isLoading, isError } = useFetchNativeCurrencyPrice(mainnet);
-
-  if (isLoading) return <p>Fetching ETH price…</p>;
-  if (isError) return <p style={{ color: "red" }}>Could not fetch ETH price</p>;
-
-  return <p>1 ETH ≈ ${price.toLocaleString()}</p>;
-}
-
 <DocsProvider>
   <UseFetchNativeCurrencyPriceBasicExample />
 </DocsProvider>
@@ -79,19 +73,6 @@ function NativeCurrencyPrice() {
 ### Convert a Native Amount to USD
 
 Multiply a native amount by the fetched price to display its USD value.
-
-export function UseFetchNativeCurrencyPriceConvertExample() {
-  const amount = 1.25;
-  const { price, isLoading } = useFetchNativeCurrencyPrice(mainnet);
-
-  if (isLoading) return <p>Loading…</p>;
-
-  return (
-    <p>
-      {amount} ETH ≈ ${(amount * price).toLocaleString()}
-    </p>
-  );
-}
 
 <DocsProvider>
   <UseFetchNativeCurrencyPriceConvertExample />
@@ -118,15 +99,6 @@ function EthToUsd({ amount }: { amount: number }) {
 ### Non-ETH Chain (Polygon)
 
 For chains whose native currency isn't ETH, the hook resolves the price from `NETWORKS_EXTRA_DATA[chain.id].nativeCurrencyTokenAddress` (e.g. the POL/DAI Uniswap V2 pair on mainnet for Polygon, where the token is the POL ERC-20 at `0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0`) — no extra config required for chains already registered.
-
-export function UseFetchNativeCurrencyPricePolygonExample() {
-  const { price, isLoading, isError } = useFetchNativeCurrencyPrice(polygon);
-
-  if (isLoading) return <p>Fetching POL price…</p>;
-  if (isError) return <p style={{ color: "red" }}>Could not fetch POL price</p>;
-
-  return <p>1 POL ≈ ${price.toLocaleString()}</p>;
-}
 
 <DocsProvider>
   <UseFetchNativeCurrencyPricePolygonExample />

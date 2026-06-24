@@ -4,8 +4,9 @@
   "description": "Documentation for scaffold-ui components",
   "type": "module",
   "scripts": {
-    "dev": "vocs dev",
-    "build": "pnpm --filter @scaffold-ui/hooks --filter @scaffold-ui/components --filter @scaffold-ui/debug-contracts run build && vocs build",
+    "generate": "tsx scripts/generate.ts",
+    "dev": "pnpm generate && vocs dev",
+    "build": "pnpm --filter @scaffold-ui/hooks --filter @scaffold-ui/components --filter @scaffold-ui/debug-contracts run build && pnpm generate && vocs build",
     "preview": "vocs preview",
     "format": "prettier --write ."
   },
@@ -21,15 +22,21 @@
     "@scaffold-ui/debug-contracts": "workspace:*",
     "@scaffold-ui/hooks": "workspace:*",
     "@tanstack/react-query": "^5.59.15",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "viem": "^2.23.13",
-    "vocs": "^1.0.13",
-    "wagmi": "^2.14.15"
+    "vocs": "^2.1.6",
+    "wagmi": "^2.14.15",
+    "waku": "^1.0.0-beta.3"
   },
   "devDependencies": {
-    "prettier": "^3.5.3"
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6",
+    "prettier": "^3.5.3",
+    "tsx": "^4",
+    "typescript": "^5",
+    "vite": "^8"
   }
 }
