@@ -37,8 +37,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      # Build only the publishable packages, not the docs/example apps. A package
+      # release has no reason to build the docs site, and doing so would drag in
+      # Vite 8 / rolldown, whose native binding pnpm's hoisted linker doesn't link
+      # on a plain CI install.
       - name: Build packages
-        run: pnpm build
+        run: pnpm build:packages
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
