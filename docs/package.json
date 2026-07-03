@@ -6,7 +6,7 @@
   "scripts": {
     "generate": "tsx scripts/generate.ts",
     "dev": "pnpm generate && vocs dev",
-    "build": "pnpm --filter @scaffold-ui/hooks --filter @scaffold-ui/components --filter @scaffold-ui/debug-contracts run build && pnpm generate && vocs build && tsx scripts/restore-robots.ts",
+    "build": "pnpm --filter @scaffold-ui/hooks --filter @scaffold-ui/components --filter @scaffold-ui/debug-contracts run build && pnpm generate && vocs build",
     "preview": "vocs preview",
     "format": "prettier --write ."
   },
@@ -25,7 +25,7 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "viem": "^2.23.13",
-    "vocs": "^2.1.6",
+    "vocs": "^2.3.1",
     "wagmi": "^2.14.15",
     "waku": "^1.0.0-beta.3"
   },
