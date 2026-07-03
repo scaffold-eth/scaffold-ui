@@ -6,7 +6,10 @@ import { IntegerInput, IntegerVariant } from "@scaffold-ui/debug-contracts";
 interface IntegerInputExampleProps {
   initialValue?: string;
   placeholder?: string;
-  variant?: IntegerVariant;
+  // Variant name (e.g. "INT64") rather than the enum value itself, so docs
+  // pages can pick a variant without importing IntegerVariant — and thus the
+  // server-incompatible debug-contracts module — into their MDX server scope.
+  variant?: keyof typeof IntegerVariant;
   disableMultiplyBy1e18?: boolean;
   disabled?: boolean;
 }
@@ -14,7 +17,7 @@ interface IntegerInputExampleProps {
 export const IntegerInputExample = ({
   initialValue = "",
   placeholder,
-  variant = IntegerVariant.UINT256,
+  variant = "UINT256",
   disableMultiplyBy1e18,
   disabled,
 }: IntegerInputExampleProps) => {
@@ -25,7 +28,7 @@ export const IntegerInputExample = ({
       value={value}
       onChange={setValue}
       placeholder={placeholder}
-      variant={variant}
+      variant={IntegerVariant[variant]}
       disableMultiplyBy1e18={disableMultiplyBy1e18}
       disabled={disabled}
     />

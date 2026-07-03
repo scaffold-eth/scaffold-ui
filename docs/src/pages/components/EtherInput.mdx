@@ -2,9 +2,10 @@
 layout: docs
 ---
 
-import React, { useMemo } from "react";
+import React from "react";
 import { EtherInput } from "@scaffold-ui/components";
 import { DocsProvider } from "../../components/DocsProvider";
+import { EtherInputOnValueChangeExample } from "../../components/EtherInputExample";
 
 # EtherInput Component
 
@@ -98,12 +99,7 @@ import { EtherInput } from "@scaffold-ui/components";
 ### onValueChange Callback
 
 <DocsProvider>
-  <EtherInput
-    placeholder="With onValueChange"
-    onValueChange={({ valueInEth, valueInUsd, displayUsdMode }) => {
-      console.log({ valueInEth, valueInUsd, displayUsdMode });
-    }}
-  />
+  <EtherInputOnValueChangeExample />
 </DocsProvider>
 
 ```tsx twoslash

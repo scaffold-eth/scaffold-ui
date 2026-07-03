@@ -1,3 +1,4 @@
+"use client";
 import { Address, Balance } from "@scaffold-ui/components";
 import { useMemo, useReducer } from "react";
 import { Abi, extractChain, type Address as AddressType } from "viem";

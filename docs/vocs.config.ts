@@ -1,21 +1,35 @@
-import { defineConfig } from "vocs";
-import { fileURLToPath } from "url";
-import { dirname, resolve } from "path";
-import { generateAgentSkillsIndex } from "./scripts/gen-agent-skills-index";
-import { generateSitemap } from "./scripts/gen-sitemap";
+import { defineConfig, McpSource } from "vocs/config";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-generateSitemap();
-generateAgentSkillsIndex();
+// Only set baseUrl in production. Vocs v2 renders <base href={baseUrl}>, which
+// rebases every relative URL on the page — including Waku's /RSC/* client-navigation
+// fetches. On preview deploys the host you browse (a branch alias) isn't VERCEL_URL
+// (the immutable deployment host), so baking that in sends RSC fetches cross-origin →
+// CORS preflight → Waku 405 → "failed to fetch" when navigating. Leaving it undefined
+// lets relative URLs resolve to whatever origin the visitor is actually on.
+const baseUrl =
+  process.env.VERCEL_ENV === "production"
+    ? "https://ui.scaffoldeth.io"
+    : undefined;
 
 export default defineConfig({
-  rootDir: ".",
   title: "Scaffold UI",
   description: "React components and hooks for Ethereum dApps",
-  vite: {
-    envDir: __dirname,
-    envPrefix: "VITE_",
+  baseUrl,
+  // v2's Shiki bundle is strict: an unknown fence language hard-fails the build
+  // (v1 silently fell back to plaintext). Everything here uses standard langs,
+  // but keep the net so a future typo'd fence degrades to text instead.
+  codeHighlight: {
+    fallbackLanguage: "text",
+  },
+  // Native v2 MCP server at /api/mcp. scaffold-ui ships as installed packages,
+  // so the GitHub repo matches what users have in node_modules — exposing it as
+  // a source is safe (unlike a scaffolded full-stack template, which diverges
+  // from the user's project the moment they customize it).
+  mcp: {
+    enabled: true,
+    sources: [
+      McpSource.github({ name: "scaffold-ui", repo: "scaffold-eth/scaffold-ui" }),
+    ],
   },
   sidebar: [
     {
