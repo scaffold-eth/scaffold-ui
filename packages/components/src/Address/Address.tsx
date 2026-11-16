@@ -4,10 +4,10 @@ import React, { CSSProperties, useMemo } from "react";
 import { useAddress } from "@scaffold-ui/hooks";
 import { Chain, type Address as AddressType } from "viem";
 import { mainnet } from "viem/chains";
-import { AddressLinkWrapper } from "./AddressLinkWrapper";
-import { AddressCopyIcon } from "./AddressCopyIcon";
-import { textSizeMap, blockieSizeMap, copyIconSizeMap, getNextSize, getPrevSize } from "./utils";
-import { DefaultStylesWrapper } from "../utils/ComponentWrapper";
+import { AddressLinkWrapper } from "./AddressLinkWrapper.js";
+import { AddressCopyIcon } from "./AddressCopyIcon.js";
+import { textSizeMap, blockieSizeMap, copyIconSizeMap, getNextSize, getPrevSize } from "./utils.js";
+import { DefaultStylesWrapper } from "../utils/ComponentWrapper.js";
 import { useConfig } from "wagmi";
 
 export type AddressProps = {

@@ -1,13 +1,13 @@
 import { Abi, AbiFunction, Address } from "viem";
 import { useReadContract } from "wagmi";
-import { useAnimationConfig } from "../hooks/useAnimationConfig";
+import { useAnimationConfig } from "../hooks/useAnimationConfig.js";
 import { useEffect } from "react";
-import { getParsedError } from "../utils/getParsedError";
+import { getParsedError } from "../utils/getParsedError.js";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
-import { InheritanceTooltip } from "./InheritanceTooltip";
-import { displayTxResult } from "../utils/utilsDisplay";
-import { notification } from "../utils/notification";
-import { useContractConfig } from "../contexts/ContractConfigContext";
+import { InheritanceTooltip } from "./InheritanceTooltip.js";
+import { displayTxResult } from "../utils/utilsDisplay.js";
+import { notification } from "../utils/notification.js";
+import { useContractConfig } from "../contexts/ContractConfigContext.js";
 
 type DisplayVariableProps = {
   contractAddress: Address;
@@ -75,9 +75,7 @@ export const DisplayVariable = ({
       </div>
       <div className="text-sui-primary-content/80 flex flex-col items-start">
         <div>
-          <div
-            className={`block transition ${showAnimation ? "bg-[#e2d563] animate-pulse-fast" : "bg-transparent"}`}
-          >
+          <div className={`block transition ${showAnimation ? "bg-[#e2d563] animate-pulse-fast" : "bg-transparent"}`}>
             {displayTxResult(result, "base")}
           </div>
         </div>

@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { ContractInput } from "./ContractInput";
-import { Collapsible } from "./Collapsible";
-import { AbiParameterTuple, getFunctionInputKey, getInitialTupleFormState } from "../utils/contracts";
-import { replacer } from "../utils/utilsDisplay";
+import { ContractInput } from "./ContractInput.js";
+import { Collapsible } from "./Collapsible.js";
+import { AbiParameterTuple, getFunctionInputKey, getInitialTupleFormState } from "../utils/contracts.js";
+import { replacer } from "../utils/utilsDisplay.js";
 
 type TupleProps = {
   abiTupleParameter: AbiParameterTuple;

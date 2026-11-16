@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { InheritanceTooltip } from "./InheritanceTooltip";
+import { InheritanceTooltip } from "./InheritanceTooltip.js";
 import { Abi, AbiFunction } from "abitype";
 import { Address, TransactionReceipt } from "viem";
 import { useAccount, useConfig, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
@@ -11,13 +11,13 @@ import {
   getParsedContractFunctionArgs,
   simulateContractWriteAndNotifyError,
   transformAbiFunction,
-} from "../utils/contracts";
-import { useTransactor } from "../hooks/useTransactor";
-import { ContractInput } from "./ContractInput";
-import { IntegerInput } from "./inputs/IntegerInput";
-import { TxReceipt } from "./TxReceipt";
-import { Tooltip } from "./Tooltip";
-import { useContractConfig } from "../contexts/ContractConfigContext";
+} from "../utils/contracts.js";
+import { useTransactor } from "../hooks/useTransactor.js";
+import { ContractInput } from "./ContractInput.js";
+import { IntegerInput } from "./inputs/IntegerInput.js";
+import { TxReceipt } from "./TxReceipt.js";
+import { Tooltip } from "./Tooltip.js";
+import { useContractConfig } from "../contexts/ContractConfigContext.js";
 
 type WriteOnlyFunctionFormProps = {
   abi: Abi;

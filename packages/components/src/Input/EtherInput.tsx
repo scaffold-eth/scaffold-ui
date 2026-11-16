@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { MAX_DECIMALS_USD, useEtherInput, SIGNED_NUMBER_REGEX } from "@scaffold-ui/hooks";
-import { SwitchIcon } from "../icons/SwitchIcon";
-import { BaseInput } from "./BaseInput";
-import { CommonInputProps } from "./utils";
+import { SwitchIcon } from "../icons/SwitchIcon.js";
+import { BaseInput } from "./BaseInput.js";
+import { CommonInputProps } from "./utils.js";
 
 export type EtherInputProps = Omit<CommonInputProps<string>, "onChange" | "value"> & {
   defaultValue?: string;

@@ -2,13 +2,13 @@
 import { Address, Balance } from "@scaffold-ui/components";
 import { useMemo, useReducer } from "react";
 import { Abi, extractChain, type Address as AddressType } from "viem";
-import { ContractVariables } from "./components/ContractVariables";
-import { ContractReadMethods } from "./components/ContractReadMethods";
-import { ContractWriteMethods } from "./components/ContractWriteMethods";
+import { ContractVariables } from "./components/ContractVariables.js";
+import { ContractReadMethods } from "./components/ContractReadMethods.js";
+import { ContractWriteMethods } from "./components/ContractWriteMethods.js";
 import { Toaster } from "react-hot-toast";
-import * as chains from "viem/chains";
-import { ContractConfigProvider } from "./contexts/ContractConfigContext";
-import { NETWORKS_EXTRA_DATA } from "./utils/common";
+import { ContractConfigProvider } from "./contexts/ContractConfigContext.js";
+import { NETWORKS_EXTRA_DATA } from "./utils/common.js";
+import { allChains } from "./utils/networks.js";
 
 export type ContractProps = {
   contractName: string;
@@ -28,7 +28,7 @@ export type ContractProps = {
 export const Contract: React.FC<ContractProps> = ({ contractName, contract, chainId, blockExplorerBaseUrl }) => {
   const [refreshDisplayVariables, triggerRefreshDisplayVariables] = useReducer((value) => !value, false);
   const chain = extractChain({
-    chains: Object.values(chains),
+    chains: allChains,
     id: chainId as any,
   });
 
@@ -62,7 +62,12 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
                   />
                   <div className="flex gap-1 items-center mt-1">
                     <span className="font-bold text-sm">Balance:</span>
-                    {contract.address && <Balance address={contract.address} style={balanceStyle} />}
+                    {contract.address && (
+                      <Balance
+                        address={contract.address}
+                        style={balanceStyle}
+                      />
+                    )}
                   </div>
                   <p className="my-0 text-sm">
                     <span className="font-bold">Network</span>:{" "}
