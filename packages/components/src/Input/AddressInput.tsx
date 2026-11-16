@@ -3,8 +3,8 @@
 import { blo } from "blo";
 import { Address } from "viem";
 import { useAddressInput } from "@scaffold-ui/hooks";
-import { BaseInput } from "./BaseInput";
-import { CommonInputProps } from "./utils";
+import { BaseInput } from "./BaseInput.js";
+import { CommonInputProps } from "./utils.js";
 import { useEffect, useState } from "react";
 
 export type AddressInputProps = CommonInputProps<Address | string>;

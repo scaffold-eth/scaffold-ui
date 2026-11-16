@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { bytesToString, isHex, toBytes, toHex } from "viem";
-import { CommonInputProps } from "../../utils/inputs";
+import { CommonInputProps } from "../../utils/inputs.js";
 import { BaseInput } from "@scaffold-ui/components";
 
 export const BytesInput = ({ value, onChange, name, placeholder, disabled }: CommonInputProps) => {

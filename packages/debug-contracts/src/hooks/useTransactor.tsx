@@ -2,9 +2,9 @@ import { Hash, SendTransactionParameters, TransactionReceipt, WalletClient } fro
 import { Config, useConfig, useWalletClient } from "wagmi";
 import { getPublicClient } from "wagmi/actions";
 import { SendTransactionMutate } from "wagmi/query";
-import { getParsedError } from "../utils/getParsedError";
-import { notification } from "../utils/notification";
-import { getBlockExplorerTxLink } from "../utils/networks";
+import { getParsedError } from "../utils/getParsedError.js";
+import { notification } from "../utils/notification.js";
+import { getBlockExplorerTxLink } from "../utils/networks.js";
 
 type TransactorFuncOptions = {
   onBlockConfirmation?: (txnReceipt: TransactionReceipt) => void;

@@ -1,6 +1,6 @@
 import { Abi, AbiFunction, Address } from "abitype";
-import { GenericContract, InheritedFunctions } from "../types";
-import { ReadOnlyFunctionForm } from "./ReadOnlyFunctionForm";
+import { GenericContract, InheritedFunctions } from "../types.js";
+import { ReadOnlyFunctionForm } from "./ReadOnlyFunctionForm.js";
 
 export const ContractReadMethods = ({
   contract,

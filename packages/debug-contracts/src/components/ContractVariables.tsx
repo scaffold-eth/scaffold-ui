@@ -1,7 +1,7 @@
 import { Abi, AbiFunction } from "abitype";
 import { Address } from "viem";
-import { GenericContract, InheritedFunctions } from "../types";
-import { DisplayVariable } from "./DisplayVariable";
+import { GenericContract, InheritedFunctions } from "../types.js";
+import { DisplayVariable } from "./DisplayVariable.js";
 
 export const ContractVariables = ({
   refreshDisplayVariables,

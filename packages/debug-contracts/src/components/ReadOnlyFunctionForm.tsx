@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { InheritanceTooltip } from "./InheritanceTooltip";
+import { InheritanceTooltip } from "./InheritanceTooltip.js";
 import { Abi, AbiFunction } from "abitype";
 import { Address } from "viem";
 import { useReadContract } from "wagmi";
@@ -10,12 +10,12 @@ import {
   getInitialFormState,
   getParsedContractFunctionArgs,
   transformAbiFunction,
-} from "../utils/contracts";
-import { displayTxResult } from "../utils/utilsDisplay";
-import { getParsedError } from "../utils/getParsedError";
-import { ContractInput } from "./ContractInput";
-import { notification } from "../utils/notification";
-import { useContractConfig } from "../contexts/ContractConfigContext";
+} from "../utils/contracts.js";
+import { displayTxResult } from "../utils/utilsDisplay.js";
+import { getParsedError } from "../utils/getParsedError.js";
+import { ContractInput } from "./ContractInput.js";
+import { notification } from "../utils/notification.js";
+import { useContractConfig } from "../contexts/ContractConfigContext.js";
 
 type ReadOnlyFunctionFormProps = {
   contractAddress: Address;

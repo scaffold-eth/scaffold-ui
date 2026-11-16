@@ -2,13 +2,13 @@
 
 import { Dispatch, SetStateAction } from "react";
 import { AbiParameter } from "abitype";
-import { Bytes32Input } from "./inputs/Bytes32Input";
-import { BytesInput } from "./inputs/BytesInput";
-import { IntegerInput } from "./inputs/IntegerInput";
-import { IntegerVariant } from "../utils/inputs";
-import { AbiParameterTuple } from "../utils/contracts";
-import { Tuple } from "./Tuple";
-import { TupleArray } from "./TupleArray";
+import { Bytes32Input } from "./inputs/Bytes32Input.js";
+import { BytesInput } from "./inputs/BytesInput.js";
+import { IntegerInput } from "./inputs/IntegerInput.js";
+import { IntegerVariant } from "../utils/inputs.js";
+import { AbiParameterTuple } from "../utils/contracts.js";
+import { Tuple } from "./Tuple.js";
+import { TupleArray } from "./TupleArray.js";
 import { AddressInput, BaseInput } from "@scaffold-ui/components";
 
 type ContractInputProps = {

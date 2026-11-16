@@ -1,8 +1,8 @@
 "use client";
 
 import { ChangeEvent, FocusEvent, ReactNode, useCallback, useEffect, useRef } from "react";
-import { CommonInputProps } from "./utils";
-import { DefaultStylesWrapper } from "../utils/ComponentWrapper";
+import { CommonInputProps } from "./utils.js";
+import { DefaultStylesWrapper } from "../utils/ComponentWrapper.js";
 
 export type BaseInputProps<T> = CommonInputProps<T> & {
   error?: boolean;

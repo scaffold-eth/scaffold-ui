@@ -1,5 +1,5 @@
-export { Address, type AddressProps } from "./Address";
-export { Balance, type BalanceProps } from "./Balance";
+export { Address, type AddressProps } from "./Address/index.js";
+export { Balance, type BalanceProps } from "./Balance.js";
 export {
   BaseInput,
   type BaseInputProps,
@@ -7,4 +7,4 @@ export {
   type AddressInputProps,
   EtherInput,
   type EtherInputProps,
-} from "./Input";
+} from "./Input/index.js";
