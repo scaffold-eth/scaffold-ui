@@ -62,7 +62,12 @@ export const Contract: React.FC<ContractProps> = ({ contractName, contract, chai
                   />
                   <div className="flex gap-1 items-center mt-1">
                     <span className="font-bold text-sm">Balance:</span>
-                    {contract.address && <Balance address={contract.address} style={balanceStyle} />}
+                    {contract.address && (
+                      <Balance
+                        address={contract.address}
+                        style={balanceStyle}
+                      />
+                    )}
                   </div>
                   <p className="my-0 text-sm">
                     <span className="font-bold">Network</span>:{" "}

@@ -87,9 +87,7 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled, sty
             className="flex items-center bg-sui-input-border"
             style={style}
           >
-            {isEnsAvatarLoading && (
-              <div className="animate-pulse w-[35px] h-[35px] shrink-0 bg-sui-input-background" />
-            )}
+            {isEnsAvatarLoading && <div className="animate-pulse w-[35px] h-[35px] shrink-0 bg-sui-input-background" />}
             {ensAvatar ? (
               <span className="w-[35px]">
                 <img
@@ -116,7 +114,12 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled, sty
       suffix={
         // Don't want to use nextJS Image here (and adding remote patterns for the URL)
         value && (
-          <img alt="" src={blo(value as `0x${string}`)} width="35" height="35" />
+          <img
+            alt=""
+            src={blo(value as `0x${string}`)}
+            width="35"
+            height="35"
+          />
         )
       }
     />

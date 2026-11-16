@@ -75,9 +75,7 @@ export const DisplayVariable = ({
       </div>
       <div className="text-sui-primary-content/80 flex flex-col items-start">
         <div>
-          <div
-            className={`block transition ${showAnimation ? "bg-[#e2d563] animate-pulse-fast" : "bg-transparent"}`}
-          >
+          <div className={`block transition ${showAnimation ? "bg-[#e2d563] animate-pulse-fast" : "bg-transparent"}`}>
             {displayTxResult(result, "base")}
           </div>
         </div>
