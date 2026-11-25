@@ -5,7 +5,7 @@ import { Address, Chain } from "viem";
 import { useBalance } from "@scaffold-ui/hooks";
 import { useConfig } from "wagmi";
 import { mainnet } from "viem/chains";
-import { DefaultStylesWrapper } from "./utils/ComponentWrapper";
+import { DefaultStylesWrapper } from "./utils/ComponentWrapper.js";
 
 export type BalanceProps = {
   address?: Address;

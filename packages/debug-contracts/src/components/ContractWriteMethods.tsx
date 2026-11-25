@@ -1,6 +1,6 @@
 import { Abi, AbiFunction, Address } from "abitype";
-import { WriteOnlyFunctionForm } from "./WriteOnlyFunctionForm";
-import { GenericContract, InheritedFunctions } from "../types";
+import { WriteOnlyFunctionForm } from "./WriteOnlyFunctionForm.js";
+import { GenericContract, InheritedFunctions } from "../types.js";
 
 export const ContractWriteMethods = ({
   onChange,

@@ -1,9 +1,9 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { parseEther } from "viem";
-import { CommonInputProps, IntegerVariant, isValidInteger } from "../../utils/inputs";
+import { CommonInputProps, IntegerVariant, isValidInteger } from "../../utils/inputs.js";
 import { BaseInput } from "@scaffold-ui/components";
-import { Tooltip } from "../Tooltip";
+import { Tooltip } from "../Tooltip.js";
 
 type IntegerInputProps = CommonInputProps<string> & {
   variant?: IntegerVariant;

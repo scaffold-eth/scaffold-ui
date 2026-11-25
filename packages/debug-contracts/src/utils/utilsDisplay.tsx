@@ -2,8 +2,8 @@ import { ReactElement, useState } from "react";
 import { TransactionBase, TransactionReceipt, formatEther, isAddress, isHex } from "viem";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/solid";
 import { Address } from "@scaffold-ui/components";
-import { Tooltip } from "../components/Tooltip";
-import { useContractConfig } from "../contexts/ContractConfigContext";
+import { Tooltip } from "../components/Tooltip.js";
+import { useContractConfig } from "../contexts/ContractConfigContext.js";
 
 // To be used in JSON.stringify when a field might be bigint
 // https://wagmi.sh/react/faq#bigint-serialization
