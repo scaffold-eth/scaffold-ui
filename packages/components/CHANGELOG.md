@@ -1,5 +1,11 @@
 # @scaffold-ui/components
 
+## 0.1.13
+
+### Patch Changes
+
+- a54075d: Fix ESM output: add file extensions to relative imports so packages load in Node without a bundler and keep types under `nodenext`
+
 ## 0.1.12
 
 ### Patch Changes
