@@ -31,7 +31,7 @@ export default tseslint.config(
     ignores: [".changeset", "dist/"],
   },
   {
-    files: ["**/*.js"],
+    files: ["**/*.{js,mjs}"],
     ...tseslint.configs.disableTypeChecked,
   },
   eslintPluginPrettierRecommended,

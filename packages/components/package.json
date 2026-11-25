@@ -33,6 +33,7 @@
     "clean": "rm -rf dist",
     "lint": "eslint . --ignore-pattern 'dist/' ",
     "format": "prettier --write . '!(node_modules|dist)/**/*' '!CHANGELOG.md'",
+    "format:check": "prettier --check . '!(node_modules|dist)/**/*' '!CHANGELOG.md'",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
