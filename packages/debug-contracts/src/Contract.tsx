@@ -1,7 +1,8 @@
 "use client";
 import { Address, Balance } from "@scaffold-ui/components";
 import { useMemo, useReducer } from "react";
-import { Abi, extractChain, type Address as AddressType } from "viem";
+import { Abi, defineChain, type Address as AddressType } from "viem";
+import { useConfig } from "wagmi";
 import { ContractVariables } from "./components/ContractVariables.js";
 import { ContractReadMethods } from "./components/ContractReadMethods.js";
 import { ContractWriteMethods } from "./components/ContractWriteMethods.js";
@@ -27,10 +28,19 @@ export type ContractProps = {
 
 export const Contract: React.FC<ContractProps> = ({ contractName, contract, chainId, blockExplorerBaseUrl }) => {
   const [refreshDisplayVariables, triggerRefreshDisplayVariables] = useReducer((value) => !value, false);
-  const chain = extractChain({
-    chains: allChains,
-    id: chainId as any,
-  });
+  const { chains: configuredChains } = useConfig();
+  const chain = useMemo(
+    () =>
+      configuredChains.find((c) => c.id === chainId) ??
+      allChains.find((c) => c.id === chainId) ??
+      defineChain({
+        id: chainId,
+        name: `Chain ${chainId}`,
+        nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
+        rpcUrls: { default: { http: [] } },
+      }),
+    [configuredChains, chainId],
+  );
 
   const resolveAddressLink = (addr: string): string | undefined => {
     if (blockExplorerBaseUrl) return `${blockExplorerBaseUrl.replace(/\/$/, "")}/address/${addr}`;
